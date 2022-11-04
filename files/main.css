@@ -53,8 +53,8 @@ section {margin: 3rem 0;position: relative;}
 /*** Скролы сайта ***/
 /**************************************/
 ::-webkit-scrollbar {width: 1rem;height: 0;}
-::-webkit-scrollbar-thumb {border-radius: 0;background-color: var(--color-gray);}
-::-webkit-scrollbar-track {border-radius: 0;background-color: var(--color-lightgray);}
+::-webkit-scrollbar-thumb {border-radius: 0;background-color: var(--color-secondary);}
+::-webkit-scrollbar-track {border-radius: 0;background-color: var(--color-darkgray);}
 
 
 /**************************************/
@@ -90,42 +90,50 @@ p {margin: 0 0 1rem 0;line-height: 1.5;}
 /**************************************/
 /*** Инпут поля ***/
 /**************************************/
-input, select, textarea {width: 100%;height: 2.5rem;padding: 0 1rem;color: var(--color-black);background-color: transparent;border-color: var(--color-black);border-width: 2px;border-style: solid;border-radius: 0;outline: 0;font-size: .875rem;font-weight: 400;font-family: 'Noto Sans', sans-serif;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
-input:focus, select:focus, textarea:focus {border-color: var(--color-primary);}
-input.focus, select.focus, textarea.focus {border-color: var(--color-primary);}
+input, select, textarea {width: 100%;height: 2.5rem;padding: 0 1rem;color: var(--color-black);background-color: var(--color-lightgray);border-color: var(--color-lightgray);border-width: 1px;border-style: solid;border-radius: 0;outline: 0;font-size: .875rem;font-weight: 400;font-family: 'Noto Sans', sans-serif;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+input:focus, select:focus, textarea:focus {border-color: var(--color-secondary);}
+input.focus, select.focus, textarea.focus {border-color: var(--color-secondary);}
 textarea {height: auto;padding: 1rem;resize: vertical;}
 select {cursor: pointer;}
 input.error, textarea.error {border-color: var(--color-red);}
 input[type="file"] {margin-top: 0.25rem;height: auto;line-height: 1;border: 0;padding: 0;border-radius: 0;background: transparent;}
 
-.square {background-color: transparent;border: 1px solid var(--color-black);color: var(--color-black);width: 1.25rem;height: 1.25rem;line-height: 1.25rem;font-size: 1.125rem;margin: 0;padding: 0;text-align: center;cursor: pointer;}
-.square:after {content: '';vertical-align: top;font-family: 'icomoon';}
-.square:checked, .square:hover {color: var(--color-primary);border-color: var(--color-primary);}
-.square:checked:after {content: '\e906';}
-.square:disabled {border-color: var(--color-lightgray);cursor: default;}
-.square:disabled:after {content: '';opacity: .5;}
+/* Чекбокс квадрат */
+.square {background-color: var(--color-darkgray);border: 1px solid var(--color-darkgray);width: 1.25rem;height: 1.25rem;line-height: 1.25rem;font-size: 1.125rem;margin: 0;padding: 0;text-align: center;cursor: pointer;}
 .square + label {cursor: pointer;}
-.square:disabled + label {color: var(--color-lightgray);cursor: default;}
+.square:checked + label {color: var(--color-secondary);}
+.square:after {content: '';vertical-align: top;font-family: 'icomoon';}
+.square:hover {background-color: var(--color-darkgray);border-color: var(--color-secondary);}
+.square:checked {background-color: var(--color-secondary);border-color: var(--color-secondary);}
+.square:checked:after {content: '\e906';}
+.square:disabled {background-color: var(--color-lightgray);border-color: var(--color-lightgray);cursor: default;}
+.square:disabled:after {content: '';}
+.square:disabled + label {color: var(--color-darkgray);cursor: default;}
 
 .checkbox + .checkbox {margin-top: 1.5rem;}
 .checkbox input {vertical-align: middle;margin-right: .5rem;}
 
 /* Текст в не активном инпуте */
-::-webkit-input-placeholder {color: var(--color-gray);}
-::-moz-placeholder {color: var(--color-gray);}
-:-moz-placeholder {color: var(--color-gray);}
-:-ms-input-placeholder {color: var(--color-gray);}
+::-webkit-input-placeholder {color: var(--color-darkgray);}
+::-moz-placeholder {color: var(--color-darkgray);}
+:-moz-placeholder {color: var(--color-darkgray);}
+:-ms-input-placeholder {color: var(--color-darkgray);}
 /* Текст в активном инпуте */
 :focus::-webkit-input-placeholder {color: var(--color-black);transition: opacity .3s ease;}
 :focus::-moz-placeholder {color: var(--color-black);transition: opacity .3s ease;}
 :focus:-moz-placeholder {color: var(--color-black);transition: opacity .3s ease;}
 :focus:-ms-input-placeholder {color: var(--color-black);transition: opacity .3s ease;}
+/* Ошибка в инпуте */
+.error::-webkit-input-placeholder {color: var(--color-red);}
+.error::-moz-placeholder {color: var(--color-red);}
+.error:-moz-placeholder {color: var(--color-red);}
+.error:-ms-input-placeholder {color: var(--color-red);}
 
 
 /**************************************/
 /*** Кнопки ***/
 /**************************************/
-button, [class*="button-"], .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: var(--color-white);background: var(--color-primary);padding: 0 2rem;line-height: 2.5rem;border: 1px solid transparent;border-radius:0;text-align: center;font-size: 1rem;font-weight: 500;font-family: 'Noto Sans', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
+button, [class*="button-"], .paymentFormSubmitLink, .paymentFormTbodySubmitButton {color: var(--color-white);background: var(--color-primary);padding: 0 2rem;line-height: 3rem;border: 0 solid transparent;border-radius:0;text-align: center;font-size: 1rem;font-weight: 500;font-family: 'Noto Sans', sans-serif;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
 button:hover, [class*="button-"]:hover, .paymentFormSubmitLink:hover, .paymentFormTbodySubmitButton:hover, button.active, [class*="button-"].active {color: var(--color-white);background: var(--color-secondary);border-color: var(--color-secondary);}
 /*** Кнопка. Основная ***/
 .button-primary {background: var(--color-primary);border-color: var(--color-primary);}
@@ -134,8 +142,8 @@ button:hover, [class*="button-"]:hover, .paymentFormSubmitLink:hover, .paymentFo
 .button-secondary {background: var(--color-secondary);border-color: var(--color-secondary);}
 .button-secondary:hover {background: var(--color-primary);border-color: var(--color-primary);}
 /*** Кнопка. Третичная ***/
-.button-tertiary {background: var(--color-black);border-color: var(--color-black);}
-.button-tertiary:hover {background: var(--color-primary);border-color: var(--color-primary);}
+.button-tertiary {background: var(--color-primary);border-color: var(--color-primary);}
+.button-tertiary:hover {background: var(--color-tertiary);border-color: var(--color-tertiary);}
 /*** Кнопка. Маленькая ***/
 .button-small {font-size: .75rem;line-height: 1.5rem;padding: 0 .75rem;}
 /*** Кнопка. Анимация поворота ***/
@@ -150,14 +158,14 @@ button:hover, [class*="button-"]:hover, .paymentFormSubmitLink:hover, .paymentFo
 [class^="add-"] i {font-size: 1.25rem;margin-right: .5rem;vertical-align: middle;}
 [class^="add-"] span {vertical-align: middle;}
 /*** Кнопка. Фенсибокс ***/
-.fancybox-button {background: var(--color-shadow);color: var(--color-lightgray);border: 0;}
+.fancybox-button {background: var(--color-shadow);color: var(--color-darkgray);border: 0;}
 .fancybox-close-small {line-height: 1;font-size: 1.25rem;background: transparent;}
-.fancybox-close-small:hover {background: none;color: var(--color-primary);}
+.fancybox-close-small:hover {background: none;color: var(--color-secondary);}
 /*** Кнопка. Выключенная ***/
-[class*="button-"].disabled {cursor: default;background-color: var(--color-lightgray);border-color: var(--color-lightgray);}
+[class*="button-"].disabled {cursor: default;background-color: var(--color-darkgray);border-color: var(--color-darkgray);}
 /*** Кнопка. Нет в наличии ***/
-.button-empty {background: var(--color-lightgray);border-color: var(--color-lightgray);}
-.button-empty:hover {background: var(--color-gray);border-color: var(--color-gray);}
+.button-empty {background: var(--color-darkgray);border-color: var(--color-darkgray);}
+.button-empty:hover {background: var(--color-secondary);border-color: var(--color-secondary);}
 /*** Кнопка с иконкой ***/
 .button-icon i {font-size: 1.25rem;margin-right: .5rem;vertical-align: middle;}
 .button-icon span {vertical-align: middle;}
@@ -182,7 +190,7 @@ h5 {font-size: 0.875rem;}
 .notice.warning {background-color: #f2dede;color: #a94442;border-color: #ebccd1;}
 .notice.attention {background-color: #fcf8e3;color: #8a6d3b;border-color: #faebcc;}
 .notice.information {background-color: #d9edf7;color: #31708f;border-color: #bce8f1;}
-.notice a {color: inherit;font-weight: 600;text-decoration: underline;display: inline;}
+.notice a {color: inherit;font-weight: 700;text-decoration: underline;display: inline;}
 
 
 /**************************************/
@@ -763,7 +771,7 @@ h5 {font-size: 0.875rem;}
 .productView__qty {margin-right: 3rem;}
 .qty a {border: 2px solid var(--color-gray);width: 2.5rem;height: 2.5rem;line-height: 2.5rem;font-size: 1.5rem;padding: 0;text-align: center;}
 .qty a:hover {color: var(--color-white);background-color: var(--color-black);border-color: var(--color-black);}
-.qty input {width: 3rem;height: 2.5rem;border: 0;padding: 0 .5rem;text-align: center;font-weight: 600;}
+.qty input {width: 3rem;height: 2.5rem;border: 0;padding: 0 .5rem;text-align: center;}
 /* Товар. Модификации */
 .productView__mod-property {margin: 1.5rem 1rem 0 1rem;}
 .productView__mod-label {margin-bottom: .5rem;display: block;}
@@ -937,7 +945,7 @@ h5 {font-size: 0.875rem;}
 .cart__art {margin: 1rem 0 0 0;}
 .cart__prop {margin: 1rem 1rem 0 0;}
 .cart__prop label {margin-right: .5rem;}
-.cart__prop span {font-weight: 600;}
+.cart__prop span {font-weight: 700;}
 .cart__remove {position: absolute;right: 1rem;top: 1rem;}
 .cart__remove i {font-size: 1.5rem;line-height: 1;}
 .cart__remove span {display: none;}
@@ -1013,7 +1021,7 @@ h5 {font-size: 0.875rem;}
 /*** Страница: Оформление заказа ***/
 /**************************************/
 .stages__navs {margin-bottom: 2rem;}
-.stages__nav {flex-grow: 1;font-size: 1.25rem;font-weight: 500;position: relative;transition: all 0.3s ease;}
+.stages__nav {flex-grow: 1;font-size: 1.25rem;font-weight: 700;position: relative;transition: all 0.3s ease;}
 .stages__nav.active, .stages__nav:hover {color: var(--color-primary);}
 .stages__nav:after {content: '';background-color: var(--color-black);width: 100%;height: .125rem;position: absolute;bottom: -.5rem;left: 0;}
 .stages__nav.active:after, .stages__nav:hover:after {background-color: var(--color-primary);}
@@ -1078,8 +1086,8 @@ header .contacts__block + .contacts__block {margin: 0 0 0 2rem;}
 .contacts__block-phone + .contacts__block-phone {margin-top: .75rem;}
 .contacts__icon {font-size: 1.5rem;margin-right: 1rem;transition: all 0.3s ease;}
 .contacts__content {width: calc(100% - 1.5rem - 1rem);white-space: nowrap;}
-.contacts__link {font-weight: 600;}
-.contacts__label {width: 100%;margin-bottom: .75rem;font-weight: 600;}
+.contacts__link {font-weight: 700;}
+.contacts__label {width: 100%;margin-bottom: .75rem;font-weight: 700;}
 .contacts__fancy {margin-top: .5rem;font-size: .75rem;font-weight: 400;}
 .contacts__fancy:hover {text-decoration: underline;}
 @media all and (max-width: 639px) {
