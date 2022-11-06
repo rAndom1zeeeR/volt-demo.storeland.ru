@@ -237,55 +237,67 @@ function compare() {
 ///////////////////////////////////////
 function mainnav(id,rows,media){
 	if(getClientWidth() > media){
-		var mainnav = $(id);
-		var overMenuExist = mainnav.find('.mainnav__overflow li').length;
+		var mainNav = $(id);
+		var overMenuExist = mainNav.find('.mainnav__overflow li').length;
+		var mainNavList = mainNav.find('.mainnav__list');
+		var mainNavOverflow = mainNav.find('.mainnav__overflow');
+		var mainNavMore = $('.mainnav__more');
+
 		// Восстановление классов для больших экранов
-		$('.mainnav__overflow').addClass('dropdown__content');
-		$('.mainnav__more').show();
+		mainNavOverflow.addClass('dropdown__content');
+		mainNavMore.removeClass('mainnav__more_hidden')
+
 		if(overMenuExist){
-			mainnav.find('.mainnav__overflow li').removeClass('mainnav__replaced');
-			mainnav.find('.mainnav__more').remove();
-			mainnav.find('.mainnav__overflow li').each(function(){
-				mainnav.find('.mainnav__list').append($(this));
+			mainNavOverflow.find('li').removeClass('mainnav__replaced');
+			mainNavMore.remove();
+			mainNavOverflow.find('li').each(function(){
+				console.log('over li', $(this))
+				mainNavList.append($(this));
 			});
 		}
+
 		var menuHeight = rows;
-		var menuWidth = mainnav.width() * menuHeight;
-		var menuCount = mainnav.find('.mainnav__list li').length + 1;
+		var menuWidth = mainNav.width() * menuHeight;
+		var menuCount = mainNavList.find('li').length + 1;
 		var nextCheck = 0;
+
 		for(var i=1; i < menuCount;  i++){
-			var currentWidth = parseInt(Math.ceil(mainnav.find('.mainnav__list li:nth-child('+i+')').width())) + 16;
+			var currentWidth = parseInt(Math.ceil(mainNavList.find('li:nth-child('+i+')').width())) + 10;
 			nextCheck += currentWidth;
+
 			if(nextCheck > menuWidth){
 				var a = i;
 				for(a;a < menuCount;a++){
-					mainnav.find('.mainnav__list li:nth-child('+ a +')').addClass('mainnav__replaced');
+					mainNavList.find('li:nth-child('+ a +')').addClass('mainnav__replaced');
 				}
-				mainnav.find('.mainnav__replaced').each(function(){
-					mainnav.find('.mainnav__overflow').append($(this));
+
+				mainNav.find('.mainnav__replaced').each(function(){
+					mainNavOverflow.append($(this));
 				});
-				mainnav.find('.mainnav__list').append('<li class="mainnav__more"><a class="mainnav__link flex"><span>Ещё</span><i class="icon-chevron_down"></i></a></li>');
-				mainnav.find('.mainnav__more').on('click',function(){
+
+				mainNavList.append('<li class="mainnav__more"><a class="mainnav__link flex"><span>Ещё</span><i class="icon-chevron_down"></i></a></li>');
+
+				mainNav.find('.mainnav__more').on('click',function(){
 					if($(this).hasClass('opened')){
 						$(this).removeClass('opened');
-						mainnav.removeClass('opened');
-						mainnav.find('.mainnav__overflow').removeClass('opened');
+						mainNav.removeClass('opened');
+						mainNavOverflow.removeClass('opened');
 						$('#overlay').removeClass('opened');
 					} else{
 						$(this).addClass('opened');
-						mainnav.addClass('opened');
-						mainnav.find('.mainnav__overflow').addClass('opened');
-						$('#overlay').addClass('opened')
+						mainNav.addClass('opened');
+						mainNavOverflow.addClass('opened');
+						$('#overlay').addClass('opened');
 					}
-					// Определение положения кнопки еще
+					// Запуск функции Определения положения кнопки еще
 					positionMore()
 				});
 				
 				// Определение положения кнопки еще
 				function positionMore(){
-					var morePos = mainnav.find('.mainnav__more').position().left;
-					var contentPos = parseInt(morePos) - mainnav.find('.mainnav__overflow').width() / 4;
-					mainnav.find('.mainnav__overflow').css({'left' : contentPos})
+					var morePos = mainNav.find('.mainnav__more').position().left;
+					var contentPos = parseInt(morePos) - mainNavOverflow.width() / 3;
+					mainNavOverflow.css({'left' : contentPos})
 				}
 
 				return false;
@@ -293,8 +305,8 @@ function mainnav(id,rows,media){
 		}
 	}else{
 		// Удаление классов для маленьких экранов
-		$('.mainnav__overflow').removeClass('dropdown__content');
-		$('.mainnav__more').hide();
+		mainNavOverflow.removeClass('dropdown__content');
+		mainNavMore.addClass('mainnav__more_hidden');
 	}
 }
 
@@ -2625,7 +2637,6 @@ function indexNews() {
 		var nav = id + ' .swiper-navigate'
 		var total = $(id).find('.swiper-pagination-total');
 		var current = $(id).find('.swiper-pagination-current');
-		console.log(nav)
 
 		// Обновление данных
 		function updateMedia(t){
@@ -2954,18 +2965,26 @@ function openMenu() {
   $('[data-open]').on('click', function(event){
     event.preventDefault();
     var value = $(this).data('open');
-		$('[data-open]').removeClass('opened active')
-		$('[data-content]').removeClass('opened')
-    if ($('[data-content="'+ value +'"]').hasClass('opened')){
-      $(this).removeClass('opened active').parent().removeClass('opened');
+		$('[data-open]').removeClass('opened')
+		$('[data-opened]').removeClass('opened')
+    if ($('[data-opened="'+ value +'"]').hasClass('opened')){
+      $(this).removeClass('opened').parent().removeClass('opened');
       $('#overlay').removeClass('opened');
-      $('[data-content="'+ value +'"]').removeClass('opened').slideUp('slow');
+      $('[data-opened="'+ value +'"]').removeClass('opened');
     }else{
-      $(this).addClass('opened active').parent().addClass('opened');
+      $(this).addClass('opened').parent().addClass('opened');
       $('#overlay').addClass('opened');
-      $('[data-content="'+ value +'"]').addClass('opened').slideDown('slow');
+      $('[data-opened="'+ value +'"]').addClass('opened');
     }
   });
+
+	// Открытие контактов
+	$('.header-contacts__phone_click22').on('click', function(event){
+		event.preventDefault();
+		$(this).toggleClass('opened');
+		$('.header-contacts__content').toggleClass('opened');
+		$('#overlay').toggleClass('opened');
+	});
 }
 
 // Функция удаления классов всех активных элементов

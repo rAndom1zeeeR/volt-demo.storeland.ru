@@ -46,16 +46,14 @@
 		<!-- Контакты -->
 	  <div class="client__block contacts" itemscope itemtype="https://schema.org/Organization">
 			<h3 class="client__title">Контакты</h3>
-			<div class="contacts__block contacts__block-phones">
+			<div class="contacts__block contacts__block_phones">
 				<!-- Телефон 1 -->
 				{% IF SETTINGS_STORE_PHONE_NUMBER1 %}
 				<div class="contacts__label">Телефоны</div>
-				<div class="contacts__block-phone flex">
+				<div class="contacts__block_phone flex">
 					<div class="contacts__icon"><i class="icon-phone"></i></div>
 					<div class="contacts__content">
-						<a class="contacts__link"
-							href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}"
-							title="{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}">
+						<a class="contacts__link" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}" title="{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}">
 							<span itemprop="telephone">{SETTINGS_STORE_PHONE_COUNTRY_CODE1}({SETTINGS_STORE_PHONE_CITY_CODE1}){SETTINGS_STORE_PHONE_NUMBER1}</span>
 						</a>
 					</div>
@@ -63,12 +61,10 @@
 				{% ENDIF SETTINGS_STORE_PHONE_NUMBER1 %}
 				<!-- Телефон 2 -->
 				{% IF SETTINGS_STORE_PHONE_NUMBER2 %}
-				<div class="contacts__block-phone flex">
+				<div class="contacts__block_phone flex">
 					<div class="contacts__icon"><i class="icon-phone"></i></div>
 					<div class="contacts__content">
-						<a class="contacts__link"
-							href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE2}({SETTINGS_STORE_PHONE_CITY_CODE2}){SETTINGS_STORE_PHONE_NUMBER2}"
-							title="{SETTINGS_STORE_PHONE_COUNTRY_CODE2}({SETTINGS_STORE_PHONE_CITY_CODE2}){SETTINGS_STORE_PHONE_NUMBER2}">
+						<a class="contacts__link" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE2}({SETTINGS_STORE_PHONE_CITY_CODE2}){SETTINGS_STORE_PHONE_NUMBER2}" title="{SETTINGS_STORE_PHONE_COUNTRY_CODE2}({SETTINGS_STORE_PHONE_CITY_CODE2}){SETTINGS_STORE_PHONE_NUMBER2}">
 							<span itemprop="telephone">{SETTINGS_STORE_PHONE_COUNTRY_CODE2}({SETTINGS_STORE_PHONE_CITY_CODE2}){SETTINGS_STORE_PHONE_NUMBER2}</span>
 						</a>
 					</div>
@@ -76,12 +72,10 @@
 				{% ENDIF SETTINGS_STORE_PHONE_NUMBER2 %}
 				<!-- Телефон 3 -->
 				{% IF SETTINGS_STORE_PHONE_NUMBER3 %}
-				<div class="contacts__block-phone flex">
+				<div class="contacts__block_phone flex">
 					<div class="contacts__icon"><i class="icon-phone"></i></div>
 					<div class="contacts__content">
-						<a class="contacts__link"
-							href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE3}({SETTINGS_STORE_PHONE_CITY_CODE3}){SETTINGS_STORE_PHONE_NUMBER3}"
-							title="{SETTINGS_STORE_PHONE_COUNTRY_CODE3}({SETTINGS_STORE_PHONE_CITY_CODE3}){SETTINGS_STORE_PHONE_NUMBER3}">
+						<a class="contacts__link" href="tel:{SETTINGS_STORE_PHONE_COUNTRY_CODE3}({SETTINGS_STORE_PHONE_CITY_CODE3}){SETTINGS_STORE_PHONE_NUMBER3}" title="{SETTINGS_STORE_PHONE_COUNTRY_CODE3}({SETTINGS_STORE_PHONE_CITY_CODE3}){SETTINGS_STORE_PHONE_NUMBER3}">
 							<span itemprop="telephone">{SETTINGS_STORE_PHONE_COUNTRY_CODE3}({SETTINGS_STORE_PHONE_CITY_CODE3}){SETTINGS_STORE_PHONE_NUMBER3}</span>
 						</a>
 					</div>
@@ -91,11 +85,11 @@
 
 			<!-- Почта -->
 			{% IF SETTINGS_STORE_EMAIL_MAIN %}
-			<div class="contacts__block contacts__block-email flex">
+			<div class="contacts__block contacts__block_email flex">
 				<div class="contacts__label">Электронная почта</div>
 				<div class="contacts__icon"><i class="icon-mail"></i></div>
 				<div class="contacts__content">
-					<a class="contacts__link email" href="mailto:{SETTINGS_STORE_EMAIL_MAIN}" title="{SETTINGS_STORE_EMAIL_MAIN}">
+					<a class="contacts__link" href="mailto:{SETTINGS_STORE_EMAIL_MAIN}" title="{SETTINGS_STORE_EMAIL_MAIN}">
 						<span itemprop="email">{SETTINGS_STORE_EMAIL_MAIN}</span>
 					</a>
 				</div>
@@ -104,7 +98,7 @@
 
 			<!-- Адрес -->
 			{% IF SETTINGS_STORE_REGION %}
-			<div class="contacts__block contacts__block-region flex" target="_blank" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+			<div class="contacts__block contacts__block_region flex" target="_blank" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
 				<div class="contacts__label">Адрес магазина</div>
 				<div class="contacts__icon"><i class="icon-location"></i></div>
 				<div class="contacts__content">
@@ -117,11 +111,11 @@
 
 			<!-- Время работы -->
 			{% IF SETTINGS_STORE_WORK_TIME %}
-			<div class="contacts__block contacts__block-worktime flex">
+			<div class="contacts__block contacts__block_worktime flex">
 				<div class="contacts__label">График работы</div>
 				<div class="contacts__icon"><i class="icon-schedule"></i></div>
 				<div class="contacts__content">
-					<a class="contacts__link work" href="{FEEDBACK_URL}" title="Режим работы">
+					<a class="contacts__link" href="{FEEDBACK_URL}" title="Режим работы">
 						<span>{SETTINGS_STORE_WORK_TIME}</span>
 					</a>
 				</div>

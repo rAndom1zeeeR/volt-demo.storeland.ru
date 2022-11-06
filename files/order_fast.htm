@@ -399,6 +399,18 @@
 		<a class="button-primary" href="{CART_URL}" title="Перейти в Корзину"><span>В Корзину</span></a>
 	</div>
 </div>
+<div style="display:none;" id="newCartTitle">
+	<a class="header-cart__title flex" href="{CART_URL}">
+		<div class="header-cart__icon cart__icon">
+			<i class="icon-cart"></i>
+			<span class="header-cart__count count-cart" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</span>
+		</div>
+		<div class="header-cart__content">
+			<div class="header-cart__label">Корзина</div>
+			<div class="header-cart__price price__now cartSumNow {CURRENCY_CHAR_CODE}" data-price="{CART_SUM_NOW}">{CART_SUM_NOW | money_format}</div>
+		</div>
+	</a>
+</div>
 
 <!-- Обновление данных корзины -->
 <script>
@@ -407,6 +419,7 @@ $('.cartSumNow').attr('data-price', $('#newCartSumNow').html()).find('.num').htm
 $('.cartSumOld').attr('data-price', $('#newCartSumOld').html()).find('.num').html(addSpaces($('#newCartSumOld').html()));
 $('.count-cart').attr('data-count', $('#newCartCount').html()).html($('#newCartCount').html());
 $('.addto__cart').html($('#newCartData').html());
+$('.header-cart').html($('#newCartTitle').html());
 // Обновление скидки
 cartSaleSum();
 </script>
