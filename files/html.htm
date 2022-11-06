@@ -88,7 +88,7 @@
 						<div class="header-region">
 							<a class="addto__link flex" href="https://yandex.ru/maps/?text={SETTINGS_STORE_REGION}&z=17" target="_blank">
 								<i class="icon-location"></i>
-								<span>{SETTINGS_STORE_REGION}</span>
+								<span class="addto__label">{SETTINGS_STORE_REGION}</span>
 							</a>
 						</div>
 						{% ENDIF %}
@@ -124,7 +124,7 @@
 							<div class="addto__block favorites {% IF FAVORITES_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
 								<a class="addto__link flex" href="{FAVORITES_URL}" title="Избранное">
 									<i class="icon-favorites"></i>
-									<span>Избранное</span>
+									<span class="addto__label">Избранное</span>
 									<span class="addto__count count-favorites" data-count="{FAVORITES_GOODS_COUNT}">{FAVORITES_GOODS_COUNT}</span>
 								</a>
 							</div>
@@ -134,7 +134,7 @@
 							<div class="addto__block compare {% IF COMPARE_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
 								<a class="addto__link flex" href="{COMPARE_URL}" title="Сравнение">
 									<i class="icon-compare"></i>
-									<span>Сравнение</span>
+									<span class="addto__label">Сравнение</span>
 									<span class="addto__count count-compare" data-count="{COMPARE_GOODS_COUNT}">{COMPARE_GOODS_COUNT}</span>
 								</a>
 							</div>
@@ -144,7 +144,7 @@
 							<div class="addto__block login">
 								<a class="addto__link flex" href="{USER_LOGIN_URL}" title="Личный кабинет">
 									<i class="icon-login"></i>
-									<span>Войти</span>
+									<span class="addto__label">Войти</span>
 								</a>
 							</div>
 
@@ -173,7 +173,7 @@
 
 						<!-- Поиск -->
 						<div class="header-search">
-							<div class="search" itemscope itemtype="https://schema.org/WebSite">
+							<div class="search" data-opened="search" itemscope itemtype="https://schema.org/WebSite">
 								<link itemprop="url" href="{INDEX_PAGE_URL}" />
 								<!-- Форма поиска -->
 								<form class="search__form" action="{QUICK_SEARCH_URL}" method="get" title="Поиск по магазину" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
@@ -208,6 +208,11 @@
 										</div>
 									</div>
 								</div>
+							</div>
+
+							<!-- Иконка поиска в адаптивности -->
+							<div class="search__icon" data-open="search">
+								<i class="icon-search"></i>
 							</div>
 
 						</div>

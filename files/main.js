@@ -2977,14 +2977,6 @@ function openMenu() {
       $('[data-opened="'+ value +'"]').addClass('opened');
     }
   });
-
-	// Открытие контактов
-	$('.header-contacts__phone_click22').on('click', function(event){
-		event.preventDefault();
-		$(this).toggleClass('opened');
-		$('.header-contacts__content').toggleClass('opened');
-		$('#overlay').toggleClass('opened');
-	});
 }
 
 // Функция удаления классов всех активных элементов
