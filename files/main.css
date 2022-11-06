@@ -1210,15 +1210,16 @@ h5 {font-size: 0.875rem;}
 .header-catalog__swiper .swiper-button-prev {left: 0;}
 .header-catalog__swiper .swiper-button-next {right: 0;}
 .header-catalog__swiper .swiper-button-disabled {opacity: 0;}
-
+/* Выпадающий каталог */
 .header-catalog__container {position: relative;}
 .header-catalog__content {left: 1rem;width: calc(100% - 2rem);padding: 0;}
+.header-catalog-mobile {display: none;}
 header .catalog__items {position: relative;}
 header .catalog__item {margin: 0;}
 header .catalog__link {padding: 1rem 2.5rem;font-weight: 500;}
 header .catalog__link:hover {background: var(--color-lightgray);}
 header .catalog__link i {margin-left: 0.25rem;}
-@media all and (min-width: 992px) {
+@media all and (min-width: 1024px) {
 header .catalog__item .catalog__sub {display: none;width: calc(50% - 23.666666rem); position: absolute;top: 0;height: 100%;padding: 0;}
 header .catalog__item .catalog__sub[data-level="3"] {display: none !important;}
 header .catalog__item:hover > .catalog__sub {display: block;}
@@ -1228,8 +1229,10 @@ header .catalog__link {width: 23.666666rem;}
 header .catalog__sub[data-level="1"] {background-color: var(--color-lightgray);}
 }
 
-
-
+@media all and (max-width: 1023px) {
+	.header-catalog-mobile {margin-right: 2rem;display: inline-block;}
+	.header-catalog-mobile__icon {padding: 0 1rem;font-size: 1.125rem;}
+}
 
 /**************************************/
 /*** Новости ***/
