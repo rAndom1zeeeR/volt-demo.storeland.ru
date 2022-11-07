@@ -106,12 +106,12 @@ function preload() {
 }
 
 // Изменение текста в объкте
-function ChangeTxt(txtObject) {
+function changeTxt(txtObject) {
   var
     // Ссылка по которой кликнули
     LObject = $(txtObject),
     // Старый текст ссылки
-    txtOld = LObject.text(),
+    txtOld = LObject.text().trim(),
     // Новый текст ссылки
     txtNew = LObject.attr('data-txt');
   // Если объекты не получены, завершим работу функции
@@ -119,7 +119,8 @@ function ChangeTxt(txtObject) {
     return false;
   }
   // Изменяем у ссылки текст со старого на новый
-  LObject.html(txtNew);
+  LObject.find('span').text(txtNew);
+  LObject.attr('title', txtNew);
   // Старый текст ссылки сохраняем в атрибуте data-txt
   LObject.attr('data-txt', txtOld);
 }
@@ -199,7 +200,7 @@ function compare() {
 	// Сравнение товаров. Отображение всех и различающихся характеристик товара
 	$('.compare__switch').on('click', function(){
 		$(this).toggleClass('switch-on');
-		ChangeTxt('.compare__switch-label')
+		changeTxt('.compare__switch-label')
 		if ($(this).hasClass('switch-on')) {
 			$('.compare__line:not(.same)').show();
 			$('.compare__line.same').hide();
@@ -1353,8 +1354,10 @@ function quantity() {
       quantity.trigger('keyup');
       quantity.trigger('change');
     }
+		checkQty(quantity)
     return false;
   });
+
   //Regulator Down копки - в карточке товара при добавлении в корзину
   $('.qty__minus').off('click').on('click', function(){
     var quantity = $(this).parent().find('input');
@@ -1364,42 +1367,47 @@ function quantity() {
       quantity.trigger('keyup');
       quantity.trigger('change');
     }
+		checkQty(quantity)
     return false;
   });
+}
+
+// Проверка кол-ва
+function checkQty($obj){
+	// Количество
+	var val = parseInt($obj.val());
+	// Если вводят 0 то заменяем на 1
+	if(val < 1){
+		$obj.val(1);
+		val = 1;
+	}
+	// Проверка максимальныго остатка
+	var max = parseInt($obj.attr('max'));
+	if(val > max){
+		$obj.val(max);
+		val = max;
+		new Noty({
+			text: '<div class="noty__addto"><div class="noty__message">Внимание! Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div></div>',
+			layout:"bottomRight",
+			type:"warning",
+			easing:"swing",
+			animation: {
+				open: 'animated fadeInUp',
+				close: 'animated fadeOutDown',
+				easing: 'swing',
+				speed: 400
+			},
+			timeout:"2000",
+			progressBar:true
+		}).show();
+	}
 }
 
 // Изменение кол-ва в карточке
 function prodQty($container){
 	var $goodsModView = $container || $('#main .productViewBlock')
 	$goodsModView.find('.quantity').change(function(){
-		var t = $(this);
-		// Количество
-		var val = parseInt(t.val());
-		// Если вводят 0 то заменяем на 1
-		if(val < 1){
-			t.val(1);
-			val = 1;
-		}
-		// Проверка максимальныго остатка
-		var max = parseInt(t.attr('max'));
-		if(val > max){
-			t.val(max);
-			val = max;
-			new Noty({
-				text: '<div class="noty__addto"><div class="noty__message">Внимание! Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div></div>',
-				layout:"bottomRight",
-				type:"warning",
-				easing:"swing",
-				animation: {
-					open: 'animated fadeInUp',
-					close: 'animated fadeOutDown',
-					easing: 'swing',
-					speed: 400
-				},
-				timeout:"2000",
-				progressBar:true
-			}).show();
-		}
+		checkQty($(this))
 
 		// Обновление кол-ва для функций "Добавить"
 		$goodsModView.find('.goodsDataMainModificationId').val($(this).val());
@@ -1885,7 +1893,7 @@ function cartQuantity(){
 }
 
 // Счетчик +- в выпадающей корзине
-function cartAjaxQuantity(){
+function cartAjaxQty(){
 	$('.addto__cart .qty__cart').off('change').on('change', $.debounce(300, function(){
 		var quantity = $(this);
 		var id = quantity.closest('.addto__item').data('id');
@@ -2602,27 +2610,25 @@ function pdtVisible(id){
 	var visible = $(id).find('.product__item:visible').length;
 
 	// Кнопка показать все
-	var button = $(id).find('.products__buttons a');
+	var button = $(id).find('.visible__button');
 	
 	// Скрываем кнопку показать все если мало товаров
 	item.length > visible ? button.parent().show() : button.parent().hide()
 
 	// Функция открытия скрытых товаров
-	button.on('click', function (event){
+	button.on('click', function(event){
 		event.preventDefault();
-		var t = $(this);
-		var btnText = t.find('span');
-		if(t.hasClass('active')){
-			t.removeClass('active')
+		changeTxt($(this))
+		if($(this).hasClass('active')){
+			$(this).removeClass('active')
 			$(id).removeClass('active')
 			item.removeClass('show')
-			btnText.text('Посмотреть всё')
-			$('html, body').animate({scrollTop : $(id).offset().top}, 600);
+			// TODO проверить
+			// $('html, body').animate({scrollTop : $(id).offset().top}, 600);
 		}else{
-			t.addClass('active')
+			$(this).addClass('active')
 			$(id).addClass('active')
 			item.addClass('show')
-			btnText.text('Скрыть')
 		}
 	});
 }
@@ -3193,7 +3199,8 @@ $(document).ready(function(){
   mainnav('header .mainnav', '1', 991);
 	priceDiff('.product__item', 'percent');
 	orderCartStart();
-	cartAjaxQuantity();
+	cartAjaxQty();
+	quantity();
 	swiperSlider('#pdt__viewed');
 	swiperCatalog();
 
@@ -3296,8 +3303,8 @@ function swiperSlider(id){
 		watchSlidesVisibility: true,
 		simulateTouch: true,
 		grabCursor: true,
-		slidesPerView: '4',
-		spaceBetween: 32,
+		slidesPerView: '5',
+		spaceBetween: 0,
 		nested: true,
 		preloadImages: false,
 		lazy: {
@@ -3318,13 +3325,13 @@ function swiperSlider(id){
 				slidesPerView: '1',
 			},
 			320: {
-				slidesPerView: '1',
+				slidesPerView: '2',
 			},
 			480: {
 				slidesPerView: '2',
 			},
 			640: {
-				slidesPerView: '2',
+				slidesPerView: '3',
 			},
 			768: {
 				slidesPerView: '3',
@@ -3333,7 +3340,7 @@ function swiperSlider(id){
 				slidesPerView: '4',
 			},
 			1200: {
-				slidesPerView: '4',
+				slidesPerView: '5',
 			}
 		},
 		on: {
