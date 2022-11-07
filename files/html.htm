@@ -316,7 +316,6 @@
 			</div>
 
 			<!-- Шапка. Нижняя часть -->
-			<!-- TODO предзагрузчик категорий, чтобы не прыгали названия -->
 			<div class="header__bottom">
 				<div class="container">
 					<div class="header-catalog flex">
@@ -348,6 +347,7 @@
 			</div>
 
 			<!-- Шапка. Каталог -->
+			<!-- TODO адаптивный каталог как в макете -->
 			<div class="header-catalog__container container">
 				<div class="header-catalog__content dropdown__content" data-opened="catalog">
 					<div class="catalog__items">
@@ -367,6 +367,83 @@
 		</header>
 
 		{% IF index_page %}
+
+		<!-- Слайдшоу -->
+		<section id="slideshow">
+			<div class="container">
+				<div class="slideshow__inner flex">
+					<!-- Слайдер -->
+					<div class="slideshow__swiper swiper">
+						<div class="swiper-wrapper">
+							<!-- Слайд 1 -->
+							<a class="swiper-slide swiper-lazy flex" data-background="{ASSETS_IMAGES_PATH}slide_1.jpg?design=THEMENAME" href="{CATALOG_URL}">
+								<div class="swiper-lazy-preloader"></div>
+								<div class="slideshow__content">
+									<div class="slideshow__pretitle">14 - 15 июля</div>
+									<div class="slideshow__title">Скидка 30%</div>
+									<div class="slideshow__subtitle">на светильники и лампочки</div>
+									<div class="slideshow__button button-secondary"><span>За покупками</span></div>
+								</div>									
+							</a>
+
+							<!-- Слайд 2 -->
+							<a class="swiper-slide swiper-lazy flex" data-background="{ASSETS_IMAGES_PATH}slide_2.jpg?design=THEMENAME" href="{CATALOG_URL}">
+								<div class="swiper-lazy-preloader"></div>
+								<div class="slideshow__content">
+									<div class="slideshow__pretitle">до 30 сентября</div>
+									<div class="slideshow__title">2+1=4</div>
+									<div class="slideshow__subtitle">розетки и выключатели</div>
+									<div class="slideshow__button button-secondary"><span>За покупками</span></div>
+								</div>									
+							</a>
+
+							<!-- Слайд 3 -->
+							<a class="swiper-slide swiper-lazy flex" data-background="{ASSETS_IMAGES_PATH}slide_3.jpg?design=THEMENAME" href="{CATALOG_URL}">
+								<div class="swiper-lazy-preloader"></div>
+								<div class="slideshow__content">
+									<div class="slideshow__pretitle">Выгодные цены</div>
+									<div class="slideshow__title">Новинка</div>
+									<div class="slideshow__subtitle">светильники в стиле лофт</div>
+									<div class="slideshow__button button-secondary"><span>За покупками</span></div>
+								</div>									
+							</a>
+
+						</div>
+
+						<!-- Навигация -->
+						<div class="swiper-navigation flex">
+							<div class="swiper-button-prev"></div>
+							<div class="swiper-button-next"></div>
+						</div>
+
+						<!-- Пагинация -->
+						<div class="swiper-paginations flex">
+							<div class="swiper-pagination flex"></div>
+						</div>
+					</div>
+
+					<!-- Баннеры -->
+					<div class="slideshow__banners">
+						<div class="banner__item" style="background-image: url('{ASSETS_IMAGES_PATH}banner_1.jpg?design=THEMENAME');">
+							<a class="banner__link flex-center" href="{CATALOG_URL}" title="Перейти в каталог">
+								<div class="banner__subtitle">лучшие</div>
+								<div class="banner__title">скидки</div>
+							</a>
+						</div>
+						<div class="banner__item" style="background-image: url('{ASSETS_IMAGES_PATH}banner_2.jpg?design=THEMENAME');">
+							<a class="banner__link flex-center" href="{CATALOG_URL}" title="Перейти в каталог">
+								<div class="banner__subtitle">бесплатная</div>
+								<div class="banner__title">доставка</div>
+							</a>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+
+
+
 		<!-- Хиты продаж -->
 		{% IFNOT index_page_favorites_goods_empty %}
 		<section id="pdt__best" class="pdt__visible loading">
@@ -2906,6 +2983,7 @@
 			swiperSlider('#pdt__new');
 			swiperSlider('#pdt__sales');
 			indexNews();
+			swiperShow();
 		});
 	</script>
 	{% ENDIF %}

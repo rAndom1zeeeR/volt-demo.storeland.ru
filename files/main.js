@@ -305,8 +305,8 @@ function mainnav(id,rows,media){
 		}
 	}else{
 		// Удаление классов для маленьких экранов
-		mainNavOverflow.removeClass('dropdown__content');
-		mainNavMore.addClass('mainnav__more_hidden');
+		$(id).find('.mainnav__overflow').removeClass('dropdown__content');
+		$(id).find('.mainnav__more').addClass('mainnav__more_hidden');
 	}
 }
 
@@ -3376,5 +3376,36 @@ function swiperCatalog(){
 		event.preventDefault();
 		$(this).toggleClass('opened')
 		$(this).find('a').toggleClass('active')
+	});
+}
+
+// Слайдер на главной
+function swiperShow(){
+	var id = '#slideshow'
+
+	var swiper = new Swiper(id + ' .swiper', {
+		loop: false,
+		preloadImages: false,
+		watchSlidesVisibility: true,
+		watchOverflow: true,
+		hashNavigation: false,
+		slidesPerView: '1',
+		spaceBetween: 16,
+		speed: 400,
+		lazy: {
+			enabled: true,
+			loadPrevNext: true,
+			loadOnTransitionStart: true,
+		},
+		pagination: {
+			el: '.swiper-pagination',
+			type: 'bullets',
+			dynamicBullets: false,
+			clickable: true,
+		},
+		navigation: {
+			nextEl: '.swiper-button-next',
+			prevEl: '.swiper-button-prev',
+		},
 	});
 }
