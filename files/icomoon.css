@@ -43,14 +43,8 @@
 .icon-visa:before {
   content: "\e93b";
 }
-.icon-walletone .path1:before {
+.icon-walletone:before {
   content: "\e93c";
-  color: rgb(0, 0, 0);
-}
-.icon-walletone .path2:before {
-  content: "\e93d";
-  margin-left: -1em;
-  color: rgb(255, 255, 255);
 }
 .icon-webmoney:before {
   content: "\e93e";

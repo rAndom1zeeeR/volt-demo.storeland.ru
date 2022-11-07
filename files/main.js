@@ -3132,7 +3132,7 @@ ajaxForms('#fancybox__feedback','fancyFeedbackFlag','Запрос обратно
 // "Обратная связь".
 ajaxForms('.form__feedback','feedbackFlag','Спасибо за обращение! Мы свяжемся с вами в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 // "Подписаться".
-//ajaxForms('#subscribe','subscribeFlag','Спасибо за обращение! Вы подписались на наши уведомления','Вы уже отправляли запрос. Пожалуйста ожидайте.')
+ajaxForms('.subscribe','subscribeFlag','Спасибо за обращение! Вы подписались на наши уведомления','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 // "Уведомить" в модальном окне.
 ajaxForms('#fancybox__notify','notifyFlag','Вы будете уведомлены о поступлении товара','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 // "Обратный звонок".
@@ -3369,13 +3369,6 @@ function swiperCatalog(){
 			nextEl: '.swiper-button-next',
 			prevEl: '.swiper-button-prev',
 		},
-	});
-
-	// Открыть каталог
-	$('.header-catalog__icon22').on('click', function(event){
-		event.preventDefault();
-		$(this).toggleClass('opened')
-		$(this).find('a').toggleClass('active')
 	});
 }
 

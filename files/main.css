@@ -1114,7 +1114,7 @@ h5 {font-size: 0.875rem;}
 .header-region {width: 18rem;}
 .header-contacts {margin: 0 2rem;position: relative;}
 .header-contacts__content {width: 14rem;top: -1rem;left: -1rem;margin: 0;}
-.header-contacts__phone {font-size: 1.25rem;font-weight: 600;}
+.header-contacts__phone {font-size: 1.25rem;font-weight: 700;}
 .header-contacts__phone i, .contacts__block_phone i {margin-left: .25rem;cursor: pointer;}
 .contacts__block_social {margin-top: 1rem;}
 .contacts__block_social a {margin-right: .5rem;background-color: var(--color-gray);color: var(--color-primary);font-size: 1.25rem; width: 2rem;height: 2rem;line-height: 2.125rem;text-align: center;display: inline-block;}
@@ -1256,6 +1256,16 @@ header .catalog__sub[data-level="1"] {background-color: var(--color-lightgray);}
 .slideshow__swiper .swiper-pagination {width: auto;background: rgba(6, 33, 57, 0.3);padding: .5rem;margin: 0 auto;position: relative;bottom: auto;}
 .slideshow__swiper .swiper-pagination-bullet {border-radius: 0;background: rgba(255, 255, 255, 0.3);}
 .slideshow__swiper .swiper-pagination-bullet-active {background-color: var(--color-white);}
+@media all and (max-width: 1023px) {
+	.slideshow__swiper {width: 100%;padding: 0;}
+	.slideshow__swiper .swiper-navigation {right: 0;}
+}
+@media all and (max-width: 479px) {
+	.slideshow__swiper .swiper-navigation {display: none;}
+	.slideshow__swiper .swiper-slide {height: 12rem;}
+	.slideshow__content {margin: 0 auto;}
+	.slideshow__button {display: none;}
+}
 
 /*** Баннеры ***/
 .slideshow__banners {width: 17.5rem;}
@@ -1267,9 +1277,7 @@ header .catalog__sub[data-level="1"] {background-color: var(--color-lightgray);}
   .banner__item + .banner__item {margin-top: 1rem;}
 }
 @media all and (max-width: 1023px) {
-	.slideshow__swiper {width: 100%;padding: 0;}
 	.slideshow__banners {width: 100%;display: flex;flex-wrap: wrap;margin-top: 1rem;}
-	.slideshow__swiper .swiper-navigation {right: 0;}
 	.banner__item {width: calc(50% - .5rem);}
 	.banner__item + .banner__item {margin-left: 1rem;}
 	.banner__item {padding-left: 9rem;}
@@ -1281,10 +1289,6 @@ header .catalog__sub[data-level="1"] {background-color: var(--color-lightgray);}
 	.slideshow__banners {display: none;}
 	.banner__item {width: 100%;}
 	.banner__item + .banner__item {margin: 1rem 0 0 0;}
-	.slideshow__swiper .swiper-navigation {display: none;}
-	.slideshow__swiper .swiper-slide {height: 12rem;}
-	.slideshow__content {margin: 0 auto;}
-	.slideshow__button {display: none;}
 }
 
 
@@ -1322,36 +1326,59 @@ header .catalog__sub[data-level="1"] {background-color: var(--color-lightgray);}
 /**************************************/
 /*** Подвал ***/
 /**************************************/
-.footer__middle {border-top: 1px solid var(--color-lightgray);padding: 2rem 0 0;}
-.footer__bottom {border-top: 1px solid var(--color-lightgray);padding: .5rem 0;}
+footer {background-color: var(--color-lightgray);}
+.footer__middle .footer__inner {padding: 2rem 0 0 0;}
+.footer__inner {border-top: 1px solid var(--color-gray);padding: 1rem 0;}
 .footer__block {width: calc(25% - 2rem);margin: 0 1rem 2rem 1rem;}
-.footer__title {font-size: 1.125rem;font-weight: bold;margin-bottom: .75rem;}
-.footer__worktime {margin-bottom: 1rem;}
-.footer__logo {margin: 2rem 0;}
-.footer__text {line-height: 1.5;}
-.footer__link {display: block;padding: .75rem 0;}
-/*** Подвалю. Иконки ***/
-.footer__icons span {display: none;}
-.footer__icons a {margin: .5rem;padding: 0;}
-.footer__icons a:nth-child(n+5) {display: none;}
+.footer__title {font-size: 1.25rem;font-weight: bold;margin-bottom: 1.5rem;}
+.footer__logo {margin-bottom: 1.5rem;}
+footer .contacts__block {margin-top: 1rem;}
+footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
+/*** Подвалю. Ссылки ***/
+.footer__list li {margin-bottom: 1rem;}
+.footer__list li:last-child {margin-bottom: 0;}
+.footer__link {display: block;}
+.footer__link:hover {margin-left: .5rem;font-weight: bold;}
+/*** Подвалю. Связаться с нами ***/
+.contactUs__link {margin-bottom: 1rem;}
+.contactUs__link i {margin-right: .75rem;font-size: 1.5rem;}
+.contactUs__link i.icon-telegram {color: #039BE5;}
+.contactUs__link i.icon-whatsapp {color: #39AE41;}
+.contactUs__link i.icon-vk {color: #1E88E5;}
+.contactUs__link i.icon-phone {color: var(--color-secondary);}
+.contactUs__link i.icon-mail {color: var(--color-primary);}
+.contactUs__link:hover {margin-left: .5rem;font-weight: bold;}
+/* Оплата */
+.payments i {margin-right: 1rem;font-size: 1.25rem;color: var(--color-darkgray);}
+.payments i:hover {color: var(--color-primary)}
+.payments i:last-child {margin-right: 0;}
 /*** Подвалю. Копирайт ***/
-.copyright {width: calc(100% - 240px);font-size: .75rem;color: var(--color-lightgray);flex-grow: 1;}
+.copyright {font-size: .875rem;color: var(--color-darkgray);flex-grow: 1;}
 .copyright a {padding: 0;}
 @media(max-width: 1023px) {
 	.footer__block {width: calc(50% - 2rem);}
-}
-@media (max-width: 767px) {
-	footer {padding-bottom: 50px;}
+	.copyright {width: 100%;margin-top: 1rem;order: 2;}
+	.payments {width: 100%;order: 1;}
 }
 @media (max-width: 479px) {
 	.footer__block {width: 100%;}
-	.copyright {width: 100%;margin-top: 1rem;}
-	.payments {width: 100%;}
 }
 
-
-
-
+.subscribe {padding: 2rem 0;}
+.subscribe__block {width: 50%;}
+.subscribe__form {width: 50%;}
+.subscribe__title {font-size: 1.25rem;font-weight: bold;margin-bottom: .75rem;}
+.subscribe .form__pp {text-align: right;color: var(--color-darkgray);}
+.subscribe .form__pp a {color: var(--color-darkgray);}
+.subscribe .form__input {background-color: var(--color-white);height: 3rem;}
+.subscribe .form__field {flex-grow: 1;}
+.subscribe .form__button {position: absolute;right: 0;padding: 0 1rem;}
+.subscribe .form__button span {display: none;}
+.subscribe .form__button:before {content: '\e915';font-family: 'icomoon';font-size: 1.5rem;display: block;}
+@media all and (max-width: 1023px) {
+	.subscribe__block {width: 100%;margin-bottom: 1rem;}
+	.subscribe__form {width: 100%;}
+}
 
 
 /**************************************/
