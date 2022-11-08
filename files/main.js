@@ -2077,6 +2077,7 @@ function cartMinSum(){
 	}
 }
 
+
 ///////////////////////////////////////
 /* Скрипты для оформления заказов */
 ///////////////////////////////////////
@@ -2866,6 +2867,13 @@ function catalog() {
 		// $items.hide().filter(function () {
 		// 	return resultArray.some(el => el === $(this).index())
 		// }).show();
+	});
+
+	// Сборосить категорию фильтра
+	$('.product__attr_open').on('click', function(event){
+		event.preventDefault();
+		$(this).toggleClass('active')
+		$(this).prev().slideToggle()
 	});
 
 }
