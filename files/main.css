@@ -665,6 +665,13 @@ h5 {font-size: 0.875rem;}
 	.products__list .price__now {font-size: 1.25rem;}
 }
 
+/*** Товары мелким списком ***/
+.products__list_small .product__image {width: 6rem;height: 6rem;}
+.products__list_small .product__img {height: 6rem;}
+.products__list_small .product__shop {width: calc(100% - 6rem);}
+.products__list_small .product__margin {margin-bottom: .75rem;}
+.products__list_small .product__info {height: auto;}
+
 /*** Товары на главной ***/
 .pdt__visible .product__item:nth-child(n+11) {display: none;}
 .pdt__visible .product__item.show:nth-child(n) {display: block;}
