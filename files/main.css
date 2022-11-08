@@ -580,6 +580,8 @@ h5 {font-size: 0.875rem;}
 .products__grid .product__links {flex-grow: 1;justify-content: flex-end;}
 .products__grid .product__name {line-height: 1.5rem;height: 4.5rem;overflow: hidden;}
 .products__grid .product__addCart a {padding: 0;}
+.products__grid .product__available {transform: scale(1,0);transform-origin: right top;transition: all 0.3s ease;position: absolute;width: calc(100% + 1.5rem);left: -.75rem;text-align: center;padding: .75rem 0;background-color: var(--color-white);box-shadow: -1px 10px 10px 2px var(--color-shadow);}
+.products__grid .product__item:hover .product__available {transform: scale(1);}
 @media all and (min-width: 1024px) {
 	.has-sidebar .product__item {width: 33.333333%;}
 	.has-sidebar .product__img {height: 13.75rem;}

@@ -982,6 +982,13 @@
 							</div>
 								
 						</div>
+
+						<!-- Наличие -->
+						<div class="product__available {% IF related_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF related_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
+							<span class="goodsModRestValue" data-value="{related_goods.MAX_REST_VALUE}">
+								{% IF related_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF related_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
+							</span>
+						</div>
 			
 					</div>
 				</form>
@@ -1279,6 +1286,13 @@
 								{% ENDIF %}
 							</div>
 								
+						</div>
+
+						<!-- Наличие -->
+						<div class="product__available {% IF related_views_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF related_views_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
+							<span class="goodsModRestValue" data-value="{related_views_goods.MAX_REST_VALUE}">
+								{% IF related_views_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF related_views_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
+							</span>
 						</div>
 			
 					</div>

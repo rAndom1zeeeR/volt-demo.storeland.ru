@@ -437,6 +437,7 @@
 								</div>
 									
 							</div>
+
 						</div>
 			
 					</div>
@@ -1016,6 +1017,13 @@
 									{% ENDIF %}
 								</div>
 									
+							</div>
+
+							<!-- Наличие -->
+							<div class="product__available {% IF goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
+								<span class="goodsModRestValue" data-value="{goods.MAX_REST_VALUE}">
+									{% IF goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
+								</span>
 							</div>
 				
 						</div>

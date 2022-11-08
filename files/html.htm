@@ -722,6 +722,13 @@
 										</div>
 											
 									</div>
+
+									<!-- Наличие -->
+									<div class="product__available {% IF index_page_favorites_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF index_page_favorites_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
+										<span class="goodsModRestValue" data-value="{index_page_favorites_goods.MAX_REST_VALUE}">
+											{% IF index_page_favorites_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF index_page_favorites_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
+										</span>
+									</div>
 						
 								</div>
 							</form>
@@ -1014,6 +1021,13 @@
 										</div>
 											
 									</div>
+
+									<!-- Наличие -->
+									<div class="product__available {% IF index_page_sale_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF index_page_sale_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
+										<span class="goodsModRestValue" data-value="{index_page_sale_goods.MAX_REST_VALUE}">
+											{% IF index_page_sale_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF index_page_sale_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
+										</span>
+									</div>
 						
 								</div>
 							</form>
@@ -1298,6 +1312,13 @@
 											{% ENDIF %}
 										</div>
 											
+									</div>
+
+									<!-- Наличие -->
+									<div class="product__available {% IF index_page_new_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF index_page_new_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
+										<span class="goodsModRestValue" data-value="{index_page_new_goods.MAX_REST_VALUE}">
+											{% IF index_page_new_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF index_page_new_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
+										</span>
 									</div>
 						
 								</div>
@@ -1603,6 +1624,13 @@
 											{% ENDIF %}
 										</div>
 											
+									</div>
+
+									<!-- Наличие -->
+									<div class="product__available {% IF index_page_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF index_page_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
+										<span class="goodsModRestValue" data-value="{index_page_goods.MAX_REST_VALUE}">
+											{% IF index_page_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF index_page_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
+										</span>
 									</div>
 						
 								</div>
@@ -2485,6 +2513,13 @@
 												{% ENDIF %}
 											</div>
 												
+										</div>
+
+										<!-- Наличие -->
+										<div class="product__available {% IF recently_viewed_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF recently_viewed_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
+											<span class="goodsModRestValue" data-value="{recently_viewed_goods.MAX_REST_VALUE}">
+												{% IF recently_viewed_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF recently_viewed_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
+											</span>
 										</div>
 							
 									</div>
