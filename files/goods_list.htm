@@ -150,7 +150,7 @@
 					data-id="{goods.ID}" 
 					itemscope itemtype="https://schema.org/Product"
 			>
-				<form class="product__form flex" action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post">
+				<form class="product__form" action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post">
 					<input type="hidden" name="hash" value="{HASH}" />
 					<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}" />
 					<input type="hidden" name="form[goods_mod_id]" value="{goods.MIN_PRICE_NOW_ID}" />
@@ -456,7 +456,7 @@
 					data-id="{goods.ID}" 
 					itemscope itemtype="https://schema.org/Product"
 			>
-				<form class="product__form flex" action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post">
+				<form class="product__form" action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post">
 					<input type="hidden" name="hash" value="{HASH}" />
 					<input type="hidden" name="form[goods_from]" value="{goods.GOODS_FROM}" />
 					<input type="hidden" name="form[goods_mod_id]" value="{goods.MIN_PRICE_NOW_ID}" />

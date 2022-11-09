@@ -2609,12 +2609,13 @@ function orderCartStart(){
 function pdtVisible(id){
 	var item = $(id).find('.product__item');
 	var visible = $(id).find('.product__item:visible').length;
+	var items = $(id).attr('data-items');
 
 	// Кнопка показать все
 	var button = $(id).find('.visible__button');
 	
 	// Скрываем кнопку показать все если мало товаров
-	item.length > visible ? button.parent().show() : button.parent().hide()
+	item.length > visible ? button.show() : button.hide()
 
 	// Функция открытия скрытых товаров
 	button.on('click', function(event){
@@ -2759,7 +2760,7 @@ function indexNews() {
 ///////////////////////////////////////
 // Отсчет даты до окончания акции
 ///////////////////////////////////////
-function counterDate() {
+function counter() {
 	var id = $('.counter');
 	// Если не найдет счетчик прекращаем работу функции
 	if(!id.length){
@@ -3381,8 +3382,8 @@ function swiperCatalog(){
 		nested: true,
 		preloadImages: false,
 		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
+			nextEl: id + ' .swiper-button-next',
+			prevEl: id + ' .swiper-button-prev',
 		},
 	});
 }
@@ -3406,14 +3407,65 @@ function swiperShow(){
 			loadOnTransitionStart: true,
 		},
 		pagination: {
-			el: '.swiper-pagination',
+			el: id + ' .swiper-pagination',
 			type: 'bullets',
 			dynamicBullets: false,
 			clickable: true,
 		},
 		navigation: {
-			nextEl: '.swiper-button-next',
-			prevEl: '.swiper-button-prev',
+			nextEl: id + ' .swiper-button-next',
+			prevEl: id + ' .swiper-button-prev',
 		},
 	});
+}
+
+// Слайдер распродажа
+function swiperSales(){
+	var id = '#pdt__sales'
+
+	// Слайдер товаров
+	var swiper = new Swiper(id + ' .swiper-products', {
+		loop: false,
+		autoplay: false,
+		watchSlidesVisibility: true,
+		simulateTouch: true,
+		grabCursor: true,
+		slidesPerView: '5',
+		spaceBetween: 16,
+		nested: true,
+		preloadImages: false,
+		lazy: {
+			enabled: true,
+			loadPrevNext: true,
+			loadOnTransitionStart: true,
+		},
+		navigation: {
+			nextEl: id + ' .swiper-button-next',
+			prevEl: id + ' .swiper-button-prev',
+		},
+		breakpoints: {
+			0: {
+				slidesPerView: '1',
+			},
+			320: {
+				slidesPerView: '1',
+			},
+			480: {
+				slidesPerView: '1',
+			},
+			640: {
+				slidesPerView: '1',
+			},
+			768: {
+				slidesPerView: '1',
+			},
+			1024: {
+				slidesPerView: '2',
+			},
+			1200: {
+				slidesPerView: '2',
+			}
+		},
+	});
+
 }
