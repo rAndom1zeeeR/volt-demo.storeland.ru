@@ -446,7 +446,7 @@
 		{% IFNOT index_page_favorites_goods_empty %}
 		<section id="pdt__best" class="pdt__visible loading" data-items="10">
 			<div class="container products__container">
-				<div class="block__title block__visible flex">
+				<div class="block__title block__nav flex">
 					<a class="title" href="{CATALOG_TOP_SALES_URL}" title="Перейти в Хиты продаж"><span>Хиты продаж</span></a>
 					<!-- Показать все -->
 					<a class="visible__button button-icon button-link" href="{CATALOG_TOP_SALES_URL}" title="Смотреть всё" data-txt="Скрыть всё">
@@ -1069,7 +1069,7 @@
 		{% IFNOT index_page_new_goods_empty %}
     <section id="pdt__new" class="pdt__visible loading" data-items="12">
 			<div class="container products__container">
-				<div class="block__title block__visible flex">
+				<div class="block__title block__nav flex">
 					<a class="title" href="{CATALOG_NEW_URL}" title="Перейти в Новинки"><span>Новинки</span></a>
 					<!-- Показать все -->
 					<a class="visible__button button-icon button-link" href="{CATALOG_TOP_SALES_URL}" title="Смотреть всё" data-txt="Скрыть всё">
@@ -1339,11 +1339,94 @@
 		</section>
 		{% ENDIF index_page_new_goods_empty %}
 
+		<!-- Лучшие предложения -->
+		<section id="offers">
+			<div class="container">
+				<div class="block__title block__nav flex">
+					<a class="title" href="#" title="Лучшие предложения"><span>Лучшие предложения</span></a>
+					<div class="swiper-navigation flex">
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
+				</div>
+				<!-- Слайдер -->
+				<div class="swiper">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_1.jpg?design=THEMENAME">
+							<div class="swiper-lazy-preloader"></div>
+							<div class="offers__percent">-30%</div>
+							<a class="offers__title flex" href="{CATALOG_URL}">
+								<span>Электросчетчики Kanerby-82Wq</span>
+								<i class="icon-chevron_right"></i>
+							</a>
+						</div>
+						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_2.jpg?design=THEMENAME">
+							<div class="swiper-lazy-preloader"></div>
+							<div class="offers__percent">-80%</div>
+							<a class="offers__title flex" href="{CATALOG_URL}">
+								<span>Выключатели и розетки AvenuShort</span>
+								<i class="icon-chevron_right"></i>
+							</a>
+						</div>
+						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_3.jpg?design=THEMENAME">
+							<div class="swiper-lazy-preloader"></div>
+							<div class="offers__percent">-55%</div>
+							<a class="offers__title flex" href="{CATALOG_URL}">
+								<span>При заказе 1000 руб. на светотехнику</span>
+								<i class="icon-chevron_right"></i>
+							</a>
+						</div>
+						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_4.jpg?design=THEMENAME">
+							<div class="swiper-lazy-preloader"></div>
+							<div class="offers__percent">-20%</div>
+							<a class="offers__title flex" href="{CATALOG_URL}">
+								<span>При покупке любого силового кабеля от 100 метров</span>
+								<i class="icon-chevron_right"></i>
+							</a>
+						</div>
+						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_1.jpg?design=THEMENAME">
+							<div class="swiper-lazy-preloader"></div>
+							<div class="offers__percent">-30%</div>
+							<a class="offers__title flex" href="{CATALOG_URL}">
+								<span>Электросчетчики Kanerby-82Wq</span>
+								<i class="icon-chevron_right"></i>
+							</a>
+						</div>
+						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_2.jpg?design=THEMENAME">
+							<div class="swiper-lazy-preloader"></div>
+							<div class="offers__percent">-80%</div>
+							<a class="offers__title flex" href="{CATALOG_URL}">
+								<span>Выключатели и розетки AvenuShort</span>
+								<i class="icon-chevron_right"></i>
+							</a>
+						</div>
+						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_3.jpg?design=THEMENAME">
+							<div class="swiper-lazy-preloader"></div>
+							<div class="offers__percent">-55%</div>
+							<a class="offers__title flex" href="{CATALOG_URL}">
+								<span>При заказе 1000 руб. на светотехнику</span>
+								<i class="icon-chevron_right"></i>
+							</a>
+						</div>
+						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_4.jpg?design=THEMENAME">
+							<div class="swiper-lazy-preloader"></div>
+							<div class="offers__percent">-20%</div>
+							<a class="offers__title flex" href="{CATALOG_URL}">
+								<span>При покупке любого силового кабеля от 100 метров</span>
+								<i class="icon-chevron_right"></i>
+							</a>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
 		<!-- Товары на главной -->
 		{% IFNOT index_page_goods_empty %}
     <section id="pdt__sale" class="pdt__visible loading" data-items="10">
 			<div class="container products__container">
-				<div class="block__title block__visible flex">
+				<div class="block__title block__nav flex">
 					<a class="title" href="{CATALOG_INDEX_PAGE_URL}" title="Перейти в Товары на главной"><span>Товары на главной</span></a>
 					<!-- Показать все -->
 					<a class="visible__button button-icon button-link" href="{CATALOG_INDEX_PAGE_URL}" title="Смотреть всё" data-txt="Скрыть всё">
@@ -3054,6 +3137,7 @@
 			pdtVisible('#pdt__new');
 			swiperSales();
 			counter();
+			swiperOffers('#offers');
 			indexNews();
 			swiperShow();
 		});

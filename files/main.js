@@ -3469,3 +3469,58 @@ function swiperSales(){
 	});
 
 }
+
+// Функции предложения
+function swiperOffers(id){
+	var nav = id + ' .swiper-navigation'
+
+	// Слайдер товаров
+	var swiper = new Swiper(id + ' .swiper', {
+		loop: false,
+		autoplay: false,
+		watchSlidesVisibility: true,
+		simulateTouch: true,
+		grabCursor: true,
+		slidesPerView: '4',
+		spaceBetween: 16,
+		nested: true,
+		preloadImages: false,
+		lazy: {
+			enabled: true,
+			loadPrevNext: true,
+			loadOnTransitionStart: true,
+		},
+		navigation: {
+			nextEl: nav + ' .swiper-button-next',
+			prevEl: nav + ' .swiper-button-prev',
+		},
+		pagination: {
+			el: nav + ' .swiper-progressbar',
+    	type: 'progressbar',
+		},
+		breakpoints: {
+			0: {
+				slidesPerView: '1',
+			},
+			320: {
+				slidesPerView: '1',
+			},
+			480: {
+				slidesPerView: '2',
+			},
+			640: {
+				slidesPerView: '2',
+			},
+			768: {
+				slidesPerView: '3',
+			},
+			1024: {
+				slidesPerView: '3',
+			},
+			1200: {
+				slidesPerView: '4',
+			}
+		},
+	});
+
+}
