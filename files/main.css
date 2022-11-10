@@ -166,8 +166,8 @@ button:hover, [class*="button-"]:hover, .paymentFormSubmitLink:hover, .paymentFo
 .button-empty {background: var(--color-darkgray);border-color: var(--color-darkgray);}
 .button-empty:hover {background: var(--color-secondary);border-color: var(--color-secondary);}
 /*** Кнопка с иконкой ***/
-.button-icon {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-wrap: wrap;-webkit-flex-wrap: wrap;flex-wrap: wrap;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;-webkit-justify-content: center;justify-content: center;}
-.button-icon i {font-size: 1.125rem;margin-right: .5rem;}
+.button-icon {line-height: 1;display: -ms-flexbox;display: -webkit-flex;display: flex;}
+.button-icon i {font-size: 1.125rem;transition: all 0.3s ease;}
 
 
 /**************************************/
@@ -257,6 +257,7 @@ h5 {font-size: 0.875rem;}
 .swiper-button-next:after, .swiper-button-prev:after {font-size: 1.25rem;}
 .swiper-navigation {position: relative;background-color: var(--color-lightgray);color: var(--color-darkgray);}
 .swiper-navigation:before {content: '';background-color: var(--color-darkgray);width: 1px;height: 60%;top: 20%;left: 50%;position: absolute;display: block;z-index: 6;}
+.swiper-navigation-lock {display: none;}
 .swiper-navigate {position: relative;justify-content: space-between;width: 100%;margin-top: 2rem;}
 .swiper-navigate.swiper-pagination-lock {display: none;}
 .swiper-pagination-current {font-size: 1.125rem;font-weight: bold;}
@@ -463,7 +464,7 @@ h5 {font-size: 0.875rem;}
 /*** Блок Заголовков ***/
 /**************************************/
 .block__title {margin-bottom: 1.5rem;position: relative;text-align: center;}
-.block__title .title {line-height: 1.25;font-size: 1.75rem;font-weight: bold;text-transform: none;}
+.block__title .title {line-height: 1.5;font-size: 1.75rem;font-weight: bold;text-transform: none;}
 .block__title .subtitle {font-size: 80%;}
 .main__title .block__title {text-align: left;margin-bottom: 2rem;}
 .block__nav {justify-content: space-between;}
@@ -1426,21 +1427,18 @@ header .catalog__sub[data-level="1"] {background-color: var(--color-lightgray);}
 /**************************************/
 /*** Новости ***/
 /**************************************/
-#news .tabs__navs {width: calc(100% - 5rem);margin: 0 auto;justify-content: center;white-space: nowrap;flex-wrap: nowrap;overflow-x: auto;}
-#news .tabs__nav {margin: 0 1rem 1rem 1rem;line-height: 1.25;font-size: 1.5rem;font-weight: bold;text-transform: uppercase;}
-#news .news__date {margin-top: 0;}
-.news__image {margin-bottom: 1rem;height: 260px;}
-.news__desc {margin-top: 1rem;max-height: 4rem;line-height: 1.5;display: block;overflow: hidden;}
+.news__navs {width: 100%;white-space: nowrap;flex-wrap: nowrap;overflow-x: auto;}
+.news__nav {padding: .625rem 1rem;line-height: 1.25;font-weight: 700;}
+.news__nav.active {background-color: var(--color-lightgray);font-weight: 700;}
+.news__date {color: var(--color-darkgray);font-size: .875rem;font-weight: 500;}
+.news__image {height: 8rem;}
+.news__content {width: calc(100% - 8rem);padding-left: 1rem;}
+.news__title {margin: .5rem 0;line-height: 1.5rem;height: 4.5rem;overflow: hidden;display: block;}
+.news__desc {margin-top: 1rem;max-height: 4rem;line-height: 1.5;overflow: hidden;display: none;}
 .news__buttons {margin-top: 1rem;}
-@media all and (max-width: 1199px) {
-	.news__image {height: 216px;}
-}
-@media all and (max-width: 767px) {
-	.news__image {height: 288px;}
-}
-@media (min-width: 480px) and (max-width: 639px) {
-	.news__image {height: 208px;}
-}
+.news__button {color: var(--color-primary);font-weight: bold;}
+.news__button:hover i {margin-left: .5rem;}
+
 
 
 /**************************************/

@@ -1762,7 +1762,9 @@
 						<div class="body">{BODY}</div>
 					</div>
 					
+					<!-- Преимущества -->
 					<div class="body__right advantages">
+						<!-- Преимущества в иконках -->
 						<div class="advantages__items flex">
 							<div class="advantages__item flex-center">
 								<div class="advantages__title">Бережная упаковка</div>
@@ -1803,6 +1805,7 @@
 
 						</div>
 
+						<!-- Преимущества в цифрах -->
 						<div class="advantages__numbers flex">
 							<div class="advantages__number">
 								<div class="advantages__number_title"><span>12</span> лет</div>
@@ -1832,12 +1835,21 @@
 		{% IF news_list_all_empty=0 || news_list_shop_empty=0 || news_list_articles_empty=0 || news_list_mass_media_empty=0 %}
 		<section id="news" class="loading">
 			<div class="container">
-				<div class="tabs__navs flex-center">
-					{% IFNOT news_list_all_empty %}<a href="#" class="tabs__nav active" data-tab="news_list_all">Новости</a>{% ENDIF %}
-					{% IFNOT news_list_shop_empty %}<a href="#" class="tabs__nav active" data-tab="news_list_shop">Новости</a>{% ENDIF %}
-					{% IFNOT news_list_articles_empty %}<a href="#" class="tabs__nav {% IF news_list_shop_empty %}active{% ENDIF %}" data-tab="news_list_articles">Статьи</a>{% ENDIF %}
-					{% IFNOT news_list_mass_media_empty %}<a href="#" class="tabs__nav {% IF news_list_shop_empty && news_list_articles_empty %}active{% ENDIF %}" data-tab="news_list_mass_media">Блог</a>{% ENDIF %}
+				<div class="block__title block__nav flex">
+					<a class="title" href="{NEWS_ALL_URL}" title="Перейти в Журнал"><span>Журнал</span></a>
+					<div class="swiper-navigation flex">
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
 				</div>
+
+				<div class="news__navs flex">
+					{% IFNOT news_list_all_empty %}<a href="#" class="news__nav active" data-tab="news_list_all">Новости</a>{% ENDIF %}
+					{% IFNOT news_list_shop_empty %}<a href="#" class="news__nav active" data-tab="news_list_shop">Новости</a>{% ENDIF %}
+					{% IFNOT news_list_articles_empty %}<a href="#" class="news__nav {% IF news_list_shop_empty %}active{% ENDIF %}" data-tab="news_list_articles">Статьи</a>{% ENDIF %}
+					{% IFNOT news_list_mass_media_empty %}<a href="#" class="news__nav {% IF news_list_shop_empty && news_list_articles_empty %}active{% ENDIF %}" data-tab="news_list_mass_media">Материалы СМИ</a>{% ENDIF %}
+				</div>
+
 
 				<!-- Список ВСЕХ новостей магазина. Если в настройках отмечено "Группировать новости в блоке навигации на сайте" -->
 				{% IFNOT news_list_all_empty %}
@@ -1846,40 +1858,34 @@
 						<div class="swiper-wrapper">
 							{% FOR news_list_all %}
 							<div class="swiper-slide news__item">
-								<a class="news__image flex-center" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">
-									<img class="swiper-lazy" data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_all.TITLE}" />
-									<div class="swiper-lazy-preloader"></div>
-								</a>
-								<a class="news__title" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;"><span>{news_list_all.TITLE}</span></a>
-								{% IF news_list_all.TEXT_SHORT %}
-								<div class="news__desc">{news_list_all.TEXT_SHORT}</div>
-								{% ENDIF %}
-								<div class="news__buttons flex justify-between">
-									<a class="news__button" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;"><span>Читать далее</span></a>
-									{% IF news_list_all.SHOW_TIME %}
-									<div class="news__date">
-										<span>{news_list_all.TIME | date("d.m.Y")}</span>
+								<div class="news__inner flex">
+									<a class="news__image flex-center" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">
+										<img class="swiper-lazy" data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_all.TITLE}" />
+										<div class="swiper-lazy-preloader"></div>
+									</a>
+									<div class="news__content">
+										{% IF news_list_all.SHOW_TIME %}
+										<div class="news__date">
+											<span>{news_list_all.TIME | date("d.m.Y")}</span>
+										</div>
+										{% ENDIF %}
+										<a class="news__title" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">
+											<span>{news_list_all.TITLE}</span>
+										</a>
+										{% IF news_list_all.TEXT_SHORT %}
+										<div class="news__desc">{news_list_all.TEXT_SHORT}</div>
+										{% ENDIF %}
+										<div class="news__buttons">
+											<a class="news__button button-link button-icon" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">
+												<span>Читать далее</span>
+												<i class="icon-chevron_right"></i>
+											</a>
+										</div>
 									</div>
-									{% ENDIF %}
 								</div>
 							</div>
 							{% ENDFOR %}
-						</div>
-
-						<!-- Навигация -->
-						<div class="swiper-navigate flex">
-							<div class="swiper-navigation flex">
-								<div class="swiper-button-prev"></div>
-								<div class="swiper-button-next"></div>
-							</div>
-							<div class="swiper-progressbar"></div>
-							<div class="swiper-fraction flex">
-								<div class="swiper-pagination-current">00</div>							
-								<div class="swiper-pagination-separator">/</div>
-								<div class="swiper-pagination-total">10</div>
-							</div>
-						</div>
-						
+						</div>						
 					</div>
 				</div>
 				{% ENDIF news_list_all_empty %}
@@ -1891,40 +1897,34 @@
 						<div class="swiper-wrapper">
 							{% FOR news_list_shop %}
 							<div class="swiper-slide news__item">
-								<a class="news__image flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
-									<img class="swiper-lazy" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
-									<div class="swiper-lazy-preloader"></div>
-								</a>
-								<a class="news__title" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;"><span>{news_list_shop.TITLE}</span></a>
-								{% IF news_list_shop.TEXT_SHORT %}
-								<div class="news__desc">{news_list_shop.TEXT_SHORT}</div>
-								{% ENDIF %}
-								<div class="news__buttons flex justify-between">
-									<a class="news__button" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;"><span>Читать далее</span></a>
-									{% IF news_list_shop.SHOW_TIME %}
-									<div class="news__date">
-										<span>{news_list_shop.TIME | date("d.m.Y")}</span>
+								<div class="news__inner flex">
+									<a class="news__image flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+										<img class="swiper-lazy" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+										<div class="swiper-lazy-preloader"></div>
+									</a>
+									<div class="news__content">
+										{% IF news_list_shop.SHOW_TIME %}
+										<div class="news__date">
+											<span>{news_list_shop.TIME | date("d.m.Y")}</span>
+										</div>
+										{% ENDIF %}
+										<a class="news__title" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+											<span>{news_list_shop.TITLE}</span>
+										</a>
+										{% IF news_list_shop.TEXT_SHORT %}
+										<div class="news__desc">{news_list_shop.TEXT_SHORT}</div>
+										{% ENDIF %}
+										<div class="news__buttons">
+											<a class="news__button button-link button-icon" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+												<span>Читать далее</span>
+												<i class="icon-chevron_right"></i>
+											</a>
+										</div>
 									</div>
-									{% ENDIF %}
 								</div>
 							</div>
 							{% ENDFOR %}
-						</div>
-
-						<!-- Навигация -->
-						<div class="swiper-navigate flex">
-							<div class="swiper-navigation flex">
-								<div class="swiper-button-prev"></div>
-								<div class="swiper-button-next"></div>
-							</div>
-							<div class="swiper-progressbar"></div>
-							<div class="swiper-fraction flex">
-								<div class="swiper-pagination-current">00</div>							
-								<div class="swiper-pagination-separator">/</div>
-								<div class="swiper-pagination-total">10</div>
-							</div>
-						</div>
-						
+						</div>						
 					</div>
 				</div>
 				{% ENDIF news_list_shop_empty %}
@@ -1936,40 +1936,34 @@
 						<div class="swiper-wrapper">
 							{% FOR news_list_articles %}
 							<div class="swiper-slide news__item">
-								<a class="news__image flex-center" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">
-									<img class="swiper-lazy" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_articles.TITLE}" />
-									<div class="swiper-lazy-preloader"></div>
-								</a>
-								<a class="news__title" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;"><span>{news_list_articles.TITLE}</span></a>
-								{% IF news_list_articles.TEXT_SHORT %}
-								<div class="news__desc">{news_list_articles.TEXT_SHORT}</div>
-								{% ENDIF %}
-								<div class="news__buttons flex justify-between">
-									<a class="news__button" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;"><span>Читать далее</span></a>
-									{% IF news_list_articles.SHOW_TIME %}
-									<div class="news__date">
-										<span>{news_list_articles.TIME | date("d.m.Y")}</span>
+								<div class="news__inner flex">
+									<a class="news__image flex-center" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">
+										<img class="swiper-lazy" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_articles.TITLE}" />
+										<div class="swiper-lazy-preloader"></div>
+									</a>
+									<div class="news__content">
+										{% IF news_list_articles.SHOW_TIME %}
+										<div class="news__date">
+											<span>{news_list_articles.TIME | date("d.m.Y")}</span>
+										</div>
+										{% ENDIF %}
+										<a class="news__title" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">
+											<span>{news_list_articles.TITLE}</span>
+										</a>
+										{% IF news_list_articles.TEXT_SHORT %}
+										<div class="news__desc">{news_list_articles.TEXT_SHORT}</div>
+										{% ENDIF %}
+										<div class="news__buttons">
+											<a class="news__button button-link button-icon" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">
+												<span>Читать далее</span>
+												<i class="icon-chevron_right"></i>
+											</a>
+										</div>
 									</div>
-									{% ENDIF %}
 								</div>
 							</div>
 							{% ENDFOR %}
 						</div>
-
-						<!-- Навигация -->
-						<div class="swiper-navigate flex">
-							<div class="swiper-navigation flex">
-								<div class="swiper-button-prev"></div>
-								<div class="swiper-button-next"></div>
-							</div>
-							<div class="swiper-progressbar"></div>
-							<div class="swiper-fraction flex">
-								<div class="swiper-pagination-current">00</div>							
-								<div class="swiper-pagination-separator">/</div>
-								<div class="swiper-pagination-total">10</div>
-							</div>
-						</div>
-
 					</div>
 				</div>
 				{% ENDIF news_list_articles_empty %}
@@ -1981,40 +1975,34 @@
 						<div class="swiper-wrapper">
 							{% FOR news_list_mass_media %}
 							<div class="swiper-slide news__item">
-								<a class="news__image flex-center" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">
-									<img class="swiper-lazy" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_mass_media.TITLE}" />
-									<div class="swiper-lazy-preloader"></div>
-								</a>
-								<a class="news__title" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;"><span>{news_list_mass_media.TITLE}</span></a>
-								{% IF news_list_mass_media.TEXT_SHORT %}
-								<div class="news__desc">{news_list_mass_media.TEXT_SHORT}</div>
-								{% ENDIF %}
-								<div class="news__buttons flex justify-between">
-									<a class="news__button" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;"><span>Читать далее</span></a>
-									{% IF news_list_mass_media.SHOW_TIME %}
-									<div class="news__date">
-										<span>{news_list_mass_media.TIME | date('d.m.Y')}</span>
+								<div class="news__inner flex">
+									<a class="news__image flex-center" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">
+										<img class="swiper-lazy" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_mass_media.TITLE}" />
+										<div class="swiper-lazy-preloader"></div>
+									</a>
+									<div class="news__content">
+										{% IF news_list_mass_media.SHOW_TIME %}
+										<div class="news__date">
+											<span>{news_list_mass_media.TIME | date("d.m.Y")}</span>
+										</div>
+										{% ENDIF %}
+										<a class="news__title" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">
+											<span>{news_list_mass_media.TITLE}</span>
+										</a>
+										{% IF news_list_mass_media.TEXT_SHORT %}
+										<div class="news__desc">{news_list_mass_media.TEXT_SHORT}</div>
+										{% ENDIF %}
+										<div class="news__buttons">
+											<a class="news__button button-link button-icon" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">
+												<span>Читать далее</span>
+												<i class="icon-chevron_right"></i>
+											</a>
+										</div>
 									</div>
-									{% ENDIF %}
 								</div>
 							</div>
 							{% ENDFOR %}
-						</div>
-
-						<!-- Навигация -->
-						<div class="swiper-navigate flex">
-							<div class="swiper-navigation flex">
-								<div class="swiper-button-prev"></div>
-								<div class="swiper-button-next"></div>
-							</div>
-							<div class="swiper-progressbar"></div>
-							<div class="swiper-fraction flex">
-								<div class="swiper-pagination-current">00</div>							
-								<div class="swiper-pagination-separator">/</div>
-								<div class="swiper-pagination-total">10</div>
-							</div>
-						</div>
-	
+						</div>	
 					</div>
 				</div>
 				{% ENDIF news_list_mass_media_empty %}
