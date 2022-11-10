@@ -1422,6 +1422,38 @@
 			</div>
 		</section>
 
+		<!-- Обратный звонок -->
+		<section id="callback">
+			<div class="container">
+				<div class="callback__inner flex-stretch">
+					<div class="callback__info">
+						<div class="callback__title">Возникли вопросы?</div>
+						<div class="callback__subtitle">Оставьте свой номер телефона и мы бесплатно вас проконсультируем</div>						
+					</div>
+					<div class="callback__content flex">
+						<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
+							<input type="hidden" name="hash" value="{HASH}" />
+							<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}" />
+							<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
+							{ANTISPAM_CODE}	
+							<div class="form__fields flex">
+								<input class="form__input form__person" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Ваше имя" autocomplete="off" required />
+								<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="Номер телефона" autocomplete="off" required />
+								<button class="button-secondary form__button" type="submit" title="Заказать звонок">
+									<span>Заказать звонок</span>
+								</button>
+							</div>
+							<div class="form__pp">
+								<span>Я принимаю условия</span>
+								<a data-fancybox data-src="#fancybox__pp" href="javascript:;">политики конфиденциальности</a>
+							</div>	
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
 		<!-- Товары на главной -->
 		{% IFNOT index_page_goods_empty %}
     <section id="pdt__sale" class="pdt__visible loading" data-items="10">
