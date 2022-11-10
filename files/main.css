@@ -1560,6 +1560,46 @@ footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
 }
 
 
+/**************************************/
+/*** Преимущества ***/
+/**************************************/
+/* TODO анимация при ховере на  иконки  - анимация перевора карточки. */
+.advantages__items {width: 27rem;}
+.advantages__item {background-color: var(--color-lightgray);color: var(--color-primary);width: 9rem;height: 9rem;padding: 1rem;text-align: center;}
+.advantages__item:nth-child(2n) {background-color: var(--color-primary);color: var(--color-white);}
+.advantages__title {display: none;font-weight: bold;line-height: 1.375;}
+.advantages__icon {font-size: 4rem;}
+.advantages__icon i {display: block;}
+.advantages__item:hover .advantages__title {display: block;}
+.advantages__item:hover .advantages__icon {display: none;}
+
+.body__left {width: calc(100% - 27rem);padding-right: 2rem;}
+.body__right {width: 27rem;}
+.advantages__number {width: 50%;margin-top: 2rem;}
+.advantages__number_title {font-size: 1.25rem;font-weight: bold;color: var(--color-primary);}
+.advantages__number_title span {font-size: 2rem;line-height: 1.5;}
+@media all and (max-width: 1023px) {
+	.body__left {width: 100%;padding: 0 0 2rem 0;}
+	.body__right {width: 100%;}
+	.advantages {display: flex;flex-wrap: wrap;align-items: center;}
+	.advantages__numbers {width: calc(100% - 22.5rem);padding-left: 1rem;align-items: flex-start;}
+	.advantages__items {width: 22.5rem;}
+	.advantages__item {width: 7.5rem;height: 7.5rem;}
+	.advantages__number_title span {font-size: 1.5rem;}
+	.advantages__title {font-size: .875rem;}
+}
+@media all and (max-width: 767px) {
+	.advantages__items {width: 100%;flex-wrap: nowrap;overflow-x: auto;}
+	.advantages__numbers {width: 100%;padding: 0;}
+	.advantages__item {min-width: 7.5rem;}
+	.advantages__number {text-align: center;}
+}
+@media all and (max-width: 479px) {
+	.advantages__number_title {font-size: 1rem;}
+	.advantages__number_title span {font-size: 1.25rem;}
+}
+
+
 
 /**************************************/
 /*** Адаптивность ***/
