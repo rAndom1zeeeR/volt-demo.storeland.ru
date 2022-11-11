@@ -3539,7 +3539,7 @@ function swiperCategory(id){
 		watchSlidesVisibility: true,
 		simulateTouch: true,
 		grabCursor: true,
-		slidesPerView: '4',
+		slidesPerView: '5',
 		spaceBetween: 16,
 		nested: true,
 		preloadImages: false,
@@ -3573,10 +3573,10 @@ function swiperCategory(id){
 				slidesPerView: '3',
 			},
 			1024: {
-				slidesPerView: '3',
+				slidesPerView: '4',
 			},
 			1200: {
-				slidesPerView: '4',
+				slidesPerView: '5',
 			}
 		},
 	});
