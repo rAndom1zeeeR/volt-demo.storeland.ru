@@ -2643,98 +2643,6 @@ function pdtVisible(id){
 
 
 ///////////////////////////////////////
-// Новости
-///////////////////////////////////////
-function indexNews() {
-	var news = '#news'
-	// Свайпер слайдер новостей
-	function swiperNews(id) {
-		var nav = id + ' .swiper-navigation'
-
-		// Слайдер товаров
-		var swiper = new Swiper(id + ' .swiper', {
-			loop: false,
-			autoplay: false,
-			watchSlidesVisibility: true,
-			simulateTouch: true,
-			grabCursor: true,
-			slidesPerView: '3',
-			spaceBetween: 16,
-			nested: true,
-			preloadImages: false,
-			lazy: {
-				enabled: true,
-				loadPrevNext: true,
-				loadOnTransitionStart: true,
-			},
-			navigation: {
-				nextEl: news + ' .swiper-button-next',
-				prevEl: news + ' .swiper-button-prev',
-			},
-			breakpoints: {
-				0: {
-					slidesPerView: '1',
-				},
-				320: {
-					slidesPerView: '1',
-				},
-				480: {
-					slidesPerView: '1',
-				},
-				640: {
-					slidesPerView: '2',
-				},
-				768: {
-					slidesPerView: '2',
-				},
-				1024: {
-					slidesPerView: '3',
-				},
-				1200: {
-					slidesPerView: '3',
-				}
-			}
-		});
-
-		// Скрываем навигацию если слайдер заблокирован
-		if($(news).find('.swiper-button-lock').length){
-			$(news).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
-			console.log('length', $(news).find('.swiper-button-lock').length)
-		}else{
-			$(news).find('.swiper-navigation').removeClass('swiper-navigation-lock')
-			console.log('lock', $(news).find('.swiper-button-lock'))
-		}
-	}
-
-	// Запуск функций новостей
-	function initNews(){
-		$(news).find('.tabs__content').each(function(){
-			var attr = $(this).attr('id');
-			swiperNews('#' + attr)
-			// Скрываем навигацию родителя если слайдер заблокирован
-			$('#' + attr).find('.swiper-pagination-lock').parent().addClass('swiper-pagination-lock')
-		});
-	}
-	initNews()
-
-	// Табы в товарах на главной
-	// TODO добавить хеш в табе новостей
-	$(news).find('.news__nav').on('click', function(event) {
-		event.preventDefault();
-		var tab = $(this).attr('data-tab');
-		$(news).find('.tabs__content').prepend('<div class="preloader"><div class="loading"></div></div>');
-		preload();
-		$(news).find('.preloader').remove();
-		$(news).find('.news__nav').removeClass('active')
-		$(news).find('.tabs__content').removeClass('active');
-		$(this).addClass('active');
-    $('#'+ tab).addClass('active');
-		initNews()
-	});
-
-}
-
-///////////////////////////////////////
 // Отсчет даты до окончания акции
 ///////////////////////////////////////
 function counter() {
@@ -3250,6 +3158,98 @@ $(window).resize(function(){
 });
 
 
+
+
+///////////////////////////////////////
+// Новости
+///////////////////////////////////////
+function indexNews() {
+	var news = '#news'
+	// Свайпер слайдер новостей
+	function swiperNews(id) {
+		var nav = id + ' .swiper-navigation'
+
+		// Слайдер товаров
+		var swiper = new Swiper(id + ' .swiper', {
+			loop: false,
+			autoplay: false,
+			watchSlidesVisibility: true,
+			simulateTouch: true,
+			grabCursor: true,
+			slidesPerView: '3',
+			spaceBetween: 16,
+			nested: true,
+			preloadImages: false,
+			lazy: {
+				enabled: true,
+				loadPrevNext: true,
+				loadOnTransitionStart: true,
+			},
+			navigation: {
+				nextEl: news + ' .swiper-button-next',
+				prevEl: news + ' .swiper-button-prev',
+			},
+			breakpoints: {
+				0: {
+					slidesPerView: '1',
+				},
+				320: {
+					slidesPerView: '1',
+				},
+				480: {
+					slidesPerView: '1',
+				},
+				640: {
+					slidesPerView: '2',
+				},
+				768: {
+					slidesPerView: '2',
+				},
+				1024: {
+					slidesPerView: '3',
+				},
+				1200: {
+					slidesPerView: '3',
+				}
+			}
+		});
+
+		// Скрываем навигацию если слайдер заблокирован
+		if($(news).find('.swiper-button-lock').length){
+			$(news).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+		}else{
+			$(news).find('.swiper-navigation').removeClass('swiper-navigation-lock')
+		}
+	}
+
+	// Запуск функций новостей
+	function initNews(){
+		$(news).find('.tabs__content').each(function(){
+			var attr = $(this).attr('id');
+			swiperNews('#' + attr)
+			// Скрываем навигацию родителя если слайдер заблокирован
+			$('#' + attr).find('.swiper-pagination-lock').parent().addClass('swiper-pagination-lock')
+		});
+	}
+	initNews()
+
+	// Табы в товарах на главной
+	// TODO добавить хеш в табе новостей
+	$(news).find('.news__nav').on('click', function(event) {
+		event.preventDefault();
+		var tab = $(this).attr('data-tab');
+		$(news).find('.tabs__content').prepend('<div class="preloader"><div class="loading"></div></div>');
+		preload();
+		$(news).find('.preloader').remove();
+		$(news).find('.news__nav').removeClass('active')
+		$(news).find('.tabs__content').removeClass('active');
+		$(this).addClass('active');
+    $('#'+ tab).addClass('active');
+		initNews()
+	});
+
+}
+
 // Функции стандартного слайдера
 function swiperSlider(id){
 	var nav = id + ' .swiper-navigate'
@@ -3363,9 +3363,13 @@ function swiperCatalog(){
 			prevEl: id + ' .swiper-button-prev',
 		},
 	});
-		
+
 	// Скрываем навигацию если слайдер заблокирован
-	$(id).find('.swiper-pagination-lock').parent().addClass('swiper-pagination-lock')
+	if($(id).find('.swiper-button-lock').length){
+		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	}else{
+		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
+	}
 }
 
 // Слайдер на главной
@@ -3399,7 +3403,11 @@ function swiperShow(){
 	});
 
 	// Скрываем навигацию если слайдер заблокирован
-	$(id).find('.swiper-pagination-lock').parent().addClass('swiper-pagination-lock')
+	if($(id).find('.swiper-button-lock').length){
+		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	}else{
+		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
+	}
 }
 
 // Слайдер распродажа
@@ -3452,7 +3460,11 @@ function swiperSales(){
 	});
 
 	// Скрываем навигацию если слайдер заблокирован
-	$(id).find('.swiper-pagination-lock').parent().addClass('swiper-pagination-lock')
+	if($(id).find('.swiper-button-lock').length){
+		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	}else{
+		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
+	}
 }
 
 // Функции предложения
@@ -3509,5 +3521,70 @@ function swiperOffers(id){
 	});
 
 	// Скрываем навигацию если слайдер заблокирован
-	$(id).find('.swiper-pagination-lock').parent().addClass('swiper-pagination-lock')
+	if($(id).find('.swiper-button-lock').length){
+		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	}else{
+		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
+	}
+}
+
+// Функции предложения
+function swiperCategory(id){
+	var nav = id + ' .swiper-navigation'
+
+	// Слайдер товаров
+	var swiper = new Swiper(id + ' .swiper', {
+		loop: false,
+		autoplay: false,
+		watchSlidesVisibility: true,
+		simulateTouch: true,
+		grabCursor: true,
+		slidesPerView: '4',
+		spaceBetween: 16,
+		nested: true,
+		preloadImages: false,
+		lazy: {
+			enabled: true,
+			loadPrevNext: true,
+			loadOnTransitionStart: true,
+		},
+		navigation: {
+			nextEl: nav + ' .swiper-button-next',
+			prevEl: nav + ' .swiper-button-prev',
+		},
+		pagination: {
+			el: nav + ' .swiper-progressbar',
+    	type: 'progressbar',
+		},
+		breakpoints: {
+			0: {
+				slidesPerView: '1',
+			},
+			320: {
+				slidesPerView: '2',
+			},
+			480: {
+				slidesPerView: '2',
+			},
+			640: {
+				slidesPerView: '3',
+			},
+			768: {
+				slidesPerView: '3',
+			},
+			1024: {
+				slidesPerView: '3',
+			},
+			1200: {
+				slidesPerView: '4',
+			}
+		},
+	});
+
+	// Скрываем навигацию если слайдер заблокирован
+	if($(id).find('.swiper-button-lock').length){
+		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	}else{
+		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
+	}
 }
