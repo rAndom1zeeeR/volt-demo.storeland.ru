@@ -446,7 +446,7 @@
 		{% IFNOT index_page_favorites_goods_empty %}
 		<section id="pdt__best" class="pdt__visible loading" data-items="10">
 			<div class="container products__container">
-				<div class="block__title block__nav flex">
+				<div class="block__title block__visible flex">
 					<a class="title" href="{CATALOG_TOP_SALES_URL}" title="Перейти в Хиты продаж"><span>Хиты продаж</span></a>
 					<!-- Показать все -->
 					<a class="visible__button button-icon button-link" href="{CATALOG_TOP_SALES_URL}" title="Смотреть всё" data-txt="Скрыть всё">
@@ -683,7 +683,7 @@
 									<!-- В корзину -->
 									<div class="product__addto flex">
 										<!-- Кол-во -->
-										<div class="qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
+										<div class="product__qty qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
 											<a class="qty__minus unselectable" href="javascript:void(0)" title="Уменьшить"><i class="icon-minus"></i></a>
 											<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{index_page_favorites_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
 											<a class="qty__plus unselectable" href="javascript:void(0)" title="Увеличить"><i class="icon-plus"></i></a>
@@ -1002,7 +1002,7 @@
 										<!-- В корзину -->
 										<div class="product__addto flex">
 											<!-- Кол-во -->
-											<div class="qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
+											<div class="product__qty qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
 												<a class="qty__minus unselectable" href="javascript:void(0)" title="Уменьшить"><i class="icon-minus"></i></a>
 												<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{index_page_sale_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
 												<a class="qty__plus unselectable" href="javascript:void(0)" title="Увеличить"><i class="icon-plus"></i></a>
@@ -1103,7 +1103,7 @@
 		{% IFNOT index_page_new_goods_empty %}
     <section id="pdt__new" class="pdt__visible loading" data-items="12">
 			<div class="container products__container">
-				<div class="block__title block__nav flex">
+				<div class="block__title block__visible flex">
 					<a class="title" href="{CATALOG_NEW_URL}" title="Перейти в Новинки"><span>Новинки</span></a>
 					<!-- Показать все -->
 					<a class="visible__button button-icon button-link" href="{CATALOG_TOP_SALES_URL}" title="Смотреть всё" data-txt="Скрыть всё">
@@ -1492,7 +1492,7 @@
 		{% IFNOT index_page_goods_empty %}
     <section id="pdt__sale" class="pdt__visible loading" data-items="10">
 			<div class="container products__container">
-				<div class="block__title block__nav flex">
+				<div class="block__title block__visible flex">
 					<a class="title" href="{CATALOG_INDEX_PAGE_URL}" title="Перейти в Товары на главной"><span>Товары на главной</span></a>
 					<!-- Показать все -->
 					<a class="visible__button button-icon button-link" href="{CATALOG_INDEX_PAGE_URL}" title="Смотреть всё" data-txt="Скрыть всё">
@@ -1729,7 +1729,7 @@
 									<!-- В корзину -->
 									<div class="product__addto flex">
 										<!-- Кол-во -->
-										<div class="qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
+										<div class="product__qty qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
 											<a class="qty__minus unselectable" href="javascript:void(0)" title="Уменьшить"><i class="icon-minus"></i></a>
 											<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{index_page_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
 											<a class="qty__plus unselectable" href="javascript:void(0)" title="Увеличить"><i class="icon-plus"></i></a>
@@ -2673,7 +2673,7 @@
 										<!-- В корзину -->
 										<div class="product__addto flex">
 											<!-- Кол-во -->
-											<div class="qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
+											<div class="product__qty qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
 												<a class="qty__minus unselectable" href="javascript:void(0)" title="Уменьшить"><i class="icon-minus"></i></a>
 												<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{recently_viewed_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
 												<a class="qty__plus unselectable" href="javascript:void(0)" title="Увеличить"><i class="icon-plus"></i></a>

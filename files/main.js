@@ -3355,7 +3355,7 @@ function swiperCatalog(){
 		simulateTouch: true,
 		grabCursor: true,
 		slidesPerView: 'auto',
-		spaceBetween: 40,
+		spaceBetween: 0,
 		nested: true,
 		preloadImages: false,
 		navigation: {
