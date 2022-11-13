@@ -2368,11 +2368,6 @@
 					<div class="main__left sidebar">
 						<!-- Если в тарифном плане подключен модуль фильтров по товарам -->
 						<div id="filters" class="sidebar__block">
-							<div class="sidebar__title flex">
-								<i class="icon-filter"></i>
-								<span>Фильтры</span>
-								<a class="sidebar__close" href="javascript:;" onclick="closeAll()"><i class="icon-close"></i></a>
-							</div>
 							<div class="sidebar__content {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
 								<form action="" method="get" class="form__filters">
 									<!-- Если есть возможность фильтрации товаров по ценам -->
@@ -2389,8 +2384,6 @@
 											<div class="priceSlider">
 												<input type="hidden" name="form[filter][available_price][min]" value="{GOODS_FILTER_MIN_AVAILABLE_PRICE}" />
 												<input type="hidden" name="form[filter][available_price][max]" value="{GOODS_FILTER_MAX_AVAILABLE_PRICE}" />
-												<!-- Ползунок фильтров по цене -->
-												<div id="goods-filter-price-slider"></div>
 												<!-- Фильтры по цене -->
 												<div class="goodsFilterPriceRangePointers flex justify-between">
 													<span class="min" style="display:none;">{GOODS_FILTER_MIN_AVAILABLE_PRICE}</span>
@@ -2400,15 +2393,14 @@
 													<span>до</span>
 													<input id="goods-filter-max-price" class="inputText" type="text" name="form[filter][price][max]" value="{% IF GOODS_FILTER_MAX_PRICE %}{GOODS_FILTER_MAX_PRICE}{% ELSE %}{GOODS_FILTER_MAX_AVAILABLE_PRICE}{% ENDIF %}" min="1" onkeypress="return keyPress(this, event);" onpaste="return false;" />
 												</div>
+												<!-- Ползунок фильтров по цене -->
+												<div id="goods-filter-price-slider"></div>
 												<!-- Кнопки Фильтров -->
-												<div class="goodsFilterPriceSubmit flex justify-between">
-													<button class="button-primary button-small" type="submit" title="Показать">
+												<div class="goodsFilterPriceSubmit">
+													<button class="button-link button-icon" type="submit" title="Показать">
+														<i class="icon-check"></i>
 														<span>Применить</span>
 													</button>
-													<a class="button-rotate button-link" href="{PAGE_CANONICAL}" title="Очистить фильтры">
-														<i class="icon-close"></i>
-														<span>Очистить</span>
-													</a>
 												</div>
 											</div>
 										</div>
@@ -2432,7 +2424,7 @@
 													<input type="checkbox" name="form[filter][attr][{filter_attr_list.ID}][{filter_attr_list.values.ID}]" value="1" id="filterAttrVal{filter_attr_list.values.ID}" class="square" {% IF filter_attr_list.values.CHECKED %}checked="checked" {% ELSEIF filter_attr_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
 													<label for="filterAttrVal{filter_attr_list.values.ID}" data-name="{filter_attr_list.values.VALUE}">
 														<span>{filter_attr_list.values.VALUE}</span>
-														<span>({filter_attr_list.values.NB_GOODS_FILTERED})</span>
+														<span>{filter_attr_list.values.NB_GOODS_FILTERED}</span>
 													</label>
 												</div>
 												{% ENDFOR %}
@@ -2458,7 +2450,7 @@
 													<input type="checkbox" name="form[filter][prop][{filter_prop_list.ID}][{filter_prop_list.values.ID}]" value="1" id="filterPropVal{filter_prop_list.values.ID}" class="square" {% IF filter_prop_list.values.CHECKED %}checked="checked" {% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
 													<label for="filterPropVal{filter_prop_list.values.ID}" data-name="{filter_prop_list.values.VALUE}">
 														<span>{filter_prop_list.values.VALUE}</span>
-														<span>({filter_prop_list.values.NB_GOODS_FILTERED})</span>
+														<span>{filter_prop_list.values.NB_GOODS_FILTERED}</span>
 													</label>
 												</div>
 												{% ENDFOR %}
@@ -2467,8 +2459,11 @@
 									</div>
 									{% ENDFOR %}
 								</form>
-								<div class="filter__buttons">
-									<a href="{PAGE_CANONICAL}" class="button-secondary goodsFilterClear" title="Очистить фильтры"><span>Сбросить фильтры</span></a>
+								<div class="filters__buttons">
+									<a href="{PAGE_CANONICAL}" class="button-gray filters__clear" title="Очистить фильтры">
+										<span>Очистить</span>
+										<i class="icon-close"></i>
+									</a>
 								</div>
 							</div>
 						</div>

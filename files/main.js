@@ -2693,10 +2693,6 @@ function catalog() {
 		$(this)[0].form.submit();
 	});
 
-	// $('.filtersActive input').on('click', function(){
-	// 	$(this)[0].form.submit();
-	// });
-
 	// Открытие/Скрытие фильтров в сайдбаре
 	$('.collapsible__click').on('click', function(event){
 		event.preventDefault();

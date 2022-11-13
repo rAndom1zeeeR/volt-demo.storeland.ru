@@ -109,40 +109,6 @@
 			<!-- /END Вид Таблица/Список -->
 		</form>
 
-		<!-- Активные Фильтры -->
-		<div class="filtersActive {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
-			<div class="row">
-				<!-- Фильтры по характеристикам товаров (Например: Производитель, разрешение экрана, заряд аккомулятора) -->
-				<div class="filtersActive__items flex">
-					<div class="filters__open">
-						<a class="filters__icon flex-center" href="javascript:;">
-							<i class="icon-filter"></i>
-							<span>Фильтры</span>
-						</a>
-					</div>
-					{% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}
-					<label class="filtersActive__item" for="filterAttrVal{filter_attr_list.values.ID}" title="Удалить фильтр: {filter_attr_list.NAME}">
-						<div class="filtersActive__name">{filter_attr_list.NAME}:</div>
-						<div class="filtersActive__value">{filter_attr_list.values.VALUE}</div>
-						<div class="filtersActive__remove"><i class="icon-close"></i></div>
-					</label>
-					{% ENDIF %}{% ENDFOR %}{% ENDFOR %}
-					{% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}
-					<label class="filtersActive__item" for="filterPropVal{filter_prop_list.values.ID}" title="Удалить фильтр: {filter_prop_list.NAME}">
-						<div class="filtersActive__name">{filter_prop_list.NAME}:</div>
-						<div class="filtersActive__value">{filter_prop_list.values.VALUE}</div>
-						<div class="filtersActive__remove"><i class="icon-close"></i></div> 
-					</label>
-					{% ENDIF %}{% ENDFOR %}{% ENDFOR %}
-					<a class="button-rotate button-link filtersActive__clear" href="{PAGE_CANONICAL}" title="Очистить фильтры">
-						<i class="icon-reload"></i>
-						<span>Очистить фильтры</span>
-					</a>
-				</div>
-			</div>
-			<!-- Фильтры по свойствам товарных модификаций (Например: Цвет, размер, модификация) -->
-		</div>
-
 	</div>
 	<!-- END Верхний блок, изменяющий отображение данных выдачи товаров -->
 

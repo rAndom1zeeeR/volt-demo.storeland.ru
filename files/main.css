@@ -102,14 +102,14 @@ input.error, textarea.error {border-color: var(--color-red);}
 input[type="file"] {margin-top: 0.25rem;height: auto;line-height: 1;border: 0;padding: 0;border-radius: 0;background: transparent;}
 
 /* Чекбокс квадрат */
-.square {background-color: var(--color-darkgray);border: 1px solid var(--color-darkgray);width: 1.25rem;height: 1.25rem;line-height: 1.25rem;font-size: 1.125rem;margin: 0;padding: 0;text-align: center;cursor: pointer;}
+.square {background-color: var(--color-gray);border: 1px solid var(--color-gray);color: var(--color-white);width: 1.25rem;height: 1.25rem;line-height: 1.25rem;font-size: 1.125rem;margin: 0;padding: 0;text-align: center;cursor: pointer;}
 .square + label {cursor: pointer;}
 .square:checked + label {color: var(--color-secondary);}
 .square:after {content: '';vertical-align: top;font-family: 'icomoon';}
-.square:hover {background-color: var(--color-darkgray);border-color: var(--color-secondary);}
+.square:hover {background-color: var(--color-gray);border-color: var(--color-secondary);}
 .square:checked {background-color: var(--color-secondary);border-color: var(--color-secondary);}
-.square:checked:after {content: '\e906';}
-.square:disabled {background-color: var(--color-lightgray);border-color: var(--color-lightgray);cursor: default;}
+.square:checked:after {content: '\e915';}
+.square:disabled {background-color: var(--color-darkgray);border-color: var(--color-darkgray);cursor: default;}
 .square:disabled:after {content: '';}
 .square:disabled + label {color: var(--color-darkgray);cursor: default;}
 
@@ -169,8 +169,11 @@ button:hover, [class*="button-"]:hover, .paymentFormSubmitLink:hover, .paymentFo
 .button-empty {background: var(--color-darkgray);border-color: var(--color-darkgray);}
 .button-empty:hover {background: var(--color-secondary);border-color: var(--color-secondary);}
 /*** Кнопка с иконкой ***/
-.button-icon {line-height: 1;display: -ms-flexbox;display: -webkit-flex;display: flex;}
+.button-icon {line-height: 1;display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-align: center;-webkit-align-items: center;-webkit-box-align: center;align-items: center;}
 .button-icon i {font-size: 1.125rem;transition: all 0.3s ease;}
+/*** Кнопка серая ***/
+.button-gray {background: var(--color-gray);border-color: var(--color-gray);color: var(--color-primary);font-weight: bold;}
+.button-gray:hover {background: var(--color-primary);border-color: var(--color-primary);color: var(--color-white);}
 
 
 /**************************************/
@@ -899,13 +902,6 @@ h5 {font-size: 0.875rem;}
 /****************************************/
 .filters__open {margin: 1rem 1rem 0 1rem;display: none;}
 .filters__open i {font-size: 1.5rem;margin-right: .5rem;}
-.filtersActive__clear {margin: 1rem 1rem 0 1rem;display: none;}
-.has-filters .filtersActive__clear {display: inline-block;}
-.filtersActive__item {margin: 1rem 1rem 0 1rem;position: relative;}
-.filtersActive__item:hover {color: var(--color-primary);cursor: pointer;}
-.filtersActive__name {color: var(--color-gray);margin-bottom: .5rem;}
-.filtersActive__value {padding-right: 1rem;}
-.filtersActive__remove {position: absolute;right: 0;bottom: 0;}
 /*** Фильтры. Адаптивность ***/
 @media all and (max-width: 1023px) {
 	.filters__open {display: inline-block;}
@@ -918,33 +914,38 @@ h5 {font-size: 0.875rem;}
 /*** Сайдбар. Фильтры ***/
 .filter__items {max-height: 10rem;overflow-y: auto;}
 .filter__items::-webkit-scrollbar {width: .25rem;height: 0;border-radius: 10px;}
-.filter__name {padding-right: 1.5rem;}
+.filter__name {padding-right: 1.5rem;font-weight: bold;}
 .filter__clear {display: none;text-decoration: underline;}
-.filter__clear:hover {cursor: pointer;text-decoration: none;}
-.filter__list.has-filters .filter__clear {display: block;}
-.filter__list {margin-top: 1.5rem;}
+/* .filter__clear:hover {cursor: pointer;text-decoration: none;}
+.filter__list.has-filters .filter__clear {display: none;} */
+.filter__list {margin-bottom: 1.25rem;padding-bottom: 1.25rem;border-bottom: 1px solid var(--color-gray);}
 .filter__item {margin-top: .75rem;}
 .filter__item.checked {color: var(--color-primary);}
-.filter__item label {padding: 0 .25rem 0 1rem;width: calc(100% - 1.5rem);line-height: 1.25rem;}
-.filter__list.active i:before {content: '\e90a';}
-.filter__buttons {margin-top: 1.5rem;text-align: center;display: none;}
-.has-filters .filter__buttons {display: block;}
+.filter__item label {padding: 0 .25rem 0 1rem;width: calc(100% - 1.5rem);line-height: 1.375rem;}
+.filter__list.active i:before {content: '\e916';}
+.filters__buttons {margin-top: 1.5rem;text-align: center;display: none;}
+.filters__clear {width: 100%;padding-right: 5rem;}
+.filters__clear i {position: absolute;top: 1rem;right: 1rem;}
+.filters__clear:after {content: '';width: 1px;height: 2rem;top: .5rem;right: 3rem;background-color: var(--color-primary);position: absolute;display: block;transition: all 0.3s ease;}
+.filters__clear:hover:after {background-color: var(--color-white);}
+.has-filters .filters__buttons {display: block;}
 .collapsible__click {position: relative;}
 .collapsible__click i {position: absolute;right: 0;top: 0;}
 .collapsible__content {margin-top: .75rem;}
 
 /*** Сайдбар. Фильтры цены ***/
 .filters-price {margin: 0;}
-.filters-price #goods-filter-price-slider {margin: 1rem 0 1.5rem 0;height: .25rem;background: var(--color-lightgray);width: 100%;position: relative;border: 0;cursor: pointer;}
-.filters-price .ui-slider-horizontal .ui-slider-handle {top: -8px;}
-.filters-price .ui-slider-handle {background: var(--color-primary);border-radius: 100%;width: 1.25rem;height: 1.25rem;margin: 0;outline: 0;position: absolute;z-index: 2;}
-.filters-price .ui-slider-handle:last-child {left: auto;right: 0;margin-left: -1.25rem;}
-.filters-price .ui-slider-handle.ui-state-hover, .filters-price .ui-slider-handle.ui-state-focus {background: var(--color-primary);cursor: pointer;}
-.filters-price .ui-slider .ui-slider-range {background: var(--color-primary);border: 1px solid var(--color-primary);height: .25rem;border-radius: 0;position: absolute;top: 0;cursor: pointer;}
-.goodsFilterPriceRangePointers input {width: calc(50% - 2rem);height: 2rem;margin-left: .25rem;padding: 0 .25rem;text-align: center;}
-.goodsFilterPriceRangePointers input + span {margin-left: .5rem;}
-.goodsFilterPriceRangePointers span {color: var(--color-gray);}
-.goodsFilterPriceSubmit {display: none;margin-top: 1rem;}
+.filters-price .ui-slider-horizontal .ui-slider-handle {top: -.25rem;}
+.filters-price .ui-slider-handle {background: var(--color-secondary);width: .25rem;height: 1.125rem;margin: 0;outline: 0;position: absolute;z-index: 2;}
+.filters-price .ui-slider-handle:last-child {left: auto;right: 0;margin-left: -.25rem;}
+.filters-price .ui-slider-handle.ui-state-hover, .filters-price .ui-slider-handle.ui-state-focus {background: var(--color-secondary);cursor: pointer;}
+.filters-price .ui-slider .ui-slider-range {background: var(--color-secondary);border: 1px solid var(--color-secondary);height: .625rem;border-radius: 0;position: absolute;top: 0;cursor: pointer;}
+.filters-price #goods-filter-price-slider {margin: 1rem 0;height: .625rem;background: var(--color-gray);width: 100%;position: relative;border: 0;cursor: pointer;}
+.goodsFilterPriceRangePointers input {width: calc(50% - .5rem);height: 2.5rem;padding: 0 .25rem;text-align: center;}
+.goodsFilterPriceRangePointers span {color: var(--color-darkgray);display: none;}
+.goodsFilterPriceSubmit {display: none;margin-top: 1rem;text-align: center;justify-content: center;}
+.goodsFilterPriceSubmit button {font-size: .875rem;}
+.goodsFilterPriceSubmit button i {margin-right: .5rem;}
 .has-filters .goodsFilterPriceSubmit {display: flex;}
 
 
