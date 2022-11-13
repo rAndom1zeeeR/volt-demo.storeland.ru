@@ -2867,6 +2867,17 @@ function openMenu() {
       $('[data-opened="'+ value +'"]').addClass('opened');
     }
   });
+
+	// Открытие подвала
+	$('.footer__title').on('click', function(event){
+    event.preventDefault();
+		if (getClientWidth() < 480){
+			$(this).toggleClass('active')
+			$(this).next().slideToggle();
+		}else{
+			$(this).next().attr('style', '')
+		}
+	});
 }
 
 // Функция удаления классов всех активных элементов
@@ -3096,7 +3107,7 @@ $(document).ready(function(){
 	orderCartStart();
 	cartAjaxQty();
 	quantity();
-	swiperSlider('#pdt__viewed');
+	swiperViewed('#pdt__viewed');
 	swiperCatalog();
 
 	// Удаление классов загрузки для элементов страницы
@@ -3149,7 +3160,7 @@ $(document).ready(function(){
 
 // Запуск функций при изменении экрана
 $(window).resize(function(){
-  if(getClientWidth() > 481 && window.outerHeight < 630){
+  if(getClientWidth() > 480 && window.outerHeight < 639){
     $('body').addClass('landscape');
   }else{
     $('body').removeClass('landscape');
@@ -3180,6 +3191,7 @@ function indexNews() {
 			spaceBetween: 16,
 			nested: true,
 			preloadImages: false,
+			autoHeight: true,
 			lazy: {
 				enabled: true,
 				loadPrevNext: true,
@@ -3587,4 +3599,61 @@ function swiperCategory(id){
 	}else{
 		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 	}
+}
+
+// Функции слайдера Вы смотрели
+function swiperViewed(id){
+	var nav = id + ' .swiper-navigation'
+
+	// Слайдер товаров
+	var swiper = new Swiper(id + ' .swiper-products', {
+		loop: false,
+		autoplay: false,
+		watchSlidesVisibility: true,
+		simulateTouch: true,
+		grabCursor: true,
+		slidesPerView: '3',
+		spaceBetween: 16,
+		nested: true,
+		preloadImages: false,
+		lazy: {
+			enabled: true,
+			loadPrevNext: true,
+			loadOnTransitionStart: true,
+		},
+		navigation: {
+			nextEl: nav + ' .swiper-button-next',
+			prevEl: nav + ' .swiper-button-prev',
+		},
+		pagination: {
+			el: nav + ' .swiper-progressbar',
+    	type: 'progressbar',
+		},
+		breakpoints: {
+			0: {
+				slidesPerView: '1',
+			},
+			320: {
+				slidesPerView: '1',
+			},
+			480: {
+				slidesPerView: '1',
+			},
+			640: {
+				slidesPerView: '1',
+			},
+			768: {
+				slidesPerView: '2',
+			},
+			1024: {
+				slidesPerView: '2',
+			},
+			1200: {
+				slidesPerView: '3',
+			}
+		},
+	});
+
+	// Скрываем навигацию родителя если слайдер заблокирован
+	$(id).find('.swiper-navigation-lock').parent().addClass('swiper-navigation-lock')
 }

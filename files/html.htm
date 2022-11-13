@@ -1073,20 +1073,20 @@
 					<div class="swiper-wrapper">
 						{% FOR catalog_full %}
 							{% IF catalog_full.HIDE %}{continue}{% ENDIF %}
-							{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<div class="category__sub" data-level="{catalog_full.LEVEL}">{% ENDIF %}{% ENDIF %}
-							<div class="{% IF catalog_full.LEVEL = 0 %}category__item swiper-slide{% ELSE %}category__sub_item{% ENDIF %}">
-								<div class="category__image flex-center">
+							{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<div class="categories__sub" data-level="{catalog_full.LEVEL}">{% ENDIF %}{% ENDIF %}
+							<div class="{% IF catalog_full.LEVEL = 0 %}categories__item swiper-slide{% ELSE %}categories__sub_item{% ENDIF %}">
+								<div class="categories__image flex-center">
 									<img src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ENDIF %}" alt="{catalog_full.NAME}" />
 								</div>
-								<a class="category__name" href="{catalog_full.URL}" title="{catalog_full.NAME}"><span>{catalog_full.NAME}</span></a>
-								<div class="category__content flex">
-									<div class="category__count">
+								<a class="categories__name" href="{catalog_full.URL}" title="{catalog_full.NAME}"><span>{catalog_full.NAME}</span></a>
+								<div class="categories__content flex">
+									<div class="categories__count">
 										<span>{catalog_full.GOODS_COUNT} товар{catalog_full.GOODS_COUNT | gen_word_end("","а","ов")}</span>
 									</div>
-									<div class="category__count category__count_hover">
+									<div class="categories__count categories__count_hover">
 										<span>Смотреть все подкатегории</span>
 									</div>
-									<a class="category__icon" href="{catalog_full.URL}" title="{catalog_full.NAME}">
+									<a class="categories__icon" href="{catalog_full.URL}" title="{catalog_full.NAME}">
 										<i class="icon-chevron_right"></i>
 									</a>
 								</div>
@@ -1113,7 +1113,7 @@
 				</div>
 				<!-- Слайдер -->
 				<div class="row">
-					<div class="products__list flex-stretch">
+					<div class="products__list products__list_trio flex-stretch">
 						{% FOR index_page_new_goods %}
 						<div class="product__item 
 								{% IF index_page_new_goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
@@ -1887,7 +1887,7 @@
 
 				<!-- Список ВСЕХ новостей магазина. Если в настройках отмечено "Группировать новости в блоке навигации на сайте" -->
 				{% IFNOT news_list_all_empty %}
-				<div id="news_list_all" class="tabs__content active" data-tab-content="news_list_all">
+				<div id="news_list_all" class="tabs__content loading active" data-tab-content="news_list_all">
 					<div class="swiper">
 						<div class="swiper-wrapper">
 							{% FOR news_list_all %}
@@ -1926,7 +1926,7 @@
 
 				<!-- Список Новости -->
 				{% IFNOT news_list_shop_empty %}
-				<div id="news_list_shop" class="tabs__content active" data-tab-content="news_list_shop">
+				<div id="news_list_shop" class="tabs__content loading active" data-tab-content="news_list_shop">
 					<div class="swiper">
 						<div class="swiper-wrapper">
 							{% FOR news_list_shop %}
@@ -1965,7 +1965,7 @@
 
 				<!-- Список Статьи -->
 				{% IFNOT news_list_articles_empty %}
-				<div id="news_list_articles" class="tabs__content {% IF news_list_shop_empty %}active{% ENDIF %}" data-tab-content="news_list_articles">
+				<div id="news_list_articles" class="tabs__content loading {% IF news_list_shop_empty %}active{% ENDIF %}" data-tab-content="news_list_articles">
 					<div class="swiper">
 						<div class="swiper-wrapper">
 							{% FOR news_list_articles %}
@@ -2004,7 +2004,7 @@
 
 				<!-- Список Блог -->
 				{% IFNOT news_list_mass_media_empty %}
-				<div id="news_list_mass_media" class="tabs__content {% IF news_list_shop_empty && news_list_articles_empty %}active{% ENDIF %}" data-tab-content="news_list_mass_media">
+				<div id="news_list_mass_media" class="tabs__content loading {% IF news_list_shop_empty && news_list_articles_empty %}active{% ENDIF %}" data-tab-content="news_list_mass_media">
 					<div class="swiper">
 						<div class="swiper-wrapper">
 							{% FOR news_list_mass_media %}
@@ -2433,97 +2433,126 @@
 			</div>
 		</section>
 
-		{% ENDIF index_page %}
-
 		<!-- Вы смотрели -->
 		{% IFNOT recently_viewed_goods_empty %}
 		<section id="pdt__viewed" class="loading">
 			<div class="container">
-				<div class="block__title">
+				<div class="block__title block__nav flex">
 					<div class="title"><span>Вы смотрели</span></div>
+					<div class="swiper-navigation flex">
+						<div class="swiper-button-prev"></div>
+						<div class="swiper-button-next"></div>
+					</div>
 				</div>
 				<!-- Слайдер -->
-				<!-- <div class="row row-small"> -->
-					<div class="swiper swiper-products">
-						<div class="swiper-wrapper products__grid">
-							{% FOR recently_viewed_goods %}
-							<div class="swiper-slide product__item 
-									{% IF recently_viewed_goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
-									{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
-									{% IF recently_viewed_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
-									data-id="{recently_viewed_goods.ID}" 
-									itemscope itemtype="https://schema.org/Product"
-							>
-								<form class="product__form" action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post">
-									<input type="hidden" name="hash" value="{HASH}" />
-									<input type="hidden" name="form[goods_from]" value="{recently_viewed_goods.GOODS_FROM}" />
-									<input type="hidden" name="form[goods_mod_id]" value="{recently_viewed_goods.MIN_PRICE_NOW_ID}" />
-									<input type="hidden" name="form[goods_id]" value="{recently_viewed_goods.ID}" />
-									<link itemprop="image" href="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" />
-									<!-- Изображение товара -->
-									<div class="product__image">
-										<!-- Стикеры -->
-										<div class="product__ico flex">
-											{% IF recently_viewed_goods.IS_TOP %}
-											<span class="ico__best"></span>
-											{% ENDIF %}
-											{% IF recently_viewed_goods.IS_NEW %}
-											<span class="ico__new"></span>
-											{% ENDIF %}
-											{% IF recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > recently_viewed_goods.MIN_PRICE_NOW %}
-											<span class="ico__sales">%</span>
-											{% ELSEIF recently_viewed_goods.MIN_PRICE_OLD > recently_viewed_goods.MIN_PRICE_NOW %}
-											<span class="ico__sales">%</span>
-											{% ENDIF %}
-										</div>
-							
-										<!-- Изображение -->
-										<a class="product__img flex-center" href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url" data-id="{recently_viewed_goods.IMAGE_ID}">
-											<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{recently_viewed_goods.NAME}" />
-										</a>
-							
-										<!-- Смена Изображения при наведении -->
-										<a class="product__image-hover flex" href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-							
-										{% FOR images %}
-										<input type="hidden" class="product__imgID" data-id="{recently_viewed_goods.images.ID}" data-image="{recently_viewed_goods.images.MEDIUM}" />
-										{% ENDFOR %}
-							
-									</div><!-- //END Изображение товара -->
-									
-									<!-- Информация товара -->
-									<div class="product__shop">
-										<!-- Рейтинг -->
-										{% IFNOT SETTINGS_OPINION_DISABLE %}
-										<div class="product__ratings flex justify-between">
-											<div class="ratings">
-												{% IF recently_viewed_goods.OPINION_RATING_VALUE %}
-												<span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
-													<meta itemprop="worstRating" content="1">
-													<meta itemprop="bestRating" content="10">
-													<meta itemprop="ratingValue" content="{recently_viewed_goods.OPINION_RATING_VALUE}">
-													<meta itemprop="reviewCount" content="{recently_viewed_goods.OPINION_RATING_CNT_ALL}">
-													<div class="rating" style="width:{recently_viewed_goods.OPINION_RATING_VALUE}0%" alt="{recently_viewed_goods.OPINION_RATING_VALUE}" title="Рейтинг товара"></div>
-												</span>
-												{% ELSE %}
-												<div class="rating" style="width:0%" alt="Рейтинг не определён" title="Рейтинг не определён"></div>
-												{% ENDIF %}
-											</div>
-											<div class="ratings__count">({recently_viewed_goods.OPINION_RATING_CNT_ALL})</div>
-											<div class="ratings__label">{% IF recently_viewed_goods.OPINION_RATING_CNT_ALL > 0 %}{recently_viewed_goods.OPINION_RATING_CNT_ALL} отзыв{recently_viewed_goods.OPINION_RATING_CNT_ALL | gen_word_end("","а","ов")}{% ELSE %}Нет отзывов{% ENDIF %}</div>
-										</div>
+				<div class="swiper swiper-products">
+					<div class="swiper-wrapper products__list products__list_trio">
+						{% FOR recently_viewed_goods %}
+						<div class="swiper-slide product__item 
+								{% IF recently_viewed_goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
+								{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
+								{% IF recently_viewed_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
+								data-id="{recently_viewed_goods.ID}" 
+								itemscope itemtype="https://schema.org/Product"
+						>
+							<form class="product__form" action="{CART_ADD_GOODS_MODIFICATION_URL | url_amp}" method="post">
+								<input type="hidden" name="hash" value="{HASH}" />
+								<input type="hidden" name="form[goods_from]" value="{recently_viewed_goods.GOODS_FROM}" />
+								<input type="hidden" name="form[goods_mod_id]" value="{recently_viewed_goods.MIN_PRICE_NOW_ID}" />
+								<input type="hidden" name="form[goods_id]" value="{recently_viewed_goods.ID}" />
+								<link itemprop="image" href="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" />
+								<!-- Изображение товара -->
+								<div class="product__image">
+									<!-- Стикеры -->
+									<div class="product__ico flex">
+										{% IF recently_viewed_goods.IS_TOP %}
+										<span class="ico__best"></span>
 										{% ENDIF %}
+										{% IF recently_viewed_goods.IS_NEW %}
+										<span class="ico__new"></span>
+										{% ENDIF %}
+										{% IF recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > recently_viewed_goods.MIN_PRICE_NOW %}
+										<span class="ico__sales">%</span>
+										{% ELSEIF recently_viewed_goods.MIN_PRICE_OLD > recently_viewed_goods.MIN_PRICE_NOW %}
+										<span class="ico__sales">%</span>
+										{% ENDIF %}
+									</div>
 							
-										<div class="product__inner flex justify-between">
-											<!-- Артикул товара -->
-											{% IF recently_viewed_goods.ART_NUMBER %}
-											<div class="product__art product__margin">
-												<span itemprop="sku">{recently_viewed_goods.ART_NUMBER}</span>
-											</div>
+									<!-- Изображение -->
+									<a class="product__img flex-center" href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url" data-id="{recently_viewed_goods.IMAGE_ID}">
+										<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{recently_viewed_goods.NAME}" />
+									</a>
+							
+									<!-- Смена Изображения при наведении -->
+									<a class="product__image-hover flex" href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}"></a>
+							
+									{% FOR images %}
+									<input type="hidden" class="product__imgID" data-id="{recently_viewed_goods.images.ID}" data-image="{recently_viewed_goods.images.MEDIUM}" />
+									{% ENDFOR %}
+							
+								</div><!-- //END Изображение товара -->
+								
+								<!-- Информация товара -->
+								<div class="product__shop flex">
+									<!-- Рейтинг -->
+									{% IFNOT SETTINGS_OPINION_DISABLE %}
+									<div class="product__ratings flex justify-between">
+										<div class="ratings">
+											{% IF recently_viewed_goods.OPINION_RATING_VALUE %}
+											<span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+												<meta itemprop="worstRating" content="1">
+												<meta itemprop="bestRating" content="10">
+												<meta itemprop="ratingValue" content="{recently_viewed_goods.OPINION_RATING_VALUE}">
+												<meta itemprop="reviewCount" content="{recently_viewed_goods.OPINION_RATING_CNT_ALL}">
+												<div class="rating" style="width:{recently_viewed_goods.OPINION_RATING_VALUE}0%" alt="{recently_viewed_goods.OPINION_RATING_VALUE}" title="Рейтинг товара"></div>
+											</span>
+											{% ELSE %}
+											<div class="rating" style="width:0%" alt="Рейтинг не определён" title="Рейтинг не определён"></div>
 											{% ENDIF %}
-
+										</div>
+										<div class="ratings__count">({recently_viewed_goods.OPINION_RATING_CNT_ALL})</div>
+										<div class="ratings__label">{% IF recently_viewed_goods.OPINION_RATING_CNT_ALL > 0 %}{recently_viewed_goods.OPINION_RATING_CNT_ALL} отзыв{recently_viewed_goods.OPINION_RATING_CNT_ALL | gen_word_end("","а","ов")}{% ELSE %}Нет отзывов{% ENDIF %}</div>
+									</div>
+									{% ENDIF %}
+							
+									<!-- Артикул товара -->
+									{% IF recently_viewed_goods.ART_NUMBER %}
+									<div class="product__art product__margin">
+										<span itemprop="sku">{recently_viewed_goods.ART_NUMBER}</span>
+									</div>
+									{% ENDIF %}
+							
+									<!-- Название товара -->
+									<a class="product__name flex product__margin" href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}">
+										<span itemprop="name">{recently_viewed_goods.NAME}</span>
+									</a>
+							
+									<!-- Цена для поисковиков -->
+									<div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
+										<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
+										<meta itemprop="lowPrice" content="{recently_viewed_goods.MIN_PRICE_NOW}">
+										<meta itemprop="highPrice" content="{recently_viewed_goods.MAX_PRICE_NOW}">
+										<meta itemprop="offerCount" content="{% FOR mods %}{% IF recently_viewed_goods.mods.last %}{recently_viewed_goods.mods.length}{% ENDIF %}{% ENDFOR %}">
+									</div>
+							
+									<div class="product__inner flex">							
+										<!-- Цена -->
+										<div class="product__price flex {CURRENCY_CHAR_CODE} {% IF recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>recently_viewed_goods.MIN_PRICE_NOW %}has-price-old{% ELSEIF recently_viewed_goods.MIN_PRICE_OLD>recently_viewed_goods.MIN_PRICE_NOW %}has-price-old{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+											<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
+											<meta itemprop="availability" content="{% IF recently_viewed_goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}" />
+											<meta itemprop="priceValidUntil" content="{recently_viewed_goods.MAX_DISCOUNT_EXPIRED_AT | date('Y-m-d')}" />
+											<span class="price__now {CURRENCY_CHAR_CODE}" itemprop="price" content="{recently_viewed_goods.MIN_PRICE_NOW}">{recently_viewed_goods.MIN_PRICE_NOW | money_format}</span>
+											{% IF recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>recently_viewed_goods.MIN_PRICE_NOW %}
+											<span class="price__old {CURRENCY_CHAR_CODE}">{recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT | money_format}</span>
+											{% ELSEIF recently_viewed_goods.MIN_PRICE_OLD>recently_viewed_goods.MIN_PRICE_NOW %}
+											<span class="price__old {CURRENCY_CHAR_CODE}">{recently_viewed_goods.MIN_PRICE_OLD | money_format}</span>
+											{% ENDIF %}
+										</div>
+							
+										<!-- В корзину -->
+										<div class="product__addto flex">										
 											<!-- Добавление товара в избранное и сравнение и в корзину -->
-											<div class="product__links flex product__margin {% IF recently_viewed_goods.IS_HAS_IN_COMPARE_LIST || recently_viewed_goods.IS_HAS_IN_FAVORITES_LIST %}added{% ENDIF %}">
+											<div class="product__links flex {% IF recently_viewed_goods.IS_HAS_IN_COMPARE_LIST || recently_viewed_goods.IS_HAS_IN_FAVORITES_LIST %}added{% ENDIF %}">
 												<!-- Если есть возможность добавить товар в Избранное -->
 												{% IF recently_viewed_goods.IS_HAS_IN_FAVORITES_LIST %}
 												<a class="add-favorites added"
@@ -2576,7 +2605,7 @@
 													<span>Добавить в избранное</span>
 												</a>
 												{% ENDIF %}
-
+							
 												<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
 												{% IFNOT SETTINGS_COMPARE_DISABLE && recently_viewed_goods.IS_HAS_IN_COMPARE_LIST %}
 												<a class="add-compare added"
@@ -2631,54 +2660,7 @@
 												{% ENDIF %}
 								
 											</div>
-										</div>
-
-										<!-- Название товара -->
-										<a class="product__name flex product__margin" href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}">
-											<span itemprop="name">{recently_viewed_goods.NAME}</span>
-										</a>
 							
-										<!-- Краткое описание -->
-										<div class="product__desc product__margin" itemprop="description">
-											{% IF recently_viewed_goods.DESCRIPTION_SHORT %}
-												{recently_viewed_goods.DESCRIPTION_SHORT}
-											{% ELSEIF recently_viewed_goods.DESCRIPTION_LARGE %}
-												{recently_viewed_goods.DESCRIPTION_LARGE}
-											{% ELSE %}
-												Описание товара "{recently_viewed_goods.NAME}"
-											{% ENDIF %}
-										</div>
-							
-										<!-- Цена для поисковиков -->
-										<div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
-											<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
-											<meta itemprop="lowPrice" content="{recently_viewed_goods.MIN_PRICE_NOW}">
-											<meta itemprop="highPrice" content="{recently_viewed_goods.MAX_PRICE_NOW}">
-											<meta itemprop="offerCount" content="{% FOR mods %}{% IF recently_viewed_goods.mods.last %}{recently_viewed_goods.mods.length}{% ENDIF %}{% ENDFOR %}">
-										</div>
-							
-										<!-- Цена -->
-										<div class="product__price product__margin flex justify-between {CURRENCY_CHAR_CODE} {% IF recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>recently_viewed_goods.MIN_PRICE_NOW %}has-price-old{% ELSEIF recently_viewed_goods.MIN_PRICE_OLD>recently_viewed_goods.MIN_PRICE_NOW %}has-price-old{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
-											<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
-											<meta itemprop="availability" content="{% IF recently_viewed_goods.MAX_REST_VALUE>0 %}http://schema.org/InStock{% ELSE %}http://schema.org/OutOfStock{% ENDIF %}" />
-											<meta itemprop="priceValidUntil" content="{recently_viewed_goods.MAX_DISCOUNT_EXPIRED_AT | date('Y-m-d')}" />
-											<span class="price__now {CURRENCY_CHAR_CODE}" itemprop="price" content="{recently_viewed_goods.MIN_PRICE_NOW}">{recently_viewed_goods.MIN_PRICE_NOW | money_format}</span>
-											{% IF recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>recently_viewed_goods.MIN_PRICE_NOW %}
-											<span class="price__old {CURRENCY_CHAR_CODE}">{recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT | money_format}</span>
-											{% ELSEIF recently_viewed_goods.MIN_PRICE_OLD>recently_viewed_goods.MIN_PRICE_NOW %}
-											<span class="price__old {CURRENCY_CHAR_CODE}">{recently_viewed_goods.MIN_PRICE_OLD | money_format}</span>
-											{% ENDIF %}
-										</div>
-
-										<!-- В корзину -->
-										<div class="product__addto flex">
-											<!-- Кол-во -->
-											<div class="product__qty qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
-												<a class="qty__minus unselectable" href="javascript:void(0)" title="Уменьшить"><i class="icon-minus"></i></a>
-												<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{recently_viewed_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
-												<a class="qty__plus unselectable" href="javascript:void(0)" title="Увеличить"><i class="icon-plus"></i></a>
-											</div>
-
 											<!-- Добавление товара в избранное и сравнение и в корзину -->
 											<div class="product__addCart">
 												<!-- Добавление в корзину -->
@@ -2710,39 +2692,20 @@
 											</div>
 												
 										</div>
-
-										<!-- Наличие -->
-										<div class="product__available {% IF recently_viewed_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF recently_viewed_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
-											<span class="goodsModRestValue" data-value="{recently_viewed_goods.MAX_REST_VALUE}">
-												{% IF recently_viewed_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF recently_viewed_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
-											</span>
-										</div>
-							
 									</div>
-								</form>
-							</div>
-							{% ENDFOR %}
+							
+								</div>
+							</form>
 						</div>
-
-						<!-- Навигация -->
-						<div class="swiper-navigate flex">
-							<div class="swiper-navigation flex">
-								<div class="swiper-button-prev"></div>
-								<div class="swiper-button-next"></div>
-							</div>
-							<div class="swiper-progressbar"></div>
-							<div class="swiper-fraction flex">
-								<div class="swiper-pagination-current">00</div>							
-								<div class="swiper-pagination-separator">/</div>
-								<div class="swiper-pagination-total">10</div>
-							</div>
-						</div>
-
+						{% ENDFOR %}
 					</div>
-				<!-- </div> -->
+				</div>
+				
 			</div>
 		</section>
 		{% ENDIF recently_viewed_goods_empty %}
+
+		{% ENDIF index_page %}
 
 		<!-- Подвал -->
 		<footer id="footer">
