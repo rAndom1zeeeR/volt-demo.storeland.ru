@@ -449,7 +449,7 @@
 				<div class="block__title block__visible flex">
 					<a class="title" href="{CATALOG_TOP_SALES_URL}" title="Перейти в Хиты продаж"><span>Хиты продаж</span></a>
 					<!-- Показать все -->
-					<a class="visible__button button-icon button-link" href="{CATALOG_TOP_SALES_URL}" title="Смотреть всё" data-txt="Скрыть всё">
+					<a class="visible__button button-icon button-link" href="{CATALOG_TOP_SALES_URL}" title="Смотреть всё" data-txt="Скрыть">
 						<span>Смотреть всё</span>
 						<i class="icon-chevron_right"></i>
 					</a>
@@ -1128,7 +1128,7 @@
 				<div class="block__title block__visible flex">
 					<a class="title" href="{CATALOG_NEW_URL}" title="Перейти в Новинки"><span>Новинки</span></a>
 					<!-- Показать все -->
-					<a class="visible__button button-icon button-link" href="{CATALOG_TOP_SALES_URL}" title="Смотреть всё" data-txt="Скрыть всё">
+					<a class="visible__button button-icon button-link" href="{CATALOG_TOP_SALES_URL}" title="Смотреть всё" data-txt="Скрыть">
 						<span>Смотреть всё</span>
 						<i class="icon-chevron_right"></i>
 					</a>
@@ -1517,7 +1517,7 @@
 				<div class="block__title block__visible flex">
 					<a class="title" href="{CATALOG_INDEX_PAGE_URL}" title="Перейти в Товары на главной"><span>Товары на главной</span></a>
 					<!-- Показать все -->
-					<a class="visible__button button-icon button-link" href="{CATALOG_INDEX_PAGE_URL}" title="Смотреть всё" data-txt="Скрыть всё">
+					<a class="visible__button button-icon button-link" href="{CATALOG_INDEX_PAGE_URL}" title="Смотреть всё" data-txt="Скрыть">
 						<span>Смотреть всё</span>
 						<i class="icon-chevron_right"></i>
 					</a>
@@ -2340,6 +2340,26 @@
 						<h1 class="title"><a href="{CART_URL}" title="Корзина"><span>Корзина</span></a></h1>
 						{% ENDIF %}
 					</div>
+
+					<!-- Категории каталога -->
+					{% IF MOD_LNAME = catalog && goods_empty=0 && IS_FULL_CATALOG=0 && nested_categories_list_empty=0 %}
+					<div class="main__categories">
+						<div class="row row-small">
+							<div class="main__categories_list flex">
+								{% FOR nested_categories_list %}
+								<a class="main__categories_item" data-id="{nested_categories_list.ID}" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
+									<span>{nested_categories_list.NAME}</span>
+								</a>
+								{% ENDFOR %}
+								<!-- <div class="main__categories_more visible__button button-icon button-link" title="Показать ещё" data-txt="Скрыть">
+									<span>Показать ещё</span>
+									<i class="icon-chevron_right"></i>
+								</div> -->
+							</div>
+						</div>
+					</div>
+					{% ENDIF catalog %}
+
 				</div>
 
 				<div class="main__inner flex-start">
@@ -3130,7 +3150,7 @@
 					<div>
 						<h4 class="title">Общие положения</h4>
 						<br />
-						<p>Некоторые объекты, размещенные на сайте, являются интеллектуальной собственностью компании StoreLand. Использование таких объектов установлено действующим законодательством РФ.</p>
+						<p>Некоторые объекты, размещённые на сайте, являются интеллектуальной собственностью компании StoreLand. Использование таких объектов установлено действующим законодательством РФ.</p>
 						<p>На сайте StoreLand имеются ссылки, позволяющие перейти на другие сайты. Компания StoreLand не несет ответственности за сведения, публикуемые на этих сайтах и предоставляет ссылки на них только в целях обеспечения удобства для посетителей своего сайта.</p>
 					</div>
 					<br />

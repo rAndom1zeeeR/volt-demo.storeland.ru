@@ -293,11 +293,11 @@ function mainnav(id,rows,media){
 						mainNavOverflow.addClass('opened');
 						$('#overlay').addClass('opened');
 					}
-					// Запуск функции Определения положения кнопки еще
+					// Запуск функции Определения положения кнопки ещё
 					positionMore()
 				});
 				
-				// Определение положения кнопки еще
+				// Определение положения кнопки ещё
 				function positionMore(){
 					var morePos = mainNav.find('.mainnav__more').position().left;
 					var contentPos = parseInt(morePos) - mainNavOverflow.width() / 3;
@@ -1235,7 +1235,7 @@ function pageGoods() {
 				opinionContent.find('.opinion__item').removeClass('show');
 				$('html, body').animate({scrollTop : jQuery('.productView__opinion').offset().top - 60}, 600);
 			}else{
-				$(this).addClass('active').find('span').text("Скрыть все");
+				$(this).addClass('active').find('span').text("Скрыть");
 				opinionContent.find('.opinion__item').addClass('show');
 			}
 		});
@@ -3659,4 +3659,37 @@ function swiperViewed(id){
 
 	// Скрываем навигацию родителя если слайдер заблокирован
 	$(id).find('.swiper-navigation-lock').parent().addClass('swiper-navigation-lock')
+}
+
+///////////////////////////////////////
+// Функция показать все на главной
+// TODO переделать функцию отображения всех категорий
+///////////////////////////////////////
+function categoriesVisible(id){
+	var item = $(id).find('.categories__item');
+	var visible = $(id).find('.categories__item:visible').length;
+	var items = $(id).attr('data-items');
+
+	// Кнопка показать все
+	var button = $(id).find('.visible__button');
+	
+	// Скрываем кнопку показать все если мало товаров
+	item.length > visible ? button.show() : button.hide()
+
+	// Функция открытия скрытых товаров
+	button.on('click', function(event){
+		event.preventDefault();
+		changeTxt($(this))
+		if($(this).hasClass('active')){
+			$(this).removeClass('active')
+			$(id).removeClass('active')
+			item.removeClass('show')
+			// TODO проверить
+			// $('html, body').animate({scrollTop : $(id).offset().top}, 600);
+		}else{
+			$(this).addClass('active')
+			$(id).addClass('active')
+			item.addClass('show')
+		}
+	});
 }

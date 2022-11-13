@@ -1,7 +1,7 @@
 <!-- В корне каталога товаров отобразим все корневые категории если они есть на сайте -->
 <div class="products">
 	<!-- Вывод категорий -->
-	{% IFNOT nested_categories_list_empty %}
+	{% IFNOT nested_categories_list_empty && IS_FULL_CATALOG || goods_empty %}
 	<div class="categories {% IF IS_FULL_CATALOG || goods_empty %}categories__full{% ENDIF %}">
 		<div class="row row-small">
 			<div class="categories__list flex {% IF index_page %}index{% ENDIF %}">
@@ -25,11 +25,11 @@
 						</div>
 					</a>
 				</div>
-				{% ENDFOR %}
+				{% ENDFOR nested_categories_list %}
 			</div>
 		</div>
 	</div>
-	{% ENDIF %}
+	{% ENDIF nested_categories_list_empty %}
 	
 	<!-- Если нет товаров, выводим сообщение пользователю -->
 	{% IF nested_categories_list_empty && goods_empty %}
