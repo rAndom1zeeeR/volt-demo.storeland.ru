@@ -14,6 +14,9 @@
 	--color-blue: #33B5D1;
 	--color-orange: #F6921D;
 	--color-shadow: rgba(12, 83, 148, 0.2);
+	--color-shadow2: rgba(6, 33, 57, 0.3);
+	--color-shadow-white2: rgba(255, 255, 255, 0.2);
+	--color-shadow-white6: rgba(255, 255, 255, 0.6);
 }
 
 /**************************************/
@@ -575,6 +578,12 @@ h5 {font-size: 0.875rem;}
 .product__hoverImage:last-child {margin: 0;}
 .product__hoverImage:after {content: '';width: 100%;height: .25rem;background: var(--color-gray);display: block;position: absolute;bottom: 0;}
 .product__hoverImage.active:after {background: var(--color-black);}
+/* Счетчик */
+.counter {color: var(--color-red);font-size: 1.125rem;font-weight: bold;}
+.counter i {font-size: 2rem;line-height: 1;margin-right: .75rem;}
+.counter__item {display: flex;}
+.counter__item:after {content: ':';margin: 0 .25rem;}
+.counter__item:last-child:after {display: none;}
 @media all and (min-width: 1024px) {
 	.has-sidebar .product__item {width: 33.333333%;}
 	.has-sidebar .product__img {height: 13.75rem;}
@@ -623,7 +632,7 @@ h5 {font-size: 0.875rem;}
 @media all and (max-width: 479px) {
 	.products__grid .product__art {display: none;}
 	.products__grid .product__inner {position: absolute;right: 0;top: -2.75rem;}
-	.products__grid .product__links {background-color: rgba(6, 33, 57, 0.3);padding: .25rem 0;}
+	.products__grid .product__links {background-color: var(--color-shadow2);padding: .25rem 0;}
 	.products__grid .product__links a {margin: 0 .5rem;color: var(--color-white);}
 	.products__grid .product__links a:hover, .products__grid .product__links a.added {color: var(--color-primary);}
 }
@@ -719,23 +728,22 @@ h5 {font-size: 0.875rem;}
 /****************************************/
 /*** Распродажа ***/
 /****************************************/
-.pdt__sales_inner {background-color: var(--color-secondary);padding: 1.5rem;}
+.pdt__sales_inner {background-color: var(--color-secondary);padding: 1.5rem;position: relative;}
+.pdt__sales_inner:before, .pdt__sales_inner:after {font-family: 'icomoon';font-size: 16rem;line-height: 1;color: var(--color-shadow-white2);position: absolute;}
+.pdt__sales_inner:before {bottom: -4rem;left: -3rem;content: '\e90a';transform: rotateY(180deg);}
+.pdt__sales_inner:after {top: -4rem;right: -2rem;content: '\e90a';}
 #pdt__sales .product__item {background-color: var(--color-white);margin: 0;}
 #pdt__sales .product__shop {padding-left: 1rem;width: calc(100% - 13rem);}
 #pdt__sales .product__links a {font-size: 1rem;}
 #pdt__sales .product__image {width: 13rem;height: 13rem;}
 #pdt__sales .product__img {height: 13rem;}
 #pdt__sales .product__available {max-width: 4.625rem;margin-left: .625rem;}
-#pdt__sales .swiper-navigation {background-color: rgba(255, 255, 255, 0.2);}
-#pdt__sales .swiper-navigation [class*="button-"] {color: rgba(255, 255, 255, 0.6);}
+#pdt__sales .product__available span {white-space: nowrap;}
+#pdt__sales .swiper-navigation {background-color: var(--color-shadow-white2);}
+#pdt__sales .swiper-navigation [class*="button-"] {color: var(--color-shadow-white6);}
 #pdt__sales .swiper-navigation [class*="button-"]:hover {opacity: 1;}
-#pdt__sales .swiper-navigation:before {background-color: rgba(255, 255, 255, 0.6);}
+#pdt__sales .swiper-navigation:before {background-color: var(--color-shadow-white6);}
 #pdt__sales .block__title .title {color: var(--color-white);}
-.counter {color: var(--color-red);font-size: 1.125rem;font-weight: bold;}
-.counter i {font-size: 2rem;line-height: 1;margin-right: .75rem;}
-.counter__item {display: flex;}
-.counter__item:after {content: ':';margin: 0 .25rem;}
-.counter__item:last-child:after {display: none;}
 @media all and (max-width: 639px) {
 	#pdt__sales .product__image {width: 100%;}
 	#pdt__sales .product__shop {width: 100%;padding: 1rem 0 0 0;}
@@ -1421,13 +1429,13 @@ header .catalog__sub[data-level="1"] {background-color: var(--color-lightgray);}
 .slideshow__pretitle {margin-bottom: .5rem;}
 .slideshow__button {margin-top: 1rem;}
 /* Навигация */
-#slideshow .swiper-navigation {position: absolute;right: 1rem;bottom: 0;z-index: 4;background-color: rgba(6, 33, 57, 0.3);}
-#slideshow .swiper-navigation [class*="button-"] {color: rgba(255, 255, 255, 0.6);}
+#slideshow .swiper-navigation {position: absolute;right: 1rem;bottom: 0;z-index: 4;background-color: var(--color-shadow2);}
+#slideshow .swiper-navigation [class*="button-"] {color: var(--color-shadow-white6);}
 #slideshow .swiper-navigation [class*="button-"]:hover {color: var(--color-white);}
-#slideshow .swiper-navigation:before {background-color: rgba(255, 255, 255, 0.6);}
+#slideshow .swiper-navigation:before {background-color: var(--color-shadow-white6);}
 #slideshow .swiper-paginations {bottom: .75rem;position: absolute;width: 100%;z-index: 1;}
-#slideshow .swiper-pagination {width: auto;background: rgba(6, 33, 57, 0.3);padding: .5rem;margin: 0 auto;position: relative;bottom: auto;}
-#slideshow .swiper-pagination-bullet {border-radius: 0;background: rgba(255, 255, 255, 0.3);}
+#slideshow .swiper-pagination {width: auto;background: var(--color-shadow2);padding: .5rem;margin: 0 auto;position: relative;bottom: auto;}
+#slideshow .swiper-pagination-bullet {border-radius: 0;background: var(--color-shadow-white2);}
 #slideshow .swiper-pagination-bullet-active {background-color: var(--color-white);}
 @media all and (max-width: 1023px) {
 	.slideshow__swiper {width: 100%;padding: 0;}
@@ -1581,11 +1589,11 @@ footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
 }
 
 
-
 /**************************************/
 /*** Обратный звонок ***/
 /**************************************/
-.callback__info {width: 21rem;padding: 1.5rem 1rem;background-color: var(--color-primary);color: var(--color-white);line-height: 1.5;}
+.callback__info {width: 21rem;padding: 1.5rem 1rem;background-color: var(--color-primary);color: var(--color-white);line-height: 1.5;position: relative;}
+.callback__info:before {content: '\e928';font-family: 'icomoon';font-size: 8rem;line-height: 1;color: var(--color-shadow-white2);position: absolute;bottom: -2rem;left: -2rem;}
 .callback__title {font-size: 1.25rem;font-weight: bold;margin-bottom: .5rem;}
 .callback__content {width: calc(100% - 21rem);padding: 1rem;background-color: var(--color-gray);flex-grow: 1;}
 #callback .form__input {width: 35%;height: 3rem;background-color: var(--color-white);}
@@ -1601,12 +1609,10 @@ footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
 }
 @media all and (max-width: 639px) {
 	#callback .form__input {width: calc(50% - 1px);margin-bottom: .5rem;}
-	/* #callback .form__fields:before {left: 50%;} */
 	#callback .form__pp {text-align: center;}
 }
 @media all and (max-width: 479px) {
 	#callback .form__input {width: 100%;}
-	/* #callback .form__fields:before {display: none;} */
 }
 
 

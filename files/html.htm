@@ -722,10 +722,20 @@
 									</div>
 
 									<!-- Наличие -->
-									<div class="product__available {% IF index_page_favorites_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF index_page_favorites_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
-										<span class="goodsModRestValue" data-value="{index_page_favorites_goods.MAX_REST_VALUE}">
-											{% IF index_page_favorites_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF index_page_favorites_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
-										</span>
+									<div class="product__available {% IF index_page_favorites_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF index_page_favorites_goods.MAX_REST_VALUE > 9 %}alot{% ELSE %}few{% ENDIF %}">
+										<div class="goodsModRestValue" data-value="{index_page_favorites_goods.MAX_REST_VALUE}">
+											<b>
+												{% IF index_page_favorites_goods.MAX_REST_VALUE = 0 %}
+													Нет
+												{% ELSE %}
+													{index_page_favorites_goods.MAX_REST_VALUE}
+													{% FOR mods %}
+														{index_page_favorites_goods.mods.MEASURE_NAME}{break}
+													{% ENDFOR %}
+												{% ENDIF %}
+											</b>
+											<span>в наличии</span>
+										</div>
 									</div>
 						
 								</div>
@@ -1039,10 +1049,20 @@
 											</div>
 
 											<!-- Наличие -->
-											<div class="product__available {% IF index_page_sale_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF index_page_sale_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
-												<span class="goodsModRestValue" data-value="{index_page_sale_goods.MAX_REST_VALUE}">
-													{% IF index_page_sale_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF index_page_sale_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
-												</span>
+											<div class="product__available {% IF index_page_sale_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF index_page_sale_goods.MAX_REST_VALUE > 9 %}alot{% ELSE %}few{% ENDIF %}">
+												<div class="goodsModRestValue" data-value="{index_page_sale_goods.MAX_REST_VALUE}">
+													<b>
+														{% IF index_page_sale_goods.MAX_REST_VALUE = 0 %}
+															Нет
+														{% ELSE %}
+															{index_page_sale_goods.MAX_REST_VALUE}
+															{% FOR mods %}
+																{index_page_sale_goods.mods.MEASURE_NAME}{break}
+															{% ENDFOR %}
+														{% ENDIF %}
+													</b>
+													<span>в наличии</span>
+												</div>
 											</div>
 												
 										</div>
@@ -1768,10 +1788,20 @@
 									</div>
 
 									<!-- Наличие -->
-									<div class="product__available {% IF index_page_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF index_page_goods.MAX_REST_VALUE > 10 %}alot{% ELSE %}few{% ENDIF %}">
-										<span class="goodsModRestValue" data-value="{index_page_goods.MAX_REST_VALUE}">
-											{% IF index_page_goods.MAX_REST_VALUE = 0 %}Нет в наличии{% ELSEIF index_page_goods.MAX_REST_VALUE > 10 %}В наличии Много{% ELSE %}В наличии Мало{% ENDIF %}
-										</span>
+									<div class="product__available {% IF index_page_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF index_page_goods.MAX_REST_VALUE > 9 %}alot{% ELSE %}few{% ENDIF %}">
+										<div class="goodsModRestValue" data-value="{index_page_goods.MAX_REST_VALUE}">
+											<b>
+												{% IF index_page_goods.MAX_REST_VALUE = 0 %}
+													Нет
+												{% ELSE %}
+													{index_page_goods.MAX_REST_VALUE}
+													{% FOR mods %}
+														{index_page_goods.mods.MEASURE_NAME}{break}
+													{% ENDFOR %}
+												{% ENDIF %}
+											</b>
+											<span>в наличии</span>
+										</div>
 									</div>
 						
 								</div>
@@ -2700,7 +2730,7 @@
 						{% ENDFOR %}
 					</div>
 				</div>
-				
+
 			</div>
 		</section>
 		{% ENDIF recently_viewed_goods_empty %}
@@ -3183,7 +3213,6 @@
 	<script async type="text/javascript">
 		$(document).ready(function () {
 			pageGoods();
-			goodsModRest();
 			goodsModification();
 			quantity();
 			prodQty();

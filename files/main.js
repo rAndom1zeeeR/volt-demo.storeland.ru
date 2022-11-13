@@ -429,18 +429,18 @@ function priceDiff(obj,type) {
 function goodsModRest() {
 	$('.goodsModRestValue').each(function(){
 		var value = $(this).attr('data-value');
-		if (value > 0 && value < 11) {
-			$(this).text('В наличии мало');
+		if (value > 0 && value < 10) {
+			// $(this).text('В наличии мало');
 			$(this).css('opacity', '1');
 			$(this).parent().removeClass('alot').removeClass('zero');
 			$(this).parent().addClass('few');
-		}else if (value > 10) {
-			$(this).text('В наличии много');
+		}else if (value > 9) {
+			// $(this).text('В наличии много');
 			$(this).css('opacity', '1');
 			$(this).parent().removeClass('few').removeClass('zero');
 			$(this).parent().addClass('alot');
 		}else if (value == 0) {
-			$(this).text('Нет в наличии');
+			// $(this).text('Нет в наличии');
 			$(this).css('opacity', '1');
 			$(this).parent().removeClass('few').removeClass('zero');
 			$(this).parent().addClass('zero');
@@ -1538,6 +1538,7 @@ function goodsModification($container) {
 				}
 
 				// Есть ли товар есть в наличии
+				// TODO проверить и заменить на отдельную функцию
 				if(modificationRestValue > 0) {
 					goodsModView.removeClass('productView__empty');
 					goodsModRestValue.html('В наличии').attr('data-value', modificationRestValue);
@@ -1553,12 +1554,13 @@ function goodsModification($container) {
 					goodsModQty.val("1").attr('max', 1);
 				}
 
-				// Много Мало Отсутствует
+				// Много Мало Отсутствует 
+				// TODO проверить и заменить на отдельную функцию
 				if(modificationRestValue > 0) {
 					goodsModRestValue.html('В наличии мало');
 					goodsModRestValue.parent().removeClass('alot').removeClass('zero');
 					goodsModRestValue.parent().addClass('few');
-				} else if(modificationRestValue > 10) {
+				} else if(modificationRestValue > 9) {
 					goodsModRestValue.html('В наличии много');
 					goodsModRestValue.parent().removeClass('few').removeClass('zero');
 					goodsModRestValue.parent().addClass('alot');
@@ -3108,7 +3110,8 @@ $(document).ready(function(){
 	cartAjaxQty();
 	quantity();
 	swiperViewed('#pdt__viewed');
-	swiperCatalog();
+	swiperCatalog();	
+	// goodsModRest();
 
 	// Удаление классов загрузки для элементов страницы
 	$('.loading').addClass('loaded');
