@@ -3,27 +3,27 @@
 	<!-- Вывод категорий -->
 	{% IFNOT nested_categories_list_empty %}
 	<div class="categories {% IF IS_FULL_CATALOG || goods_empty %}categories__full{% ENDIF %}">
-		<div class="row">
+		<div class="row row-small">
 			<div class="categories__list flex {% IF index_page %}index{% ENDIF %}">
 				{% FOR nested_categories_list %}
 				<div class="categories__item" data-id="{nested_categories_list.ID}">
 					<a class="categories__image flex-center" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
 						<img src="{% IF nested_categories_list.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{nested_categories_list.IMAGE_MEDIUM}{% ENDIF %}">
 					</a>
-					<a class="categories__name" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
-						<span>{nested_categories_list.NAME}</span>
-					</a>
-					<div class="categories__content flex">
-						<div class="categories__count">
+					<a class="categories__content flex-start" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
+						<div class="categories__name">
+							<span>{nested_categories_list.NAME}</span>
+						</div>
+						<div class="categories__count flex">
 							<span>{nested_categories_list.GOODS_COUNT} товар{nested_categories_list.GOODS_COUNT | gen_word_end("","а","ов")}</span>
 						</div>
-						<div class="categories__count categories__count_hover">
+						<div class="categories__count categories__count_hover flex">
 							<span>Смотреть все подкатегории</span>
 						</div>
-						<a class="categories__icon" href="{nested_categories_list.URL}" title="{nested_categories_list.NAME}">
+						<div class="categories__icon">
 							<i class="icon-chevron_right"></i>
-						</a>
-					</div>
+						</div>
+					</a>
 				</div>
 				{% ENDFOR %}
 			</div>

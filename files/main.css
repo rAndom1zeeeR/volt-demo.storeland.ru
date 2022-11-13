@@ -795,24 +795,62 @@ h5 {font-size: 0.875rem;}
 /****************************************/
 /*** Категории ***/
 /****************************************/
-.categories__item {width: calc(20% - 2rem);margin: 2rem 1rem 0 1rem;background-color: var(--color-lightgray);padding: 1rem;position: relative;transition: all 0.3s ease;}
-.categories__item:hover {box-shadow: -1px 4px 20px 2px var(--color-shadow);}
-.categories__image {height: 224px;}
-.categories__name {max-height: 3rem;line-height: 1.5;overflow: hidden;}
+.categories .row-small {margin-top: -1rem;}
 .products + .htmlDataBlock {margin-top: 2rem;}
+
+
+/**************************************/
+/*** Популярные категории ***/
+/**************************************/
+#category .categories__item {margin: 0;}
+.categories__item {width: calc(20% - 1rem);margin: 1rem .5rem 0 .5rem;background-color: var(--color-lightgray);box-shadow: -1px 4px 20px 2px transparent;padding: .625rem;position: relative;transition: all 0.3s ease;}
+.categories__item:hover {box-shadow: -1px 4px 20px 2px var(--color-shadow);}
+.categories__image {height: 12.125rem;background-color: var(--color-lightgray);position: relative;z-index: 2;transition: all 0.3s ease;}
+.categories__content {margin-top: 1rem;min-height: 2.75rem;padding-right: 2.75rem;justify-content: flex-end;flex-direction: column;}
+.categories__name {height: 2.5rem;line-height: 1.25rem;overflow: hidden;display: block;}
+.categories__item:hover .categories__name {opacity: 0;}
+.categories__icon {font-size: 1.5rem;width: 2.75rem;height: 2.75rem;line-height: 2.75rem;right: .625rem; position: absolute;display: inline-block;text-align: center;background-color: var(--color-secondary);color: var(--color-white);transition: all 0.3s ease;}
+.categories__icon:hover {background-color: var(--color-primary);color: var(--color-white);}
+.categories__count {font-size: .875rem;font-weight: bold;color: var(--color-darkgray);margin-top: .75rem;align-items: flex-end;}
+.categories__count_hover {display: none;position: absolute;left: 1rem;bottom: 1.5rem;}
+.categories__item:hover .categories__count {opacity: 0;}
+.categories__item:hover .categories__count_hover {display: flex;opacity: 1;}
+.categories__sub .categories__image {display: none;}
+.categories__sub .categories__content {display: none;}
+.categories__sub .categories__name {height: auto;opacity: 1;}
+.categories__sub[data-level="2"] {display: none;}
+.categories__sub_item {margin: 0 0 1rem 0;}
+.categories__sub_item:last-child {margin: 0;}
+.categories__sub_item .categories__name {margin: 0;}
+
+.categories__sub {height: 11.275rem;background-color: var(--color-lightgray);width: calc(100% - 2rem);top: 1rem;left: 1rem;position: absolute;overflow-y: auto;}
+.categories__sub::-webkit-scrollbar {width: .5rem;height: 0;}
+
+.categories__sub {opacity: 0;transition: all 0.3s ease;transform: scale(1,0);transform-origin: right top;}
+.categories__item:hover .categories__sub {z-index: 3;opacity: 1;transform: scale(1);}
+
+
 @media all and (max-width: 1199px) {
-	.categories__image {height: 180px;}
+	.categories__item {width: calc(25% - 1rem);}
+	.categories__image {height: 13rem;}
+}
+@media all and (max-width: 1023px) {
+	.categories__image {height: 9rem;}
 }
 @media all and (max-width: 767px) {
-	.categories__item {width: calc(50% - 2rem);}
-	.categories__image {height: 254px;}
+	.categories__item {width: calc(33.333333% - 1rem);}
+	.categories__image {height: 10.75rem;}
 }
 @media all and (max-width: 639px) {
-	.categories__image {height: 174px;}
+	.categories__item {width: calc(50% - 1rem);}
+	.categories__image {height: 12.25rem;}
 }
 @media all and (max-width: 479px) {
-	.categories__item {width: 100%;}
-	.categories__image {height: 254px;}
+	.categories__image {height: 9rem;}
+	.categories__icon {display: none;}
+}
+@media all and (max-width: 374px) {
+	.categories__image {height: 7.25rem;}
 }
 
 
@@ -1656,53 +1694,6 @@ footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
 }
 
 
-/**************************************/
-/*** Популярные категории ***/
-/**************************************/
-#category .categories__item {margin: 0;}
-.categories__image {height: 11.275rem;background-color: var(--color-lightgray);position: relative;z-index: 2;transition: all 0.3s ease;}
-.categories__name {margin: 1rem 0 .5rem;display: block;}
-.categories__icon {font-size: 1.5rem;width: 2.75rem;height: 2.75rem;line-height: 2.75rem;display: inline-block;text-align: center;background-color: var(--color-secondary);color: var(--color-white);transition: all 0.3s ease;}
-.categories__icon:hover {background-color: var(--color-primary);color: var(--color-white);}
-.categories__count {font-size: .875rem;font-weight: bold;color: var(--color-darkgray);width: calc(100% - 2.75rem);flex-grow: 1;}
-.categories__content {align-items: flex-end;}
-.categories__sub .categories__image {display: none;}
-.categories__sub .categories__content {display: none;}
-.categories__sub[data-level="2"] {display: none;}
-.categories__sub_item {margin: 0 0 1rem 0;}
-.categories__sub_item:last-child {margin: 0;}
-.categories__sub_item .categories__name {margin: 0;}
-
-.categories__sub {height: 11.275rem;background-color: var(--color-lightgray);width: calc(100% - 2rem);top: 1rem;left: 1rem;position: absolute;overflow-y: auto;}
-.categories__sub::-webkit-scrollbar {width: .5rem;height: 0;}
-
-.categories__sub {opacity: 0;transition: all 0.3s ease;transform: scale(1,0);transform-origin: right top;}
-.categories__item:hover .categories__sub {z-index: 3;opacity: 1;transform: scale(1);}
-
-.categories__count_hover {display: none;}
-.categories__item:hover .categories__count {display: none;}
-.categories__item:hover .categories__count_hover {display: block;}
-
-@media all and (max-width: 1199px) {
-	.categories__image {height: 12.25rem;}
-}
-@media all and (max-width: 1023px) {
-	.categories__image {height: 12rem;}
-}
-@media all and (max-width: 767px) {
-	.categories__image {height: 10rem;}
-}
-@media all and (max-width: 639px) {
-	.categories__image {height: 11.5rem;}
-}
-@media all and (max-width: 479px) {
-	.categories__item {padding: .5rem;}
-	.categories__image {height: 8.25rem;}
-	.categories__icon {display: none;}
-}
-@media all and (max-width: 374px) {
-	.categories__image {height: 6.5rem;}
-}
 
 
 
