@@ -1092,19 +1092,19 @@
 							<span class="sticker__sales">%</span>
 							{% ENDIF %}
 						</div>
-			
+				
 						<!-- Изображение -->
 						<a class="product__img flex-center" href="{related_views_goods.URL_MIN_PRICE_NOW | url_amp}" title="{related_views_goods.NAME}" itemprop="url" data-id="{related_views_goods.IMAGE_ID}">
 							<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{related_views_goods.NAME}" />
 						</a>
-			
+				
 						<!-- Смена Изображения при наведении -->
 						<a class="product__image-hover flex" href="{related_views_goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-			
+				
 						{% FOR images %}
 						<input type="hidden" class="product__imgID" data-id="{related_views_goods.images.ID}" data-image="{related_views_goods.images.MEDIUM}" />
 						{% ENDFOR %}
-			
+				
 					</div><!-- //END Изображение товара -->
 					
 					<!-- Информация товара -->
@@ -1129,7 +1129,7 @@
 							<div class="ratings__label">{% IF related_views_goods.OPINION_RATING_CNT_ALL > 0 %}{related_views_goods.OPINION_RATING_CNT_ALL} отзыв{related_views_goods.OPINION_RATING_CNT_ALL | gen_word_end("","а","ов")}{% ELSE %}Нет отзывов{% ENDIF %}</div>
 						</div>
 						{% ENDIF %}
-			
+				
 						<div class="product__inner flex justify-between">
 							<!-- Артикул товара -->
 							{% IF related_views_goods.ART_NUMBER %}
@@ -1137,7 +1137,7 @@
 								<span itemprop="sku">{related_views_goods.ART_NUMBER}</span>
 							</div>
 							{% ENDIF %}
-
+				
 							<!-- Добавление товара в избранное и сравнение и в корзину -->
 							<div class="product__links flex product__margin {% IF related_views_goods.IS_HAS_IN_COMPARE_LIST || related_views_goods.IS_HAS_IN_FAVORITES_LIST %}added{% ENDIF %}">
 								<!-- Если есть возможность добавить товар в Избранное -->
@@ -1192,7 +1192,7 @@
 									<span>Добавить в избранное</span>
 								</a>
 								{% ENDIF %}
-
+				
 								<!-- Если в тарифном плане подключен модуль сравнения товаров и он не выключен в настройках магазина -->
 								{% IFNOT SETTINGS_COMPARE_DISABLE && related_views_goods.IS_HAS_IN_COMPARE_LIST %}
 								<a class="add-compare added"
@@ -1248,12 +1248,12 @@
 				
 							</div>
 						</div>
-
+				
 						<!-- Название товара -->
 						<a class="product__name flex product__margin" href="{related_views_goods.URL_MIN_PRICE_NOW | url_amp}" title="{related_views_goods.NAME}">
 							<span itemprop="name">{related_views_goods.NAME}</span>
 						</a>
-			
+				
 						<!-- Краткое описание -->
 						<div class="product__desc product__margin" itemprop="description">
 							{% IF related_views_goods.DESCRIPTION_SHORT %}
@@ -1264,7 +1264,7 @@
 								Описание товара "{related_views_goods.NAME}"
 							{% ENDIF %}
 						</div>
-			
+				
 						<!-- Цена для поисковиков -->
 						<div itemprop="offers" itemscope itemtype="http://schema.org/AggregateOffer">
 							<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
@@ -1272,7 +1272,7 @@
 							<meta itemprop="highPrice" content="{related_views_goods.MAX_PRICE_NOW}">
 							<meta itemprop="offerCount" content="{% FOR mods %}{% IF related_views_goods.mods.last %}{related_views_goods.mods.length}{% ENDIF %}{% ENDFOR %}">
 						</div>
-			
+				
 						<!-- Цена -->
 						<div class="product__price product__margin flex justify-between {CURRENCY_CHAR_CODE} {% IF related_views_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT>related_views_goods.MIN_PRICE_NOW %}has-price-old{% ELSEIF related_views_goods.MIN_PRICE_OLD>related_views_goods.MIN_PRICE_NOW %}has-price-old{% ENDIF %}" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 							<meta itemprop="priceCurrency" content="{CURRENCY_CHAR_CODE}" />
@@ -1285,7 +1285,7 @@
 							<span class="price__old {CURRENCY_CHAR_CODE}">{related_views_goods.MIN_PRICE_OLD | money_format}</span>
 							{% ENDIF %}
 						</div>
-
+				
 						<!-- В корзину -->
 						<div class="product__addto flex">
 							<!-- Кол-во -->
@@ -1294,7 +1294,7 @@
 								<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{related_views_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
 								<a class="qty__plus unselectable" href="javascript:void(0)" title="Увеличить"><i class="icon-plus"></i></a>
 							</div>
-
+				
 							<!-- Добавление товара в избранное и сравнение и в корзину -->
 							<div class="product__addCart">
 								<!-- Добавление в корзину -->
@@ -1326,7 +1326,7 @@
 							</div>
 								
 						</div>
-
+				
 						<!-- Наличие -->
 						<div class="product__available {% IF related_views_goods.MAX_REST_VALUE = 0 %}zero{% ELSEIF related_views_goods.MAX_REST_VALUE > 9 %}alot{% ELSE %}few{% ENDIF %}">
 							<div class="goodsModRestValue" data-value="{related_views_goods.MAX_REST_VALUE}">
@@ -1335,33 +1335,19 @@
 										Нет
 									{% ELSE %}
 										{related_views_goods.MAX_REST_VALUE}
-										{% FOR goods_mod_list %}
-											{related_views_goods.goods_mod_list.MEASURE_NAME}{break}
+										{% FOR mods %}
+											{related_views_goods.mods.MEASURE_NAME}{break}
 										{% ENDFOR %}
 									{% ENDIF %}
 								</b>
 								<span>в наличии</span>
 							</div>
 						</div>
-			
+				
 					</div>
 				</form>
 			</div>
 			{% ENDFOR %}
-		</div>
-
-		<!-- Навигация -->
-		<div class="swiper-navigate flex">
-			<div class="swiper-navigation flex">
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-button-next"></div>
-			</div>
-			<div class="swiper-progressbar"></div>
-			<div class="swiper-fraction flex">
-				<div class="swiper-pagination-current">00</div>							
-				<div class="swiper-pagination-separator">/</div>
-				<div class="swiper-pagination-total">10</div>
-			</div>
 		</div>
 
 	</div>
