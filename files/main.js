@@ -411,13 +411,13 @@ function priceDiff(obj,type) {
 			var diff = 0;
 			if (type == 'percent') {
 				diffPercent = (((old - now)/old)*100).toFixed();
-				$(this).find('.ico__sales').text('-' + diffPercent + '%');
+				$(this).find('.sticker__sales').text('-' + diffPercent + '%');
 			} else {
 				diff = (old - now).toFixed();
-				$(this).find('.ico__sales .num').text(addSpaces(diff));
+				$(this).find('.sticker__sales .num').text(addSpaces(diff));
 			}
 		}else{
-			$(this).find('.ico__sales').hide();
+			$(this).find('.sticker__sales').hide();
 		}
 	});
 }
@@ -1460,7 +1460,7 @@ function goodsModification($container) {
 	var $parentBlock = $container || $('#main .productViewBlock')
 
 	var
-		goodsDataProperties = $parentBlock.find('.goodsModificationsProperty select[name="form[properties][]"]'),  // Запоминаем поля выбора свойств, для ускорения работы со значениями свойств
+		goodsDataProperties = $parentBlock.find('.modifications__properties select[name="form[properties][]"]'),  // Запоминаем поля выбора свойств, для ускорения работы со значениями свойств
 		goodsDataModifications = $parentBlock.find('.goodsModificationsSlug'); // Запоминаем блоки с информацией по модификациям, для ускорения работы
 
 	// Обновляет возможность выбора свойств модификации, для отключения возможности выбора по характеристикам модификации которой не существует.
@@ -1510,6 +1510,7 @@ function goodsModification($container) {
 				modificationPriceOld          = parseInt(modificationBlock.find('[name="price_old"]').val()),
 				modificationPriceOldFormated  = modificationBlock.find('.price_old_formated').html(),
 				modificationRestValue         = parseFloat(modificationBlock.find('[name="rest_value"]').val()),
+				modificationMeasure         	= modificationBlock.find('[name="measure_name"]').val(),
 				modificationDescription       = modificationBlock.find('.description').html(),
 				modificationGoodsModImageId   = modificationBlock.find('[name="goods_mod_image_id"]').val(),
 				goodsModificationId           = goodsModView.find('.goodsModificationId'),
@@ -1532,42 +1533,40 @@ function goodsModification($container) {
 				if(modificationPriceOld>modificationPriceNow) {
 					goodsPriceOld.css({'display':'inline-block'})
 					goodsPriceOld.html(modificationPriceOldFormated);
+					goodsPriceOld.parent().addClass('has-price-old')
 				} else {
 					goodsPriceOld.hide();
 					goodsPriceOld.html('');
+					goodsPriceOld.parent().removeClass('has-price-old')
 				}
 
-				// Есть ли товар есть в наличии
-				// TODO проверить и заменить на отдельную функцию
+				// Есть ли товар есть в наличии. Много Мало Отсутствует 
 				if(modificationRestValue > 0) {
 					goodsModView.removeClass('productView__empty');
-					goodsModRestValue.html('В наличии').attr('data-value', modificationRestValue);
+					goodsModRestValue.parent().removeClass('alot').removeClass('zero').addClass('few');
+
+					// Если остаток больше 9
+					if(modificationRestValue > 9){
+						goodsModRestValue.parent().removeClass('few').removeClass('zero').addClass('alot');						
+					}
+
+					// Если включено в настройках "Отключить возможность класть в корзину больше товара, чем есть в наличии"
 					if (goodsAvailableQty.hasClass('.has-max')) {
 						goodsModQty.val("1").attr('max', modificationRestValue);
 					} else {
 						goodsModQty.val("1").attr('max', 99999);
 					}
-				// Если товара нет в наличии
-				} else {
-					goodsModView.addClass('productView__empty');
-					goodsModRestValue.html(modificationRestValue).attr('data-value', modificationRestValue);
-					goodsModQty.val("1").attr('max', 1);
-				}
+					
+					// Обновляем кол-во и меру 
+					goodsModRestValue.find('b').text(modificationRestValue +' '+ modificationMeasure);
 
-				// Много Мало Отсутствует 
-				// TODO проверить и заменить на отдельную функцию
-				if(modificationRestValue > 0) {
-					goodsModRestValue.html('В наличии мало');
-					goodsModRestValue.parent().removeClass('alot').removeClass('zero');
-					goodsModRestValue.parent().addClass('few');
-				} else if(modificationRestValue > 9) {
-					goodsModRestValue.html('В наличии много');
-					goodsModRestValue.parent().removeClass('few').removeClass('zero');
-					goodsModRestValue.parent().addClass('alot');
 				} else {
-					goodsModRestValue.html('Нет в наличии');
-					goodsModRestValue.parent().removeClass('few').removeClass('zero');
-					goodsModRestValue.parent().addClass('zero');
+					// Нет в наличии
+					goodsModView.addClass('productView__empty');
+					goodsModRestValue.parent().removeClass('few').removeClass('zero').addClass('zero');
+					goodsModRestValue.attr('data-value', modificationRestValue);
+					goodsModRestValue.find('b').text('Нет');
+					goodsModQty.val("1").attr('max', 1);
 				}
 
 				// Покажем артикул модификации товара, если он указан
@@ -1581,9 +1580,11 @@ function goodsModification($container) {
 
 				// Описание модификации товара. Покажем если оно есть, спрячем если его у модификации нет
 				if(modificationDescription.length > 0) {
+					console.log('modificationDescription', modificationDescription)
 					goodsModDescriptionBlock.show().html('<div>' + modificationDescription + '</div>');
 				} else {
 					goodsModDescriptionBlock.hide().html();
+					console.log('modificationDescription2', modificationDescription.length)
 				}
 
 				// Идентификатор товарной модификации

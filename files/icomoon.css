@@ -121,7 +121,7 @@
 .icon-sort:before {
   content: "\e90c";
 }
-.icon-favorites_hover:before {
+.icon-favorites_hover:before, .icon-star:before {
   content: "\e90d";
 }
 .icon-package:before {
