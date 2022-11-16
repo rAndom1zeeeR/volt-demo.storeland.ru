@@ -485,7 +485,7 @@ h5 {font-size: 0.875rem;}
 /**************************************/
 /*** Хлебные крошки ***/
 /**************************************/
-.breadcrumbs {margin-bottom: 1.5rem;padding-bottom: .25rem;width: 100%;overflow-x: auto;display: block;position: relative;}
+.breadcrumbs {margin-bottom: .75rem;padding-bottom: .25rem;width: 100%;overflow-x: auto;display: block;position: relative;}
 .breadcrumbs ul {flex-wrap: nowrap;white-space: nowrap;}
 .breadcrumbs ul li span {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;max-width: 20rem;}
 .breadcrumbs ul li:last-child {color: var(--color-darkgray);font-weight: bold;}
@@ -696,6 +696,7 @@ h5 {font-size: 0.875rem;}
 /****************************************/
 /*** Товары мелким списком ***/
 /****************************************/
+.products__list_small .sticker {display: none;}
 .products__list_small .product__image {width: 6rem;height: 6rem;}
 .products__list_small .product__img {height: 6rem;}
 .products__list_small .product__shop {width: calc(100% - 6rem);}
@@ -1163,22 +1164,27 @@ h5 {font-size: 0.875rem;}
 /**************************************/
 /*** Список Акций ***/
 /**************************************/
-.promotion__item {padding: 1rem;}
-.promotion__percentage {text-align: center;font-size: 2rem;}
-.promotion__margin {margin-bottom: 1rem;}
-.promotion__name {font-size: 1.125rem;}
-.promotion__desc {max-height: 3.75rem;line-height: 1.25rem;overflow: hidden;color: var(--color-black);}
+.promotion__item {width: calc(33.333333% - 1rem);margin: 1rem .5rem 0 .5rem;padding: 1rem;background-color: var(--color-lightgray);}
+.promotion__form {flex-direction: column;justify-content: space-between;height: 100%;}
+.promotion__inner {width: 100%;}
+.promotion__inner + .promotion__inner {margin-top: 1rem;}
+.promotion__percentage {margin-right: 1.25rem;font-size: 2.25rem;font-weight: bold;padding: .5rem 1rem;background-color: var(--color-tertiary);}
+.promotion__button {font-size: 1.5rem;width: 2.75rem;height: 2.75rem;line-height: 2.75rem;padding: 0;}
+.promotion__name {font-size: 1.125rem;font-weight: bold;width: calc(100% - 8.75rem);flex-grow: 1;}
+.promotion__desc {flex-grow: 1;max-height: 3.75rem;line-height: 1.25rem;overflow: hidden;}
 .promotion__counter {display: none;}
 .promotion__counter div:after {content: ':';display: inline-block;margin: 0 .5rem 0 .25rem;}
 .promotion__counter div:last-child::after {display: none;}
+.promotion__date {flex-grow: 1;}
 .promotion__date-expired {display: none;}
 .promotion__empty .promotion__date-expired {display: block;}
 .promotion__empty .promotion__date-time {display: none;}
+.promotion__empty .promotion__percentage {background-color: var(--color-darkgray);color: var(--color-white)}
 /** Просмотр Акции **/
-.promotion__container {margin: 2rem 0;}
+.promotion__container {margin-bottom: 2rem;line-height: 1.5;}
 .promotion__content strong {margin: 0 .25rem;}
 .promotion__text {margin-top: 1rem;}
-.promotion__date-expired {color: var(--color-gray);}
+.promotion__date-expired {color: var(--color-darkgray);}
 
 
 /**************************************/
@@ -1370,6 +1376,7 @@ h5 {font-size: 0.875rem;}
 /*** Контакты ***/
 /**************************************/
 .header-region {width: 18rem;}
+.header-region i + span {max-width: calc(100% - 2.5rem);}
 .header-contacts {margin: 0 2rem;position: relative;}
 .header-contacts__content {width: 14rem;top: -1rem;left: -1rem;margin: 0;}
 .header-contacts__phone {font-size: 1.25rem;font-weight: 700;}
@@ -1568,7 +1575,7 @@ header .catalog__sub[data-level="1"] {background-color: var(--color-lightgray);}
 .news__nav {padding: .625rem 1rem;line-height: 1.25;font-weight: 700;}
 .news__nav.active {background-color: var(--color-lightgray);font-weight: 700;}
 .news__date {color: var(--color-darkgray);font-size: .875rem;font-weight: 500;}
-.news__image {height: 8rem;overflow: hidden;}
+.news__image {width: 8rem;height: 8rem;overflow: hidden;}
 .news__content {width: calc(100% - 8rem);padding-left: 1rem;}
 .news__title {margin: .5rem 0;line-height: 1.5rem;height: 4.5rem;overflow: hidden;display: block;}
 .news__desc {margin-top: 1rem;max-height: 4rem;line-height: 1.5;overflow: hidden;display: none;}

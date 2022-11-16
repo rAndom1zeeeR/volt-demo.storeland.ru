@@ -2757,6 +2757,7 @@ function catalog() {
 	// Сборосить категорию фильтра
 	$('.product__attr_open').on('click', function(event){
 		event.preventDefault();
+		console.log('asd')
 		$(this).toggleClass('active')
 		$(this).prev().slideToggle()
 	});
@@ -3264,43 +3265,17 @@ function indexNews() {
 
 // Функции стандартного слайдера
 function swiperSlider(id){
-	var nav = id + ' .swiper-navigate'
-	var total = $(id).find('.swiper-pagination-total');
-	var current = $(id).find('.swiper-pagination-current');
-
-	// Обновление данных
-	function updateMedia(t){
-		// Проверяем наличие навигации
-		if($(nav).length == '0'){ return false }
-		// Кол-во страниц
-		var newCount = t.snapGrid.length;
-		// Индекс слайда
-		var newIndex = t.realIndex + 1;
-
-		// Обновляем данные
-		total.text(newCount);
-		current.text(newIndex);
-
-		// Добавляем 0 если значение меньше 10
-		if (newCount < 10){
-			total.text('0' + newCount);
-		}
-
-		// Добавляем 0 если значение меньше 10
-		if (newIndex < 10){
-			current.text('0' + newIndex);
-		}
-	}
+	var nav = id + ' .swiper-navigation'
 
 	// Слайдер товаров
-	var swiper = new Swiper(id + ' .swiper-products', {
+	var swiper = new Swiper(id + ' .swiper', {
 		loop: false,
 		autoplay: false,
 		watchSlidesVisibility: true,
 		simulateTouch: true,
 		grabCursor: true,
 		slidesPerView: '5',
-		spaceBetween: 0,
+		spaceBetween: 16,
 		nested: true,
 		preloadImages: false,
 		lazy: {
@@ -3330,7 +3305,7 @@ function swiperSlider(id){
 				slidesPerView: '3',
 			},
 			768: {
-				slidesPerView: '3',
+				slidesPerView: '4',
 			},
 			1024: {
 				slidesPerView: '4',
@@ -3339,21 +3314,14 @@ function swiperSlider(id){
 				slidesPerView: '5',
 			}
 		},
-		on: {
-			init: function(){
-				updateMedia(this)
-			},
-			slideChangeTransitionStart: function(){
-				updateMedia(this)
-			},
-			slideChange: function(){
-				updateMedia(this)
-			},
-		}
 	});
 
-	// Скрываем навигацию родителя если слайдер заблокирован
-	$(id).find('.swiper-pagination-lock').parent().addClass('swiper-pagination-lock')
+	// Скрываем навигацию если слайдер заблокирован
+	if($(id).find('.swiper-button-lock').length){
+		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	}else{
+		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
+	}
 }
 
 // Каталог в шапке
