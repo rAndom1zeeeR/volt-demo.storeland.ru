@@ -2012,7 +2012,6 @@ function cartDelete(e){
 // Функция быстрого оформления заказа в корзине
 function orderStart(){
 	var globalOrder = $('#globalOrder');
-	var closeOrder = $('.closeOrder');
 	var pageCart = $('.page-cartTable');
 	//объект блока куда будет выводиться форма быстрого заказа
 	var OrderAjaxBlock = $('#OrderAjaxBlock');
@@ -2043,7 +2042,7 @@ function orderStart(){
 			$(".form__phone").mask("+7 (999) 999-9999");
 
 			// Отменить заказ
-			closeOrder.on('click', function() {
+			$('.closeOrder').on('click', function() {
 				pageCart.removeClass('startedOrder');
 				$(".qty__cart").removeAttr('readonly');
 				$('.startOrder').removeClass('disabled');
@@ -2053,7 +2052,7 @@ function orderStart(){
 			});
 
 			// Валидация формы на странице оформления заказа
-			$(".total__buttons button").on('click', function(){
+			$(".cartTotal__buttons button").on('click', function(){
 				var form = $(".fastOrder__form");
 				form.validate({
 					errorPlacement: function(error, element) { }
@@ -2072,16 +2071,18 @@ function orderStart(){
 // Функция вычисления остатка до минимальной суммы заказа
 function cartMinSum(){
 	if($('.cartTotal__min').length) {
-		var minPrice = parseInt($('.cartTotal__min-price').data('price'));
+		var minPrice = parseInt($('.cartTotal__min_price').data('price'));
 		var totalSum = parseInt($('.cartSumTotal').data('value'));
 		if(minPrice > totalSum) {
 			var diff = minPrice - totalSum
-			$('.cartTotal__min-price').find('.num').text(addSpaces(diff))
-			$(".total__buttons button").attr('disabled', true).addClass('disabled');
-			$('.cartTotal__min').show();
+			$('.cartTotal__min_price').find('.num').text(addSpaces(diff))
+			$('.cartTotal__min').css({'display': 'flex'});
+			$('.cartTotal__buttons').hide();
+			$(".cartTotal__buttons button").attr('disabled', true).addClass('disabled');
 		}else{
-			$(".total__buttons button").attr('disabled', false).removeClass('disabled');
 			$('.cartTotal__min').hide();
+			$(".cartTotal__buttons button").attr('disabled', false).removeClass('disabled');
+			$('.cartTotal__buttons').show();
 		}
 	}
 }
@@ -2144,15 +2145,15 @@ function orderValidate() {
 	// Выключение кнопки оформления заказа если не все поля заполнены
 	$(".fastOrder__form [required]").blur(function(){
 		if($('.fastOrder__form').valid()) {
-			$(".total__buttons button").attr('title', 'Оформить заказ').removeClass('disabled');
+			$(".cartTotal__buttons button").attr('title', 'Оформить заказ').removeClass('disabled');
 		} else {
-			$(".total__buttons button").attr('title', 'Заполните все поля').addClass('disabled');
+			$(".cartTotal__buttons button").attr('title', 'Заполните все поля').addClass('disabled');
 		}
 	});
 
 	// Проверка обязательных полей
 	if($('.fastOrder__form').valid()) {
-		$(".total__buttons button").attr('title', 'Оформить заказ').removeClass('disabled');
+		$(".cartTotal__buttons button").attr('title', 'Оформить заказ').removeClass('disabled');
 	}else{
 		$(".fastOrder__form input, .fastOrder__form textarea, .fastOrder__form select").removeClass('error');
 	}
@@ -2231,7 +2232,7 @@ function orderScripts() {
 			$('.fastOrder__form').addClass('pickup');
 			$('.address input, .address textarea').val('Самовывоз');
 			$('#deliveryConvenientDate').val('01.01.2220');
-			$(".total__buttons button").attr('title', 'Оформить заказ').removeClass('disabled');
+			$(".cartTotal__buttons button").attr('title', 'Оформить заказ').removeClass('disabled');
 		}else{
 			$('.fastOrder__form').removeClass('pickup');
 			$('.address input, .address textarea').val('');
@@ -2330,6 +2331,7 @@ function orderScriptsSelect() {
 		}
 		$('.changeprice').text(addSpaces(startprice));
 		$('.cartSumDelivery .num').text(addSpaces(startprice));
+		console.log('cartSumDelivery1 ', startprice)
 		$('.order__payment').hide();
 		$('.order__payment[rel="'+ selectedDelId +'"]').show();
 		var startInputId = $('.delivery__radio:checked').attr('value');
@@ -2364,6 +2366,7 @@ function orderScriptsSelect() {
 		var WithZone = $('.zone__radio:checked').attr('price');
 		$('.changeprice').text(addSpaces(WithZone));
 		$('.cartSumDelivery .num').text(addSpaces(startprice));
+		console.log('cartSumDelivery2 ', startprice)
 	});
 
 	// Выбор зоны доставки
