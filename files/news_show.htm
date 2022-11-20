@@ -28,7 +28,9 @@
   </div>
   {% ENDIF %}
   
-  {% IF NEWS_SHOW_TIME %}<div class="news__date">{NEWS_TIME | date("d M Y")}</div>{% ENDIF %} 
+  {% IF NEWS_SHOW_TIME %}
+  <div class="news__date">{NEWS_TIME | date("d M Y")}</div>
+  {% ENDIF %} 
   
   <!-- Ссылка на страницу новостей, откуда пришел пользователь -->
   <div class="news__buttons">
