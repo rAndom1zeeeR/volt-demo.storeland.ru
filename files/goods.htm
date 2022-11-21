@@ -310,37 +310,34 @@
 						</div>
 					</div>
 
-					<!-- Добавление товара в корзину -->
-					<div class="productView__cart flex">
-						<!-- В корзину -->
-						<button class="add-cart productView__margin" type="submit" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
-							<i class="icon-cart"></i>
-							<span>В корзину</span>
-						</button>
-						<!-- Быстрая покупка -->
-						<button class="add-cart quick button-secondary productView__margin" type="submit" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
-							<i class="icon-check"></i>
-							<span>Быстрая покупка</span>
-						</button>
-						<!-- Уведомить -->
-						<a class="add-notify button-empty productView__margin" 
-							title="Уведомить"
-							data-tooltip="Уведомить"
-							rel="nofollow"
-							data-fancybox
-							data-src="#fancybox__notify"
-							href="javascript:;"
-							data-name="{GOODS_NAME}"
-							data-art="{GOODS_MOD_ART_NUMBER}"
-						>
-							<i class="icon-notification"></i>
-							<span>Уведомить</span>
-						</a>
-						<!-- Подробнее -->
-						<a class="button-link productView__margin" href="{GOODS_URL}">
-							<span>Подробнее</span>
-						</a>
-					</div>
+					<!-- В корзину -->
+					<button class="add-cart productView__margin" type="submit" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
+						<i class="icon-cart"></i>
+						<span>В корзину</span>
+					</button>
+					<!-- Быстрая покупка -->
+					<button class="add-cart quick button-secondary productView__margin" type="submit" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
+						<i class="icon-check"></i>
+						<span>Быстрая покупка</span>
+					</button>
+					<!-- Уведомить -->
+					<a class="add-notify button-empty productView__margin" 
+						title="Уведомить"
+						data-tooltip="Уведомить"
+						rel="nofollow"
+						data-fancybox
+						data-src="#fancybox__notify"
+						href="javascript:;"
+						data-name="{GOODS_NAME}"
+						data-art="{GOODS_MOD_ART_NUMBER}"
+					>
+						<i class="icon-notification"></i>
+						<span>Уведомить</span>
+					</a>
+					<!-- Подробнее -->
+					<a class="button-link productView__margin" href="{GOODS_URL}">
+						<span>Подробнее</span>
+					</a>
 
 					<!-- Доступность товара -->
 					<div class="productView__available productView__margin {% IF GOODS_MOD_REST_VALUE = 0 %}zero{% ELSEIF GOODS_MOD_REST_VALUE > 9 %}alot{% ELSE %}few{% ENDIF %}">
