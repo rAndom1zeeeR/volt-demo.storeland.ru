@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?osf2iq');
-  src:  url('fonts/icomoon.eot?osf2iq#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?osf2iq') format('truetype'),
-    url('fonts/icomoon.woff?osf2iq') format('woff'),
-    url('fonts/icomoon.svg?osf2iq#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?pfzln9');
+  src:  url('fonts/icomoon.eot?pfzln9#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?pfzln9') format('truetype'),
+    url('fonts/icomoon.woff?pfzln9') format('woff'),
+    url('fonts/icomoon.svg?pfzln9#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -121,7 +121,10 @@
 .icon-sort:before {
   content: "\e90c";
 }
-.icon-favorites_hover:before, .icon-star:before {
+.icon-favorites_hover:before {
+  content: "\e90d";
+}
+.icon-star:before {
   content: "\e90d";
 }
 .icon-package:before {
@@ -196,7 +199,7 @@
 .icon-minus:before {
   content: "\e925";
 }
-.icon-notification:before {
+.icon-notifications:before {
   content: "\e926";
 }
 .icon-phone:before {

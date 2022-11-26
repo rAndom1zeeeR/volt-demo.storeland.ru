@@ -988,7 +988,7 @@ function addCart() {
 		});
 		return false;
 	});
-	
+
 	// Обновляем текст у добавленных в корзину товаров
 	$('.product__item.inCart').each(function(){
 		var text = $(this).find('[data-added]').text()
@@ -2730,11 +2730,11 @@ function catalog() {
 	});
 	
 	// Фильтры поиск скрываем если меньше 4
-	$('.filter__list').each(function(){
-		var item = $(this).find('.filter__item').length;
-		var search = $(this).find('.filter__search');
-		item < 4 ? search.hide() : search.show()
-	});
+	// $('.filter__list').each(function(){
+	// 	var item = $(this).find('.filter__item').length;
+	// 	var search = $(this).find('.filter__search');
+	// 	item < 4 ? search.hide() : search.show()
+	// });
 
 	// Фильтры поиск
 	$('.filter__search').on('input', function() {
