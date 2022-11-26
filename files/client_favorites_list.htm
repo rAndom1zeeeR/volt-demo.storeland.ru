@@ -51,7 +51,7 @@
 						<input type="hidden" class="product__imgID" data-id="{favorites_goods.images.ID}" data-image="{favorites_goods.images.MEDIUM}" />
 						{% ENDFOR %}
 			
-					</div><!-- //END Изображение товара -->
+					</div>
 					
 					<!-- Информация товара -->
 					<div class="product__shop">
@@ -136,7 +136,7 @@
 									<span>Уведомить</span>
 								</a>
 								{% ELSE %}
-								<a class="{% IF favorites_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-primary"
+								<a class="{% IF favorites_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-tertiary"
 									title="Добавить в корзину &laquo;{favorites_goods.NAME}&raquo;"
 									data-tooltip="В корзину"
 									rel="nofollow"

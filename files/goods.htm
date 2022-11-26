@@ -313,7 +313,7 @@
 					<!-- В корзину -->
 					<button class="add-cart productView__margin" type="submit" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
 						<i class="icon-cart"></i>
-						<span>В корзину</span>
+						<span data-added="В корзине">В корзину</span>
 					</button>
 					<!-- Быстрая покупка -->
 					<button class="add-cart quick button-secondary productView__margin" type="submit" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
@@ -798,7 +798,7 @@
 								<input type="hidden" class="product__imgID" data-id="{related_goods.images.ID}" data-image="{related_goods.images.MEDIUM}" />
 								{% ENDFOR %}
 						
-							</div><!-- //END Изображение товара -->
+							</div>
 							
 							<!-- Информация товара -->
 							<div class="product__shop">
@@ -1006,14 +1006,14 @@
 											<span>Уведомить</span>
 										</a>
 										{% ELSE %}
-										<a class="{% IF related_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-primary"
+										<a class="{% IF related_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-tertiary"
 											title="Добавить в корзину &laquo;{related_goods.NAME}&raquo;"
 											data-tooltip="В корзину"
 											rel="nofollow"
 											href="{% IF related_goods.COUNT_MODIFICATION > 1 %}{related_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={related_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={related_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 										>
 											<i class="icon-cart"></i>
-											<span>В корзину</span>
+											<span data-added="В корзине">В корзину</span>
 										</a>
 										{% ENDIF %}
 									</div>
@@ -1108,7 +1108,7 @@
 								<input type="hidden" class="product__imgID" data-id="{related_views_goods.images.ID}" data-image="{related_views_goods.images.MEDIUM}" />
 								{% ENDFOR %}
 						
-							</div><!-- //END Изображение товара -->
+							</div>
 							
 							<!-- Информация товара -->
 							<div class="product__shop">
@@ -1316,14 +1316,14 @@
 											<span>Уведомить</span>
 										</a>
 										{% ELSE %}
-										<a class="{% IF related_views_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-primary"
+										<a class="{% IF related_views_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-tertiary"
 											title="Добавить в корзину &laquo;{related_views_goods.NAME}&raquo;"
 											data-tooltip="В корзину"
 											rel="nofollow"
 											href="{% IF related_views_goods.COUNT_MODIFICATION > 1 %}{related_views_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={related_views_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={related_views_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 										>
 											<i class="icon-cart"></i>
-											<span>В корзину</span>
+											<span data-added="В корзине">В корзину</span>
 										</a>
 										{% ENDIF %}
 									</div>

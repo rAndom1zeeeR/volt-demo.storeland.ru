@@ -932,18 +932,12 @@ function addCart() {
 						}).show();
 					}
 
-					// Добавляем активный класс если товар успешно добавился в корзину
-					function inCart(obj){
-						obj.addClass("inCart");
-						var count = obj.find('.inCart__count');
-						var newCount = parseInt(count.text()) + 1;
-						count.text(newCount)
-					}
-
 					// Запуск функции активного класса товара в других категориях
 					$('.product__item[data-id="' + id + '"]').each(function(){
-						inCart($(this))
 						$(this).addClass('inCart');
+						var text = $(this).find('.product__addCart span').text();
+						var added = $(this).find('.product__addCart span').attr('data-added');
+						$(this).find('.product__addCart span').text(added).attr('data-added', text);
 					});
 
 					// Анимация добавления товара в корзину
@@ -994,6 +988,13 @@ function addCart() {
 		});
 		return false;
 	});
+	
+	// Обновляем текст у добавленных в корзину товаров
+	$('.product__item.inCart').each(function(){
+		var text = $(this).find('[data-added]').text()
+		var added = $(this).find('[data-added]').attr('data-added')
+		$(this).find('[data-added]').text(added).attr('data-added', text)
+	})
 }
 
 // Быстрый заказ
@@ -3663,3 +3664,4 @@ function categoriesVisible(id){
 		}
 	});
 }
+

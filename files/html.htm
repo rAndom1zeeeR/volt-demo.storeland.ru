@@ -500,7 +500,7 @@
 									<input type="hidden" class="product__imgID" data-id="{index_page_favorites_goods.images.ID}" data-image="{index_page_favorites_goods.images.MEDIUM}" />
 									{% ENDFOR %}
 						
-								</div><!-- //END Изображение товара -->
+								</div>
 								
 								<!-- Информация товара -->
 								<div class="product__shop">
@@ -708,14 +708,14 @@
 												<span>Уведомить</span>
 											</a>
 											{% ELSE %}
-											<a class="{% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-primary"
+											<a class="{% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-tertiary"
 												title="Добавить в корзину &laquo;{index_page_favorites_goods.NAME}&raquo;"
 												data-tooltip="В корзину"
 												rel="nofollow"
 												href="{% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}{index_page_favorites_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_favorites_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 											>
 												<i class="icon-cart"></i>
-												<span>В корзину</span>
+												<span data-added="В корзине">В корзину</span>
 											</a>
 											{% ENDIF %}
 										</div>
@@ -807,7 +807,7 @@
 										<input type="hidden" class="product__imgID" data-id="{index_page_sale_goods.images.ID}" data-image="{index_page_sale_goods.images.MEDIUM}" />
 										{% ENDFOR %}
 							
-									</div><!-- //END Изображение товара -->
+									</div>
 									
 									<!-- Информация товара -->
 									<div class="product__shop">
@@ -1037,14 +1037,14 @@
 													<span>Уведомить</span>
 												</a>
 												{% ELSE %}
-												<a class="{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-primary"
+												<a class="{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-tertiary"
 													title="Добавить в корзину &laquo;{index_page_sale_goods.NAME}&raquo;"
 													data-tooltip="В корзину"
 													rel="nofollow"
 													href="{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}{index_page_sale_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_sale_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_sale_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 												>
 													<i class="icon-cart"></i>
-													<span>В корзину</span>
+													<span data-added="В корзине">В корзину</span>
 												</a>
 												{% ENDIF %}
 											</div>
@@ -1178,7 +1178,7 @@
 									<input type="hidden" class="product__imgID" data-id="{index_page_new_goods.images.ID}" data-image="{index_page_new_goods.images.MEDIUM}" />
 									{% ENDFOR %}
 						
-								</div><!-- //END Изображение товара -->
+								</div>
 								
 								<!-- Информация товара -->
 								<div class="product__shop flex">
@@ -1367,14 +1367,14 @@
 													<span>Уведомить</span>
 												</a>
 												{% ELSE %}
-												<a class="{% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-primary"
+												<a class="{% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-tertiary"
 													title="Добавить в корзину &laquo;{index_page_new_goods.NAME}&raquo;"
 													data-tooltip="В корзину"
 													rel="nofollow"
 													href="{% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}{index_page_new_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_new_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_new_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 												>
 													<i class="icon-cart"></i>
-													<span>В корзину</span>
+													<span data-added="В корзине">В корзину</span>
 												</a>
 												{% ENDIF %}
 											</div>
@@ -1567,7 +1567,7 @@
 									<input type="hidden" class="product__imgID" data-id="{index_page_goods.images.ID}" data-image="{index_page_goods.images.MEDIUM}" />
 									{% ENDFOR %}
 						
-								</div><!-- //END Изображение товара -->
+								</div>
 								
 								<!-- Информация товара -->
 								<div class="product__shop">
@@ -1775,14 +1775,14 @@
 												<span>Уведомить</span>
 											</a>
 											{% ELSE %}
-											<a class="{% IF index_page_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-primary"
+											<a class="{% IF index_page_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-tertiary"
 												title="Добавить в корзину &laquo;{index_page_goods.NAME}&raquo;"
 												data-tooltip="В корзину"
 												rel="nofollow"
 												href="{% IF index_page_goods.COUNT_MODIFICATION > 1 %}{index_page_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 											>
 												<i class="icon-cart"></i>
-												<span>В корзину</span>
+												<span data-added="В корзине">В корзину</span>
 											</a>
 											{% ENDIF %}
 										</div>
@@ -2367,8 +2367,15 @@
 					{% IF SHOW_GOODS_PRICE_FILTERS || SHOW_GOODS_FILTERS %}
 					<div class="main__left sidebar">
 						<!-- Если в тарифном плане подключен модуль фильтров по товарам -->
-						<div id="filters" class="sidebar__block">
-							<div class="sidebar__content {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
+						<div id="filters">
+							<div class="filters__title flex">
+								<a href="{PAGE_CANONICAL}" class="button-link" title="Очистить фильтры">
+									<span>Очистить</span>
+								</a>
+								<span class="filters__label" onclick="closeAll()">Фильтр</span>
+								<i class="icon-close" onclick="closeAll()"></i>
+							</div>
+							<div class="filters__content {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
 								<form action="" method="get" class="form__filters">
 									<!-- Если есть возможность фильтрации товаров по ценам -->
 									{% IF SHOW_GOODS_PRICE_FILTERS %}
@@ -2539,7 +2546,7 @@
 											<input type="hidden" class="product__imgID" data-id="{recently_viewed_goods.images.ID}" data-image="{recently_viewed_goods.images.MEDIUM}" />
 											{% ENDFOR %}
 									
-										</div><!-- //END Изображение товара -->
+										</div>
 										
 										<!-- Информация товара -->
 										<div class="product__shop flex">
@@ -2728,14 +2735,14 @@
 															<span>Уведомить</span>
 														</a>
 														{% ELSE %}
-														<a class="{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-primary"
+														<a class="{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}add-mod{% ELSE %}add-cart{% ENDIF %} button-tertiary"
 															title="Добавить в корзину &laquo;{recently_viewed_goods.NAME}&raquo;"
 															data-tooltip="В корзину"
 															rel="nofollow"
 															href="{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}{recently_viewed_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={recently_viewed_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={recently_viewed_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 														>
 															<i class="icon-cart"></i>
-															<span>В корзину</span>
+															<span data-added="В корзине">В корзину</span>
 														</a>
 														{% ENDIF %}
 													</div>
