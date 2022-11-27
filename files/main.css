@@ -276,8 +276,9 @@ h5 {font-size: 0.875rem;}
 /*** Навигация по страницам ***/
 /**************************************/
 .pages {justify-content: flex-end;}
-.pages li {margin: 0 .5rem;font-size: 1.125rem;background-color: var(--color-lightgray);width: 2.5rem;height: 2.5rem;line-height: 2.5rem;text-align: center;}
+.pages li {margin-right: 1rem;font-size: 1.125rem;background-color: var(--color-lightgray);width: 2.5rem;height: 2.5rem;line-height: 2.5rem;text-align: center;}
 .pages li.current {color: var(--color-primary);font-weight: bold;}
+.pages li:last-child {margin-right: 0;}
 .pages li a {display: block;}
 
 
@@ -904,10 +905,22 @@ h5 {font-size: 0.875rem;}
 /*** Тулбар ***/
 /**************************************/
 .toolbar {margin-bottom: 1.5rem;padding-bottom: 1rem;border-bottom: 1px solid var(--color-gray);}
-.toolbar .selectBox + .selectBox {margin-left: 2rem;}
-.toolbar .selectBox label {display: none;}
+.toolbar-bottom {margin-top: 1.5rem;}
+.select-by__item {color: var(--color-darkgray);margin-right: 1.25rem;}
+.select-by__item_active {color: var(--color-black);}
+.show-by {flex-grow: 1;justify-content: flex-end;color: var(--color-darkgray);}
+.show-by:after {right: 0;}
+.show-by select {width: auto;background-color: transparent;border: 0;color: var(--color-darkgray);padding: 0 .5rem;}
+
+@media all and (max-width: 639px) {
+	.sort-by {order: 3;margin-top: 1rem;width: 100%;}
+}
 @media all and (max-width: 479px) {
-	.toolbar .selectBox + .selectBox {margin-left: 1rem;}
+	.show-by {width: 100%;margin-top: 1rem;}
+}
+@media all and (max-width: 374px) {
+	.select-by__item {margin-right: .75rem;}
+	.select-by__item:last-child {margin-right: 0;}
 }
 
 
@@ -928,6 +941,7 @@ h5 {font-size: 0.875rem;}
 .filters__icon {margin-right: 2rem;font-weight: bold; display: none;transition: all 0.3s ease;}
 .filters__icon:hover {color: var(--color-primary);}
 .filters__icon i {font-size: 1.25rem;margin-right: .5rem;vertical-align: text-top;}
+.filters__title {display: none;}
 /*** Фильтры. Адаптивность ***/
 @media all and (max-width: 1023px) {
 	.filters__icon {display: inline-block;}
@@ -935,7 +949,7 @@ h5 {font-size: 0.875rem;}
 	#filters.opened {transform: translateX(0);}
 	.filters__content {padding: 1.5rem;height: calc(100vh - 4rem);overflow-y: auto;}
 	.filters__content::-webkit-scrollbar {width: .5rem;}
-	.filters__title {padding: 1rem 1.5rem;margin-bottom: 1rem;box-shadow: -1px 4px 20px 2px #0C53941F;font-weight: bold;justify-content: space-between;}
+	.filters__title {padding: 1rem 1.5rem;margin-bottom: 1rem;box-shadow: -1px 4px 20px 2px #0C53941F;font-weight: bold;justify-content: space-between;display: flex;}
 	.filters__label {flex-grow: 1;text-align: center;}
 }
 
