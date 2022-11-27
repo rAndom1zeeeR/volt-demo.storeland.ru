@@ -1133,7 +1133,7 @@ function quickViewShowMod(href, atempt) {
 			addCart();
 			addTo();
 			goodsModification($('.fancybox-content.productViewBlock'));
-			// newModification($('.fancybox-content.productViewBlock'));
+			newModification($('.fancybox-content.productViewBlock'));
 			quantity();
 			prodQty($('.fancybox-content.productViewBlock'));
 		}
@@ -1149,7 +1149,7 @@ function quickViewShowMod(href, atempt) {
 			addCart();
 			addTo();
 			goodsModification($('.fancybox-content.productViewBlock'));
-			// newModification($('.fancybox-content.productViewBlock'));
+			newModification($('.fancybox-content.productViewBlock'));
 			quantity();
 			prodQty($('.fancybox-content.productViewBlock'));
 		});
@@ -1500,7 +1500,7 @@ function goodsModification($container) {
 
 	// Изменение цены товара при изменении у товара свойства для модификации
 	goodsDataProperties.each(function(y){
-		$(this).change(function(){
+		function slugUpdate(){
 			var slug = getSlugFromGoodsDataFormModificationsProperties(goodsDataProperties),
 				goodsModView                  = $parentBlock.find('.productView'),
 				modificationBlock             = goodsModView.find('.goodsModificationsSlug[rel="'+slug+'"]'),
@@ -1521,9 +1521,9 @@ function goodsModification($container) {
 				goodsModQty              			= goodsModView.find('.quantity'),
 				goodsArtNumberBlock           = goodsModView.find('.productView__articles'),
 				goodsArtNumber                = goodsModView.find('.goodsModArtNumber'),
-				goodsModDescriptionBlock      = goodsModView.find('.goodsModDescription'),
+				goodsModDescription      = goodsModView.find('.modifications__description'),
 				goodsModRestValue             = goodsModView.find('.goodsModRestValue');
-
+				
 			// Изменяем данные товара для выбранных параметров. Если нашлась выбранная модификация
 			if(modificationBlock.length) {
 				// Цена товара
@@ -1581,11 +1581,9 @@ function goodsModification($container) {
 
 				// Описание модификации товара. Покажем если оно есть, спрячем если его у модификации нет
 				if(modificationDescription.length > 0) {
-					console.log('modificationDescription', modificationDescription)
-					goodsModDescriptionBlock.show().html('<div>' + modificationDescription + '</div>');
+					goodsModDescription.show().html('<div>' + modificationDescription + '</div>');
 				} else {
-					goodsModDescriptionBlock.hide().html();
-					console.log('modificationDescription2', modificationDescription.length)
+					goodsModDescription.hide().html();
 				}
 
 				// Идентификатор товарной модификации
@@ -1622,7 +1620,55 @@ function goodsModification($container) {
 			}
 			// Обновляем возможность выбора другой модификации для текущих значений свойств модификации товара.
 			updateVisibility(y);
+		}
+
+		$(this).change(function(){
+			slugUpdate()
 		});
+
+	});
+
+}
+
+// Кнопки для модификаций
+function newModification($container) {
+	var $parentBlock = $container || $('#main .productViewBlock')
+	 
+	function props(){
+		$parentBlock.find('.modifications__properties').each(function(){
+			a = $(this).find('select option:selected').attr('value');
+			$(this).find('.modifications__value[data-value="'+ a +'"]').addClass('active');
+			$(this).find('select option:disabled').each(function(){
+				dis = $(this).attr('value');
+				$('.modifications__value[data-value="'+ dis +'"]').addClass('disabled');
+			});
+			
+		});
+	}
+	props()
+
+	$parentBlock.find('.modifications__value').on('click', function(event){
+		event.preventDefault()
+
+		if($(this).hasClass('disabled')){
+			console.log('false')
+			return false;
+		}
+
+		$(this).parents().find('.modifications__value').removeClass('disabled')
+		$(this).parent().find('.modifications__value').removeClass('active')
+		$(this).addClass('active');
+		var val = $(this).data('value');
+		$(this).parents().find('select option[value="' + val + '"]').prop('selected',true);
+    $(this).parents().find('select').trigger('change');
+
+		$('.modifications__properties').each(function(){
+      dis = $(this).find('select option:disabled').attr('value');
+			$(this).parents().find('.modifications__value[data-value="'+ dis +'"]').removeClass('active');
+			$(this).parents().find('.modifications__value[data-value="'+ dis +'"]').addClass('disabled');
+    });
+		
+		props()
 	});
 
 }

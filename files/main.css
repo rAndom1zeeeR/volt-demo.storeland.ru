@@ -1042,8 +1042,13 @@ h5 {font-size: 0.875rem;}
 .productView__price .price__now {font-size: 1.75rem;}
 .productView__price .price__old {font-size: 1rem;line-height: 1;}
 /* Товар. Модификации */
+.modifications__properties_selectBox {display: none;}
 .modifications__properties {margin: 0 1rem 1.5rem 1rem;}
-.modifications__properties_name {margin-bottom: .5rem;display: block;}
+.modifications__properties_name {margin-bottom: .5rem;display: block;width: 100%;}
+.modifications__value {background-color: var(--color-lightgray);padding: .75rem;margin-right: .75rem;}
+.modifications__value.active {font-weight: bold;color: var(--color-primary);}
+.modifications__value.disabled {color: var(--color-darkgray);cursor: default;}
+.modifications__description {overflow: hidden;}
 /* Товар. В корзину */
 .productView__qty .qty {padding: 0 .5rem;}
 .productView__qty input {width: 2.5rem;}

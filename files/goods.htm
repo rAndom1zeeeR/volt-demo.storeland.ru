@@ -245,34 +245,23 @@
 						{% FOR goods_modifications_properties %}
 						<div class="modifications__properties">
 							<!-- Выдаем списки со свойствами для модификаций, чтобы определить какую модификацию товара хочет пользователь -->
-							{% FOR values %}
-								<!-- Если это первый элемент в списке -->
-								{% IF goods_modifications_properties.values.first %}
+							<div class="modifications__properties_selectBox selectBox">
 								<label class="modifications__properties_name">{goods_modifications_properties.NAME}:</label>
-								<div class="modifications__properties_selectBox selectBox">
-									<select class="modifications__properties_select select" name="form[properties][]">
-										{% ENDIF %}
+								<select class="modifications__properties_select select" name="form[properties][]">
+									{% FOR values %}
 										<option value="{goods_modifications_properties.values.ID}" {% IF goods_modifications_properties.values.SELECTED %}selected="selected" {% ENDIF %}>{goods_modifications_properties.values.NAME}</option>
-										<!-- Если это последний элемент в списке -->
-										{% IF goods_modifications_properties.values.last %}
-									</select>
-								</div>
-								{% ENDIF %}
-							{% ENDFOR values %}
+									{% ENDFOR values %}
+								</select>
+							</div>
 
-							{% FOR values %}
-								{% IF goods_modifications_properties.values.first %}
-								<div style="display: none">
-									<div class="modifications__values flex">
-								{% ENDIF %}
+							<div class="modifications__values flex">
+								<label class="modifications__properties_name">{goods_modifications_properties.NAME}:</label>
+								{% FOR values %}
 									<a class="modifications__value" data-value="{goods_modifications_properties.values.ID}" href="javascript:;">
 										<span>{goods_modifications_properties.values.NAME}</span>
 									</a>
-								{% IF goods_modifications_properties.values.last %}
-									</div>
-								</div>
-								{% ENDIF %}
-							{% ENDFOR values %}
+								{% ENDFOR values %}
+							</div>
 						</div>
 						{% ENDFOR %}
 					</div>
@@ -296,7 +285,7 @@
 					</div>
 					{% ENDFOR %}
 					<!-- Блок описания модификации -->
-					<p class="goodsModDescription" itemprop="description">{GOODS_MOD_DESCRIPTION}</p>
+					<p class="modifications__description" itemprop="description">{GOODS_MOD_DESCRIPTION}</p>
 				</div>
 
 				<!-- Добавление товара в Корзину -->
