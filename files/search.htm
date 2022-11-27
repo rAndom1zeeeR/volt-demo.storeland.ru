@@ -32,54 +32,40 @@
 			{% ENDFOR %}
 			
 			<!-- Сортировать по: (Поле сортировки товаров по умолчанию) -->
-			<div class="sort-by selectBox flex">
-				<label>Сортировать по:</label>
+			<div class="sort-by flex">
 				<!-- Сортировка выпадающим списком	-->
-				<select class="select" name="goods_search_field_id" title="Название сортировки" onchange="this.form.submit();">
+				<div class="select-by" name="goods_search_field_id" title="Название сортировки">
 					{% FOR goods_order_fields %}
-						{% IF goods_order_fields.ID = 1 || goods_order_fields.ID = 2 || goods_order_fields.ID = 5 || goods_order_fields.ID = 11 || goods_order_fields.ID = 13 %}
-						<option value="{goods_order_fields.ID}" {% IF goods_order_fields.SELECTED %}selected="selected"{% ENDIF %}>
+						{% IF goods_order_fields.ID = 1 || goods_order_fields.ID = 2 || goods_order_fields.ID = 11 || goods_order_fields.ID = 13 %}
+						<a class="select-by__item {% IF goods_order_fields.SELECTED %}select-by__item_active{% ENDIF %}" href="?q={SEARCH_QUERY}&goods_search_field_id={goods_order_fields.ID}" value="{goods_order_fields.ID}">
 							{% IF goods_order_fields.ID = 1%}
 								Цена ↓
 							{% ELSEIF goods_order_fields.ID = 2 %}
 								Цена ↑
-							{% ELSEIF goods_order_fields.ID = 5 %}
-								Наличие
 							{% ELSEIF goods_order_fields.ID = 11 %}
 								Рейтинг
 							{% ELSEIF goods_order_fields.ID = 13 %}
 								Отзывы
 							{% ENDIF %}
-						</option>
+						</a>
 						{% ENDIF %}
 					{% ENDFOR %}
-				</select>
+				</div>
 			</div>
-
-			<!-- Показывать по: (Шаг для выбора пользователем лимита выдачи товаров на страницу от 1 до 100) -->
-			<div class="show-by selectBox flex">
-				<label>Показать по:</label>
-				<select class="select" name="per_page" title="Лимит товаров на странице" onchange="this.form.submit();">
-					{% FOR goods_per_page_list %}
-						<option value="{goods_per_page_list.LIMIT}" {% IF goods_per_page_list.SELECTED %}selected="selected"{% ENDIF %}>{goods_per_page_list.LIMIT}</option>
-					{% ENDFOR %}
-				</select>
-			</div>
-			<!-- /END Показывать по: -->
 
 			<!-- Вид Таблица/Список -->
 			<div class="view-by flex">
 				{% IF GOODS_VIEW_TYPE=3 %}
 				<div class="view__icon active" title="Список"><i class="icon-view_list_small"></i></div>
-				<a class="view__icon" href="?goods_view_type=2" title="Список"><i class="icon-view_list"></i></a>
-				<a class="view__icon" href="?goods_view_type=1" title="Таблица"><i class="icon-view_grid"></i></a>
+				<a class="view__icon" href="?q={SEARCH_QUERY}&goods_view_type=2" title="Список"><i class="icon-view_list"></i></a>
+				<a class="view__icon" href="?q={SEARCH_QUERY}&goods_view_type=1" title="Таблица"><i class="icon-view_grid"></i></a>
 				{% ELSEIF GOODS_VIEW_TYPE=2 %}
-				<a class="view__icon" href="?goods_view_type=3" title="Список"><i class="icon-view_list_small"></i></a>
+				<a class="view__icon" href="?q={SEARCH_QUERY}&goods_view_type=3" title="Список"><i class="icon-view_list_small"></i></a>
 				<div class="view__icon active" title="Список"><i class="icon-view_list"></i></div>
-				<a class="view__icon" href="?goods_view_type=1" title="Таблица"><i class="icon-view_grid"></i></a>
+				<a class="view__icon" href="?q={SEARCH_QUERY}&goods_view_type=1" title="Таблица"><i class="icon-view_grid"></i></a>
 				{% ELSE %}
-				<a class="view__icon" href="?goods_view_type=3" title="Список"><i class="icon-view_list_small"></i></a>
-				<a class="view__icon" href="?goods_view_type=2" title="Список"><i class="icon-view_list"></i></a>
+				<a class="view__icon" href="?q={SEARCH_QUERY}&goods_view_type=3" title="Список"><i class="icon-view_list_small"></i></a>
+				<a class="view__icon" href="?q={SEARCH_QUERY}&goods_view_type=2" title="Список"><i class="icon-view_list"></i></a>
 				<div class="view__icon active" title="Таблица"><i class="icon-view_grid"></i></div>
 				{% ENDIF %}
 			</div>
@@ -1020,7 +1006,8 @@
 	
 	<!-- Для полного отображения страницы товаров оторазим элементы навигации и обёрточные блоки -->
 	{% IFNOT ONLY_BODY && show_pages %}
-	<div class="toolbar-bottom">
+	<div class="toolbar-bottom flex">
+		<!-- Страницы -->
 		<ol class="pages flex-center unstyled">
 			{% IF GOODS_PAGES_SHOW_FIRST %}
 			<li class="first">
@@ -1040,6 +1027,17 @@
 			</li>
 			{% ENDIF %}
 		</ol>
+
+		<!-- Показывать по: (Шаг для выбора пользователем лимита выдачи товаров на страницу от 1 до 100) -->
+		<div class="show-by selectBox flex">
+			<span>Показать по:</span>
+			<select class="select" name="per_page" title="Лимит товаров на странице" onchange="this.form.submit();">
+				{% FOR goods_per_page_list %}
+					<option value="{goods_per_page_list.LIMIT}" {% IF goods_per_page_list.SELECTED %}selected="selected"{% ENDIF %}>{goods_per_page_list.LIMIT}</option>
+				{% ENDFOR %}
+			</select>
+		</div>
+		
 	</div>
 	{% ENDIF %}
 
