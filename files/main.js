@@ -80,14 +80,6 @@ function addSpaces(nStr){
 
 // Функция Наверх
 function toTop() {
-	// Показать при скроле
-  $(window).on('scroll', function () {
-    if ($(this).scrollTop() > 100) {
-      $('.toTop').fadeIn();
-    } else {
-      $('.toTop').fadeOut();
-    }
-  });
 	// Действие наверх
   $('.toTop').on('click', function () {
     $('body,html').animate({
@@ -2683,14 +2675,11 @@ function pdtVisible(id){
 			$(this).removeClass('active')
 			$(id).removeClass('active')
 			item.removeClass('show')
-			// TODO проверить
 			$('html, body').animate({scrollTop : $(id).offset().top}, 600);
 		}else{
 			$(this).addClass('active')
 			$(id).addClass('active')
 			item.addClass('show')
-			console.log('top', $(id).offset().top)
-			console.log('height', $(id).height())
 			var scrollTop = $(id).offset().top + $(id).height() - $(window).height();
 			$('html, body').animate({scrollTop : scrollTop}, 600);
 		}

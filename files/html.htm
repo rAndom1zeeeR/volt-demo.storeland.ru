@@ -454,7 +454,7 @@
 						<i class="icon-chevron_right"></i>
 					</a>
 				</div>
-				<!-- Слайдер -->
+				
 				<div class="row">
 					<div class="products__grid flex-stretch">
 						{% FOR index_page_favorites_goods %}
@@ -1140,7 +1140,7 @@
 						<i class="icon-chevron_right"></i>
 					</a>
 				</div>
-				<!-- Слайдер -->
+				
 				<div class="row">
 					<div class="products__list products__list_trio flex-stretch">
 						{% FOR index_page_new_goods %}
@@ -1533,7 +1533,7 @@
 						<i class="icon-chevron_right"></i>
 					</a>
 				</div>
-				<!-- Слайдер -->
+
 				<div class="row">
 					<div class="products__grid flex-stretch">
 						{% FOR index_page_goods %}
@@ -3107,9 +3107,61 @@
 			</div>
 		</footer>
 
-		<!-- Наверх -->
-		<div id="toTop" class="toTop">
-			<i class="icon-chevron_up"></i>
+		<!-- Навигация -->
+		<div class="navbar">
+			<div class="container">
+				<div class="row">
+					<div class="navbar__inner flex">
+						
+						<!-- Поиск -->
+						<div class="navbar__block navbar-search toTop">
+							<div class="navbar-search__icon" data-open="search">
+								<i class="icon-search"></i>
+							</div>
+						</div>
+
+						<!-- Избранное -->
+						<div class="navbar__block favorites {% IF FAVORITES_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
+							<a class="navbar__link flex" href="{FAVORITES_URL}" title="Избранное">
+								<i class="icon-favorites"></i>
+							</a>
+						</div>
+
+						<!-- Сравнение -->
+						{% IFNOT MOD_LNAME = compare && SETTINGS_COMPARE_DISABLE=0 %}
+						<div class="navbar__block compare {% IF COMPARE_GOODS_COUNT > 0 %}has-items{% ENDIF %}">
+							<a class="navbar__link flex" href="{COMPARE_URL}" title="Сравнение">
+								<i class="icon-compare"></i>
+							</a>
+						</div>
+						{% ENDIF %}
+
+						<!-- Корзина -->
+						{% IFNOT MOD_LNAME = cart %}
+						<div class="navbar__block navbar-cart cart {% IF CART_COUNT_TOTAL > 0 %}has-items{% ENDIF %}">
+							<a class="navbar-cart__title flex" href="{CART_URL}">
+								<div class="navbar-cart__icon cart__icon">
+									<i class="icon-cart"></i>
+									<span class="navbar-cart__count count-cart" data-count="{CART_COUNT_TOTAL}">{CART_COUNT_TOTAL}</span>
+								</div>
+								<div class="navbar-cart__content">
+									<div class="navbar-cart__price price__now cartSumNow {CURRENCY_CHAR_CODE}" data-price="{CART_SUM_NOW}">{CART_SUM_NOW | money_format}</div>
+								</div>
+							</a>
+						</div>
+						{% ENDIF cart %}
+
+						<!-- Наверх -->
+						<div class="navbar__block toTop">
+							<div class="navbar__toTop flex">
+								<i class="icon-chevron_up"></i>
+								<span>Наверх</span>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<noindex>
