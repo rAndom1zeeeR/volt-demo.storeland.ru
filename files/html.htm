@@ -459,9 +459,13 @@
 					<div class="products__grid flex-stretch">
 						{% FOR index_page_favorites_goods %}
 						<div class="product__item 
-								{% IF index_page_favorites_goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
-								{% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
-								{% IF index_page_favorites_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
+								{% IF index_page_favorites_goods.MAX_REST_VALUE = 0 %}product__empty{% ENDIF %} 
+								{% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}product__has-mod{% ENDIF %} 
+								{% IF index_page_favorites_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}
+								{% IF index_page_favorites_goods.IS_TOP %}product__has-top{% ENDIF %}
+								{% IF index_page_favorites_goods.IS_NEW %}product__has-new{% ENDIF %}
+								{% IF index_page_favorites_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_favorites_goods.MIN_PRICE_NOW %}product__has-sale
+								{% ELSEIF index_page_favorites_goods.MIN_PRICE_OLD > index_page_favorites_goods.MIN_PRICE_NOW %}product__has-sale{% ENDIF %}" 
 								data-id="{index_page_favorites_goods.ID}" 
 								itemscope itemtype="https://schema.org/Product"
 						>
@@ -766,9 +770,13 @@
 						<div class="swiper-wrapper products__list">
 							{% FOR index_page_sale_goods %}
 							<div class="swiper-slide product__item 
-									{% IF index_page_sale_goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
-									{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
-									{% IF index_page_sale_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
+									{% IF index_page_sale_goods.MAX_REST_VALUE = 0 %}product__empty{% ENDIF %} 
+									{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}product__has-mod{% ENDIF %} 
+									{% IF index_page_sale_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}
+									{% IF index_page_sale_goods.IS_TOP %}product__has-top{% ENDIF %}
+									{% IF index_page_sale_goods.IS_NEW %}product__has-new{% ENDIF %}
+									{% IF index_page_sale_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_sale_goods.MIN_PRICE_NOW %}product__has-sale
+									{% ELSEIF index_page_sale_goods.MIN_PRICE_OLD > index_page_sale_goods.MIN_PRICE_NOW %}product__has-sale{% ENDIF %}" 
 									data-id="{index_page_sale_goods.ID}" 
 									itemscope itemtype="https://schema.org/Product"
 							>
@@ -1137,9 +1145,13 @@
 					<div class="products__list products__list_trio flex-stretch">
 						{% FOR index_page_new_goods %}
 						<div class="product__item 
-								{% IF index_page_new_goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
-								{% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
-								{% IF index_page_new_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
+								{% IF index_page_new_goods.MAX_REST_VALUE = 0 %}product__empty{% ENDIF %} 
+								{% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}product__has-mod{% ENDIF %} 
+								{% IF index_page_new_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}
+								{% IF index_page_new_goods.IS_TOP %}product__has-top{% ENDIF %}
+								{% IF index_page_new_goods.IS_NEW %}product__has-new{% ENDIF %}
+								{% IF index_page_new_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_new_goods.MIN_PRICE_NOW %}product__has-sale
+								{% ELSEIF index_page_new_goods.MIN_PRICE_OLD > index_page_new_goods.MIN_PRICE_NOW %}product__has-sale{% ENDIF %}" 
 								data-id="{index_page_new_goods.ID}" 
 								itemscope itemtype="https://schema.org/Product"
 						>
@@ -1526,9 +1538,13 @@
 					<div class="products__grid flex-stretch">
 						{% FOR index_page_goods %}
 						<div class="product__item 
-								{% IF index_page_goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
-								{% IF index_page_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
-								{% IF index_page_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
+								{% IF index_page_goods.MAX_REST_VALUE = 0 %}product__empty{% ENDIF %} 
+								{% IF index_page_goods.COUNT_MODIFICATION > 1 %}product__has-mod{% ENDIF %} 
+								{% IF index_page_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}
+								{% IF index_page_goods.IS_TOP %}product__has-top{% ENDIF %}
+								{% IF index_page_goods.IS_NEW %}product__has-new{% ENDIF %}
+								{% IF index_page_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_goods.MIN_PRICE_NOW %}product__has-sale
+								{% ELSEIF index_page_goods.MIN_PRICE_OLD > index_page_goods.MIN_PRICE_NOW %}product__has-sale{% ENDIF %}" 
 								data-id="{index_page_goods.ID}" 
 								itemscope itemtype="https://schema.org/Product"
 						>
@@ -2368,6 +2384,7 @@
 					<div class="main__left sidebar">
 						<!-- Если в тарифном плане подключен модуль фильтров по товарам -->
 						<div id="filters">
+
 							<div class="filters__title flex">
 								<a href="{PAGE_CANONICAL}" class="button-link" title="Очистить фильтры">
 									<span>Очистить</span>
@@ -2375,6 +2392,47 @@
 								<span class="filters__label" onclick="closeAll()">Фильтр</span>
 								<i class="icon-close" onclick="closeAll()"></i>
 							</div>
+							
+							<div class="filter__list filters-custom">
+								<a href="{PAGE_CANONICAL}" class="button-gray filters__clear" title="Очистить фильтры">
+									<span>{GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")}</span>
+									<i class="icon-close"></i>
+								</a>
+								<div class="collapsible__content">
+									<div class="filter__items">
+										<div class="filter__item flex">
+											<input type="checkbox" name="filter[product__empty]" value="1" id="filterRest" class="square" />
+											<label for="filterRest" data-name="filterRest">
+												<span>В наличии</span>
+											</label>
+										</div>
+										
+										<div class="filter__item flex">
+											<input type="checkbox" name="filter[product__has-sale]" value="1" id="filterSale" class="square" />
+											<label for="filterSale" data-name="filterSale">
+												<span>Акции</span>
+											</label>
+										</div>
+										
+										<div class="filter__item flex">
+											<input type="checkbox" name="filter[product__has-new]" value="1" id="filterNew" class="square" />
+											<label for="filterNew" data-name="filterNew">
+												<span>Новинки</span>
+											</label>
+										</div>
+										
+										<div class="filter__item flex">
+											<input type="checkbox" name="filter[product__has-top]" value="1" id="filterTop" class="square" />
+											<label for="filterTop" data-name="filterTop">
+												<span>Хиты продаж</span>
+											</label>
+										</div>
+
+									</div>
+								</div>									
+							
+							</div>
+
 							<div class="filters__content {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
 								<form action="" method="get" class="form__filters">
 									<!-- Если есть возможность фильтрации товаров по ценам -->
@@ -2473,6 +2531,7 @@
 									</a>
 								</div>
 							</div>
+
 						</div>
 					</div>
 					{% ENDIF filters %}
@@ -2505,9 +2564,13 @@
 							<div class="swiper-wrapper">
 								{% FOR recently_viewed_goods %}
 								<div class="swiper-slide product__item 
-										{% IF recently_viewed_goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
-										{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
-										{% IF recently_viewed_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
+										{% IF recently_viewed_goods.MAX_REST_VALUE = 0 %}product__empty{% ENDIF %} 
+										{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}product__has-mod{% ENDIF %} 
+										{% IF recently_viewed_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}
+										{% IF recently_viewed_goods.IS_TOP %}product__has-top{% ENDIF %}
+										{% IF recently_viewed_goods.IS_NEW %}product__has-new{% ENDIF %}
+										{% IF recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > recently_viewed_goods.MIN_PRICE_NOW %}product__has-sale
+										{% ELSEIF recently_viewed_goods.MIN_PRICE_OLD > recently_viewed_goods.MIN_PRICE_NOW %}product__has-sale{% ENDIF %}" 
 										data-id="{recently_viewed_goods.ID}" 
 										itemscope itemtype="https://schema.org/Product"
 								>

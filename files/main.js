@@ -255,7 +255,6 @@ function mainnav(id,rows,media){
 			mainNavOverflow.find('li').removeClass('mainnav__replaced');
 			mainNavMore.remove();
 			mainNavOverflow.find('li').each(function(){
-				console.log('over li', $(this))
 				mainNavList.append($(this));
 			});
 		}
@@ -1057,7 +1056,7 @@ function quickViewMod() {
 		}
 		// Быстрый просмотр товара
 		// При наведении на блок товара загружаем контент этого товара, который будет использоваться для быстрого просмотра, чтобы загрузка происходила быстрее.
-		$('.product__item.has-mod').mouseover(function() {
+		$('.product__item.product__has-mod').mouseover(function() {
 			// Если в блоке нет ссылки на быстрый просмотр, то не подгружаем никаких данных
 			var link = $(this).find('a.add-mod');
 			if(link.length < 1) {
@@ -2685,11 +2684,15 @@ function pdtVisible(id){
 			$(id).removeClass('active')
 			item.removeClass('show')
 			// TODO проверить
-			// $('html, body').animate({scrollTop : $(id).offset().top}, 600);
+			$('html, body').animate({scrollTop : $(id).offset().top}, 600);
 		}else{
 			$(this).addClass('active')
 			$(id).addClass('active')
 			item.addClass('show')
+			console.log('top', $(id).offset().top)
+			console.log('height', $(id).height())
+			var scrollTop = $(id).offset().top + $(id).height() - $(window).height();
+			$('html, body').animate({scrollTop : scrollTop}, 600);
 		}
 	});
 }
@@ -2740,8 +2743,9 @@ function counter() {
 ///////////////////////////////////////
 function catalog() {
 	// Фильтры по товарам. При нажании на какую либо характеристику или свойство товара происходит фильтрация товаров
-	$('.filter__item input').on('click', function(){
+	$('.filter__item input').off('click').on('click', function(){
 		$(this)[0].form.submit();
+		console.log('submit this', $(this))
 	});
 
 	// Открытие/Скрытие фильтров в сайдбаре
@@ -2807,9 +2811,40 @@ function catalog() {
 	// Сборосить категорию фильтра
 	$('.product__attr_open').on('click', function(event){
 		event.preventDefault();
-		console.log('asd')
 		$(this).toggleClass('active')
 		$(this).prev().slideToggle()
+	});
+
+	// Особые фильтры
+	$('.filters-custom input').off('click').on('click', function(event){
+		var check = $(this).prop("checked")
+		var filter = /\[[^]+\]/.exec($(this).prop('name'))
+		var name = filter[0].replace(/[\[\]']+/g,'')
+
+		if(check){
+			$(this).prop("checked", true)
+
+			$('.products__container .product__item').each(function(){
+				if($(this).hasClass(name)){
+					$(this).removeClass('product__item_hidden');
+					
+					if(name == 'product__empty'){
+						$(this).addClass('product__item_hidden');
+						return false
+					}
+
+				}else{
+					$(this).addClass('product__item_hidden');
+				}
+
+			});
+
+		}else{
+			$(this).prop("checked", false)
+			$('.filters-custom input').prop("checked", false)
+			$('.product__item').removeClass('product__item_hidden');
+		}
+		
 	});
 
 }

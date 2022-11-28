@@ -104,7 +104,7 @@ input[type="file"] {margin-top: 0.25rem;height: auto;line-height: 1;border: 0;pa
 /* Чекбокс квадрат */
 .square {background-color: var(--color-gray);border: 1px solid var(--color-gray);color: var(--color-white);width: 1.25rem;height: 1.25rem;line-height: 1.25rem;font-size: 1.125rem;margin: 0;padding: 0;text-align: center;cursor: pointer;}
 .square + label {cursor: pointer;}
-.square:checked + label {color: var(--color-secondary);}
+.square:checked + label {color: var(--color-secondary);font-weight: bold;}
 .square:after {content: '';vertical-align: top;font-family: 'icomoon';}
 .square:hover {background-color: var(--color-gray);border-color: var(--color-secondary);}
 .square:checked {background-color: var(--color-secondary);border-color: var(--color-secondary);}
@@ -554,6 +554,7 @@ h5 {font-size: 0.875rem;}
 .products__container .row {margin: -1rem -.75rem 0 -.75rem;}
 .product__item {width: 20%;padding: .75rem;margin-top: 1rem;position: relative;transition: all 0.3s ease;}
 .product__item:hover {box-shadow: -1px 4px 20px 2px var(--color-shadow);}
+.product__item_hidden {display: none;}
 .product__margin {margin-bottom: .5rem;}
 .product__image {margin-bottom: .75rem;position: relative;background-color: rgba(0, 0, 0, 0.05);}
 .product__img {height: 13rem;}
@@ -968,9 +969,9 @@ h5 {font-size: 0.875rem;}
 .filter__list.active i:before {content: '\e916';}
 .filter__search {display: none;}
 .filters__buttons {margin-top: 1.5rem;text-align: center;display: none;}
-.filters__clear {width: 100%;padding-right: 5rem;}
-.filters__clear i {position: absolute;top: 1rem;right: 1rem;}
-.filters__clear:after {content: '';width: 1px;height: 2rem;top: .5rem;right: 3rem;background-color: var(--color-primary);position: absolute;display: block;transition: all 0.3s ease;}
+.filters__clear {width: 100%;line-height: 2.5rem;padding-right: 5rem;}
+.filters__clear i {position: absolute;top: .75rem;right: 1rem;}
+.filters__clear:after {content: '';width: 1px;height: 1.5rem;top: .5rem;right: 3rem;background-color: var(--color-primary);position: absolute;display: block;transition: all 0.3s ease;}
 .filters__clear:hover:after {background-color: var(--color-white);}
 .has-filters .filters__buttons {display: block;}
 .collapsible__click {position: relative;}

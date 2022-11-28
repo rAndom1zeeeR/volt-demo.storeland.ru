@@ -81,10 +81,14 @@
 		<!-- Вывод товаров Маленьким СПИСКОМ -->
 		<div class="products__list products__list_small products__ajax">
 			{% FOR goods %}
-			<div class="product__item 
-					{% IF goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
-					{% IF goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
-					{% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
+			<div class="product__item
+					{% IF goods.MAX_REST_VALUE = 0 %}product__empty{% ENDIF %} 
+					{% IF goods.COUNT_MODIFICATION > 1 %}product__has-mod{% ENDIF %} 
+					{% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}
+					{% IF goods.IS_TOP %}product__has-top{% ENDIF %}
+					{% IF goods.IS_NEW %}product__has-new{% ENDIF %}
+					{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > goods.MIN_PRICE_NOW %}product__has-sale
+					{% ELSEIF goods.MIN_PRICE_OLD > goods.MIN_PRICE_NOW %}product__has-sale{% ENDIF %}" 
 					data-id="{goods.ID}" 
 					itemscope itemtype="https://schema.org/Product"
 			>
@@ -397,10 +401,14 @@
 		<!-- Вывод товаров СПИСКОМ -->
 		<div class="products__list products__ajax">
 			{% FOR goods %}
-			<div class="product__item 
-					{% IF goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
-					{% IF goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
-					{% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
+			<div class="product__item
+					{% IF goods.MAX_REST_VALUE = 0 %}product__empty{% ENDIF %} 
+					{% IF goods.COUNT_MODIFICATION > 1 %}product__has-mod{% ENDIF %} 
+					{% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}
+					{% IF goods.IS_TOP %}product__has-top{% ENDIF %}
+					{% IF goods.IS_NEW %}product__has-new{% ENDIF %}
+					{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > goods.MIN_PRICE_NOW %}product__has-sale
+					{% ELSEIF goods.MIN_PRICE_OLD > goods.MIN_PRICE_NOW %}product__has-sale{% ENDIF %}" 
 					data-id="{goods.ID}" 
 					itemscope itemtype="https://schema.org/Product"
 			>
@@ -713,10 +721,14 @@
 		<div class="row">
 			<div class="products__grid products__ajax flex-stretch">
 				{% FOR goods %}
-				<div class="product__item 
-						{% IF goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
-						{% IF goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
-						{% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
+				<div class="product__item
+						{% IF goods.MAX_REST_VALUE = 0 %}product__empty{% ENDIF %} 
+						{% IF goods.COUNT_MODIFICATION > 1 %}product__has-mod{% ENDIF %} 
+						{% IF goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}
+						{% IF goods.IS_TOP %}product__has-top{% ENDIF %}
+						{% IF goods.IS_NEW %}product__has-new{% ENDIF %}
+						{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > goods.MIN_PRICE_NOW %}product__has-sale
+						{% ELSEIF goods.MIN_PRICE_OLD > goods.MIN_PRICE_NOW %}product__has-sale{% ENDIF %}" 
 						data-id="{goods.ID}" 
 						itemscope itemtype="https://schema.org/Product"
 				>

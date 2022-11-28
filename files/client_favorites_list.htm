@@ -6,10 +6,14 @@
 		<!-- Избранные товары -->
 		<div class="products__grid flex-stretch">
 			{% FOR favorites_goods %}
-			<div class="product__item 
-					{% IF favorites_goods.MAX_REST_VALUE=0 %}product__empty{% ENDIF %} 
-					{% IF favorites_goods.COUNT_MODIFICATION > 1 %}has-mod{% ENDIF %} 
-					{% IF favorites_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}" 
+			<div class="product__item
+					{% IF favorites_goods.MAX_REST_VALUE = 0 %}product__empty{% ENDIF %} 
+					{% IF favorites_goods.COUNT_MODIFICATION > 1 %}product__has-mod{% ENDIF %} 
+					{% IF favorites_goods.NB_GOODS_IN_CART %}inCart{% ENDIF %}
+					{% IF favorites_goods.IS_TOP %}product__has-top{% ENDIF %}
+					{% IF favorites_goods.IS_NEW %}product__has-new{% ENDIF %}
+					{% IF favorites_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > favorites_goods.MIN_PRICE_NOW %}product__has-sale
+					{% ELSEIF favorites_goods.MIN_PRICE_OLD > favorites_goods.MIN_PRICE_NOW %}product__has-sale{% ENDIF %}" 
 					data-id="{favorites_goods.ID}" 
 					itemscope itemtype="https://schema.org/Product"
 			>
