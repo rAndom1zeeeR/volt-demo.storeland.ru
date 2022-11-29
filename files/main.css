@@ -846,18 +846,19 @@ h5 {font-size: 0.875rem;}
 .categories__count_hover:hover {color: var(--color-primary);}
 .categories__item:hover .categories__count {opacity: 0;}
 .categories__item:hover .categories__count_hover {opacity: 1;transform: translateY(0);}
+.categories__sub .categories__item {width: 100%;box-shadow: none;}
 .categories__sub .categories__image {display: none;}
 .categories__sub .categories__content {display: none;}
-.categories__sub .categories__name {height: auto;opacity: 1;}
+.categories__sub .categories__name {height: auto;opacity: 1 !important;}
 .categories__sub[data-level="2"] {display: none;}
 .categories__sub_item {margin: 0 0 1rem 0;}
 .categories__sub_item:last-child {margin: 0;}
 .categories__sub_item .categories__name {margin: 0;}
 
-.categories__sub {height: 11.275rem;background-color: var(--color-lightgray);width: calc(100% - 2rem);top: 1rem;left: 1rem;position: absolute;overflow-y: auto;}
+.categories__sub {height: 12.125rem;background-color: var(--color-lightgray);width: calc(100% - 1.25rem);top: .625rem;left: .625rem;position: absolute;overflow-y: auto;}
 .categories__sub::-webkit-scrollbar {width: .5rem;height: 0;}
-.categories__sub {opacity: 0;transition: all 0.3s ease;transform: scale(1,0);transform-origin: right top;}
-.categories__item:hover .categories__sub {z-index: 3;opacity: 1;transform: scale(1);}
+.categories__sub {opacity: 0;transform: scale(1,0);transform-origin: right top;transition: all 0.3s ease;}
+.categories__item:hover .categories__sub {z-index: 3;opacity: 1;transform: scale(1);transition: all 0.3s ease;}
 
 @media all and (min-width: 1024px) {
 	.has-sidebar .categories__item {width: 33.333333%;}
@@ -1595,7 +1596,7 @@ h5 {font-size: 0.875rem;}
 .header-catalog__swiper .swiper-button-disabled {opacity: 0;}
 /* Выпадающий каталог */
 .header-catalog__container {position: relative;}
-.header-catalog__content {left: 1rem;width: calc(100% - 2rem);padding: 0;}
+.header-catalog__content {padding: 0;left: 1rem;width: calc(100% - 2rem);max-height: 25rem;overflow-y: auto;}
 .header-catalog-mobile {display: none;}
 header .catalog__items {position: relative;}
 header .catalog__item {margin: 0;}
