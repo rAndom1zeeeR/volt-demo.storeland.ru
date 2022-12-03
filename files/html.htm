@@ -22,9 +22,7 @@
 	<link rel="canonical" href="{PAGE_CANONICAL}" />
 	{% ENDIF %}
 	<!-- Подключаемые Шрифты -->
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="/design/noto-sans.css?design=THEMENAME" />
 	<!-- Подключаемые Иконки -->
 	<link rel="stylesheet" type="text/css" href="/design/icomoon.css?design=THEMENAME" />
 	<!-- Основные Стили магазина для всех страниц -->
@@ -700,9 +698,9 @@
 									<div class="product__addto flex">
 										<!-- Кол-во -->
 										<div class="product__qty qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
-											<a class="qty__minus unselectable" href="javascript:void(0)" title="Уменьшить" rel="nofollow"><i class="icon-minus"></i></a>
+											<span class="qty__minus unselectable" title="Уменьшить"><i class="icon-minus"></i></span>
 											<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{index_page_favorites_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
-											<a class="qty__plus unselectable" href="javascript:void(0)" title="Увеличить" rel="nofollow"><i class="icon-plus"></i></a>
+											<span class="qty__plus unselectable" title="Увеличить"><i class="icon-plus"></i></span>
 										</div>
 
 										<!-- Добавление товара в избранное и сравнение и в корзину -->
@@ -1043,9 +1041,9 @@
 										<div class="product__addto flex">
 											<!-- Кол-во -->
 											<div class="product__qty qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
-												<a class="qty__minus unselectable" href="javascript:void(0)" title="Уменьшить" rel="nofollow"><i class="icon-minus"></i></a>
+												<span class="qty__minus unselectable" title="Уменьшить"><i class="icon-minus"></i></span>
 												<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{index_page_sale_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
-												<a class="qty__plus unselectable" href="javascript:void(0)" title="Увеличить" rel="nofollow"><i class="icon-plus"></i></a>
+												<span class="qty__plus unselectable" title="Увеличить"><i class="icon-plus"></i></span>
 											</div>
 
 											<!-- Добавление товара в избранное и сравнение и в корзину -->
@@ -1152,7 +1150,7 @@
 										<i class="icon-chevron_right"></i>
 									</a>
 								</div>
-								{% ELSEIF %}
+								{% ELSE %}
 								<a class="categories__name" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
 									<span>{catalog_full.NAME}</span>
 								</a>
@@ -1222,10 +1220,10 @@
 										<picture>
 											<source srcset="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
 											<img class="lozad" 
-													width="208"
-													height="208"
+													width="112"
+													height="112"
 													src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
-													data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+													data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_SMALL}{% ENDIF %}" 
 													srcset="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_SMALL}{% ENDIF %}"
 													alt="{index_page_new_goods.NAME}" 
 											/>
@@ -1468,69 +1466,105 @@
 				<!-- Слайдер -->
 				<div class="swiper">
 					<div class="swiper-wrapper">
-						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_1.jpg?design=THEMENAME">
-							<div class="swiper-lazy-preloader"></div>
-							<div class="offers__percent">-30%</div>
-							<a class="offers__title flex" href="{CATALOG_URL}">
-								<span>Электросчетчики Kanerby-82Wq</span>
-								<i class="icon-chevron_right"></i>
-							</a>
+
+						<div class="swiper-slide">
+							<div class="offers__item">
+								<picture>
+									<div class="swiper-lazy-preloader"></div>
+									<source srcset="{ASSETS_IMAGES_PATH}ban_1.jpg?design=THEMENAME" />
+									<img class="swiper-lazy" 
+											data-src="{ASSETS_IMAGES_PATH}ban_1.jpg?design=THEMENAME" 
+											srcset="{ASSETS_IMAGES_PATH}ban_1.jpg?design=THEMENAME" 
+											alt="Электросчетчики Kanerby-82Wq -30%"
+											width="272"
+											height="224"
+									/>
+								</picture>
+
+								<div class="offers__inner">
+									<div class="offers__percent">-30%</div>
+									<a class="offers__title flex" href="{CATALOG_URL}">
+										<span>Электросчетчики Kanerby-82Wq</span>
+										<i class="icon-chevron_right"></i>
+									</a>
+								</div>
+
+							</div>
 						</div>
-						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_2.jpg?design=THEMENAME">
-							<div class="swiper-lazy-preloader"></div>
-							<div class="offers__percent">-80%</div>
-							<a class="offers__title flex" href="{CATALOG_URL}">
-								<span>Выключатели и розетки AvenuShort</span>
-								<i class="icon-chevron_right"></i>
-							</a>
+						
+						<div class="swiper-slide">
+							<div class="offers__item">
+								<picture>
+									<div class="swiper-lazy-preloader"></div>
+									<source srcset="{ASSETS_IMAGES_PATH}ban_2.jpg?design=THEMENAME" />
+									<img class="swiper-lazy" 
+											data-src="{ASSETS_IMAGES_PATH}ban_2.jpg?design=THEMENAME" 
+											srcset="{ASSETS_IMAGES_PATH}ban_2.jpg?design=THEMENAME" 
+											alt="Выключатели и розетки AvenuShort -80%"
+											width="272"
+											height="224"
+									/>
+								</picture>
+
+								<div class="offers__inner">
+									<div class="offers__percent">-80%</div>
+									<a class="offers__title flex" href="{CATALOG_URL}">
+										<span>Выключатели и розетки AvenuShort</span>
+										<i class="icon-chevron_right"></i>
+									</a>
+								</div>
+
+							</div>
 						</div>
-						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_3.jpg?design=THEMENAME">
-							<div class="swiper-lazy-preloader"></div>
-							<div class="offers__percent">-55%</div>
-							<a class="offers__title flex" href="{CATALOG_URL}">
-								<span>При заказе 1000 руб. на светотехнику</span>
-								<i class="icon-chevron_right"></i>
-							</a>
+						
+						<div class="swiper-slide">
+							<div class="offers__item">
+								<picture>
+									<div class="swiper-lazy-preloader"></div>
+									<source srcset="{ASSETS_IMAGES_PATH}ban_3.jpg?design=THEMENAME" />
+									<img class="swiper-lazy" 
+											data-src="{ASSETS_IMAGES_PATH}ban_3.jpg?design=THEMENAME" 
+											srcset="{ASSETS_IMAGES_PATH}ban_3.jpg?design=THEMENAME" 
+											alt="При заказе 1000 руб. на светотехнику -55%"
+											width="272"
+											height="224"
+									/>
+								</picture>
+
+								<div class="offers__inner">
+									<div class="offers__percent">-55%</div>
+									<a class="offers__title flex" href="{CATALOG_URL}">
+										<span>При заказе 1000 руб. на светотехнику</span>
+										<i class="icon-chevron_right"></i>
+									</a>
+								</div>
+
+							</div>
 						</div>
-						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_4.jpg?design=THEMENAME">
-							<div class="swiper-lazy-preloader"></div>
-							<div class="offers__percent">-20%</div>
-							<a class="offers__title flex" href="{CATALOG_URL}">
-								<span>При покупке любого силового кабеля от 100 метров</span>
-								<i class="icon-chevron_right"></i>
-							</a>
-						</div>
-						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_1.jpg?design=THEMENAME">
-							<div class="swiper-lazy-preloader"></div>
-							<div class="offers__percent">-30%</div>
-							<a class="offers__title flex" href="{CATALOG_URL}">
-								<span>Электросчетчики Kanerby-82Wq</span>
-								<i class="icon-chevron_right"></i>
-							</a>
-						</div>
-						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_2.jpg?design=THEMENAME">
-							<div class="swiper-lazy-preloader"></div>
-							<div class="offers__percent">-80%</div>
-							<a class="offers__title flex" href="{CATALOG_URL}">
-								<span>Выключатели и розетки AvenuShort</span>
-								<i class="icon-chevron_right"></i>
-							</a>
-						</div>
-						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_3.jpg?design=THEMENAME">
-							<div class="swiper-lazy-preloader"></div>
-							<div class="offers__percent">-55%</div>
-							<a class="offers__title flex" href="{CATALOG_URL}">
-								<span>При заказе 1000 руб. на светотехнику</span>
-								<i class="icon-chevron_right"></i>
-							</a>
-						</div>
-						<div class="swiper-slide offers__item swiper-lazy" data-background="{ASSETS_IMAGES_PATH}ban_4.jpg?design=THEMENAME">
-							<div class="swiper-lazy-preloader"></div>
-							<div class="offers__percent">-20%</div>
-							<a class="offers__title flex" href="{CATALOG_URL}">
-								<span>При покупке любого силового кабеля от 100 метров</span>
-								<i class="icon-chevron_right"></i>
-							</a>
+						
+						<div class="swiper-slide">
+							<div class="offers__item">
+								<picture>
+									<div class="swiper-lazy-preloader"></div>
+									<source srcset="{ASSETS_IMAGES_PATH}ban_4.jpg?design=THEMENAME" />
+									<img class="swiper-lazy" 
+											data-src="{ASSETS_IMAGES_PATH}ban_4.jpg?design=THEMENAME" 
+											srcset="{ASSETS_IMAGES_PATH}ban_4.jpg?design=THEMENAME" 
+											alt="При покупке любого силового кабеля от 100 метров -20%"
+											width="272"
+											height="224"
+									/>
+								</picture>
+
+								<div class="offers__inner">
+									<div class="offers__percent">-20%</div>
+									<a class="offers__title flex" href="{CATALOG_URL}">
+										<span>При покупке любого силового кабеля от 100 метров</span>
+										<i class="icon-chevron_right"></i>
+									</a>
+								</div>
+
+							</div>
 						</div>
 
 					</div>
@@ -1827,9 +1861,9 @@
 									<div class="product__addto flex">
 										<!-- Кол-во -->
 										<div class="product__qty qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
-											<a class="qty__minus unselectable" href="javascript:void(0)" title="Уменьшить" rel="nofollow"><i class="icon-minus"></i></a>
+											<span class="qty__minus unselectable" title="Уменьшить"><i class="icon-minus"></i></span>
 											<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{index_page_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
-											<a class="qty__plus unselectable" href="javascript:void(0)" title="Увеличить" rel="nofollow"><i class="icon-plus"></i></a>
+											<span class="qty__plus unselectable" title="Увеличить"><i class="icon-plus"></i></span>
 										</div>
 
 										<!-- Добавление товара в избранное и сравнение и в корзину -->
@@ -2025,7 +2059,12 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">
-										<img class="swiper-lazy" data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_all.TITLE}" />
+										<img class="swiper-lazy" 
+												data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" 
+												alt="{news_list_all.TITLE}" 
+												width="128"
+												height="128"
+										/>
 										<div class="swiper-lazy-preloader"></div>
 									</a>
 									<div class="news__content">
@@ -2064,7 +2103,12 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
-										<img class="swiper-lazy" data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_shop.TITLE}" />
+										<img class="swiper-lazy" 
+												data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" 
+												alt="{news_list_shop.TITLE}" 
+												width="128"
+												height="128"
+										/>
 										<div class="swiper-lazy-preloader"></div>
 									</a>
 									<div class="news__content">
@@ -2103,7 +2147,12 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">
-										<img class="swiper-lazy" data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_articles.TITLE}" />
+										<img class="swiper-lazy" 
+												data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" 
+												alt="{news_list_articles.TITLE}" 
+												width="128"
+												height="128"
+										/>
 										<div class="swiper-lazy-preloader"></div>
 									</a>
 									<div class="news__content">
@@ -2142,7 +2191,12 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">
-										<img class="swiper-lazy" data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" alt="{news_list_mass_media.TITLE}" />
+										<img class="swiper-lazy" 
+												data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=THEMENAME{% ENDIF %}" 
+												alt="{news_list_mass_media.TITLE}"
+												width="128"
+												height="128" 
+										/>
 										<div class="swiper-lazy-preloader"></div>
 									</a>
 									<div class="news__content">
@@ -2682,7 +2736,17 @@
 									
 											<!-- Изображение -->
 											<a class="product__img flex-center" href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}" itemprop="url" data-id="{recently_viewed_goods.IMAGE_ID}">
-												<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{recently_viewed_goods.NAME}" />
+												<picture>
+													<source srcset="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+													<img class="lozad" 
+															width="208"
+															height="208"
+															src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+															data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+															srcset="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_SMALL}{% ENDIF %}"
+															alt="{recently_viewed_goods.NAME}" 
+													/>
+												</picture>
 											</a>
 									
 											<!-- Смена Изображения при наведении -->
@@ -3408,7 +3472,7 @@
 		var text = '<div class="noty__addto"><div class="noty__message">{FORM_NOTICE | nl2br}</div></div>'
 		setTimeout(function () {
 			notyStart(text, type)
-		}, 1000);
+		}, 2000);
 	</script>
 	{% ENDIF %}
 

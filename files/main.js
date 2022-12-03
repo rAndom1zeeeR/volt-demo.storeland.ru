@@ -1939,87 +1939,6 @@ function cartQuantity(){
 	quantity();
 }
 
-// Счетчик +- в выпадающей корзине
-function cartAjaxQty(){
-	$('.addto__cart .qty__cart').off('change').on('change', $.debounce(300, function(){
-		var quantity = $(this);
-		var id = quantity.closest('.addto__item').data('id');
-		var mod = quantity.closest('.addto__item').data('mod-id');
-		var formData = $('.cartTable__form').serializeArray();
-		formData.push({name: 'only_body', value: 1});
-
-		// Количество
-		var val = parseInt(quantity.val());
-
-		// Если вводят 0 то заменяем на 1
-		if(val < 1){
-			quantity.val(1);
-			val = 1;
-		}
-
-		// Проверка максимальныго остатка
-		var max = parseInt(quantity.attr('max'));
-		if(val > max){
-			quantity.val(max);
-			val = max;
-			new Noty({
-				text: '<div class="noty__addto"><div class="noty__message">Внимание! Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div></div>',
-				layout:"bottomRight",
-				type:"warning",
-				easing:"swing",
-				animation: {
-					open: 'animated fadeInUp',
-					close: 'animated fadeOutDown',
-					easing: 'swing',
-					speed: 400
-				},
-				timeout:"2000",
-				progressBar:true
-			}).show();
-		}else{
-			// Отправляем аякс запрос на страницу корзины
-			$.ajax({
-				url: '/cart',
-				data: formData,
-				cache: false,
-				success: function(data) {
-					// Создаем массив кол-ва товаров
-					var countSum = []
-					$('.addto__cart .addto__item[data-id="' + id + '"]').each(function(){
-						var val = $(this).find('.qty__cart').val();
-						countSum.push(val)
-					})
-
-					// Суммируем массив из модификаций товара
-					var newCountSum = 0;
-					for (let i=0; i<countSum.length; i++) {
-						newCountSum += parseInt(countSum[i])
-					}
-
-					// Обновляем счетчик у всех товаров на странице
-					$('.product__item[data-id="' + id + '"]').each(function(){
-						$(this).find('.inCart__count').text(newCountSum)
-					})
-
-					// Обновление цены
-					var price = $(data).find('.cart__item[data-mod-id="' + mod + '"] .cart__price').html()
-					quantity.closest('.addto__item').find('.addto__price').html(price)
-
-					// Обновляем счётчики
-					var newCount = $(data).find('.count-cart').html();
-					var newSum = $(data).find('.cartSumTotal').html()
-					$('.count-cart').text(newCount).attr('data-count', newCount);
-					$('.cartSumNow').html(newSum);
-					// Обновление скидки
-					cartSaleSum();
-				}
-			});
-		}
-
-	}));
-	quantity();
-}
-
 // Удаление товара из корзины
 function cartDelete(e){
 	var yep = confirm('Вы точно хотите удалить товар из корзины?');
@@ -2616,21 +2535,10 @@ function orderCart(){
           orderValidate();
 					// Стили для новых селектов
 					$(".form__phone").mask("+7 (999) 999-9999");
-					// Оформление заказа в выпадающей корзине
-					orderCartStart();
 				}
 			})
 		}
 	});
-}
-
-// Запуск функции оформления заказа
-function orderCartStart(){
-	// Оформление заказа в выпадающей корзине
-	$('.cartOrder').on('click', function(event){
-		event.preventDefault();
-		orderCart();
-	})
 }
 
 
@@ -3153,18 +3061,19 @@ $(document).ready(function(){
 	openMenu();
 	addTo();
 	addCart();
-	quickViewMod();
 	toTop();
 	cartSaleSum();
-	// prodHoverImage();
   mainnav('header .mainnav', '1', 991);
 	priceDiff('.product__item', 'percent');
-	orderCartStart();
-	cartAjaxQty();
 	quantity();
 	swiperViewed();
-	swiperCatalog();	
+	swiperCatalog();
+	// prodHoverImage();
 	// goodsModRest();
+
+	setTimeout(() => {
+		quickViewMod();
+	}, 2000);
 
 	// Удаление классов загрузки для элементов страницы
 	$('.loading').addClass('loaded');
@@ -3509,7 +3418,7 @@ function swiperOffers(id){
 
 	// Слайдер товаров
 	var swiper = new Swiper(id + ' .swiper', {
-		loop: false,
+		loop: true,
 		autoplay: false,
 		watchSlidesVisibility: true,
 		simulateTouch: true,
