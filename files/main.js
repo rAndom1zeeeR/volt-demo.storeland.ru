@@ -2444,25 +2444,6 @@ function orderScriptsSelect() {
 	});
 }
 
-$.event.special.inputchange = {
-	setup: function() {
-			var self = this, val;
-			$.data(this, 'timer', window.setInterval(function() {
-					val = self.value;
-					if ( $.data( self, 'cache') != val ) {
-							$.data( self, 'cache', val );
-							$( self ).trigger( 'inputchange' );
-					}
-			}, 20));
-	},
-	teardown: function() {
-			window.clearInterval( $.data(this, 'timer') );
-	},
-	add: function() {
-			$.data(this, 'cache', this.value);
-	}
-};
-
 // Отправка купона при оформлении заказа
 function coupons() {
 	var submitBtn = $('.coupon__button');
@@ -2932,11 +2913,11 @@ function openMenu() {
 		$('[data-open]').removeClass('opened')
 		$('[data-opened]').removeClass('opened')
     if ($('[data-opened="'+ value +'"]').hasClass('opened')){
-      $(this).removeClass('opened active').parent().removeClass('opened');
+      $(this).removeClass('opened').parent().removeClass('opened');
       $('#overlay').removeClass('opened');
       $('[data-opened="'+ value +'"]').removeClass('opened');
     }else{
-      $(this).addClass('opened active').parent().addClass('opened');
+      $(this).addClass('opened').parent().addClass('opened');
       $('#overlay').addClass('opened');
       $('[data-opened="'+ value +'"]').addClass('opened');
     }
@@ -3117,7 +3098,7 @@ ajaxForms('#fancybox__notify','notifyFlag','Вы будете уведомлен
 // "Обратный звонок" на главной.
 ajaxForms('#callback','callbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
 // "Обратный звонок" на странице обратного звонка.
-ajaxForms('.page-сallback','pageCallbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
+ajaxForms('.сallback','pageCallbackFlag','Спасибо за обращение! Мы перезвоним вам в ближайшее время','Вы уже отправляли запрос. Пожалуйста ожидайте звонка.')
 // "Подписаться".
 ajaxForms('.subscribe','subscribeFlag','Спасибо за обращение! Вы подписались на наши уведомления','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 
@@ -3175,7 +3156,7 @@ $(document).ready(function(){
 	quickViewMod();
 	toTop();
 	cartSaleSum();
-	prodHoverImage();
+	// prodHoverImage();
   mainnav('header .mainnav', '1', 991);
 	priceDiff('.product__item', 'percent');
 	orderCartStart();

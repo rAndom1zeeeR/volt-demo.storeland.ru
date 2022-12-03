@@ -31,6 +31,7 @@
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}jquery.fancybox.min.css?design=THEMENAME" />
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}swiper-bundle.min.css?design=THEMENAME" />
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}min.css?design=THEMENAME" />
+	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}noty.css?design=THEMENAME" />
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}main.css?design=THEMENAME" />
 	<!-- Подключаемые скрипты -->
 	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.6.0.min.js?design=THEMENAME"></script>
@@ -180,7 +181,7 @@
 								<link itemprop="url" href="{INDEX_PAGE_URL}" />
 								<!-- Форма поиска -->
 								<form class="search__form" action="{QUICK_SEARCH_URL}" method="get" title="Поиск по магазину" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
-									<meta itemprop="target" content="{SEARCH_URL}?q={{EMPTY}q}" />
+									<meta itemprop="target" content="{SEARCH_URL}?q={q}" />
 									<input type="hidden" name="goods_search_field_id" value="0" />
 									<input class="search__input" type="text" name="q" value="{FORM_SEARCH_Q}" placeholder="Поиск..." autocomplete="off" itemprop="query-input" />
 									<!-- Найти -->
@@ -3416,7 +3417,7 @@
 	// Загрузка основных функций шаблона Товары
 	$(document).ready(function(){
 		priceFilter();
-		ajaxProducts();
+		// ajaxProducts();
 		// restCookie();
 	});
 	</script>
@@ -3480,9 +3481,14 @@
 	<!-- Модальные окна -->
 	<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.fancybox.min.js?design=THEMENAME"></script>
 	<!-- Скрипты магазина-->
-	<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=THEMENAME"></script>
-	<script defer type="text/javascript" src="{ASSETS_JS_PATH}search.js?design=THEMENAME"></script>
 	<script defer type="text/javascript" src="{ASSETS_JS_PATH}main.js?design=THEMENAME"></script>
-	<script defer type="text/javascript" src="{ASSETS_JS_PATH}forall.js?design=THEMENAME"></script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}debounce.js?design=THEMENAME"></script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}search.js?design=THEMENAME"></script>	
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.maskedinput.min.js?design=THEMENAME"></script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}noty.min.js?design=THEMENAME"></script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}lozad.min.js?design=THEMENAME"></script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}jquery.validate.min.js?design=THEMENAME"></script>
+	<script defer type="text/javascript" src="{ASSETS_JS_PATH}detect.min.js?design=THEMENAME"></script>
+
 </body>
 </html>

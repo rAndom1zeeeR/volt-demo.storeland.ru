@@ -1,4 +1,4 @@
-<div class="page-order-info">
+<div class="order-info">
   {% IF order_list_empty %}
   <div class="notice attention">Вы пока не оформляли у нас заказов. Самое время <a href="{CATALOG_URL}">начать</a>.</div>
   {% ELSE %}
@@ -23,7 +23,7 @@
 	        <td>{order_list.PERSON}</td>
 	        <td><span class="{CURRENCY_CHAR_CODE}">{order_list.SUM | money_format}</span></td>
 	        <td><em title="{order_list.STATUS_DESC}">{order_list.STATUS_NAME}</em></td>
-	        <td>{%IF order_list.PAYMENT=1%}Оплачен{% ELSEIF order_list.PAYMENT=2 %}Оплачен частично{%ELSE%}Не оплачен{%ENDIF%}</td>
+	        <td>{% IF order_list.PAYMENT=1 %}Оплачен{% ELSEIF order_list.PAYMENT=2 %}Оплачен частично{% ELSE %}Не оплачен{% ENDIF %}</td>
 	        <td><a href="{USER_HISTORY_INFO_URL}/{order_list.NUM}" class="button-small">Детали</a></td>
 	      </tr>
 	    {% ENDFOR %}
