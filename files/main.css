@@ -1482,7 +1482,7 @@ h5 {font-size: 0.875rem;}
 /**************************************/
 /*** Контакты ***/
 /**************************************/
-.header-region {width: 18rem;}
+.header-region {width: 19rem;}
 .header-region i + span {max-width: calc(100% - 2.5rem);}
 .header-contacts {margin-left: 2rem;position: relative;}
 .header-contacts__content {width: 14.25rem;top: -1rem;left: -1rem;margin: 0;}
@@ -1503,7 +1503,7 @@ h5 {font-size: 0.875rem;}
 /**************************************/
 /*** Меню ***/
 /**************************************/
-.header-mainnav {width: calc(100% - 18rem - 24rem - 2rem);margin: 0 .5rem;flex-grow: 1;}
+.header-mainnav {width: calc(100% - 19rem - 24rem - 2rem);margin: 0 .5rem;flex-grow: 1;}
 .mainnav__list.loading {height: 2rem;}
 .mainnav__link {padding: .625rem;font-size: .875rem;display: block;}
 .mainnav__overflow {margin-top: 0;width: 8rem;padding: .375rem .5rem;}
