@@ -495,7 +495,17 @@
 						
 									<!-- Изображение -->
 									<a class="product__img flex-center" href="{index_page_favorites_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_favorites_goods.NAME}" itemprop="url" data-id="{index_page_favorites_goods.IMAGE_ID}">
-										<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_favorites_goods.NAME}" />
+										<picture>
+											<source srcset="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+											<img class="lozad" 
+													width="208"
+													height="208"
+													src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+													data-src="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+													srcset="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_SMALL}{% ENDIF %}"
+													alt="{index_page_favorites_goods.NAME}" 
+											/>
+										</picture>										
 									</a>
 						
 									<!-- Смена Изображения при наведении -->
@@ -806,7 +816,17 @@
 							
 										<!-- Изображение -->
 										<a class="product__img flex-center" href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}" itemprop="url" data-id="{index_page_sale_goods.IMAGE_ID}">
-											<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_sale_goods.NAME}" />
+											<picture>
+												<source srcset="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+												<img class="lozad" 
+														width="208"
+														height="208"
+														src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+														data-src="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+														srcset="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_SMALL}{% ENDIF %}"
+														alt="{index_page_sale_goods.NAME}" 
+												/>
+											</picture>
 										</a>
 							
 										<!-- Смена Изображения при наведении -->
@@ -1101,35 +1121,22 @@
 				<!-- Слайдер -->
 				<div class="swiper">
 					<div class="swiper-wrapper">
-						<!-- {% FOR catalog_full %}
-							{% IF catalog_full.HIDE || catalog_full.LEVEL > 0 %}{continue}{% ENDIF %}
-							<div class="categories__item swiper-slide" data-id="{catalog_full.ID}">
-								<a class="categories__image flex-center" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
-									<img src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ENDIF %}" alt="{catalog_full.NAME}" />
-								</a>
-								<div class="categories__content flex-start">
-									<a class="categories__name" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
-										<span>{catalog_full.NAME}</span>
-									</a>
-									<div class="categories__count flex">
-										<span>{catalog_full.GOODS_COUNT} товар{catalog_full.GOODS_COUNT | gen_word_end("","а","ов")}</span>
-									</div>
-									<a class="categories__count categories__count_hover flex" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
-										<span>Смотреть все подкатегории</span>
-									</a>
-									<a class="categories__icon" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
-										<i class="icon-chevron_right"></i>
-									</a>
-								</div>
-							</div>
-						{% ENDFOR %} -->
-
 						{% FOR catalog_full %}
 							{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<div data-level="{catalog_full.LEVEL}" class="categories__sub">{% ENDIF %}{% ENDIF %}
 							<div data-level="{catalog_full.LEVEL}" class="categories__item {% IF catalog_full.LEVEL = 0 %}swiper-slide{% ENDIF %} {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}">
 								{% IF catalog_full.LEVEL = 0 %}
 								<a class="categories__image flex-center" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
-									<img src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ENDIF %}" alt="{catalog_full.NAME}" />
+									<picture>
+										<source srcset="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ENDIF %}" />
+										<img class="lozad" 
+												width="194"
+												height="194"
+												src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+												data-src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ENDIF %}"
+												srcset="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ENDIF %}"
+												alt="{catalog_full.NAME}"
+										/>
+									</picture>	
 								</a>
 								<div class="categories__content flex-start">
 									<a class="categories__name" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
@@ -1145,7 +1152,7 @@
 										<i class="icon-chevron_right"></i>
 									</a>
 								</div>
-								{% ELSE %}
+								{% ELSEIF %}
 								<a class="categories__name" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
 									<span>{catalog_full.NAME}</span>
 								</a>
@@ -1212,7 +1219,17 @@
 						
 									<!-- Изображение -->
 									<a class="product__img flex-center" href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_new_goods.NAME}" itemprop="url" data-id="{index_page_new_goods.IMAGE_ID}">
-										<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_new_goods.NAME}" />
+										<picture>
+											<source srcset="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+											<img class="lozad" 
+													width="208"
+													height="208"
+													src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+													data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+													srcset="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_SMALL}{% ENDIF %}"
+													alt="{index_page_new_goods.NAME}" 
+											/>
+										</picture>
 									</a>
 						
 									<!-- Смена Изображения при наведении -->
@@ -1605,7 +1622,17 @@
 						
 									<!-- Изображение -->
 									<a class="product__img flex-center" href="{index_page_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_goods.NAME}" itemprop="url" data-id="{index_page_goods.IMAGE_ID}">
-										<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{index_page_goods.NAME}" />
+										<picture>
+											<source srcset="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+											<img class="lozad" 
+													width="208"
+													height="208"
+													src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+													data-src="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+													srcset="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_SMALL}{% ENDIF %}"
+													alt="{index_page_goods.NAME}" 
+											/>
+										</picture>
 									</a>
 						
 									<!-- Смена Изображения при наведении -->

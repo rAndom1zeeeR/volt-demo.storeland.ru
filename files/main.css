@@ -65,7 +65,7 @@ section {margin: 3rem 0;position: relative;}
 /**************************************/
 a {color: var(--color-black);text-decoration: none;cursor: pointer;transition: all 0.3s ease;}
 a:hover, a.active, a.added {color: var(--color-primary);text-decoration: none;}
-img {max-width: 100%;max-height: 100%;width: auto;}
+img {max-width: 100%;max-height: 100%;width: auto;height: auto;}
 p {margin: 0 0 1rem 0;line-height: 1.5;}
 .unstyled {margin: 0;padding: 0;list-style: none;}
 .unselectable {-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
@@ -1423,6 +1423,7 @@ h5 {font-size: 0.875rem;}
 .header__middle {padding: 1rem 0;}
 .header__inner {position: relative;}
 .header__top .header__inner {padding: .5rem 0;border-bottom: 1px solid var(--color-gray);}
+.header-logo img {max-width: 12rem;max-height: 4rem;}
 @media all and (max-width: 1023px) {
 	.header__top {display: none;}
 	.header__middle {box-shadow: -1px 4px 20px 2px var(--color-shadow);}
