@@ -8,7 +8,18 @@
 			
 			<!-- Главное изображение -->
 			<a class="productView__image flex-center" href="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_LARGE}{% ENDIF %}" data-fancybox="images">
-				<img class="lozad" data-src="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" title="{GOODS_NAME}" alt="{GOODS_NAME}" itemprop="image" />
+				<picture>
+					<source srcset="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" media="(max-width: 479px)" />
+					<img class="lozad" 
+							src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+							data-src="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" 
+							srcset="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}"
+							alt="{GOODS_NAME}" 
+							width="452"
+							height="452"
+							itemprop="image"
+					/>
+				</picture>
 			</a>
 
 			<!-- Дополнительные изображения -->
@@ -781,15 +792,18 @@
 						
 								<!-- Изображение -->
 								<a class="product__img flex-center" href="{related_goods.URL_MIN_PRICE_NOW | url_amp}" title="{related_goods.NAME}" itemprop="url" data-id="{related_goods.IMAGE_ID}">
-									<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{related_goods.NAME}" />
+									<picture>
+										<source srcset="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+										<img class="lozad" 
+												src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+												data-src="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+												srcset="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_MEDIUM}{% ENDIF %}"
+												alt="{related_goods.NAME}" 
+												width="208"
+												height="208"
+										/>
+									</picture>
 								</a>
-						
-								<!-- Смена Изображения при наведении -->
-								<a class="product__image-hover flex" href="{related_goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-						
-								{% FOR images %}
-								<input type="hidden" class="product__imgID" data-id="{related_goods.images.ID}" data-image="{related_goods.images.MEDIUM}" />
-								{% ENDFOR %}
 						
 							</div>
 							
@@ -1095,15 +1109,18 @@
 						
 								<!-- Изображение -->
 								<a class="product__img flex-center" href="{related_views_goods.URL_MIN_PRICE_NOW | url_amp}" title="{related_views_goods.NAME}" itemprop="url" data-id="{related_views_goods.IMAGE_ID}">
-									<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{related_views_goods.NAME}" />
+									<picture>
+										<source srcset="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+										<img class="lozad" 
+												src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+												data-src="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+												srcset="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}"
+												alt="{related_views_goods.NAME}" 
+												width="208"
+												height="208"
+										/>
+									</picture>
 								</a>
-						
-								<!-- Смена Изображения при наведении -->
-								<a class="product__image-hover flex" href="{related_views_goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-						
-								{% FOR images %}
-								<input type="hidden" class="product__imgID" data-id="{related_views_goods.images.ID}" data-image="{related_views_goods.images.MEDIUM}" />
-								{% ENDFOR %}
 						
 							</div>
 							

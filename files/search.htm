@@ -117,15 +117,18 @@
 			
 						<!-- Изображение -->
 						<a class="product__img flex-center" href="{goods.URL_MIN_PRICE_NOW | url_amp}" title="{goods.NAME}" itemprop="url" data-id="{goods.IMAGE_ID}">
-							<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{goods.NAME}" />
+							<picture>
+								<source srcset="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+								<img class="lozad" 
+										src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+										data-src="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_SMALL}{% ENDIF %}" 
+										srcset="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_SMALL}{% ENDIF %}"
+										alt="{goods.NAME}" 
+										width="96"
+										height="96"
+								/>
+							</picture>
 						</a>
-			
-						<!-- Смена Изображения при наведении -->
-						<a class="product__image-hover flex" href="{goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-			
-						{% FOR images %}
-						<input type="hidden" class="product__imgID" data-id="{goods.images.ID}" data-image="{goods.images.MEDIUM}" />
-						{% ENDFOR %}
 			
 					</div>
 					
@@ -437,15 +440,18 @@
 			
 						<!-- Изображение -->
 						<a class="product__img flex-center" href="{goods.URL_MIN_PRICE_NOW | url_amp}" title="{goods.NAME}" itemprop="url" data-id="{goods.IMAGE_ID}">
-							<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{goods.NAME}" />
+							<picture>
+								<source srcset="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+								<img class="lozad" 
+										src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+										data-src="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}" 
+										srcset="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}"
+										alt="{goods.NAME}" 
+										width="160"
+										height="160"
+								/>
+							</picture>
 						</a>
-			
-						<!-- Смена Изображения при наведении -->
-						<a class="product__image-hover flex" href="{goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-			
-						{% FOR images %}
-						<input type="hidden" class="product__imgID" data-id="{goods.images.ID}" data-image="{goods.images.MEDIUM}" />
-						{% ENDFOR %}
 			
 					</div>
 					
@@ -757,15 +763,18 @@
 				
 							<!-- Изображение -->
 							<a class="product__img flex-center" href="{goods.URL_MIN_PRICE_NOW | url_amp}" title="{goods.NAME}" itemprop="url" data-id="{goods.IMAGE_ID}">
-								<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}" alt="{goods.NAME}" />
+								<picture>
+									<source srcset="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+									<img class="lozad" 
+											src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+											data-src="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}" 
+											srcset="{% IF goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{goods.IMAGE_MEDIUM}{% ENDIF %}"
+											alt="{goods.NAME}" 
+											width="208"
+											height="208"
+									/>
+								</picture>
 							</a>
-				
-							<!-- Смена Изображения при наведении -->
-							<a class="product__image-hover flex" href="{goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-				
-							{% FOR images %}
-							<input type="hidden" class="product__imgID" data-id="{goods.images.ID}" data-image="{goods.images.MEDIUM}" />
-							{% ENDFOR %}
 				
 						</div>
 						

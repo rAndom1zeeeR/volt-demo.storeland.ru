@@ -1201,7 +1201,11 @@ function pageGoods() {
 		});
 
 		// Скрываем навигацию если слайдер заблокирован
-		$(id).find('.swiper-pagination-lock').parent().addClass('swiper-pagination-lock')
+		if($(id).find('.swiper-button-lock').length){
+			$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+		}else{
+			$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
+		}
 	}
 
 	// Запуск слайдера
@@ -3015,42 +3019,6 @@ ajaxForms('.subscribe','subscribeFlag','Спасибо за обращение! 
 // "Обратный звонок".
 // ajaxForms('#feedback','fancyFeedbackFlag','Запрос обратной связи успешно отправлен администрации магазина','Вы уже отправляли запрос. Пожалуйста ожидайте.')
 
-// Функция изменения изображений при наведении на товар
-function prodHoverImage(){
-	$('.product__item').each(function(){
-		var t = $(this);
-		var imagesLen = t.find('.product__imgID').length
-		// если больше 2 изображений товара
-		if (imagesLen > 2){
-			// Создаем элементы при наведении на которые будут меняться изображения
-			t.find('.product__imgID').each(function(){
-				var image = $(this).attr('data-image')
-				var id =  $(this).attr('data-id')
-				// Создаем элементы
-				t.find('.product__image-hover').append('<div class="product__hoverImage" data-image="'+ image +'" data-id="'+ id +'"></div>');
-				// Добавляем активный класс на элемент навигации
-				if (id == t.find('.product__img').data('id')){
-					t.find('.product__hoverImage').removeClass('active')
-					t.find('.product__hoverImage[data-id="' + id + '"]').addClass('active')
-				}
-			});
-
-			// Ховер эффект изменения изображения
-			t.find('.product__hoverImage').hover(function(){
-				var image = $(this).attr('data-image')
-				var id =  $(this).attr('data-id')
-				t.find('.product__img').attr({
-					'image': image,
-					'data-id': id
-				})
-				t.find('.product__img img').attr('src', image)
-				t.find('.product__hoverImage').removeClass('active')
-				$(this).addClass('active')
-			});
-		}
-
-	})
-}
 
 ///////////////////////////////////////
 // Загрузка основных функций шаблона
@@ -3068,7 +3036,6 @@ $(document).ready(function(){
 	quantity();
 	swiperViewed();
 	swiperCatalog();
-	// prodHoverImage();
 	// goodsModRest();
 
 	setTimeout(() => {
@@ -3589,7 +3556,11 @@ function swiperViewed(){
 	});
 
 	// Скрываем навигацию родителя если слайдер заблокирован
-	$(id).find('.swiper-navigation-lock').parent().addClass('swiper-navigation-lock')
+	if($(id).find('.swiper-button-lock').length){
+		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	}else{
+		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
+	}
 }
 
 ///////////////////////////////////////

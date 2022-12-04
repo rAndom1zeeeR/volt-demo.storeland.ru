@@ -496,22 +496,15 @@
 										<picture>
 											<source srcset="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
 											<img class="lozad" 
-													width="208"
-													height="208"
 													src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
 													data-src="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}" 
-													srcset="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_SMALL}{% ENDIF %}"
+													srcset="{% IF index_page_favorites_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_favorites_goods.IMAGE_MEDIUM}{% ENDIF %}"
 													alt="{index_page_favorites_goods.NAME}" 
+													width="208"
+													height="208"
 											/>
 										</picture>										
 									</a>
-						
-									<!-- Смена Изображения при наведении -->
-									<a class="product__image-hover flex" href="{index_page_favorites_goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-						
-									{% FOR images %}
-									<input type="hidden" class="product__imgID" data-id="{index_page_favorites_goods.images.ID}" data-image="{index_page_favorites_goods.images.MEDIUM}" />
-									{% ENDFOR %}
 						
 								</div>
 								
@@ -817,22 +810,15 @@
 											<picture>
 												<source srcset="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
 												<img class="lozad" 
-														width="208"
-														height="208"
 														src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
 														data-src="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}" 
-														srcset="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_SMALL}{% ENDIF %}"
+														srcset="{% IF index_page_sale_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_sale_goods.IMAGE_MEDIUM}{% ENDIF %}"
 														alt="{index_page_sale_goods.NAME}" 
+														width="208"
+														height="208"
 												/>
 											</picture>
 										</a>
-							
-										<!-- Смена Изображения при наведении -->
-										<a class="product__image-hover flex" href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-							
-										{% FOR images %}
-										<input type="hidden" class="product__imgID" data-id="{index_page_sale_goods.images.ID}" data-image="{index_page_sale_goods.images.MEDIUM}" />
-										{% ENDFOR %}
 							
 									</div>
 									
@@ -1220,22 +1206,15 @@
 										<picture>
 											<source srcset="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
 											<img class="lozad" 
+													src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
+													data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+													srcset="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_MEDIUM}{% ENDIF %}"
+													alt="{index_page_new_goods.NAME}" 
 													width="112"
 													height="112"
-													src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
-													data-src="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_SMALL}{% ENDIF %}" 
-													srcset="{% IF index_page_new_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_new_goods.IMAGE_SMALL}{% ENDIF %}"
-													alt="{index_page_new_goods.NAME}" 
 											/>
 										</picture>
 									</a>
-						
-									<!-- Смена Изображения при наведении -->
-									<a class="product__image-hover flex" href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-						
-									{% FOR images %}
-									<input type="hidden" class="product__imgID" data-id="{index_page_new_goods.images.ID}" data-image="{index_page_new_goods.images.MEDIUM}" />
-									{% ENDFOR %}
 						
 								</div>
 								
@@ -1659,22 +1638,15 @@
 										<picture>
 											<source srcset="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
 											<img class="lozad" 
-													width="208"
-													height="208"
 													src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
 													data-src="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}" 
-													srcset="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_SMALL}{% ENDIF %}"
+													srcset="{% IF index_page_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{index_page_goods.IMAGE_MEDIUM}{% ENDIF %}"
 													alt="{index_page_goods.NAME}" 
+													width="208"
+													height="208"
 											/>
 										</picture>
 									</a>
-						
-									<!-- Смена Изображения при наведении -->
-									<a class="product__image-hover flex" href="{index_page_goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-						
-									{% FOR images %}
-									<input type="hidden" class="product__imgID" data-id="{index_page_goods.images.ID}" data-image="{index_page_goods.images.MEDIUM}" />
-									{% ENDFOR %}
 						
 								</div>
 								
@@ -2739,22 +2711,15 @@
 												<picture>
 													<source srcset="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
 													<img class="lozad" 
-															width="208"
-															height="208"
 															src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
 															data-src="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}" 
-															srcset="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_SMALL}{% ENDIF %}"
+															srcset="{% IF recently_viewed_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{recently_viewed_goods.IMAGE_MEDIUM}{% ENDIF %}"
 															alt="{recently_viewed_goods.NAME}" 
+															width="208"
+															height="208"
 													/>
 												</picture>
 											</a>
-									
-											<!-- Смена Изображения при наведении -->
-											<a class="product__image-hover flex" href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}"></a>
-									
-											{% FOR images %}
-											<input type="hidden" class="product__imgID" data-id="{recently_viewed_goods.images.ID}" data-image="{recently_viewed_goods.images.MEDIUM}" />
-											{% ENDFOR %}
 									
 										</div>
 										

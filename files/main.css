@@ -51,6 +51,7 @@ input:focus, select:focus, textarea:focus {border-color: var(--color-secondary);
 input.focus, select.focus, textarea.focus {border-color: var(--color-secondary);}
 input.error, textarea.error {border-color: var(--color-red);}
 input[type="file"] {margin-top: 0.25rem;}
+textarea {height: auto;padding: 1rem;resize: vertical;}
 
 /* Чекбокс квадрат */
 .square {background-color: var(--color-gray);border: 1px solid var(--color-gray);color: var(--color-white);width: 1.25rem;height: 1.25rem;line-height: 1.25rem;font-size: 1.125rem;margin: 0;padding: 0;text-align: center;cursor: pointer;}
@@ -405,6 +406,7 @@ section {margin: 3rem 0;position: relative;}
 .product__margin {margin-bottom: .5rem;}
 .product__image {margin-bottom: .75rem;position: relative;background-color: rgba(0, 0, 0, 0.05);}
 .product__img {height: 13rem;}
+.product__img picture {height: 100%;}
 .product__links a {margin-left: 1rem;}
 .product__links a:first-child {margin-left: 0;}
 .product__links a i {margin-right: 0;}
@@ -425,13 +427,6 @@ section {margin: 3rem 0;position: relative;}
 .inCart .product__addCart .button-tertiary {background-color: var(--color-secondary);color: var(--color-white);}
 .inCart .product__addCart .button-tertiary:hover {background-color: var(--color-tertiary);color: var(--color-black);}
 
-/* Смена изображений при наведении */
-.product__image-hover {position: absolute;top: 0;width: 100%;height: 100%;opacity: 0;transition: all 0.3s ease;}
-.product__item:hover .product__image-hover {opacity: 1;}
-.product__hoverImage {margin: 0 .5rem 0 0;flex-grow: 1;height: 100%;position: relative;cursor: pointer;}
-.product__hoverImage:last-child {margin: 0;}
-.product__hoverImage:after {content: '';width: 100%;height: .25rem;background: var(--color-gray);display: block;position: absolute;bottom: 0;}
-.product__hoverImage.active:after {background: var(--color-black);}
 /* Счетчик */
 .counter {color: var(--color-red);font-size: 1.125rem;font-weight: bold;}
 .counter i {font-size: 2rem;line-height: 1;margin-right: .75rem;}
@@ -440,8 +435,8 @@ section {margin: 3rem 0;position: relative;}
 .counter__item:last-child:after {display: none;}
 /* Кол-во */
 .qty {background-color: var(--color-lightgray);padding: 0 .25rem;}
-.qty a {padding: 0;width: 1.5rem;height: 3rem;line-height: 3.25rem;font-size: .75rem;text-align: center;}
-.qty a:hover {color: var(--color-primary);}
+.qty span {padding: 0;width: 1.5rem;height: 3rem;line-height: 3.25rem;font-size: .75rem;text-align: center;}
+.qty span:hover {color: var(--color-primary);}
 .qty input {width: 2.5rem;height: 3rem;border: 0;padding: 0;text-align: center;}
 @media all and (min-width: 1024px) {
 	.has-sidebar .product__item {width: 33.333333%;}
@@ -920,6 +915,7 @@ section {margin: 3rem 0;position: relative;}
 .productView__empty .productView__qty {display: none;}
 .productView__empty .add-cart {display: none;}
 .productView__empty .add-notify {flex-grow: 1;display: flex;align-items: center;justify-content: center;}
+.productView__empty .add-notify i {margin: 0 .5rem;}
 .productView__empty .productView__available {display: none;}
 .productView__empty .productView__qty {display: none;}
 @media all and (max-width: 1199px) {
@@ -1036,6 +1032,7 @@ section {margin: 3rem 0;position: relative;}
 .opinion__answer div {overflow: hidden;text-overflow: ellipsis;}
 .opinion__answer label {margin-bottom: 1rem;display: block;font-weight: bold;color: var(--color-primary);}
 .opinion__delete {margin-top: 1rem;}
+.opinion__delete i {font-size: .75rem;}
 @media all and (max-width: 1023px) {
 	.opinion__content {width: 100%;}
 	.opinion__addForm {width: 100%;}
@@ -1126,6 +1123,7 @@ section {margin: 3rem 0;position: relative;}
 /*** Корзина ***/
 /**************************************/
 .page-cart .cart {display: none;}
+.page-cart #pdt__viewed {display: none;}
 .cart__item {margin-top: 1rem;padding-top: 1rem; border-top: 1px solid var(--color-gray);transition: all 0.3s ease;position: relative;}
 .cart__image {width: 5rem;height: 5rem;}
 .cart__content {width: calc(100% - 5rem);}
@@ -1152,7 +1150,7 @@ section {margin: 3rem 0;position: relative;}
 .cartTotal__item {margin-bottom: .75rem;font-weight: bold;}
 .cartTotal__item:last-child {margin-bottom: 0;}
 .cartTotal__price .num:after {font-weight: bold;}
-.cartTotal__total {font-weight: bold;margin: 0 5.5rem;}
+.cartTotal__total {margin: 0 5rem;font-weight: bold;}
 .cartTotal__total_label {margin-bottom: .5rem;}
 .cartTotal__total_price {font-size: 1.75rem;}
 .cartTotal__label {color: var(--color-darkgray);margin-right: .5rem;}
@@ -1216,7 +1214,7 @@ section {margin: 3rem 0;position: relative;}
 .fastOrderForm .form__fields-trio .form__field {width: calc(33.333333% - 1rem);}
 .fastOrderForm .form__registration {padding: 0 .5rem;margin-bottom: 0;}
 .fastOrderForm .form__registration label {display: inline-block;vertical-align: middle;}
-.fastOrderForm .form__pass {margin: 1rem .5rem 0 .5rem;max-width: 23rem;}
+.fastOrderForm .form__pass {margin: 1rem .5rem 0 .5rem;max-width: 19.125rem;}
 .delivery__zoneSelect {margin-top: 1rem;}
 .delivery__descriptionBlock {margin-top: 1rem;}
 .delivery__descriptionBlock .delivery__price {font-weight: bold;color: var(--color-secondary);}
@@ -1227,7 +1225,7 @@ section {margin: 3rem 0;position: relative;}
 .coupon__button {position: absolute;right: 1rem;line-height: 2.5rem;}
 .coupon__reset {position: absolute;right: 7rem;line-height: 2.5rem;opacity: 0;transition: all 0.3s ease;}
 .coupon__reset.focus {opacity: 1;}
-.fastOrder__form .cartTotal__buttons {margin-top: 2rem;text-align: right;width: 20rem;}
+.fastOrder__form .cartTotal__buttons {width: 18rem;text-align: right;}
 @media all and (max-width: 1023px) {
 	.fastOrder__form .cartTotal__buttons {margin-top: 1rem;width: 100%;text-align: center;}
 }

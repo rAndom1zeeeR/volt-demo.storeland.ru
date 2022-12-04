@@ -56,7 +56,6 @@ p {margin: 0 0 1rem 0;line-height: 1.5;}
 /*** Инпут поля ***/
 /**************************************/
 input, select, textarea {width: 100%;outline: 0;font-size: 1rem;font-weight: 400;font-family: inherit;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
-textarea {height: auto;padding: 1rem;resize: vertical;}
 select {cursor: pointer;}
 input[type="file"] {height: auto;line-height: 1;border: 0;padding: 0;border-radius: 0;background: transparent;}
 
