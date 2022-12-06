@@ -7,13 +7,13 @@
 			<div class="preloader"><div class="preloading"></div></div>
 			
 			<!-- Главное изображение -->
-			<a class="productView__image flex-center" href="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_LARGE}{% ENDIF %}" data-fancybox="images">
+			<a class="productView__image flex-center" href="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_LARGE}{% ENDIF %}" data-fancybox="images">
 				<picture>
-					<source srcset="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" media="(max-width: 479px)" />
+					<source srcset="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" media="(max-width: 479px)" />
 					<img class="lozad" 
-							src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
-							data-src="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" 
-							srcset="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}"
+							src="{ASSETS_IMAGES_PATH}placeholder.png?design=VOLT" 
+							data-src="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" 
+							srcset="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}"
 							alt="{GOODS_NAME}" 
 							width="452"
 							height="452"
@@ -32,7 +32,7 @@
 						<div class="swiper-slide thumblist__item" data-index="{goods_images.index}" data-count="">
 							<a class="thumblist__image flex-center" href="{goods_images.LARGE}" data-fancybox="images">
 								<div class="swiper-lazy-preloader"></div>
-								<img class="swiper-lazy" src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" data-src="{goods_images.MEDIUM}" alt="{goods_images.NAME}" itemprop="image" />
+								<img class="swiper-lazy" src="{ASSETS_IMAGES_PATH}placeholder.png?design=VOLT" data-src="{goods_images.MEDIUM}" alt="{goods_images.NAME}" itemprop="image" />
 							</a>
 						</div>
 						{% ENDFOR %}
@@ -127,7 +127,7 @@
 						data-action-delete-title="Убрать &laquo;{GOODS_NAME}&raquo; из списка сравнения с другими товарами"
 						data-prodname="{GOODS_NAME}"
 						data-produrl="{GOODS_URL}"
-						data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_ICON}{% ENDIF %}"
+						data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_ICON}{% ENDIF %}"
 						data-id="{GOODS_ID}"
 						data-mod-id="{GOODS_MOD_ID}"
 						data-mod-price="{GOODS_MOD_PRICE_NOW}"
@@ -150,7 +150,7 @@
 						data-action-delete-title="Убрать &laquo;{GOODS_NAME}&raquo; из списка сравнения с другими товарами"
 						data-prodname="{GOODS_NAME}"
 						data-produrl="{GOODS_URL}"
-						data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_ICON}{% ENDIF %}"
+						data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_ICON}{% ENDIF %}"
 						data-id="{GOODS_ID}"
 						data-mod-id="{GOODS_MOD_ID}"
 						data-mod-price="{GOODS_MOD_PRICE_NOW}"
@@ -177,7 +177,7 @@
 						data-msgtype="2"
 						data-prodname="{GOODS_NAME}"
 						data-produrl="{GOODS_URL}"
-						data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_ICON}{% ENDIF %}"
+						data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_ICON}{% ENDIF %}"
 						data-id="{GOODS_ID}"
 						data-mod-id="{GOODS_MIN_PRICE_NOW_ID}"
 						data-mod-price="{GOODS_MOD_PRICE_NOW}"
@@ -201,7 +201,7 @@
 						data-msgtype="2"
 						data-prodname="{GOODS_NAME}"
 						data-produrl="{GOODS_URL}"
-						data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_ICON}{% ENDIF %}"
+						data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_ICON}{% ENDIF %}"
 						data-id="{GOODS_ID}"
 						data-mod-id="{GOODS_MIN_PRICE_NOW_ID}"
 						data-mod-price="{GOODS_MOD_PRICE_NOW}"
@@ -249,7 +249,7 @@
 				<input type="hidden" name="form[goods_mod_id]" value="{GOODS_MOD_ID}" class="goodsModificationId" />
 				<input type="hidden" name="form[goods_mod_id][{GOODS_MOD_ID}]" value="1" class="goodsDataMainModificationId" />
 				<input type="hidden" name="form[goods_id]" value="{GOODS_ID}" />
-				<input type="hidden" class="goodsDataMainImage" data-id="{GOODS_IMAGE_ID}" data-src="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" />
+				<input type="hidden" class="goodsDataMainImage" data-id="{GOODS_IMAGE_ID}" data-src="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" />
 				<!-- Модификации -->
 				<div class="productView__modifications goodsModificationsBlock" {% IF GOODS_NO_CHOISE_IN_PROPERTIES_FOR_MODIFICATIONS %}style="display:none;" {% ENDIF %}>
 					<div class="row">
@@ -772,7 +772,7 @@
 							<input type="hidden" name="form[goods_from]" value="{related_goods.GOODS_FROM}" />
 							<input type="hidden" name="form[goods_mod_id]" value="{related_goods.MIN_PRICE_NOW_ID}" />
 							<input type="hidden" name="form[goods_id]" value="{related_goods.ID}" />
-							<link itemprop="image" href="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_MEDIUM}{% ENDIF %}" />
+							<link itemprop="image" href="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 							<!-- Изображение товара -->
 							<div class="product__image">
 								<!-- Стикеры -->
@@ -793,11 +793,11 @@
 								<!-- Изображение -->
 								<a class="product__img flex-center" href="{related_goods.URL_MIN_PRICE_NOW | url_amp}" title="{related_goods.NAME}" itemprop="url" data-id="{related_goods.IMAGE_ID}">
 									<picture>
-										<source srcset="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+										<source srcset="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
 										<img class="lozad" 
-												src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
-												data-src="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_MEDIUM}{% ENDIF %}" 
-												srcset="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_MEDIUM}{% ENDIF %}"
+												src="{ASSETS_IMAGES_PATH}placeholder.png?design=VOLT" 
+												data-src="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+												srcset="{% IF related_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_goods.IMAGE_MEDIUM}{% ENDIF %}"
 												alt="{related_goods.NAME}" 
 												width="208"
 												height="208"
@@ -851,7 +851,7 @@
 											data-action-delete-title="Убрать &laquo;{related_goods.NAME}&raquo; из Избранного"
 											data-prodname="{related_goods.NAME}"
 											data-produrl="{related_goods.URL}"
-											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_ICON}{% ENDIF %}"
+											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_goods.IMAGE_ICON}{% ENDIF %}"
 											data-id="{related_goods.ID}"
 											data-mod-id="{related_goods.MIN_PRICE_NOW_ID}"
 											data-mod-price="{related_goods.MIN_PRICE_NOW}"
@@ -876,7 +876,7 @@
 											data-action-delete-title="Убрать &laquo;{related_goods.NAME}&raquo; из Избранного"
 											data-prodname="{related_goods.NAME}"
 											data-produrl="{related_goods.URL}"
-											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_ICON}{% ENDIF %}"
+											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_goods.IMAGE_ICON}{% ENDIF %}"
 											data-id="{related_goods.ID}"
 											data-mod-id="{related_goods.MIN_PRICE_NOW_ID}"
 											data-mod-price="{related_goods.MIN_PRICE_NOW}"
@@ -904,7 +904,7 @@
 											data-action-delete-title="Убрать &laquo;{related_goods.NAME}&raquo; из списка сравнения с другими товарами"
 											data-prodname="{related_goods.NAME}"
 											data-produrl="{related_goods.URL}"
-											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_ICON}{% ENDIF %}"
+											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_goods.IMAGE_ICON}{% ENDIF %}"
 											data-id="{related_goods.ID}"
 											data-mod-id="{related_goods.MIN_PRICE_NOW_ID}"
 											data-mod-price="{related_goods.MIN_PRICE_NOW}"
@@ -929,7 +929,7 @@
 											data-action-delete-title="Убрать &laquo;{related_goods.NAME}&raquo; из списка сравнения с другими товарами"
 											data-prodname="{related_goods.NAME}"
 											data-produrl="{related_goods.URL}"
-											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_goods.IMAGE_ICON}{% ENDIF %}"
+											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_goods.IMAGE_ICON}{% ENDIF %}"
 											data-id="{related_goods.ID}"
 											data-mod-id="{related_goods.MIN_PRICE_NOW_ID}"
 											data-mod-price="{related_goods.MIN_PRICE_NOW}"
@@ -1089,7 +1089,7 @@
 							<input type="hidden" name="form[goods_from]" value="{related_views_goods.GOODS_FROM}" />
 							<input type="hidden" name="form[goods_mod_id]" value="{related_views_goods.MIN_PRICE_NOW_ID}" />
 							<input type="hidden" name="form[goods_id]" value="{related_views_goods.ID}" />
-							<link itemprop="image" href="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}" />
+							<link itemprop="image" href="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}" />
 							<!-- Изображение товара -->
 							<div class="product__image">
 								<!-- Стикеры -->
@@ -1110,11 +1110,11 @@
 								<!-- Изображение -->
 								<a class="product__img flex-center" href="{related_views_goods.URL_MIN_PRICE_NOW | url_amp}" title="{related_views_goods.NAME}" itemprop="url" data-id="{related_views_goods.IMAGE_ID}">
 									<picture>
-										<source srcset="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
+										<source srcset="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_views_goods.IMAGE_SMALL}{% ENDIF %}" media="(max-width: 479px)" />
 										<img class="lozad" 
-												src="{ASSETS_IMAGES_PATH}placeholder.png?design=THEMENAME" 
-												data-src="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}" 
-												srcset="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}"
+												src="{ASSETS_IMAGES_PATH}placeholder.png?design=VOLT" 
+												data-src="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}" 
+												srcset="{% IF related_views_goods.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_views_goods.IMAGE_MEDIUM}{% ENDIF %}"
 												alt="{related_views_goods.NAME}" 
 												width="208"
 												height="208"
@@ -1168,7 +1168,7 @@
 											data-action-delete-title="Убрать &laquo;{related_views_goods.NAME}&raquo; из Избранного"
 											data-prodname="{related_views_goods.NAME}"
 											data-produrl="{related_views_goods.URL}"
-											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_ICON}{% ENDIF %}"
+											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_views_goods.IMAGE_ICON}{% ENDIF %}"
 											data-id="{related_views_goods.ID}"
 											data-mod-id="{related_views_goods.MIN_PRICE_NOW_ID}"
 											data-mod-price="{related_views_goods.MIN_PRICE_NOW}"
@@ -1193,7 +1193,7 @@
 											data-action-delete-title="Убрать &laquo;{related_views_goods.NAME}&raquo; из Избранного"
 											data-prodname="{related_views_goods.NAME}"
 											data-produrl="{related_views_goods.URL}"
-											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_ICON}{% ENDIF %}"
+											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_views_goods.IMAGE_ICON}{% ENDIF %}"
 											data-id="{related_views_goods.ID}"
 											data-mod-id="{related_views_goods.MIN_PRICE_NOW_ID}"
 											data-mod-price="{related_views_goods.MIN_PRICE_NOW}"
@@ -1221,7 +1221,7 @@
 											data-action-delete-title="Убрать &laquo;{related_views_goods.NAME}&raquo; из списка сравнения с другими товарами"
 											data-prodname="{related_views_goods.NAME}"
 											data-produrl="{related_views_goods.URL}"
-											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_ICON}{% ENDIF %}"
+											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_views_goods.IMAGE_ICON}{% ENDIF %}"
 											data-id="{related_views_goods.ID}"
 											data-mod-id="{related_views_goods.MIN_PRICE_NOW_ID}"
 											data-mod-price="{related_views_goods.MIN_PRICE_NOW}"
@@ -1246,7 +1246,7 @@
 											data-action-delete-title="Убрать &laquo;{related_views_goods.NAME}&raquo; из списка сравнения с другими товарами"
 											data-prodname="{related_views_goods.NAME}"
 											data-produrl="{related_views_goods.URL}"
-											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=THEMENAME{% ELSE %}{related_views_goods.IMAGE_ICON}{% ENDIF %}"
+											data-prodimg="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{related_views_goods.IMAGE_ICON}{% ENDIF %}"
 											data-id="{related_views_goods.ID}"
 											data-mod-id="{related_views_goods.MIN_PRICE_NOW_ID}"
 											data-mod-price="{related_views_goods.MIN_PRICE_NOW}"
