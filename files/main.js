@@ -1201,8 +1201,8 @@ function pageGoods() {
 		});
 
 		// Скрываем навигацию если слайдер заблокирован
-		if($(id).find('.swiper-button-lock').length){
-			$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+		if($(id).find('.swiper-button-disabled').length){
+			$(id).find('.swiper-button-disabled').parent().addClass('swiper-navigation-lock')
 		}else{
 			$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 		}
@@ -1330,7 +1330,7 @@ function pageGoods() {
 
 	var opinionGoodLength = $('.opinion__item.good').length
 	var opinionCount = $('.opinion__score_recommend').attr('data-count')
-	var opinionRound = (opinionGoodLength / opinionCount) * 10
+	var opinionRound = Math.round((opinionGoodLength / opinionCount) * 10)
 	$('.opinion__score_total').find('b').text(opinionGoodLength)
 	$('.opinion__score_recommend').find('b').text(opinionRound)
 
@@ -1522,7 +1522,7 @@ function goodsModification($container) {
 				goodsModQty              			= goodsModView.find('.quantity'),
 				goodsArtNumberBlock           = goodsModView.find('.productView__articles'),
 				goodsArtNumber                = goodsModView.find('.goodsModArtNumber'),
-				goodsModDescription      = goodsModView.find('.modifications__description'),
+				goodsModDescription     			= goodsModView.find('.modifications__description'),
 				goodsModRestValue             = goodsModView.find('.goodsModRestValue');
 				
 			// Изменяем данные товара для выбранных параметров. Если нашлась выбранная модификация
@@ -1591,6 +1591,7 @@ function goodsModification($container) {
 				goodsModificationId.val(modificationId);
 				goodsModView.find('.goodsDataMainModificationId').attr('name','form[goods_mod_id][' + modificationId + ']');
 				var goodsDataMainImage = goodsModView.find('.productView__images');
+
 				// Меняет главное изображение товара на изображение с идентификатором goods_mod_image_id
 				function changePrimaryGoodsImage(goods_mod_image_id) {
 					// Если не указан идентификатор модификации товара, значит ничего менять не нужно.
@@ -1610,8 +1611,14 @@ function goodsModification($container) {
 					MainImage.attr('src', MediumImageUrl).parent().attr('href', MediumImageUrl);
 					// Изменяем идентификатор главного изображения
 					MainImageBlock.attr("data-id", parseInt(goods_mod_image_id));
+					console.log('goodsModImageBlock', goodsModImageBlock)
+					console.log('MainImageBlock', MainImageBlock)
+					console.log('MediumImageUrl', MediumImageUrl)
+					console.log('MainImage', MainImage)
+					console.log()
 					return true;
 				}
+
 				// Обновляем изображние модификации товара, если оно указано
 				changePrimaryGoodsImage(modificationGoodsModImageId);
 			} else {
@@ -3043,7 +3050,7 @@ $(document).ready(function(){
 	swiperCatalog();
 	// goodsModRest();
 
-	setTimeout(() => {
+	setTimeout(function () {
 		quickViewMod();
 	}, 2000);
 
@@ -3601,100 +3608,100 @@ function categoriesVisible(id){
 	});
 }
 
-function catalogItems(){
-	var container = '.header-catalog__content'
-	var item = $(container).find('.catalog__item');
-	var items = $(container).find('.catalog__items');
-	var parent = $(container).find('.catalog__item.parent');
+// function catalogItems(){
+// 	var container = '.header-catalog__content'
+// 	var item = $(container).find('.catalog__item');
+// 	var items = $(container).find('.catalog__items');
+// 	var parent = $(container).find('.catalog__item.parent');
 
-	// Создаем массивы элементов
-	var arr = []
-	var levels = []
-	item.each(function(){
-		arr.push($(this))
-		levels.push($(this).attr('data-level'))
-	})
+// 	// Создаем массивы элементов
+// 	var arr = []
+// 	var levels = []
+// 	item.each(function(){
+// 		arr.push($(this))
+// 		levels.push($(this).attr('data-level'))
+// 	})
 
-	// Максимальный уровень подкатегорий
-	var maxLvl = Math.max(...levels)
+// 	// Максимальный уровень подкатегорий
+// 	var maxLvl = Math.max(...levels)
 
-	// Создаем контейнер для добавления подкатегорий
-	for (var i=0; i<=maxLvl; i++){
-		items.append('<div class="catalog__mainsub" data-level="'+ i +'"></div>')
-	}
+// 	// Создаем контейнер для добавления подкатегорий
+// 	for (var i=0; i<=maxLvl; i++){
+// 		items.append('<div class="catalog__mainsub" data-level="'+ i +'"></div>')
+// 	}
 
-	// Вставляем элементы из массива
-	for (var i=0; i<arr.length; i++){
-		items.find('.catalog__mainsub[data-level="'+ arr[i].attr('data-level') +'"]').append(arr[i])
-	}
+// 	// Вставляем элементы из массива
+// 	for (var i=0; i<arr.length; i++){
+// 		items.find('.catalog__mainsub[data-level="'+ arr[i].attr('data-level') +'"]').append(arr[i])
+// 	}
 
-	$(container).find('.catalog__item').on('mouseover', function(event){
-		// console.log( "1 event", event );
-		// console.log( "1 event.target", event.target );
-		// console.log( "1 event.relatedTarget ", event.relatedTarget  );
-		// console.log( "1 this ", $(this)  );
+// 	$(container).find('.catalog__item').on('mouseover', function(event){
+// 		// console.log( "1 event", event );
+// 		// console.log( "1 event.target", event.target );
+// 		// console.log( "1 event.relatedTarget ", event.relatedTarget  );
+// 		// console.log( "1 this ", $(this)  );
 		
-		$(this).addClass('hover')
-		$('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').addClass('show')
+// 		$(this).addClass('hover')
+// 		$('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').addClass('show')
 
-		console.log( "1 event.target -id", $(event.target).attr('data-id') );
-		console.log( "1 event.relatedTarget -id", $(event.relatedTarget).attr('data-id') );
+// 		console.log( "1 event.target -id", $(event.target).attr('data-id') );
+// 		console.log( "1 event.relatedTarget -id", $(event.relatedTarget).attr('data-id') );
 
-		console.log( "1 event.target parent-id", $(event.target).attr('data-parent-id') );
-		console.log( "1 event.relatedTarget parent-id", $(event.relatedTarget).attr('data-parent-id') );
+// 		console.log( "1 event.target parent-id", $(event.target).attr('data-parent-id') );
+// 		console.log( "1 event.relatedTarget parent-id", $(event.relatedTarget).attr('data-parent-id') );
 
-		// if ($(event.relatedTarget).attr('data-id') == $(event.target).attr('data-parent-id')){
-		// 	console.log('true')
-		// } else {
-		// 	console.log('false')
-		// }
+// 		// if ($(event.relatedTarget).attr('data-id') == $(event.target).attr('data-parent-id')){
+// 		// 	console.log('true')
+// 		// } else {
+// 		// 	console.log('false')
+// 		// }
 
-	})
+// 	})
 
-	$(container).find('.catalog__item').on('mouseout', function(event){
-		// console.log( "2 event", event );
-		// console.log( "2 event.target", event.target );
-		// console.log( "2 event.relatedTarget ", event.relatedTarget  );
-		// console.log( "2 this ", $(this)  );
+// 	$(container).find('.catalog__item').on('mouseout', function(event){
+// 		// console.log( "2 event", event );
+// 		// console.log( "2 event.target", event.target );
+// 		// console.log( "2 event.relatedTarget ", event.relatedTarget  );
+// 		// console.log( "2 this ", $(this)  );
 
-		$(this).removeClass('hover')
-		$('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').removeClass('show')
+// 		$(this).removeClass('hover')
+// 		$('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').removeClass('show')
 
-		console.log( "2 event.target -id", $(event.target).attr('data-id') );
-		console.log( "2 event.relatedTarget -id", $(event.relatedTarget).attr('data-id') );
+// 		console.log( "2 event.target -id", $(event.target).attr('data-id') );
+// 		console.log( "2 event.relatedTarget -id", $(event.relatedTarget).attr('data-id') );
 
-		console.log( "2 event.target parent-id", $(event.target).attr('data-parent-id') );
-		console.log( "2 event.relatedTarget parent-id", $(event.relatedTarget).attr('data-parent-id') );
+// 		console.log( "2 event.target parent-id", $(event.target).attr('data-parent-id') );
+// 		console.log( "2 event.relatedTarget parent-id", $(event.relatedTarget).attr('data-parent-id') );
 		
 
-	})
+// 	})
 
-	// item.mouseenter(function(event) {
-	// 	console.log( "1 event.target", event.target );
-	// 	console.log( "1 event.relatedTarget ", event.relatedTarget  );
-	// 	console.log( "1 mouse enter" );
-	// 	console.log( "1 this", $(this).attr('data-id'));
-	// 	// $('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').parent().show()
+// 	// item.mouseenter(function(event) {
+// 	// 	console.log( "1 event.target", event.target );
+// 	// 	console.log( "1 event.relatedTarget ", event.relatedTarget  );
+// 	// 	console.log( "1 mouse enter" );
+// 	// 	console.log( "1 this", $(this).attr('data-id'));
+// 	// 	// $('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').parent().show()
 		
-	// 	if ($(this).hasClass('parent')) {
-	// 		$('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').show()
-	// 	} else {
-	// 		$('.catalog__item[data-parent-id]').hide()
-	// 		return false
-	// 	}
-	// })
-	// .mouseleave(function(event) {
-	// 	console.log( "2 event.target", event.target );
-	// 	console.log( "2 event.relatedTarget ", event.relatedTarget  );
-	// 	console.log( "mouse leave" );
-	// 	console.log( "2 this", $(this).attr('data-id'));
-	// 	// $('.catalog__item[data-parent-id]').hide()
-	// 	// $('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').show()
-	// 	// $('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').parent().show()
-	// 	// $('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').show()
-	// });
+// 	// 	if ($(this).hasClass('parent')) {
+// 	// 		$('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').show()
+// 	// 	} else {
+// 	// 		$('.catalog__item[data-parent-id]').hide()
+// 	// 		return false
+// 	// 	}
+// 	// })
+// 	// .mouseleave(function(event) {
+// 	// 	console.log( "2 event.target", event.target );
+// 	// 	console.log( "2 event.relatedTarget ", event.relatedTarget  );
+// 	// 	console.log( "mouse leave" );
+// 	// 	console.log( "2 this", $(this).attr('data-id'));
+// 	// 	// $('.catalog__item[data-parent-id]').hide()
+// 	// 	// $('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').show()
+// 	// 	// $('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').parent().show()
+// 	// 	// $('.catalog__item[data-parent-id="'+ $(this).attr('data-id') +'"]').show()
+// 	// });
 
-}
+// }
 // catalogItems()
 
 // 		<!-- <div class="catalog__items flex-start">

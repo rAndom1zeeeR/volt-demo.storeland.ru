@@ -32,7 +32,7 @@
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}noty.css?design=VOLT" />
 	<link rel="stylesheet" type="text/css" href="{ASSETS_STYLES_PATH}main.css?design=VOLT" />
 	<!-- Подключаемые скрипты -->
-	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery-3.6.0.min.js?design=VOLT"></script>
+	<script type="text/javascript" src="{ASSETS_JS_PATH}jquery.min.js?design=VOLT"></script>
 	<!-- Дополнительные скрипты -->
 	<script type="text/javascript">
 		// Если отключен JS
@@ -375,37 +375,88 @@
 					<div class="slideshow__swiper swiper">
 						<div class="swiper-wrapper">
 							<!-- Слайд 1 -->
-							<a class="swiper-slide swiper-lazy flex" data-background="{ASSETS_IMAGES_PATH}slide_1.jpg?design=VOLT" href="{CATALOG_URL}">
-								<div class="swiper-lazy-preloader"></div>
+							<div class="swiper-slide flex">
+								<a class="slideshow__image" href="{CATALOG_URL}" title="14 - 15 июля Скидка 30% на светильники и лампочки За покупками">
+									<div class="swiper-lazy-preloader"></div>
+									<picture>
+										<source srcset="{ASSETS_IMAGES_PATH}slide_1_1200.webp?design=VOLT" type="image/webp" media="(min-width: 640px)">
+										<source srcset="{ASSETS_IMAGES_PATH}slide_1_1200.jpg?design=VOLT" media="(min-width: 640px)" />
+										<source srcset="{ASSETS_IMAGES_PATH}slide_1_640.webp?design=VOLT" type="image/webp" media="(max-width: 639px)" />
+										<source srcset="{ASSETS_IMAGES_PATH}slide_1_640.jpg?design=VOLT" media="(max-width: 639px)" />
+										<img class="swiper-lazy" 
+												srcset="{ASSETS_IMAGES_PATH}slide_1_1200.webp?design=VOLT, {ASSETS_IMAGES_PATH}slide_1_1200.jpg?design=VOLT" 
+												src="{ASSETS_IMAGES_PATH}slide_1_1200.jpg?design=VOLT" 
+												alt="14 - 15 июля Скидка 30% на светильники и лампочки За покупками" 
+												width="840"
+												height="264"
+										/>
+									</picture>
+								</a>
 								<div class="slideshow__content">
 									<div class="slideshow__pretitle">14 - 15 июля</div>
 									<div class="slideshow__title">Скидка 30%</div>
 									<div class="slideshow__subtitle">на светильники и лампочки</div>
-									<div class="slideshow__button button-secondary"><span>За покупками</span></div>
-								</div>									
-							</a>
+									<a class="slideshow__button button-secondary" href="{CATALOG_URL}" title="Перейти За покупками в каталог">
+										<span>За покупками</span>
+									</a>
+								</div>
+							</div>
 
 							<!-- Слайд 2 -->
-							<a class="swiper-slide swiper-lazy flex" data-background="{ASSETS_IMAGES_PATH}slide_2.jpg?design=VOLT" href="{CATALOG_URL}">
-								<div class="swiper-lazy-preloader"></div>
+							<div class="swiper-slide flex">
+								<a class="slideshow__image" href="{CATALOG_URL}" title="до 30 сентября 2+1=4 розетки и выключатели">
+									<div class="swiper-lazy-preloader"></div>
+									<picture>
+										<source srcset="{ASSETS_IMAGES_PATH}slide_2_1200.webp?design=VOLT" type="image/webp" media="(min-width: 640px)">
+										<source srcset="{ASSETS_IMAGES_PATH}slide_2_1200.jpg?design=VOLT" media="(min-width: 640px)" />
+										<source srcset="{ASSETS_IMAGES_PATH}slide_2_640.webp?design=VOLT" type="image/webp" media="(max-width: 639px)" />
+										<source srcset="{ASSETS_IMAGES_PATH}slide_2_640.jpg?design=VOLT" media="(max-width: 639px)" />
+										<img class="swiper-lazy" 
+												srcset="{ASSETS_IMAGES_PATH}slide_2_1200.webp?design=VOLT, {ASSETS_IMAGES_PATH}slide_2_1200.jpg?design=VOLT" 
+												src="{ASSETS_IMAGES_PATH}slide_2_1200.jpg?design=VOLT" 
+												alt="до 30 сентября 2+1=4 розетки и выключатели" 
+												width="840"
+												height="264"
+										/>
+									</picture>
+								</a>
 								<div class="slideshow__content">
 									<div class="slideshow__pretitle">до 30 сентября</div>
 									<div class="slideshow__title">2+1=4</div>
 									<div class="slideshow__subtitle">розетки и выключатели</div>
-									<div class="slideshow__button button-secondary"><span>За покупками</span></div>
-								</div>									
-							</a>
+									<a class="slideshow__button button-secondary" href="{CATALOG_URL}" title="Перейти За покупками в каталог">
+										<span>За покупками</span>
+									</a>
+								</div>
+							</div>
 
 							<!-- Слайд 3 -->
-							<a class="swiper-slide swiper-lazy flex" data-background="{ASSETS_IMAGES_PATH}slide_3.jpg?design=VOLT" href="{CATALOG_URL}">
-								<div class="swiper-lazy-preloader"></div>
+							<div class="swiper-slide flex">
+								<a class="slideshow__image" href="{CATALOG_URL}" title="Выгодные цены. Новинка светильники в стиле лофт">
+									<div class="swiper-lazy-preloader"></div>
+									<picture>
+										<source srcset="{ASSETS_IMAGES_PATH}slide_3_1200.webp?design=VOLT" type="image/webp" media="(min-width: 640px)">
+										<source srcset="{ASSETS_IMAGES_PATH}slide_3_1200.jpg?design=VOLT" media="(min-width: 640px)" />
+										<source srcset="{ASSETS_IMAGES_PATH}slide_3_640.webp?design=VOLT" type="image/webp" media="(max-width: 639px)" />
+										<source srcset="{ASSETS_IMAGES_PATH}slide_3_640.jpg?design=VOLT" media="(max-width: 639px)" />
+										<img class="swiper-lazy" 
+												srcset="{ASSETS_IMAGES_PATH}slide_3_1200.webp?design=VOLT, {ASSETS_IMAGES_PATH}slide_3_1200.jpg?design=VOLT" 
+												src="{ASSETS_IMAGES_PATH}slide_3_1200.jpg?design=VOLT" 
+												alt="Выгодные цены. Новинка светильники в стиле лофт" 
+												width="840"
+												height="264"
+										/>
+									</picture>
+								</a>
 								<div class="slideshow__content">
 									<div class="slideshow__pretitle">Выгодные цены</div>
 									<div class="slideshow__title">Новинка</div>
 									<div class="slideshow__subtitle">светильники в стиле лофт</div>
-									<div class="slideshow__button button-secondary"><span>За покупками</span></div>
-								</div>									
-							</a>
+									<a class="slideshow__button button-secondary" href="{CATALOG_URL}" title="Перейти За покупками в каталог">
+										<span>За покупками</span>
+									</a>
+								</div>
+							</div>
 
 						</div>
 
@@ -1145,7 +1196,6 @@
 							{% IF catalog_full.LAST %}{%FOR out%}</div> {%IFNOT catalog_full.out.LAST%}</div>{%ENDIF%}{%ENDFOR%}{% ENDIF %}
 						{% ENDFOR %}
 
-					</div>
 				</div>
 
 			</div>

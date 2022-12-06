@@ -13,7 +13,6 @@
 					<img class="lozad" 
 							src="{ASSETS_IMAGES_PATH}placeholder.png?design=VOLT" 
 							data-src="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}" 
-							srcset="{% IF GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{GOODS_IMAGE_MEDIUM}{% ENDIF %}"
 							alt="{GOODS_NAME}" 
 							width="452"
 							height="452"
@@ -296,7 +295,7 @@
 					</div>
 					{% ENDFOR %}
 					<!-- Блок описания модификации -->
-					<div class="modifications__description" itemprop="description">{GOODS_MOD_DESCRIPTION}</div>
+					<p class="modifications__description" itemprop="description" {% IFNOT GOODS_MOD_DESCRIPTION %}style="display:none"{% ENDIF %}>{GOODS_MOD_DESCRIPTION}</p>
 				</div>
 
 				<!-- Добавление товара в Корзину -->
@@ -508,7 +507,7 @@
 						
 						<div class="opinion__score_separate"></div>
 
-						<div class="opinion__score_total"><b>{GOODS_OPINION_RATING_VALUE_ROUND | divide('2')}</b> из {GOODS_OPINION_RATING_CNT_ALL}</div>
+						<div class="opinion__score_total"><b>{GOODS_OPINION_RATING_VALUE_ROUND | divide('2')}</b> из 5</div>
 						
 						<div class="opinion__score_recommend" data-count="{GOODS_OPINION_RATING_CNT_ALL}">Этот товар рекомендуют <strong><b>{GOODS_OPINION_RATING_VALUE_ROUND}</b>0% покупателей</strong></div>
 						{% ELSE %}
