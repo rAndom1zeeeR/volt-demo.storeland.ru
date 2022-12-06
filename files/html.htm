@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
 	<title>{PAGE_TITLE}</title>
@@ -22,7 +22,7 @@
 	<link rel="canonical" href="{PAGE_CANONICAL}" />
 	{% ENDIF %}
 	<!-- Подключаемые Шрифты -->
-	<link rel="stylesheet" type="text/css" href="/design/noto-sans.css?design=THEMENAME" />
+	<link rel="preload" as="font" type="font/woff2" crossorigin href="/design/noto-sans.css?design=THEMENAME" />
 	<!-- Подключаемые Иконки -->
 	<link rel="stylesheet" type="text/css" href="/design/icomoon.css?design=THEMENAME" />
 	<!-- Основные Стили магазина для всех страниц -->
@@ -191,9 +191,9 @@
 										<div></div><div></div><div></div><div></div>
 									</div>
 									<!-- Закрыть -->
-									<a class="search__reset" href="javascript:;">
+									<div class="search__reset">
 										<i class="icon-close"></i>
-									</a>
+									</div>
 								</form>
 
 								<!-- Результаты поиска -->
@@ -2503,10 +2503,12 @@
 							</div>
 							
 							<div class="filter__list filters-custom">
+
 								<a href="{PAGE_CANONICAL}" class="button-gray filters__clear" title="Очистить фильтры">
 									<span>{GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")}</span>
 									<i class="icon-close"></i>
 								</a>
+
 								<div class="collapsible__content">
 									<div class="filter__items">
 										<div class="filter__item flex">
@@ -2597,8 +2599,8 @@
 												<div class="filter__item flex {% IF filter_attr_list.values.CHECKED %}checked{% ELSEIF filter_attr_list.values.NB_GOODS_FILTERED=0 %}disabled{% ENDIF %}">
 													<input type="checkbox" name="form[filter][attr][{filter_attr_list.ID}][{filter_attr_list.values.ID}]" value="1" id="filterAttrVal{filter_attr_list.values.ID}" class="square" {% IF filter_attr_list.values.CHECKED %}checked="checked" {% ELSEIF filter_attr_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
 													<label for="filterAttrVal{filter_attr_list.values.ID}" data-name="{filter_attr_list.values.VALUE}">
-														<span>{filter_attr_list.values.VALUE}</span>
-														<span>{filter_attr_list.values.NB_GOODS_FILTERED}</span>
+														<span class="filter__value">{filter_attr_list.values.VALUE}</span>
+														<span class="filter__value_nb">{filter_attr_list.values.NB_GOODS_FILTERED}</span>
 													</label>
 												</div>
 												{% ENDFOR %}
@@ -2623,8 +2625,8 @@
 												<div class="filter__item flex {% IF filter_prop_list.values.CHECKED %}checked{% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled{% ENDIF %}">
 													<input type="checkbox" name="form[filter][prop][{filter_prop_list.ID}][{filter_prop_list.values.ID}]" value="1" id="filterPropVal{filter_prop_list.values.ID}" class="square" {% IF filter_prop_list.values.CHECKED %}checked="checked" {% ELSEIF filter_prop_list.values.NB_GOODS_FILTERED=0 %}disabled="disabled" {% ENDIF %} />
 													<label for="filterPropVal{filter_prop_list.values.ID}" data-name="{filter_prop_list.values.VALUE}">
-														<span>{filter_prop_list.values.VALUE}</span>
-														<span>{filter_prop_list.values.NB_GOODS_FILTERED}</span>
+														<span class="filter__value">{filter_prop_list.values.VALUE}</span>
+														<span class="filter__value_nb">{filter_prop_list.values.NB_GOODS_FILTERED}</span>
 													</label>
 												</div>
 												{% ENDFOR %}
