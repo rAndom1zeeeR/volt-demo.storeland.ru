@@ -314,97 +314,98 @@
 				</div>
 
 				<!-- Корзина: Итоговый блок -->
-				<div class="cartTotal flex">
-					<!-- Корзина: Элементы -->
-					<div class="cartTotal__items">
-						<!-- Корзина: Товары -->
-						<div class="cartTotal__item total__goods flex">
-							<div class="cartTotal__label">
-								<span>Товары (<span class="count-cart">{CART_COUNT_TOTAL}</span>):</span>
+				<div class="cartTotal">
+					<div class="cartTotal__inner flex">
+						<!-- Корзина: Элементы -->
+						<div class="cartTotal__items">
+							<!-- Корзина: Товары -->
+							<div class="cartTotal__item total__goods flex">
+								<div class="cartTotal__label">
+									<span>Товары (<span class="count-cart">{CART_COUNT_TOTAL}</span>):</span>
+								</div>
+								<div class="cartTotal__price {CURRENCY_CHAR_CODE}">
+									<span class="cartSumNow" data-value="{CART_SUM_NOW}">{CART_SUM_NOW | money_format}</span>
+								</div>
 							</div>
-							<div class="cartTotal__price {CURRENCY_CHAR_CODE}">
-								<span class="cartSumNow" data-value="{CART_SUM_NOW}">{CART_SUM_NOW | money_format}</span>
+
+							<!-- Скидки, действующие на заказ -->
+							{% FOR cart_discount %}
+							{% IF cart_discount.DISCOUNT_IS_ENABLED %}
+							<div class="cartTotal__item total__discount flex">
+								<div class="cartTotal__label">
+									<span>{cart_discount.DISCOUNT_NAME}:</span>
+								</div>
+								<div class="cartTotal__price {CURRENCY_CHAR_CODE} flex">
+									<span class="discountValue" data-value="{cart_discount.DISCOUNT_VALUE}">{cart_discount.DISCOUNT_VALUE}</span>
+									{% IF cart_discount.IS_PERCENT %}<span class="percent">%</span>{% ELSE %}<span class="num"></span>{% ENDIF %}
+								</div>
+							</div>
+							{% ENDIF %}
+							{% ENDFOR %}
+						
+							<!-- Корзина: Купон -->
+							<div class="cartTotal__item total__coupons flex" style="display: none;">
+								<div class="cartTotal__label">
+									<span>Купон:</span>
+								</div>
+								<div class="cartTotal__price {CURRENCY_CHAR_CODE}">
+									<span class="cartSumCoupons" data-value=""></span>
+								</div>
+							</div>
+
+							<!-- Корзина: Доставка -->
+							<div class="cartTotal__item total__delivery flex">
+								<div class="cartTotal__label">
+									<span>Доставка:</span>
+								</div>
+								<div class="cartTotal__price {CURRENCY_CHAR_CODE}">
+									<span class="cartSumDelivery" data-value="{CART_SUM_DELIVERY}">{CART_SUM_DELIVERY | money_format}</span>
+								</div>
+							</div>
+
+						</div>
+
+						<!-- Корзина: Итого -->
+						<div class="cartTotal__total">
+							<div class="cartTotal__total_label"><strong>Итого: </strong></div>				
+							<div class="cartTotal__total_price cartSumTotal price__now {CURRENCY_CHAR_CODE}" data-value="{CART_SUM_NOW_WITH_DELIVERY_AND_DISCOUNT}">{CART_SUM_NOW_WITH_DELIVERY_AND_DISCOUNT | money_format}</div>
+							<div style="display: none;" class="cartTotal__total_price cartSumNow" data-value="{CART_SUM_NOW}">{CART_SUM_NOW | money_format}</div>
+							<div style="display: none;" class="cartTotal__total_price cartSumTotalHide" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
+							<div style="display: none;" class="cartTotal__total_price cartSumDiscount" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
+						</div>
+
+						<!-- Корзина: Оформление -->
+						<div class="cartTotal__buttons">
+							<input type="hidden" name="hash" value="{HASH}" />
+							<button class="button-primary disabled" type="submit" title="Перейти к быстрому оформлению заказа">
+								<span>Оформить </span><span>заказ</span>
+							</button>
+							<!-- <a class="button-secondary button-link closeOrder" title="Отменить заказ">
+								<span>Изменить </span><span>заказ</span>
+							</a> -->
+							<div class="form__pp">
+								<span>Нажимая на кнопку &laquo;Оформить заказ&raquo;, Вы соглашаетесь с</span>
+								<span data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</span>
 							</div>
 						</div>
 
-						<!-- Скидки, действующие на заказ -->
-						{% FOR cart_discount %}
-						{% IF cart_discount.DISCOUNT_IS_ENABLED %}
-						<div class="cartTotal__item total__discount flex">
-							<div class="cartTotal__label">
-								<span>{cart_discount.DISCOUNT_NAME}:</span>
-							</div>
-							<div class="cartTotal__price {CURRENCY_CHAR_CODE} flex">
-								<span class="discountValue" data-value="{cart_discount.DISCOUNT_VALUE}">{cart_discount.DISCOUNT_VALUE}</span>
-								{% IF cart_discount.IS_PERCENT %}<span class="percent">%</span>{% ELSE %}<span class="num"></span>{% ENDIF %}
-							</div>
+						<div class="cartTotal__cancel">
+							<a class="button-icon button-link button-link-gray closeOrder" title="Отменить заказ">
+								<i class="icon-close"></i>
+								<span>Отменить оформление</span>
+							</a>
 						</div>
+
+						<!-- Корзина: Минимальная сумма заказа -->
+						{% IF SETTINGS_STORE_ORDER_MIN_ORDER_PRICE %}
+						<!-- <div class="cartTotal__min flex">
+							<div class="cartTotal__label cartTotal__min_label">
+								<div class="cartTotal__min_title">До мин. суммы заказа осталось</div>
+							</div>
+							<div class="cartTotal__price cartTotal__min_price {CURRENCY_CHAR_CODE}" data-price="{SETTINGS_STORE_ORDER_MIN_ORDER_PRICE}">{SETTINGS_STORE_ORDER_MIN_ORDER_PRICE | money_format}</div>
+						</div> -->
 						{% ENDIF %}
-						{% ENDFOR %}
-					
-						<!-- Корзина: Купон -->
-						<div class="cartTotal__item total__coupons flex" style="display: none;">
-							<div class="cartTotal__label">
-								<span>Купон:</span>
-							</div>
-							<div class="cartTotal__price {CURRENCY_CHAR_CODE}">
-								<span class="cartSumCoupons" data-value=""></span>
-							</div>
-						</div>
-
-						<!-- Корзина: Доставка -->
-						<div class="cartTotal__item total__delivery flex">
-							<div class="cartTotal__label">
-								<span>Доставка:</span>
-							</div>
-							<div class="cartTotal__price {CURRENCY_CHAR_CODE}">
-								<span class="cartSumDelivery" data-value="{CART_SUM_DELIVERY}">{CART_SUM_DELIVERY | money_format}</span>
-							</div>
-						</div>
-
 					</div>
-
-					<!-- Корзина: Итого -->
-					<div class="cartTotal__total">
-						<div class="cartTotal__total_label"><strong>Итого: </strong></div>				
-						<div class="cartTotal__total_price cartSumTotal price__now {CURRENCY_CHAR_CODE}" data-value="{CART_SUM_NOW_WITH_DELIVERY_AND_DISCOUNT}">{CART_SUM_NOW_WITH_DELIVERY_AND_DISCOUNT | money_format}</div>
-						<div style="display: none;" class="cartTotal__total_price cartSumNow" data-value="{CART_SUM_NOW}">{CART_SUM_NOW | money_format}</div>
-						<div style="display: none;" class="cartTotal__total_price cartSumTotalHide" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
-						<div style="display: none;" class="cartTotal__total_price cartSumDiscount" data-value="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</div>
-					</div>
-
-					<!-- Корзина: Оформление -->
-					<div class="cartTotal__buttons">
-						<input type="hidden" name="hash" value="{HASH}" />
-						<button class="button-primary disabled" type="submit" title="Перейти к быстрому оформлению заказа">
-							<span>Оформить </span><span>заказ</span>
-						</button>
-						<!-- <a class="button-secondary button-link closeOrder" title="Отменить заказ">
-							<span>Изменить </span><span>заказ</span>
-						</a> -->
-						<div class="form__pp">
-							<span>Нажимая на кнопку &laquo;Оформить заказ&raquo;, Вы соглашаетесь с</span>
-							<span data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</span>
-						</div>
-					</div>
-
-					<div class="cartTotal__cancel">
-						<a class="button-icon button-link button-link-gray closeOrder" title="Отменить заказ">
-							<i class="icon-close"></i>
-							<span>Отменить оформление</span>
-						</a>
-					</div>
-
-					<!-- Корзина: Минимальная сумма заказа -->
-					{% IF SETTINGS_STORE_ORDER_MIN_ORDER_PRICE %}
-					<!-- <div class="cartTotal__min flex">
-						<div class="cartTotal__label cartTotal__min_label">
-							<div class="cartTotal__min_title">До мин. суммы заказа осталось</div>
-						</div>
-						<div class="cartTotal__price cartTotal__min_price {CURRENCY_CHAR_CODE}" data-price="{SETTINGS_STORE_ORDER_MIN_ORDER_PRICE}">{SETTINGS_STORE_ORDER_MIN_ORDER_PRICE | money_format}</div>
-					</div> -->
-					{% ENDIF %}
-
 				</div>
 
 	    </form>
@@ -482,7 +483,7 @@
 	<div class="addto__empty">В корзине пока ничего нет</div>
 	<div class="addto__buttons flex justify-between">
 		<a class="button-empty" href="{CART_TRUNCATE_URL}" onclick="removeFromCartAll($(this))" title="Очистить корзину"><span>Очистить</span></a>
-		<a class="button-primary" href="{CART_URL}" title="Перейти в Корзину"><span data-added="В корзине">В корзину</span></a>
+		<a class="button-primary" href="{CART_URL}" title="Перейти в Корзину"><span data-added="Добавить">В корзину</span></a>
 	</div>
 </div>
 <div style="display:none;" id="newCartTitle">

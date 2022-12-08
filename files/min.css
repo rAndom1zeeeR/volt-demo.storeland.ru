@@ -191,16 +191,14 @@ h5 {font-size: 0.875rem;}
 /*** Хлебные крошки ***/
 /**************************************/
 .breadcrumbs {margin-bottom: .75rem;padding-bottom: .25rem;width: 100%;overflow-x: auto;display: block;position: relative;}
-.breadcrumbs ul {flex-wrap: nowrap;white-space: nowrap;}
+.breadcrumbs ul {flex-wrap: nowrap;white-space: nowrap;font-size: .875rem;}
 .breadcrumbs ul li span {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;max-width: 20rem;}
 .breadcrumbs ul li:last-child {font-weight: bold;}
 .breadcrumbs ul li a {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-align: baseline;-webkit-align-items: baseline;-webkit-box-align: baseline;align-items: baseline;}
-.breadcrumbs ul li a:after {content: "\e918";margin: 0 .5rem;font-size: .75rem;font-family: 'icomoon';line-height: 1;}
+.breadcrumbs ul li a:after {content: "/";margin: 0 .5rem;}
 .breadcrumbs ul li:last-child a:after {display: none;}
 .breadcrumbs ul li a i {margin-right: .25rem;}
 .breadcrumbs::-webkit-scrollbar {width: 0;height: 0.25rem;}
-
-
 
 
 

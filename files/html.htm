@@ -194,6 +194,10 @@
 									<div class="search__reset">
 										<i class="icon-close"></i>
 									</div>
+									<!-- Свернуть -->
+									<div class="search__close" onclick="closeAll()">
+										<i class="icon-chevron_up"></i>
+									</div>
 								</form>
 
 								<!-- Результаты поиска -->
@@ -205,8 +209,10 @@
 										<div class="result__goods">
 											<div class="result__title">Товары</div>
 										</div>
-										<div class="result__showAll button-link">
-											<span>Все результаты</span>
+										<div class="result__showAll">
+											<div class="button-link">
+												<span>Все результаты</span>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -346,19 +352,18 @@
 			</div>
 
 			<!-- Шапка. Каталог -->
-			<!-- TODO адаптивный каталог как в макете -->
 			<div class="header-catalog__container container">
 				<div class="header-catalog__content dropdown__content" data-opened="catalog">
-					<div class="catalog__items">
+					<ul class="catalog__items unstyled">
 						{% FOR catalog_full %}
-						{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<div data-level="{catalog_full.LEVEL}" class="catalog__sub">{% ENDIF %}{% ENDIF %}
-						<div class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}" {% IF catalog_full.HIDE %}style="display:none;"{% ENDIF %} data-level="{catalog_full.LEVEL}">
+						{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<ul data-level="{catalog_full.LEVEL}" class="catalog__sub unstyled">{% ENDIF %}{% ENDIF %}
+						<li class="catalog__item {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}" {% IF catalog_full.HIDE %}style="display:none;"{% ENDIF %} data-level="{catalog_full.LEVEL}">
 							<a class="catalog__link flex {% IF catalog_full.CURRENT %}opened{% ENDIF %}" href="{catalog_full.URL}" data-level="{catalog_full.LEVEL}">
 								<span>{catalog_full.NAME}</span>
 								{% IF catalog_full.ISSET_VISIBLE_SUB %}<i class="icon-chevron_right"></i>{% ENDIF %}
 							</a>
-							{% IF catalog_full.ISSET_SUB=0 %}</div>{% ENDIF %}
-						{% IF catalog_full.LAST %}{%FOR out%}</div> {%IFNOT catalog_full.out.LAST%}</div>{%ENDIF%}{%ENDFOR%}{% ENDIF %}
+							{% IF catalog_full.ISSET_SUB=0 %}</li>{% ENDIF %}
+						{% IF catalog_full.LAST %}{% FOR out %}</li> {% IFNOT catalog_full.out.LAST %}</ul>{% ENDIF %}{% ENDFOR %}{% ENDIF %}
 					{% ENDFOR %}
 				</div>
 			</div>
@@ -474,14 +479,20 @@
 
 					<!-- Баннеры -->
 					<div class="slideshow__banners">
-						<div class="banner__item" style="background-image: url('{ASSETS_IMAGES_PATH}banner_1.jpg?design=VOLT');">
+						<div class="banner__item">
 							<a class="banner__link flex-center" href="{CATALOG_URL}" title="Перейти в каталог">
+								<div class="banner__image">
+									<img class="lozad" data-src="{ASSETS_IMAGES_PATH}banner_1.jpg?design=VOLT" />
+								</div>
 								<div class="banner__subtitle">лучшие</div>
 								<div class="banner__title">скидки</div>
 							</a>
 						</div>
-						<div class="banner__item" style="background-image: url('{ASSETS_IMAGES_PATH}banner_2.jpg?design=VOLT');">
+						<div class="banner__item">
 							<a class="banner__link flex-center" href="{CATALOG_URL}" title="Перейти в каталог">
+								<div class="banner__image">
+									<img class="lozad" data-src="{ASSETS_IMAGES_PATH}banner_2.jpg?design=VOLT" />
+								</div>
 								<div class="banner__subtitle">бесплатная</div>
 								<div class="banner__title">доставка</div>
 							</a>
@@ -529,16 +540,16 @@
 								<div class="product__image">
 									<!-- Стикеры -->
 									<div class="sticker flex">
+										{% IF index_page_favorites_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_favorites_goods.MIN_PRICE_NOW %}
+										<span class="sticker__sales">%</span>
+										{% ELSEIF index_page_favorites_goods.MIN_PRICE_OLD > index_page_favorites_goods.MIN_PRICE_NOW %}
+										<span class="sticker__sales">%</span>
+										{% ENDIF %}
 										{% IF index_page_favorites_goods.IS_TOP %}
 										<span class="sticker__best"></span>
 										{% ENDIF %}
 										{% IF index_page_favorites_goods.IS_NEW %}
 										<span class="sticker__new"></span>
-										{% ENDIF %}
-										{% IF index_page_favorites_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_favorites_goods.MIN_PRICE_NOW %}
-										<span class="sticker__sales">%</span>
-										{% ELSEIF index_page_favorites_goods.MIN_PRICE_OLD > index_page_favorites_goods.MIN_PRICE_NOW %}
-										<span class="sticker__sales">%</span>
 										{% ENDIF %}
 									</div>
 						
@@ -772,7 +783,7 @@
 												href="{% IF index_page_favorites_goods.COUNT_MODIFICATION > 1 %}{index_page_favorites_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_favorites_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 											>
 												<i class="icon-cart"></i>
-												<span data-added="В корзине">В корзину</span>
+												<span data-added="Добавить">В корзину</span>
 											</a>
 											{% ENDIF %}
 										</div>
@@ -843,16 +854,16 @@
 									<div class="product__image">
 										<!-- Стикеры -->
 										<div class="sticker flex">
+											{% IF index_page_sale_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_sale_goods.MIN_PRICE_NOW %}
+											<span class="sticker__sales">%</span>
+											{% ELSEIF index_page_sale_goods.MIN_PRICE_OLD > index_page_sale_goods.MIN_PRICE_NOW %}
+											<span class="sticker__sales">%</span>
+											{% ENDIF %}
 											{% IF index_page_sale_goods.IS_TOP %}
 											<span class="sticker__best"></span>
 											{% ENDIF %}
 											{% IF index_page_sale_goods.IS_NEW %}
 											<span class="sticker__new"></span>
-											{% ENDIF %}
-											{% IF index_page_sale_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_sale_goods.MIN_PRICE_NOW %}
-											<span class="sticker__sales">%</span>
-											{% ELSEIF index_page_sale_goods.MIN_PRICE_OLD > index_page_sale_goods.MIN_PRICE_NOW %}
-											<span class="sticker__sales">%</span>
 											{% ENDIF %}
 										</div>
 							
@@ -1108,7 +1119,7 @@
 													href="{% IF index_page_sale_goods.COUNT_MODIFICATION > 1 %}{index_page_sale_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_sale_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_sale_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 												>
 													<i class="icon-cart"></i>
-													<span data-added="В корзине">В корзину</span>
+													<span data-added="Добавить">В корзину</span>
 												</a>
 												{% ENDIF %}
 											</div>
@@ -1238,16 +1249,16 @@
 								<div class="product__image">
 									<!-- Стикеры -->
 									<div class="sticker flex">
+										{% IF index_page_new_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_new_goods.MIN_PRICE_NOW %}
+										<span class="sticker__sales">%</span>
+										{% ELSEIF index_page_new_goods.MIN_PRICE_OLD > index_page_new_goods.MIN_PRICE_NOW %}
+										<span class="sticker__sales">%</span>
+										{% ENDIF %}
 										{% IF index_page_new_goods.IS_TOP %}
 										<span class="sticker__best"></span>
 										{% ENDIF %}
 										{% IF index_page_new_goods.IS_NEW %}
 										<span class="sticker__new"></span>
-										{% ENDIF %}
-										{% IF index_page_new_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_new_goods.MIN_PRICE_NOW %}
-										<span class="sticker__sales">%</span>
-										{% ELSEIF index_page_new_goods.MIN_PRICE_OLD > index_page_new_goods.MIN_PRICE_NOW %}
-										<span class="sticker__sales">%</span>
 										{% ENDIF %}
 									</div>
 						
@@ -1462,7 +1473,7 @@
 													href="{% IF index_page_new_goods.COUNT_MODIFICATION > 1 %}{index_page_new_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_new_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_new_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 												>
 													<i class="icon-cart"></i>
-													<span data-added="В корзине">В корзину</span>
+													<span data-added="Добавить">В корзину</span>
 												</a>
 												{% ENDIF %}
 											</div>
@@ -1670,16 +1681,16 @@
 								<div class="product__image">
 									<!-- Стикеры -->
 									<div class="sticker flex">
+										{% IF index_page_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_goods.MIN_PRICE_NOW %}
+										<span class="sticker__sales">%</span>
+										{% ELSEIF index_page_goods.MIN_PRICE_OLD > index_page_goods.MIN_PRICE_NOW %}
+										<span class="sticker__sales">%</span>
+										{% ENDIF %}
 										{% IF index_page_goods.IS_TOP %}
 										<span class="sticker__best"></span>
 										{% ENDIF %}
 										{% IF index_page_goods.IS_NEW %}
 										<span class="sticker__new"></span>
-										{% ENDIF %}
-										{% IF index_page_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > index_page_goods.MIN_PRICE_NOW %}
-										<span class="sticker__sales">%</span>
-										{% ELSEIF index_page_goods.MIN_PRICE_OLD > index_page_goods.MIN_PRICE_NOW %}
-										<span class="sticker__sales">%</span>
 										{% ENDIF %}
 									</div>
 						
@@ -1913,7 +1924,7 @@
 												href="{% IF index_page_goods.COUNT_MODIFICATION > 1 %}{index_page_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={index_page_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={index_page_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 											>
 												<i class="icon-cart"></i>
-												<span data-added="В корзине">В корзину</span>
+												<span data-added="Добавить">В корзину</span>
 											</a>
 											{% ENDIF %}
 										</div>
@@ -2551,51 +2562,50 @@
 								<span class="filters__label" onclick="closeAll()">Фильтр</span>
 								<i class="icon-close" onclick="closeAll()"></i>
 							</div>
-							
-							<div class="filter__list filters-custom">
-
-								<a href="{PAGE_CANONICAL}" class="button-gray filters__clear" title="Очистить фильтры">
-									<span>{GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")}</span>
-									<i class="icon-close"></i>
-								</a>
-
-								<div class="collapsible__content">
-									<div class="filter__items">
-										<div class="filter__item flex">
-											<input type="checkbox" name="filter[product__empty]" value="1" id="filterRest" class="square" />
-											<label for="filterRest" data-name="filterRest">
-												<span>В наличии</span>
-											</label>
-										</div>
-										
-										<div class="filter__item flex">
-											<input type="checkbox" name="filter[product__has-sale]" value="1" id="filterSale" class="square" />
-											<label for="filterSale" data-name="filterSale">
-												<span>Акции</span>
-											</label>
-										</div>
-										
-										<div class="filter__item flex">
-											<input type="checkbox" name="filter[product__has-new]" value="1" id="filterNew" class="square" />
-											<label for="filterNew" data-name="filterNew">
-												<span>Новинки</span>
-											</label>
-										</div>
-										
-										<div class="filter__item flex">
-											<input type="checkbox" name="filter[product__has-top]" value="1" id="filterTop" class="square" />
-											<label for="filterTop" data-name="filterTop">
-												<span>Хиты продаж</span>
-											</label>
-										</div>
-
-									</div>
-								</div>									
-							
-							</div>
 
 							<div class="filters__content {% FOR filter_attr_list %}{% FOR values %}{% IF filter_attr_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %} {% FOR filter_prop_list %}{% FOR values %}{% IF filter_prop_list.values.CHECKED %}has-filters {% ENDIF %}{% ENDFOR %}{% ENDFOR %}">
-								<form action="" method="get" class="form__filters">
+								<form action="" method="get" class="form__filters">									
+									<!-- Кастом фильтры -->
+									<div class="filter__list filters-custom">
+										<a href="{PAGE_CANONICAL}" class="button-gray filters__clear" title="Очистить фильтры">
+											<span>{GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")}</span>
+											<i class="icon-close"></i>
+										</a>
+
+										<div class="collapsible__content">
+											<div class="filter__items">
+												<div class="filter__item flex">
+													<input type="checkbox" name="filter[product__empty]" value="1" id="filterRest" class="square" />
+													<label for="filterRest" data-name="filterRest">
+														<span>В наличии</span>
+													</label>
+												</div>
+												
+												<div class="filter__item flex">
+													<input type="checkbox" name="filter[product__has-sale]" value="1" id="filterSale" class="square" />
+													<label for="filterSale" data-name="filterSale">
+														<span>Акции</span>
+													</label>
+												</div>
+												
+												<div class="filter__item flex">
+													<input type="checkbox" name="filter[product__has-new]" value="1" id="filterNew" class="square" />
+													<label for="filterNew" data-name="filterNew">
+														<span>Новинки</span>
+													</label>
+												</div>
+												
+												<div class="filter__item flex">
+													<input type="checkbox" name="filter[product__has-top]" value="1" id="filterTop" class="square" />
+													<label for="filterTop" data-name="filterTop">
+														<span>Хиты продаж</span>
+													</label>
+												</div>
+
+											</div>
+										</div>									
+									
+									</div>
 									<!-- Если есть возможность фильтрации товаров по ценам -->
 									{% IF SHOW_GOODS_PRICE_FILTERS %}
 									<div class="filter__list filters-price collapsible">
@@ -2720,7 +2730,7 @@
 				</div>
 				<!-- Слайдер -->
 				<div class="products__list products__list_trio">
-					<div class="swiper-row">
+					<div class="swiper-row row">
 						<div class="swiper swiper-products">
 							<div class="swiper-wrapper">
 								{% FOR recently_viewed_goods %}
@@ -2745,16 +2755,16 @@
 										<div class="product__image">
 											<!-- Стикеры -->
 											<div class="sticker flex">
+												{% IF recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > recently_viewed_goods.MIN_PRICE_NOW %}
+												<span class="sticker__sales">%</span>
+												{% ELSEIF recently_viewed_goods.MIN_PRICE_OLD > recently_viewed_goods.MIN_PRICE_NOW %}
+												<span class="sticker__sales">%</span>
+												{% ENDIF %}
 												{% IF recently_viewed_goods.IS_TOP %}
 												<span class="sticker__best"></span>
 												{% ENDIF %}
 												{% IF recently_viewed_goods.IS_NEW %}
 												<span class="sticker__new"></span>
-												{% ENDIF %}
-												{% IF recently_viewed_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > recently_viewed_goods.MIN_PRICE_NOW %}
-												<span class="sticker__sales">%</span>
-												{% ELSEIF recently_viewed_goods.MIN_PRICE_OLD > recently_viewed_goods.MIN_PRICE_NOW %}
-												<span class="sticker__sales">%</span>
 												{% ENDIF %}
 											</div>
 									
@@ -2969,7 +2979,7 @@
 															href="{% IF recently_viewed_goods.COUNT_MODIFICATION > 1 %}{recently_viewed_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={recently_viewed_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={recently_viewed_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 														>
 															<i class="icon-cart"></i>
-															<span data-added="В корзине">В корзину</span>
+															<span data-added="Добавить">В корзину</span>
 														</a>
 														{% ENDIF %}
 													</div>
@@ -3273,12 +3283,10 @@
 
 		<!-- Навигация -->
 		<div class="navbar">
-			<div class="container">
-				<div class="row">
 					<div class="navbar__inner flex">
 						
 						<!-- Поиск -->
-						<div class="navbar__block navbar-search toTop">
+						<div class="navbar__block navbar-search">
 							<div class="navbar-search__icon" data-open="search">
 								<i class="icon-search"></i>
 							</div>
@@ -3324,8 +3332,6 @@
 						</div>
 
 					</div>
-				</div>
-			</div>
 		</div>
 
 		<noindex>
@@ -3335,27 +3341,30 @@
 			<!-- Обратный звонок в модальном окне -->
 			<div id="fancybox__callback" class="modal" style="display:none">
 				<div class="modal__title block__title">
-					<h2 class="title">Обратный звонок</h2>
+					<h2 class="title">Заказать звонок</h2>
 				</div>
 				<div class="modal__content">
 					<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}" />
+						<input class="form__input form__person" type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Ваше имя" autocomplete="off" required />
 						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
 						{ANTISPAM_CODE}
-						<div class="form__fields">
-							<input class="form__input form__person" type="text" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Ваше имя" autocomplete="off" required />
-						</div>
-						<div class="form__fields">
-							<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="Номер телефона" autocomplete="off" required />
-						</div>
-						<div class="form__buttons">
-							<button class="button-primary form__button" type="submit" title="Заказать звонок"><span>Заказать звонок</span></button>
-							<div class="form__pp">
-								<span>Нажимая на кнопку &laquo;Заказать звонок&raquo;, Вы соглашаетесь с</span>
-								<span data-fancybox data-src="#fancybox__pp" href="javascript:;">правилами обработки данных</span>
+
+						<div class="callback__subtitle">Оставьте свой номер телефона и мы бесплатно вас проконсультируем</div>
+
+						<div class="form__fields flex">
+							<div class="form__field">
+								<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="Номер телефона" autocomplete="off" required />
 							</div>
+							<button class="button-secondary form__button" type="submit" title="Заказать звонок"><span>Заказать звонок</span></button>
 						</div>
+
+						<div class="form__pp">
+							<span>Я принимаю условия</span>
+							<a data-fancybox data-src="#fancybox__pp" href="javascript:;">политики конфиденциальности</a>
+						</div>
+
 					</form>
 				</div>
 			</div>

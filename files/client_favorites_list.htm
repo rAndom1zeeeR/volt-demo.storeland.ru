@@ -27,16 +27,16 @@
 					<div class="product__image">
 						<!-- Стикеры -->
 						<div class="sticker flex">
+							{% IF favorites_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > favorites_goods.MIN_PRICE_NOW %}
+							<span class="sticker__sales">%</span>
+							{% ELSEIF favorites_goods.MIN_PRICE_OLD > favorites_goods.MIN_PRICE_NOW %}
+							<span class="sticker__sales">%</span>
+							{% ENDIF %}
 							{% IF favorites_goods.IS_TOP %}
 							<span class="sticker__best"></span>
 							{% ENDIF %}
 							{% IF favorites_goods.IS_NEW %}
 							<span class="sticker__new"></span>
-							{% ENDIF %}
-							{% IF favorites_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > favorites_goods.MIN_PRICE_NOW %}
-							<span class="sticker__sales">%</span>
-							{% ELSEIF favorites_goods.MIN_PRICE_OLD > favorites_goods.MIN_PRICE_NOW %}
-							<span class="sticker__sales">%</span>
 							{% ENDIF %}
 						</div>
 			
@@ -270,7 +270,7 @@
 									href="{% IF favorites_goods.COUNT_MODIFICATION > 1 %}{favorites_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={favorites_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={favorites_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 								>
 									<i class="icon-cart"></i>
-									<span data-added="В корзине">В корзину</span>
+									<span data-added="Добавить">В корзину</span>
 								</a>
 								{% ENDIF %}
 							</div>

@@ -71,16 +71,16 @@
 
 			<!-- Стикеры -->
 			<div class="productView__sticker productView__margin sticker flex">
+				{% IF GOODS_MOD_PRICE_NOW_WITHOUT_DISCOUNT > GOODS_MOD_PRICE_NOW %}
+				<span class="sticker__sales">%</span>
+				{% ELSEIF GOODS_MOD_PRICE_OLD > GOODS_MOD_PRICE_NOW %}
+				<span class="sticker__sales">%</span>
+				{% ENDIF %}
 				{% IF GOODS_IS_NEW %}
 				<span class="sticker__new"></span>
 				{% ENDIF %}
 				{% IF GOODS_IS_TOP %}
 				<span class="sticker__best"></span>
-				{% ENDIF %}
-				{% IF GOODS_MOD_PRICE_NOW_WITHOUT_DISCOUNT > GOODS_MOD_PRICE_NOW %}
-				<span class="sticker__sales">%</span>
-				{% ELSEIF GOODS_MOD_PRICE_OLD > GOODS_MOD_PRICE_NOW %}
-				<span class="sticker__sales">%</span>
 				{% ENDIF %}
 			</div>
 			
@@ -305,14 +305,14 @@
 						<div class="qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
 							<a class="qty__minus unselectable" title="Уменьшить" href="javascript:void(0)" rel="nofollow"><i class="icon-minus"></i></a>
 							<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{GOODS_MOD_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
-							<span class="qty__plus unselectable" title="Увеличить"><i class="icon-plus"></i></span>
+							<a class="qty__plus unselectable" title="Уменьшить" href="javascript:void(0)" rel="nofollow"><i class="icon-plus"></i></a>
 						</div>
 					</div>
 
 					<!-- В корзину -->
 					<button class="add-cart productView__margin" type="submit" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
 						<i class="icon-cart"></i>
-						<span data-added="В корзине">В корзину</span>
+						<span data-added="Добавить">В корзину</span>
 					</button>
 					<!-- Быстрая покупка -->
 					<button class="add-cart quick button-secondary productView__margin" type="submit" title="Положить &laquo;{GOODS_NAME}&raquo; в корзину">
@@ -776,16 +776,16 @@
 							<div class="product__image">
 								<!-- Стикеры -->
 								<div class="sticker flex">
+									{% IF related_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > related_goods.MIN_PRICE_NOW %}
+									<span class="sticker__sales">%</span>
+									{% ELSEIF related_goods.MIN_PRICE_OLD > related_goods.MIN_PRICE_NOW %}
+									<span class="sticker__sales">%</span>
+									{% ENDIF %}
 									{% IF related_goods.IS_TOP %}
 									<span class="sticker__best"></span>
 									{% ENDIF %}
 									{% IF related_goods.IS_NEW %}
 									<span class="sticker__new"></span>
-									{% ENDIF %}
-									{% IF related_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > related_goods.MIN_PRICE_NOW %}
-									<span class="sticker__sales">%</span>
-									{% ELSEIF related_goods.MIN_PRICE_OLD > related_goods.MIN_PRICE_NOW %}
-									<span class="sticker__sales">%</span>
 									{% ENDIF %}
 								</div>
 						
@@ -989,7 +989,7 @@
 								<div class="product__addto flex">
 									<!-- Кол-во -->
 									<div class="product__qty qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
-										<a class="qty__minus unselectable" href="javascript:void(0)" title="Уменьшить" rel="nofollow"><i class="icon-minus"></i></a>
+										<span class="qty__minus unselectable" title="Уменьшить"><i class="icon-minus"></i></span>
 										<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{related_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
 										<span class="qty__plus unselectable" title="Увеличить"><i class="icon-plus"></i></span>
 									</div>
@@ -1019,7 +1019,7 @@
 											href="{% IF related_goods.COUNT_MODIFICATION > 1 %}{related_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={related_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={related_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 										>
 											<i class="icon-cart"></i>
-											<span data-added="В корзине">В корзину</span>
+											<span data-added="Добавить">В корзину</span>
 										</a>
 										{% ENDIF %}
 									</div>
@@ -1093,16 +1093,16 @@
 							<div class="product__image">
 								<!-- Стикеры -->
 								<div class="sticker flex">
+									{% IF related_views_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > related_views_goods.MIN_PRICE_NOW %}
+									<span class="sticker__sales">%</span>
+									{% ELSEIF related_views_goods.MIN_PRICE_OLD > related_views_goods.MIN_PRICE_NOW %}
+									<span class="sticker__sales">%</span>
+									{% ENDIF %}
 									{% IF related_views_goods.IS_TOP %}
 									<span class="sticker__best"></span>
 									{% ENDIF %}
 									{% IF related_views_goods.IS_NEW %}
 									<span class="sticker__new"></span>
-									{% ENDIF %}
-									{% IF related_views_goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > related_views_goods.MIN_PRICE_NOW %}
-									<span class="sticker__sales">%</span>
-									{% ELSEIF related_views_goods.MIN_PRICE_OLD > related_views_goods.MIN_PRICE_NOW %}
-									<span class="sticker__sales">%</span>
 									{% ENDIF %}
 								</div>
 						
@@ -1306,7 +1306,7 @@
 								<div class="product__addto flex">
 									<!-- Кол-во -->
 									<div class="product__qty qty flex {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}has-max{% ENDIF %}">
-										<a class="qty__minus unselectable" href="javascript:void(0)" title="Уменьшить" rel="nofollow"><i class="icon-minus"></i></a>
+										<span class="qty__minus unselectable" title="Уменьшить"><i class="icon-minus"></i></span>
 										<input class="quantity" type="text" name="form[goods_mod_quantity]" maxlength="4" value="1" min="1" {% IF SETTINGS_GOODS_DONT_PUT_TO_CART_MORE_THAN_AVAILABLE %}max="{related_views_goods.MAX_REST_VALUE}"{% ENDIF %} title="Количество" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
 										<span class="qty__plus unselectable" title="Увеличить"><i class="icon-plus"></i></span>
 									</div>
@@ -1336,7 +1336,7 @@
 											href="{% IF related_views_goods.COUNT_MODIFICATION > 1 %}{related_views_goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={related_views_goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={related_views_goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 										>
 											<i class="icon-cart"></i>
-											<span data-added="В корзине">В корзину</span>
+											<span data-added="Добавить">В корзину</span>
 										</a>
 										{% ENDIF %}
 									</div>

@@ -81,11 +81,19 @@ function addSpaces(nStr){
 // Функция Наверх
 function toTop() {
 	// Действие наверх
-  $('.toTop').on('click', function () {
+  $('.toTop, .navbar-search').on('click', function () {
     $('body,html').animate({
       scrollTop: 0
     }, 800);
     return false;
+  });
+	// Скролл
+	$(window).on('scroll', function () {
+    if ($(this).scrollTop() > 100) {
+      $('.toTop').fadeIn();
+    } else {
+      $('.toTop').fadeOut();
+    }
   });
 }
 
@@ -160,6 +168,11 @@ function compare() {
 		simulateTouch: false,
 		grabCursor: false,
 		autoHeight: true,
+		lazy: {
+			enabled: true,
+			loadPrevNext: true,
+			loadOnTransitionStart: true,
+		},
 		navigation: {
 			nextEl: '.swiper-button-next',
 			prevEl: '.swiper-button-prev',
@@ -190,7 +203,14 @@ function compare() {
 	});
 
 	// Скрываем навигацию если слайдер заблокирован
-	$(id).find('.swiper-pagination-lock').parent().addClass('swiper-pagination-lock')
+	if($('.compare__table').find('.swiper-button-disabled').length == 2){
+		$('.compare__table').find('.swiper-navigation').addClass('swiper-navigation-lock')
+	}else{
+		$('.compare__table').find('.swiper-navigation').removeClass('swiper-navigation-lock')
+	}
+
+	// Скрываем навигацию если слайдер заблокирован
+	// $(id).find('.swiper-pagination-lock').parent().addClass('swiper-pagination-lock')
 
 	// Сравнение товаров. Отображение всех и различающихся характеристик товара
 	$('.compare__switch').on('click', function(){
@@ -1158,7 +1178,7 @@ function pageGoods() {
 		// Слайдер товаров
 		var swiper = new Swiper(id + ' .swiper', {
 			loop: false,
-			autoplay: false,
+			autoplay: true,
 			watchSlidesVisibility: true,
 			simulateTouch: true,
 			grabCursor: true,
@@ -1201,8 +1221,8 @@ function pageGoods() {
 		});
 
 		// Скрываем навигацию если слайдер заблокирован
-		if($(id).find('.swiper-button-disabled').length){
-			$(id).find('.swiper-button-disabled').parent().addClass('swiper-navigation-lock')
+		if($(id).find('.swiper-button-disabled').length == 2){
+			$(id).find('.swiper-navigation').addClass('swiper-navigation-lock')
 		}else{
 			$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 		}
@@ -1611,11 +1631,6 @@ function goodsModification($container) {
 					MainImage.attr('src', MediumImageUrl).parent().attr('href', MediumImageUrl);
 					// Изменяем идентификатор главного изображения
 					MainImageBlock.attr("data-id", parseInt(goods_mod_image_id));
-					console.log('goodsModImageBlock', goodsModImageBlock)
-					console.log('MainImageBlock', MainImageBlock)
-					console.log('MediumImageUrl', MediumImageUrl)
-					console.log('MainImage', MainImage)
-					console.log()
 					return true;
 				}
 
@@ -2806,20 +2821,22 @@ function priceFilter() {
 ///////////////////////////////////////
 function openMenu() {
 	// Открытие каталога с сохранением вложенности
-  $('.catalog__open').on('click', function(event){
-    event.preventDefault();
-    var parent = $(this).closest('.parent');
-    var sub = $(this).parent().next('.catalog__sub');
-    var open = $(this).closest('.catalog__open');
-    if (parent.hasClass('opened')) {
-      sub.slideUp(600);
-      parent.removeClass('opened');
-      open.removeClass('opened');
-    } else {
-      sub.slideDown(600);
-      parent.addClass('opened');
-      open.addClass('opened');
-    }
+  $('.catalog__item.parent').on('click', function(event){
+		if(getClientWidth() < 1023) {
+			console.log('getClientWidth', getClientWidth())
+		
+			event.preventDefault();
+	
+			var sub = $(this).find('.catalog__sub');
+			if ($(this).hasClass('opened')) {
+				sub.slideUp(600);
+				$(this).removeClass('opened');
+			} else {
+				sub.slideDown(600);
+				$(this).addClass('opened');
+			}
+		}
+
   });
 
 	// Закрытие всего при нажатии на темную часть
@@ -2837,14 +2854,19 @@ function openMenu() {
 		$('[data-open]').removeClass('opened')
 		$('[data-opened]').removeClass('opened')
     if ($('[data-opened="'+ value +'"]').hasClass('opened')){
-      $(this).removeClass('opened').parent().removeClass('opened');
       $('#overlay').removeClass('opened');
       $('[data-opened="'+ value +'"]').removeClass('opened');
+      $(this).removeClass('opened').parent().removeClass('opened');
     }else{
-      $(this).addClass('opened').parent().addClass('opened');
       $('#overlay').addClass('opened');
       $('[data-opened="'+ value +'"]').addClass('opened');
+      $(this).addClass('opened').parent().addClass('opened');
     }
+		// Поиск
+		if (value == 'search'){
+			$('#overlay').removeClass('opened');
+		}
+
   });
 
 	// Открытие подвала
@@ -3127,7 +3149,7 @@ function indexNews() {
 		// Слайдер товаров
 		var swiper = new Swiper(id + ' .swiper', {
 			loop: false,
-			autoplay: false,
+			autoplay: true,
 			watchSlidesVisibility: true,
 			simulateTouch: true,
 			grabCursor: true,
@@ -3171,8 +3193,8 @@ function indexNews() {
 		});
 
 		// Скрываем навигацию если слайдер заблокирован
-		if($(news).find('.swiper-button-lock').length){
-			$(news).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+		if($(news).find('.swiper-button-disabled').length == 2){
+			$(news).find('.swiper-navigation').addClass('swiper-navigation-lock')
 		}else{
 			$(news).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 		}
@@ -3213,7 +3235,7 @@ function swiperSlider(id){
 	// Слайдер товаров
 	var swiper = new Swiper(id + ' .swiper', {
 		loop: false,
-		autoplay: false,
+		autoplay: true,
 		watchSlidesVisibility: true,
 		simulateTouch: true,
 		grabCursor: true,
@@ -3261,8 +3283,8 @@ function swiperSlider(id){
 	});
 
 	// Скрываем навигацию если слайдер заблокирован
-	if($(id).find('.swiper-button-lock').length){
-		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	if($(id).find('.swiper-button-disabled').length == 2){
+		$(id).find('.swiper-navigation').addClass('swiper-navigation-lock')
 	}else{
 		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 	}
@@ -3289,8 +3311,8 @@ function swiperCatalog(){
 	});
 
 	// Скрываем навигацию если слайдер заблокирован
-	if($(id).find('.swiper-button-lock').length){
-		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	if($(id).find('.swiper-button-disabled').length == 2){
+		$(id).find('.swiper-navigation').addClass('swiper-navigation-lock')
 	}else{
 		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 	}
@@ -3302,6 +3324,7 @@ function swiperShow(){
 
 	var swiper = new Swiper(id + ' .swiper', {
 		loop: false,
+		autoplay: true,
 		preloadImages: false,
 		watchSlidesVisibility: true,
 		watchOverflow: true,
@@ -3327,8 +3350,8 @@ function swiperShow(){
 	});
 
 	// Скрываем навигацию если слайдер заблокирован
-	if($(id).find('.swiper-button-lock').length){
-		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	if($(id).find('.swiper-button-disabled').length == 2){
+		$(id).find('.swiper-navigation').addClass('swiper-navigation-lock')
 	}else{
 		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 	}
@@ -3341,7 +3364,7 @@ function swiperSales(){
 	// Слайдер товаров
 	var swiper = new Swiper(id + ' .swiper', {
 		loop: false,
-		autoplay: false,
+		autoplay: true,
 		watchSlidesVisibility: true,
 		simulateTouch: true,
 		grabCursor: true,
@@ -3384,8 +3407,8 @@ function swiperSales(){
 	});
 
 	// Скрываем навигацию если слайдер заблокирован
-	if($(id).find('.swiper-button-lock').length){
-		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	if($(id).find('.swiper-button-disabled').length == 2){
+		$(id).find('.swiper-navigation').addClass('swiper-navigation-lock')
 	}else{
 		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 	}
@@ -3398,7 +3421,7 @@ function swiperOffers(id){
 	// Слайдер товаров
 	var swiper = new Swiper(id + ' .swiper', {
 		loop: true,
-		autoplay: false,
+		autoplay: true,
 		watchSlidesVisibility: true,
 		simulateTouch: true,
 		grabCursor: true,
@@ -3445,8 +3468,8 @@ function swiperOffers(id){
 	});
 
 	// Скрываем навигацию если слайдер заблокирован
-	if($(id).find('.swiper-button-lock').length){
-		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	if($(id).find('.swiper-button-disabled').length == 2){
+		$(id).find('.swiper-navigation').addClass('swiper-navigation-lock')
 	}else{
 		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 	}
@@ -3506,8 +3529,8 @@ function swiperCategory(id){
 	});
 
 	// Скрываем навигацию если слайдер заблокирован
-	if($(id).find('.swiper-button-lock').length){
-		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	if($(id).find('.swiper-button-disabled').length == 2){
+		$(id).find('.swiper-navigation').addClass('swiper-navigation-lock')
 	}else{
 		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 	}
@@ -3519,9 +3542,9 @@ function swiperViewed(){
 	var nav = id + ' .swiper-navigation'
 
 	// Слайдер товаров
-	var swiper = new Swiper(id + ' .swiper-products', {
+	var swiper = new Swiper(id + ' .swiper', {
 		loop: false,
-		autoplay: false,
+		autoplay: true,
 		watchSlidesVisibility: true,
 		simulateTouch: true,
 		grabCursor: true,
@@ -3567,9 +3590,9 @@ function swiperViewed(){
 		},
 	});
 
-	// Скрываем навигацию родителя если слайдер заблокирован
-	if($(id).find('.swiper-button-lock').length){
-		$(id).find('.swiper-button-lock').parent().addClass('swiper-navigation-lock')
+	// Скрываем навигацию если слайдер заблокирован
+	if($(id).find('.swiper-button-disabled').length == 2){
+		$(id).find('.swiper-navigation').addClass('swiper-navigation-lock')
 	}else{
 		$(id).find('.swiper-navigation').removeClass('swiper-navigation-lock')
 	}

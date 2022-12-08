@@ -111,16 +111,16 @@
 					<div class="product__image">
 						<!-- Стикеры -->
 						<div class="sticker flex">
+							{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > goods.MIN_PRICE_NOW %}
+							<span class="sticker__sales">%</span>
+							{% ELSEIF goods.MIN_PRICE_OLD > goods.MIN_PRICE_NOW %}
+							<span class="sticker__sales">%</span>
+							{% ENDIF %}
 							{% IF goods.IS_TOP %}
 							<span class="sticker__best"></span>
 							{% ENDIF %}
 							{% IF goods.IS_NEW %}
 							<span class="sticker__new"></span>
-							{% ENDIF %}
-							{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > goods.MIN_PRICE_NOW %}
-							<span class="sticker__sales">%</span>
-							{% ELSEIF goods.MIN_PRICE_OLD > goods.MIN_PRICE_NOW %}
-							<span class="sticker__sales">%</span>
 							{% ENDIF %}
 						</div>
 			
@@ -395,7 +395,7 @@
 										href="{% IF goods.COUNT_MODIFICATION > 1 %}{goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 									>
 										<i class="icon-cart"></i>
-										<span data-added="В корзине">В корзину</span>
+										<span data-added="Добавить">В корзину</span>
 									</a>
 									{% ENDIF %}
 								</div>
@@ -434,16 +434,16 @@
 					<div class="product__image">
 						<!-- Стикеры -->
 						<div class="sticker flex">
+							{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > goods.MIN_PRICE_NOW %}
+							<span class="sticker__sales">%</span>
+							{% ELSEIF goods.MIN_PRICE_OLD > goods.MIN_PRICE_NOW %}
+							<span class="sticker__sales">%</span>
+							{% ENDIF %}
 							{% IF goods.IS_TOP %}
 							<span class="sticker__best"></span>
 							{% ENDIF %}
 							{% IF goods.IS_NEW %}
 							<span class="sticker__new"></span>
-							{% ENDIF %}
-							{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > goods.MIN_PRICE_NOW %}
-							<span class="sticker__sales">%</span>
-							{% ELSEIF goods.MIN_PRICE_OLD > goods.MIN_PRICE_NOW %}
-							<span class="sticker__sales">%</span>
 							{% ENDIF %}
 						</div>
 			
@@ -718,7 +718,7 @@
 										href="{% IF goods.COUNT_MODIFICATION > 1 %}{goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 									>
 										<i class="icon-cart"></i>
-										<span data-added="В корзине">В корзину</span>
+										<span data-added="Добавить">В корзину</span>
 									</a>
 									{% ENDIF %}
 								</div>
@@ -757,16 +757,16 @@
 						<div class="product__image">
 							<!-- Стикеры -->
 							<div class="sticker flex">
+								{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > goods.MIN_PRICE_NOW %}
+								<span class="sticker__sales">%</span>
+								{% ELSEIF goods.MIN_PRICE_OLD > goods.MIN_PRICE_NOW %}
+								<span class="sticker__sales">%</span>
+								{% ENDIF %}
 								{% IF goods.IS_TOP %}
 								<span class="sticker__best"></span>
 								{% ENDIF %}
 								{% IF goods.IS_NEW %}
 								<span class="sticker__new"></span>
-								{% ENDIF %}
-								{% IF goods.MIN_PRICE_NOW_WITHOUT_DISCOUNT > goods.MIN_PRICE_NOW %}
-								<span class="sticker__sales">%</span>
-								{% ELSEIF goods.MIN_PRICE_OLD > goods.MIN_PRICE_NOW %}
-								<span class="sticker__sales">%</span>
 								{% ENDIF %}
 							</div>
 				
@@ -1000,7 +1000,7 @@
 										href="{% IF goods.COUNT_MODIFICATION > 1 %}{goods.URL_MIN_PRICE_NOW}{% ELSE %}{CART_ADD_GOODS_MODIFICATION_URL | url_amp}?hash={HASH | url_amp}&amp;form%5Bgoods_from%5D={goods.GOODS_FROM}&amp;form%5Bgoods_mod_id%5D={goods.MIN_PRICE_NOW_ID}{% ENDIF %}"
 									>
 										<i class="icon-cart"></i>
-										<span data-added="В корзине">В корзину</span>
+										<span data-added="Добавить">В корзину</span>
 									</a>
 									{% ENDIF %}
 								</div>
