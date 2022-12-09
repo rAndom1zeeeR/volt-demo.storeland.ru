@@ -1,7 +1,7 @@
 {% IF FORM_NOTICE %}
 <div class="ajax__notice">
 	<!-- Отображаем системное сообщение при добавлении товара в корзину -->
-	<div class="noty__addto">
+	<!-- <div class="noty__addto">
 		<div class="noty__title">{% IF FORM_NOTICE_IS_GOOD %}Успешно!{% ELSE %}Ошибка!{% ENDIF %}</div>
 		<div class="noty__message">{FORM_NOTICE}</div>
 		<div class="noty__buttons">
@@ -9,23 +9,39 @@
 				<span>Перейти в корзину</span>
 			</a>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- Отображаем подробную информацию о последнем добавленном товаре в корзину -->
-	<!-- {% FOR cart_items %}
+	{% FOR cart_items %}
 		{% IF cart_items.GOODS_MOD_ID = FORM_GOODS_MOD_ID || cart_items.GOODS_ID = FORM_GOODS_ID %}
-		<div class="noty__addto flex" data-id="{cart_items.GOODS_ID}">
-			<a class="noty__title" href="{CART_URL}" title="Перейти в корзину">{% IF FORM_NOTICE_IS_GOOD %}Добавлено в корзину!{% ELSE %}Не добавлено!{% ENDIF %}</a>
-			<div class="noty__image flex-center">
+		<div class="noty-cart__addto flex {% IF FORM_NOTICE_IS_GOOD %}noty-cart_good{% ELSE %}noty-cart_bad{% ENDIF %}" data-id="{cart_items.GOODS_ID}">
+			<div class="noty-cart__image flex-center">
 				<img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{cart_items.GOODS_IMAGE_MEDIUM}{% ENDIF %}" />
 			</div>
-			<div class="noty__content">
-				<a class="noty__message" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">{cart_items.GOODS_NAME}</a>
-				<div class="noty__price price__now {CURRENCY_CHAR_CODE}">{cart_items.GOODS_MOD_PRICE_NOW | money_format}</div>
+
+			<div class="noty-cart__content">
+				<a class="noty-cart__message" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}">{cart_items.GOODS_NAME}</a>
+				<a class="noty-cart__title flex" href="{CART_URL}" title="Перейти в корзину">
+					{% IF FORM_NOTICE_IS_GOOD %}
+					<i class="icon-check"></i>
+					<span>Добавлен в корзину</span>
+					{% ELSE %}
+					<i class="icon-close"></i>
+					<span>Не добавлено!</span>
+					{% ENDIF %}
+				</a>
 			</div>
+			
+			<div class="noty-cart__buttons flex">
+				<a class="noty-cart__button button-primary" href="{CART_URL}" title="Перейти в Корзину"><span>В Корзину</span></a>
+				<div class="noty-cart__close">
+					<i class="icon-close"></i>
+				</div>
+			</div>
+
 		</div>
 		{% ENDIF %}
-	{% ENDFOR %} -->
+	{% ENDFOR %}
 </div>
 {% ENDIF %}
 

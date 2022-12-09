@@ -93,9 +93,8 @@
 				</div>
 
 				<!-- Среднее значение по результатам всех отзывов об этом товаре -->
-				{% IFNOT SETTINGS_OPINION_DISABLE %}
+				{% IFNOT SETTINGS_OPINION_DISABLE && GOODS_OPINION_RATING_VALUE_ROUND > 0 %}
 				<div class="productView__ratings productView__margin flex">
-					{% IF GOODS_OPINION_RATING_VALUE_ROUND %}
 					<span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
 						<meta itemprop="worstRating" content="1">
 						<meta itemprop="bestRating" content="10">
@@ -103,13 +102,7 @@
 						<meta itemprop="reviewCount" content="{GOODS_OPINION_RATING_CNT_ALL}">
 						<b>{GOODS_OPINION_RATING_VALUE_ROUND | divide('2')}</b>
 						<i class="icon-star"></i>
-					</span>
-					{% ELSE %}
-					<span class="ratings__undefined" title="Рейтинг не определён">
-						<i class="icon-star"></i>
-					</span>
-					{% ENDIF %}
-					
+					</span>					
 				</div>
 				{% ENDIF %}
 
@@ -403,7 +396,10 @@
 				<div class="features__items flex justify-between">
 					{% FOR goods_features %}
 					<div class="features__item flex">
-						<div class="features__name"><span>{goods_features.NAME}:</span></div>
+						<div class="features__name">
+							<span>{goods_features.NAME}</span>
+							<span class="features__separate">:</span>
+						</div>
 						<div class="features__value"><span>{goods_features.VALUE}</span></div>
 					</div>
 					{% ENDFOR %}
@@ -517,7 +513,7 @@
 					</div>
 
 					<div class="opinion__score_buttons">
-						<a class="opinion__score_button button-secondary" href="javascript:;" title="Оставить отзыв">
+						<a class="opinion__score_button opinion__add button-secondary" href="javascript:;" title="Оставить отзыв">
 							<span>Оставить отзыв</span>
 						</a>
 					</div>
@@ -715,7 +711,7 @@
 						
 						<!-- Кнопка отправки формы -->
 						<div class="opinion__block">
-							<button class="button-primary" type="submit" title="Добавить отзыв о &laquo;{GOODS_NAME}&raquo;">
+							<button class="button-secondary" type="submit" title="Добавить отзыв о &laquo;{GOODS_NAME}&raquo;">
 								<span>Добавить отзыв</span>
 							</button>
 							<div class="form__pp">

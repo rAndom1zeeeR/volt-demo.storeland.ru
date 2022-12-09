@@ -129,11 +129,11 @@ function changeTxt(txtObject) {
 ///////////////////////////////////////
 // Уведомления
 ///////////////////////////////////////
-function notyStart(text, type) {
+function notyStart($content, $type) {
   new Noty({
-    text: text,
+    text: $content,
     layout: "bottomCenter",
-    type: type,
+    type: $type,
     theme: "",
     textAlign: "center",
     animation: {
@@ -163,7 +163,7 @@ function compare() {
 		loop: false,
 		autoplay: false,
 		watchSlidesVisibility: true,
-		slidesPerView: 4,
+		slidesPerView: 5,
 		spaceBetween: 16,
 		simulateTouch: false,
 		grabCursor: false,
@@ -197,7 +197,7 @@ function compare() {
 				slidesPerView: '4',
 			},
 			1200: {
-				slidesPerView: '4',
+				slidesPerView: '5',
 			}
 		},
 	});
@@ -399,7 +399,7 @@ function ajaxProducts() {
 		// код будет срабатывать раз в 1 секунду
 		document.addEventListener('scroll', throttle(function() {
 			if(checkPosition()){
-				console.log('loadItems')
+				// console.log('loadItems')
 				return loadItems();
 			} else {
 				return false;
@@ -570,10 +570,10 @@ function addTo() {
 								sidecount.text(data.compare_goods_count);
 								$('.count-compare').attr('data-count', data.compare_goods_count);
 								if(data.compare_goods_count > 0){
-									$('.compare').addClass("has-items");
+									$('.compare').addClass('has-items');
 								}else{
-									$('.compare').removeClass("has-items");
-									$('.count-compare').attr('data-count', '0').text("0");
+									$('.compare').removeClass('has-items');
+									$('.count-compare').attr('data-count', '0').text('0');
 									$('.add-compare').removeAttr("title").removeClass("added");
 								}
 							}).animate({display: "inline",opacity: 1} , 500 );
@@ -587,7 +587,7 @@ function addTo() {
 
 						// Если рядом с ссылкой в виде круга есть текстовая надпись с описанием действия
 						if(aText.length) {
-						 aText.text(a.attr(isAdd == 1 ? 'data-del-tooltip' : 'data-add-tooltip'));
+							aText.text(a.attr(isAdd == 1 ? 'data-del-tooltip' : 'data-add-tooltip'));
 						}
 
 						// Меняем заголовок уведомления
@@ -598,57 +598,17 @@ function addTo() {
 						}
 
 						// Скилет уведомления
-						var content = '<div class="noty__addto"><div class="noty__title">'+ msg +'</div><div class="noty__message">'+ data.message + '</div><div class="noty__buttons"><a class="button-primary" href="/compare" title="В сравнение"><span>Перейти в сравнение</span></a></div></div>'
+						var content = '<div class="noty__addto noty_good flex"><div class="noty__content"><div class="noty__message">'+ data.message + '</div><div class="noty__title">'+ msg +'</div></div><div class="noty__buttons"><a class="button-primary" href="/compare" title="В сравнение"><span>Перейти в сравнение</span></a></div></div>'
 						
 						// Если есть функция, которая отображает сообщения пользователю
 						if(typeof(Noty) == "function") {
-							new Noty({
-								text: content,
-								layout:"bottomRight",
-								type:"success",
-								theme:"",
-								closeWith: ['click'],
-								animation: {
-									open: 'animated fadeInUp',
-									close: 'animated fadeOutDown',
-									easing: 'swing',
-									speed: 400
-								},
-								timeout:"2000",
-								progressBar:true,
-								closable:true,
-								closeOnSelfClick:true,
-								modal:false,
-								dismissQueue:false,
-								onClose:true,
-								killer:false
-							}).show();
+							notyStart(content, 'success');
 						}
 					} else if('error' == data.status) {
-						var content = '<div class="noty__addto"><div class="noty__title">Ошибка!</div><div class="noty__message">'+ data.message + '</div><div class="noty__buttons"><a class="button-primary" href="/compare" title="В сравнение"><span>Перейти в сравнение</span></a></div></div>'
+						var content = '<div class="noty__addto noty_bad flex"><div class="noty__content"><div class="noty__message">'+ data.message + '</div><div class="noty__title">Не удалось добавить в сравнение</div></div><div class="noty__buttons"><a class="button-primary" href="/compare" title="В сравнение"><span>Перейти в сравнение</span></a></div></div>'
 						// Если есть функция, которая отображает сообщения пользователю
 						if(typeof(Noty) == "function") {
-							new Noty({
-								text: content,
-								layout:"bottomRight",
-								type:"warning",
-								theme:"",
-								closeWith: ['click'],
-								animation: {
-									open: 'animated fadeInUp',
-									close: 'animated fadeOutDown',
-									easing: 'swing',
-									speed: 400
-								},
-								timeout:"2000",
-								progressBar:true,
-								closable:true,
-								closeOnSelfClick:true,
-								modal:false,
-								dismissQueue:false,
-								onClose:true,
-								killer:false
-							}).show();
+							notyStart(content, 'warning')
 						}
 					}
 				}
@@ -761,11 +721,11 @@ function addTo() {
 								sidecount.text(data.favorites_goods_count);
 								$('.count-favorites').attr('data-count', data.favorites_goods_count);
 								if(data.favorites_goods_count > 0){
-									$('.favorites').addClass("has-items");
+									$('.favorites').addClass('has-items');
 								}else{
-									$('.favorites').removeClass("has-items");
-									$('.count-favorites').attr('data-count', '0').text("0");
-									$('.add-favorites').removeAttr("title").removeClass("added");
+									$('.favorites').removeClass('has-items');
+									$('.count-favorites').attr('data-count', '0').text('0');
+									$('.add-favorites').removeAttr('title').removeClass('added');
 								}
 							}).animate({display: "inline",opacity: 1} , 500 );
 						}
@@ -789,57 +749,17 @@ function addTo() {
 						}
 
 						// Скилет уведомления
-						var content = '<div class="noty__addto"><div class="noty__title">'+ msg +'</div><div class="noty__message">'+ data.message + '</div><div class="noty__buttons"><a class="button-primary" href="/user/favorites" title="Избранное"><span>Перейти в избранное</span></a></div></div>'
+						var content = '<div class="noty__addto noty_good flex"><div class="noty__content"><div class="noty__message">'+ data.message + '</div><div class="noty__title">'+ msg +'</div></div><div class="noty__buttons"><a class="button-primary" href="/user/favorites" title="Избранное"><span>Перейти в избранное</span></a></div></div>'
 
 						// Если есть функция, которая отображает сообщения пользователю
 						if(typeof(Noty) == "function") {
-							new Noty({
-								text: content,
-								layout:"bottomRight",
-								type:"success",
-								theme:"",
-								closeWith: ['click'],
-								animation: {
-									open: 'animated fadeInUp',
-									close: 'animated fadeOutDown',
-									easing: 'swing',
-									speed: 400
-								},
-								timeout:"2000",
-								progressBar:true,
-								closable:true,
-								closeOnSelfClick:true,
-								modal:false,
-								dismissQueue:false,
-								onClose:true,
-								killer:false
-							}).show();
+							notyStart(content, 'success');
 						}
 					} else if('error' == data.status) {
-						var content = '<div class="noty__addto"><div class="noty__title">Ошибка!</div><div class="noty__message">'+ data.message + '</div><div class="noty__buttons"><a class="button-primary" href="/user/login" title="Войти"><span>Войти</span></a></div></div>'
+						var content = '<div class="noty__addto noty_bad flex"><div class="noty__content"><div class="noty__message">'+ data.message + '</div><div class="noty__title">Не удалось добавить в избранное</div></div><div class="noty__buttons"><a class="button-primary" href="/user/login" title="Войти"><span>Войти</span></a></div></div>'
 						// Если есть функция, которая отображает сообщения пользователю
 						if(typeof(Noty) == "function") {
-							new Noty({
-								text: content,
-								layout:"bottomRight",
-								type:"warning",
-								theme:"",
-								closeWith: ['click'],
-								animation: {
-									open: 'animated fadeInUp',
-									close: 'animated fadeOutDown',
-									easing: 'swing',
-									speed: 400
-								},
-								timeout:"2000",
-								progressBar:true,
-								closable:true,
-								closeOnSelfClick:true,
-								modal:false,
-								dismissQueue:false,
-								onClose:true,
-								killer:false
-							}).show();
+							notyStart(content, 'warning')
 						}
 					}
 				}
@@ -858,11 +778,11 @@ function addCart() {
 		// Быстрый заказ
 		if ($(this).attr('rel') === 'quick') {
 			quickOrder(this);
-			$('.cart').addClass("has-items");
+			$('.cart').addClass('has-items');
 			return false;
 		}
 		// Добавляем активные классы и обновлем счетчик товаров
-		$('.cart').addClass("has-items");
+		$('.cart').addClass('has-items');
 		$('.count-cart').animate({opacity: 0,display: "none"},500);
 		$('.count-cart').animate({display: "inline",opacity: 1},500);
 		// Находим форму, которую отправляем на сервер, для добавления товара в корзину
@@ -888,109 +808,25 @@ function addCart() {
 			data: formData,
 			success: function(data) {
 				// Анализ системного сообщения в коризне
-				var str = $(data).html();
+				var content = $(data).html();
 				// Проверяем текст сообщения на наличие ошибки
-				if (str.indexOf("Не удалось") != -1) {
+				if (content.indexOf("Не удалось") != -1) {
 					// Сообщение с ошибкой
 					if(typeof(Noty) == "function") {
-						new Noty({
-							text: str,
-							layout:"bottomRight",
-							type:"warning",
-							theme:"",
-							closeWith: ['click'],
-							easing:"swing",
-							animation: {
-								open: 'animated fadeInUp',
-								close: 'animated fadeOutDown',
-								easing: 'swing',
-								speed: 400
-							},
-							timeout:"2000",
-							progressBar:true,
-							closable:true,
-							closeOnSelfClick:true,
-							modal:false,
-							dismissQueue:false,
-							onClose:true,
-							killer:false
-						}).show();
+						notyStart(content, 'warning')
 					}
 				} else {
 					// Сообщение с успешным добавлением
 					if(typeof(Noty) == "function") {
-						new Noty({
-							text: str,
-							layout:"bottomRight",
-							type:"success",
-							theme:"",
-							closeWith: ['click'],
-							easing:"swing",
-							animation: {
-								open: 'animated fadeInUp',
-								close: 'animated fadeOutDown',
-								easing: 'swing',
-								speed: 400
-							},
-							timeout:"2000",
-							progressBar:true,
-							closable:true,
-							closeOnSelfClick:true,
-							modal:false,
-							dismissQueue:false,
-							onClose:true,
-							killer:false
-						}).show();
+						notyStart(content, 'success');
 					}
 
 					// Запуск функции активного класса товара в других категориях
 					$('.product__item[data-id="' + id + '"]').each(function(){
 						$(this).addClass('inCart');
-						var text = $(this).find('.product__addCart span').text();
 						var added = $(this).find('.product__addCart span').attr('data-added');
-						$(this).find('.product__addCart span').text(added).attr('data-added', text);
+						$(this).find('.product__addCart span').text(added);
 					});
-
-					// Анимация добавления товара в корзину
-					function animateCart(){
-						var img = t.find('img');
-						var w = img.width();
-						var bascket = $(".cart__icon");
-
-						if(!img.length){
-							img = t.parents().find('.productView__image img');
-							w = 200;
-						}
-
-						img.clone()
-						.css({
-							'width' : w,
-							'position' : 'absolute',
-							'z-index' : '9999',
-							'display' : 'block',
-							bottom: img.offset().top,
-							left: img.offset().left
-						})
-						.appendTo("body")
-						.animate({
-							opacity: 0.1,
-							left: bascket.offset()['left'],
-							top: bascket.offset()['top'],
-							width: 20
-						}, 1000, function() {	
-							$(this).remove();
-						});
-					}
-
-					// Запуск Анимации
-					animateCart();
-
-					// Открытие/Закрытие корзины при добавлении
-					// $('.cart.dropdown').addClass('opened');
-					// setTimeout(function () {
-					// 	$('.cart.dropdown').removeClass('opened');
-					// 	$.fancybox.close();
-					// }, 2000);
 
 				}
 				// Скрытое обновление корзины
@@ -1002,9 +838,8 @@ function addCart() {
 
 	// Обновляем текст у добавленных в корзину товаров
 	$('.product__item.inCart').each(function(){
-		var text = $(this).find('[data-added]').text()
 		var added = $(this).find('[data-added]').attr('data-added')
-		$(this).find('[data-added]').text(added).attr('data-added', text)
+		$(this).find('[data-added]').text(added)
 	})
 }
 
@@ -1348,7 +1183,7 @@ function pageGoods() {
 		}
 	});
 
-	var opinionGoodLength = $('.opinion__item.good').length
+	var opinionGoodLength = 5 / $('.opinion__item.good').length
 	var opinionCount = $('.opinion__score_recommend').attr('data-count')
 	var opinionRound = Math.round((opinionGoodLength / opinionCount) * 10)
 	$('.opinion__score_total').find('b').text(opinionGoodLength)
@@ -1408,26 +1243,22 @@ function checkQty($obj){
 	if(val < 1){
 		$obj.val(1);
 		val = 1;
+		$obj.prev().addClass('qty__disable')
+	} else {
+		$obj.prev().removeClass('qty__disable')
 	}
+
 	// Проверка максимальныго остатка
 	var max = parseInt($obj.attr('max'));
 	if(val > max){
 		$obj.val(max);
 		val = max;
-		new Noty({
-			text: '<div class="noty__addto"><div class="noty__message">Внимание! Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div></div>',
-			layout:"bottomRight",
-			type:"warning",
-			easing:"swing",
-			animation: {
-				open: 'animated fadeInUp',
-				close: 'animated fadeOutDown',
-				easing: 'swing',
-				speed: 400
-			},
-			timeout:"2000",
-			progressBar:true
-		}).show();
+		$obj.next().addClass('qty__disable')
+		// Функция, которая отображает сообщения пользователю
+		var content = '<div class="noty__addto"><div class="noty__message">Внимание! Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div></div>';
+		notyStart(content, 'warning')
+	} else {
+		$obj.next().removeClass('qty__disable')
 	}
 }
 
@@ -1674,7 +1505,6 @@ function newModification($container) {
 		event.preventDefault()
 
 		if($(this).hasClass('disabled')){
-			console.log('false')
 			return false;
 		}
 
@@ -1779,8 +1609,8 @@ function removeFromCart(obj){
             }
           });
         }else{
-          $('.cart').removeClass("has-items");
-          $('.count-cart').attr('data-count', '0').text("0");
+          $('.cart').removeClass('has-items');
+          $('.count-cart').attr('data-count', '0').text('0');
           $('.cart .addto__item').remove();
         }
       }
@@ -1797,8 +1627,8 @@ function removeFromCartAll(obj){
       url		 : obj.attr('href'),
       success: function(data){
         $('.totalSum').html($(data).find('.totalSum').html());
-        $('.cart').removeClass("has-items");
-        $('.count-cart').attr('data-count', '0').text("0");
+        $('.cart').removeClass('has-items');
+        $('.count-cart').attr('data-count', '0').text('0');
         $('.addto__cart .addto__item').remove();
 				$('.product__item').each(function(){
 					$(this).removeClass('inCart').find('.inCart__count').text('0');
@@ -1834,7 +1664,7 @@ function removeFromCompare(obj){
             }
           });
         }else{
-          $('.compare').removeClass("has-items");
+          $('.compare').removeClass('has-items');
           $('.count-compare').attr('data-count', '0').text('0');
         }
         var obj = $('.add-compare[data-mod-id="' + id + '"]');
@@ -1858,8 +1688,8 @@ function removeFromCompareAll(obj){
       cache  : false,
       url		 : obj.attr('href'),
       success: function(data){
-        $('.compare').removeClass("has-items");
-        $('.count-compare').attr('data-count', '0').text("0");
+        $('.compare').removeClass('has-items');
+        $('.count-compare').attr('data-count', '0').text('0');
         $('.addto__compare .addto__item').remove();
         $('.add-compare').removeAttr("title").removeClass("added");
       }
@@ -1893,7 +1723,7 @@ function removeFromFavorites(obj){
             }
           });
         }else{
-          $('.favorites').removeClass("has-items");
+          $('.favorites').removeClass('has-items');
           $('.count-favorites').attr('data-count', '0').text('0');
         }
         var obj = $('.add-favorites[data-mod-id="' + id + '"]');
@@ -1917,8 +1747,8 @@ function removeFromFavoritesAll(obj){
       cache  : false,
       url		 : obj.attr('href'),
       success: function(d){
-        $('.favorites').removeClass("has-items");
-        $('.count-favorites').attr('data-count', '0').text("0");
+        $('.favorites').removeClass('has-items');
+        $('.count-favorites').attr('data-count', '0').text('0');
         $('.addto__favorites .addto__item').remove();
         $('.add-favorites').removeAttr("title").removeClass("added");
       }
@@ -2320,7 +2150,6 @@ function orderScriptsSelect() {
 		}
 		$('.changeprice').text(addSpaces(startprice));
 		$('.cartSumDelivery .num').text(addSpaces(startprice));
-		console.log('cartSumDelivery1 ', startprice)
 		$('.order__payment').hide();
 		$('.order__payment[rel="'+ selectedDelId +'"]').show();
 		var startInputId = $('.delivery__radio:checked').attr('value');
@@ -2355,7 +2184,6 @@ function orderScriptsSelect() {
 		var WithZone = $('.zone__radio:checked').attr('price');
 		$('.changeprice').text(addSpaces(WithZone));
 		$('.cartSumDelivery .num').text(addSpaces(startprice));
-		console.log('cartSumDelivery2 ', startprice)
 	});
 
 	// Выбор зоны доставки
@@ -2659,15 +2487,15 @@ function catalog() {
 	});
 
 	// Открытие/Скрытие фильтров в сайдбаре
-	$('.collapsible__click').on('click', function(event){
+	$('.filter__collapsible .filter__title').on('click', function(event){
 		event.preventDefault();
-		var item = $(this).closest('.collapsible');
-		var content = $(this).parent().find('.collapsible__content');
+		var item = $(this).closest('.filter__collapsible');
+		var content = $(this).parent().find('.filter__content');
 		if (item.hasClass('active')) {
-			content.slideDown(600);
+			content.slideUp(600);
 			item.removeClass('active');
 		} else {
-			content.slideUp(600);
+			content.slideDown(600);
 			item.addClass('active');
 		}
 	});
@@ -2985,20 +2813,9 @@ function ajaxForms(id,flag,successMessage,errorMessage){
             t.find('.form__input').val(' ');
             t.parent().append('<div class="form__text">'+ errorMessage +'</div>');
 						$(id).addClass('error')
-            new Noty({
-              text: '<div class="noty__addto"><div class="noty__message">' + successMessage + '</div></div>',
-              layout:"bottomRight",
-              type:"success",
-              easing:"swing",
-              animation: {
-                open: 'animated fadeInUp',
-                close: 'animated fadeOutDown',
-                easing: 'swing',
-                speed: 400
-              },
-              timeout:"4000",
-              progressBar:true
-            }).show();
+						// Функция, которая отображает сообщения пользователю
+						var content = '<div class="noty__addto"><div class="noty__message">' + successMessage + '</div></div>';
+						notyStart(content, 'success');
             flag = true;
           }
         }
@@ -3008,20 +2825,9 @@ function ajaxForms(id,flag,successMessage,errorMessage){
         t.find('.form__input').val(' ');
         t.parent().find('.form__text').hide();
 				$(id).addClass('error')
-        new Noty({
-          text: '<div class="noty__addto"><div class="noty__message">' + errorMessage + '</div></div>',
-          layout:"bottomRight",
-          type:"warning",
-          easing:"swing",
-          animation: {
-            open: 'animated fadeInUp',
-            close: 'animated fadeOutDown',
-            easing: 'swing',
-            speed: 400
-          },
-          timeout:"4000",
-          progressBar:true
-        }).show();
+				// Функция, которая отображает сообщения пользователю
+				var content = '<div class="noty__addto"><div class="noty__message">' + errorMessage + '</div></div>';
+				notyStart(content, 'warning');
       }
       callBackError();
     }

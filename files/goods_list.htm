@@ -85,6 +85,16 @@
 				</div>
 			</div>
 
+			<!-- Показывать по: (Шаг для выбора пользователем лимита выдачи товаров на страницу от 1 до 100) -->
+			<!-- <div class="show-by selectBox flex">
+				<span>Показать по:</span>
+				<select class="select" name="per_page" title="Лимит товаров на странице" onchange="this.form.submit();">
+					{% FOR goods_per_page_list %}
+						<option value="{goods_per_page_list.LIMIT}" {% IF goods_per_page_list.SELECTED %}selected="selected"{% ENDIF %}>{goods_per_page_list.LIMIT}</option>
+					{% ENDFOR %}
+				</select>
+			</div> -->
+
 			<!-- Вид Таблица/Список -->
 			<div class="view-by flex">
 				{% IF GOODS_VIEW_TYPE=3 %}
@@ -348,8 +358,11 @@
 								<div class="product__attr_items">
 									{% FOR goods_attr_list %}
 									<div class="product__attr_item flex">
-										<div class="product__attr_name">{goods.goods_attr_list.NAME}</div>
-										<div class="product__attr_value">{goods.goods_attr_list.VALUE}</div>
+										<div class="product__attr_name">
+											<span>{goods.goods_attr_list.NAME}</span>
+											<span class="product__attr_separate"></span>
+										</div>
+										<div class="product__attr_value"><span>{goods.goods_attr_list.VALUE}</span></div>
 									</div>
 									{% ENDFOR %}
 								</div>
@@ -671,8 +684,11 @@
 								<div class="product__attr_items">
 									{% FOR goods_attr_list %}
 									<div class="product__attr_item flex">
-										<div class="product__attr_name">{goods.goods_attr_list.NAME}</div>
-										<div class="product__attr_value">{goods.goods_attr_list.VALUE}</div>
+										<div class="product__attr_name">
+											<span>{goods.goods_attr_list.NAME}</span>											
+											<span class="product__attr_separate"></span>
+										</div>
+										<div class="product__attr_value"><span>{goods.goods_attr_list.VALUE}</span></div>
 									</div>
 									{% ENDFOR %}
 								</div>

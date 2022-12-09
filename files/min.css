@@ -101,9 +101,9 @@ h5 {font-size: 0.875rem;}
 /**************************************/
 /*** Показать пароль ***/
 /**************************************/
-.form__showPass {position: absolute;bottom: .5rem;right: .5rem;cursor: pointer;z-index: 2;}
-.form__showPass:before {content: '\e920';font-size: 1.5rem;font-family: 'icomoon';vertical-align: middle;}
-.form__showPass.active:before {content: '\e921';}
+.form__showPass {position: absolute;bottom: .75rem;right: .5rem;cursor: pointer;z-index: 2;}
+.form__showPass:before {content: '\e933';font-size: 1.5rem;font-family: 'icomoon';vertical-align: middle;}
+.form__showPass.active:before {content: '\e934';}
 .form__showPass .showPass {vertical-align: middle;display: none;}
 
 /*** Капслок ***/
@@ -128,7 +128,7 @@ h5 {font-size: 0.875rem;}
 .compare__line:nth-child(-n+2) {border-bottom: 0;padding-bottom: 0;}
 .compare__cell {margin-bottom: 1rem;width: 100%;font-weight: bold;}
 .compare__cell input {margin-right: .5rem;}
-.compare__image {height: 17rem;}
+.compare__image {height: 13.5rem;}
 .compare__remove {top: .5rem;right: .5rem;position: absolute;}
 .compare__remove i {font-size: 1.5rem;display: block;}
 .compare__mod {margin-top: .5rem;font-size: .75rem;}
