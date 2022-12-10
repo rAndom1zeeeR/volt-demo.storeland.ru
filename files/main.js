@@ -2241,6 +2241,10 @@ function coupons() {
 		var oldVal = couponInput.attr('data-value');
 		couponInput.attr('data-value', val);
 
+		console.log('---', )
+		console.log('val', val)
+		console.log('oldVal', oldVal)
+
 		// Если ничего не ввели
 		if(val == ''){
 			couponInput.addClass('error')
@@ -2255,10 +2259,13 @@ function coupons() {
 
 
 		// Получаем данные формы, которые будем отправлять на сервер
-		var formData = $('#myform').serializeArray();
+		var formData = $('#orderform').serializeArray();
 		formData.push({name: 'ajax_q', value: 1});
 		formData.push({name: 'only_body', value: 1});
 		formData.push({name: 'form[coupon_code]', value: val});
+
+		console.log('formData', formData)
+
 		$.ajax({
 			type: "POST",
 			cache: false,
@@ -2266,7 +2273,7 @@ function coupons() {
 			data: formData,
 			success: function(data) {
 				// Получаем блок скидки
-				var discountBlock = $(data).closest('#myform').find('.carDiscount');
+				var discountBlock = $(data).closest('#orderform').find('.discount');
 				var discountName = discountBlock.find('.name').text();
 				var discountPrice = discountBlock.find('.value').html();
 				var discountPercent = discountBlock.find('.percent').html();
@@ -2280,11 +2287,23 @@ function coupons() {
 					totalCouponBlock.hide();
 				}
 
+				console.log('data', data)
+				console.log('$(data)', $(data))
+				console.log('discountBlock', discountBlock)
+				console.log('discountName', discountName)
+				console.log('discountPrice', discountPrice)
+				console.log('discountPercent', discountPercent)
+
 				// Получаем новую итоговую стоимость заказа
-				var totalBlock = $(data).closest('#myform').find('.total');
+				var totalBlock = $(data).closest('#orderform').find('.total');
 				var totalSum = totalBlock.find('.cartSumNowWithDiscount').data('price');
 				var deliveryPrice = parseInt($('.cartSumDelivery:eq(0) .num').text());
 				var newTotalSum = totalSum + deliveryPrice;
+
+				console.log('totalBlock', totalBlock)
+				console.log('totalSum', totalSum)
+				console.log('deliveryPrice', deliveryPrice)
+				console.log('newTotalSum', newTotalSum)
 
 				// Записываем название и размер скидки по купону
 				totalCouponBlock.find('.cartTotal__label span').html(discountName);
@@ -2356,6 +2375,7 @@ function coupons() {
 			$('.cartSumTotalHide').attr('data-value', newTotalSum);
 			$('.cartSumTotalHide .num').text(addSpaces(newTotalSum));
 			couponInput.val("").attr("placeholder", "Введите купон").removeClass('focus').removeClass('error');
+			couponInput.attr('data-value', '')
 			couponParent.removeClass('error').removeClass('success');
 		}, 500);
 	});

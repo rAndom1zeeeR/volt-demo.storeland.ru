@@ -8,7 +8,7 @@
   {% ELSEIF ORDER_STAGE_NUM=4 %}
     action="{ORDER_STAGE_CONFIRM_URL}"
   {% ENDIF %}
-  method="post"  id="myform"
+  method="post"  id="orderform"
 >
 
   <input type="hidden" name="hash" value="{HASH}" />
@@ -368,7 +368,7 @@
                 <span>Итого:</span>
               </td>
               <td class="total-sum" colspan="2" data-total-sum="{CART_SUM_NOW_WITH_DISCOUNT}">
-                <span class="price">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</span>  
+                <span class="price cartSumNowWithDiscount" data-price="{CART_SUM_NOW_WITH_DISCOUNT}">{CART_SUM_NOW_WITH_DISCOUNT | money_format}</span>  
               </td>
             </tr> 
           </tfoot> 

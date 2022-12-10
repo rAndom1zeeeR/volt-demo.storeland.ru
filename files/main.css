@@ -1229,7 +1229,7 @@ section {margin: 2rem 0;position: relative;}
 .cartTotal__item:last-child {margin-bottom: 0;}
 .cartTotal__price .num:after {font-weight: bold;}
 .cartTotal__total {margin: 0 5rem;font-weight: bold;}
-.cartTotal__total_label {margin-bottom: .5rem;}
+.cartTotal__total_label {margin-bottom: .25rem;}
 .cartTotal__total_price {font-size: 1.75rem;}
 .cartTotal__label {color: var(--color-darkgray);margin-right: .5rem;}
 .cartTotal__min {font-weight: bold;line-height: 1.5;max-width: 17rem;display: none;}
@@ -1311,13 +1311,15 @@ section {margin: 2rem 0;position: relative;}
 .payment__description {margin-top: .75rem;font-size: 13px;}
 .fastOrderForm .block__title .title {font-size: 1.125rem;text-align: left;text-transform: capitalize;}
 .fastOrderForm .comment .form__field {margin: 0;width: 100%;}
-.coupon__button {position: absolute;right: 1rem;line-height: 2.5rem;}
-.coupon__reset {position: absolute;right: 7rem;line-height: 2.5rem;opacity: 0;transition: all 0.3s ease;}
-.coupon__reset.focus {opacity: 1;}
+.cartTotal__coupon {position: relative;margin-right: 3rem;}
+.coupon__button {position: absolute;right: 0;line-height: 3rem;padding: 0 .75rem;font-size: 1.5rem;}
+.coupon__reset {position: absolute;right: 3.75rem;line-height: 3rem;opacity: 0;pointer-events: none;transition: all 0.3s ease;}
+.coupon__reset.focus {opacity: 1;pointer-events: auto;}
 .fastOrder__form .cartTotal__buttons {width: 18rem;text-align: right;}
 .fastOrder .cartTotal__buttons {margin-top: 1rem;width: 100%;text-align: center;}
 @media all and (max-width: 1023px) {
 	.fastOrder__form .cartTotal__buttons {margin-top: 1rem;width: 100%;text-align: center;}
+	.cartTotal__coupon {width: 100%;margin: 0 0 1rem 0;}
 }
 @media all and (max-width: 479px) {
 	.fastOrderForm .form__fields-trio .form__field {width: 100%;}
