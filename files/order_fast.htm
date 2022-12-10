@@ -313,6 +313,35 @@
 					{% ENDIF %}
 				</div>
 
+				<!-- Корзина: Состав заказа -->
+				<div class="cartTotal__details">
+					<div class="cartTotal__details_title flex justify-between">
+						<div class="cartTotal__details_label">Состав заказа:</div>
+
+						<div class="cartTotal__details_change closeOrder">
+							<div class="button-icon button-link">
+								<span>Редактировать заказ</span>
+								<i class="icon-chevron_right"></i>
+							</div>
+						</div>
+					</div>
+
+					<ul class="cartTotal__details_items">
+						{% FOR cart_items %}
+						<li class="cartTotal__details_item flex justify-between" data-id="{cart_items.GOODS_ID}" data-mod-id="{cart_items.GOODS_MOD_ID}">
+							<a class="cartTotal__details_name" href="{cart_items.GOODS_URL}" title="{cart_items.GOODS_NAME}"><span>{cart_items.GOODS_NAME}</span></a>
+							<div class="cartTotal__details_actions">
+								<span class="cartTotal__details_qty">{cart_items.ORDER_LINE_QUANTITY}</span>
+								<span class="cartTotal__details_separate">x</span>
+								<span class="cartTotal__details_price {CURRENCY_CHAR_CODE} cartPriceTotal" data-price="{cart_items.ORDER_LINE_PRICE_NOW}">{cart_items.ORDER_LINE_PRICE_NOW | money_format}</span>
+							</div>							
+						</li>
+						{% ENDFOR %}
+					</ul>
+
+
+				</div>
+
 				<!-- Корзина: Итоговый блок -->
 				<div class="cartTotal">
 					<div class="cartTotal__inner flex">

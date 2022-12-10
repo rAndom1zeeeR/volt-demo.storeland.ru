@@ -1183,10 +1183,12 @@ function pageGoods() {
 		}
 	});
 
-	var opinionGoodLength = 5 / $('.opinion__item.good').length
+	// Кол-во положительных отзывов
+	var opinionGoodLength = $('.opinion__item.good').length
+	// Кол-во всех отзывов
 	var opinionCount = $('.opinion__score_recommend').attr('data-count')
+	// Округляем значение
 	var opinionRound = Math.round((opinionGoodLength / opinionCount) * 10)
-	$('.opinion__score_total').find('b').text(opinionGoodLength)
 	$('.opinion__score_recommend').find('b').text(opinionRound)
 
 }
@@ -2225,7 +2227,7 @@ function orderScriptsSelect() {
 
 // Отправка купона при оформлении заказа
 function coupons() {
-	var submitBtn = $('.coupon__button');
+	var couponButton = $('.coupon__button');
 	var couponInput = $('.coupon__code');
 	var couponParent = couponInput.parent();
 	var resetBtn = $('.coupon__reset');
@@ -2233,7 +2235,7 @@ function coupons() {
 	var totalDiscountBlock = $('.total__discount');
 
 	// Отправка формы
-	submitBtn.off('click').on('click', function(){
+	couponButton.off('click').on('click', function(){
 		var url = '/order/stage/confirm';
 		var val = couponInput.val();
 		var oldVal = couponInput.attr('data-value');
@@ -3176,6 +3178,7 @@ function swiperSales(){
 		grabCursor: true,
 		slidesPerView: '2',
 		spaceBetween: 16,
+		slideVisibleClass: 'swiper-slide-visible',
 		nested: true,
 		preloadImages: false,
 		lazy: {
@@ -3293,7 +3296,7 @@ function swiperCategory(id){
 		simulateTouch: true,
 		grabCursor: true,
 		slidesPerView: '5',
-		spaceBetween: 16,
+		spaceBetween: 20,
 		nested: true,
 		preloadImages: false,
 		lazy: {

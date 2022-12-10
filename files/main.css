@@ -437,8 +437,8 @@ section {margin: 2rem 0;position: relative;}
 .product__item_hidden {display: none;}
 .product__margin {margin-bottom: .75rem;}
 .product__image {margin-bottom: .75rem;position: relative;background-color: rgba(0, 0, 0, 0.05);}
-.product__image:before {content: '';background-color: rgba(0, 0, 0, 0.05);position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
-.product__img {height: 13rem;}
+.product__img {height: 13rem;position: relative;}
+.product__img:before {content: '';background-color: rgba(0, 0, 0, 0.05);position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
 .product__img picture {height: 100%;}
 .product__links a {margin-left: 1rem;color: var(--color-darkgray);}
 .product__links a:hover, .product__links a.added {color: var(--color-primary);}
@@ -628,10 +628,10 @@ section {margin: 2rem 0;position: relative;}
 /****************************************/
 /*** Товары в слайдере ***/
 /****************************************/
-.swiper-slide {margin: 0;opacity: 0;visibility: hidden;pointer-events: none;}
-.swiper-slide-visible {opacity: 1;visibility: visible;pointer-events: auto;}
+.swiper-slide {margin: 0;transition: all 0.3s ease;}
 .swiper-row {margin: -1.5rem -1.25rem -3rem -1.25rem;}
 .swiper-products {padding: 1.25rem 1.25rem 3rem 1.25rem;}
+
 
 /****************************************/
 /*** Распродажа ***/
@@ -906,8 +906,25 @@ section {margin: 2rem 0;position: relative;}
 .catalog__name {padding-right: .75rem;}
 @media all and (max-width: 1023px) {
 	.sidebar__block-catalog {display: none;}
-	.opened > .catalog__sub {}
 }
+
+
+/**************************************/
+/*** Преимущества в Карточке товара ***/
+/**************************************/
+.main__advance {margin-bottom: 2rem;}
+.advance__inner {gap: 1rem;width: 100%;height: 100%;display: flex;overflow-x: auto;scroll-snap-type: x mandatory;flex-wrap: nowrap}
+.advance__inner::-webkit-scrollbar {height: .25rem;}
+.advance__item {width: 33%;min-width: 19.5rem;gap: 1.25rem;background-color: var(--color-lightgray);padding: .75rem 1.5rem;flex-grow: 1;scroll-snap-align: start;}
+.advance__icon {font-size: 2.25rem;color: var(--color-primary);}
+.advance__icon i {display: block;}
+.advance__content {width: calc(100% - 3.5rem);line-height: 1.5;}
+@media all and (max-width: 479px) {
+	.advance__item {padding: .75rem 1rem;}
+	.advance__icon {font-size: 1.75rem;}
+	.advance__content {width: calc(100% - 3rem);}
+}
+
 
 
 /**************************************/
@@ -1259,6 +1276,17 @@ section {margin: 2rem 0;position: relative;}
 	.cartTotal__total_price {vertical-align: middle;}
 	.cart__buttons span + span {display: none;}
 }
+
+/* Состав заказа */
+.cartTotal__details {margin-bottom: 2rem;}
+.cartTotal__details_items {margin: 0;padding: 0;counter-reset: section;}
+.cartTotal__details_item {margin-top: .75rem;width: 100%;font-size: 1.125rem;line-height: 1.5rem;}
+.cartTotal__details_name:before {counter-increment: section;content: counter(section) ".";margin-right: .5rem;}
+.cartTotal__details_title {margin-bottom: 1rem;}
+.cartTotal__details_label {font-weight: bold;}
+.cartTotal__details_name {flex-grow: 1;}
+.cartTotal__details_actions {font-weight: bold;color: var(--color-darkgray);}
+.cartTotal__details_actions .num:after {font-weight: bold;color: var(--color-darkgray);}
 
 
 /**************************************/
@@ -1778,7 +1806,8 @@ footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
 /**************************************/
 /*** Преимущества ***/
 /**************************************/
-/* TODO анимация при ховере на  иконки  - анимация перевора карточки. */
+.body__left {width: calc(100% - 27rem);padding-right: 2rem;}
+.body__right {width: 27rem;}
 .advantages__items {width: 27rem;}
 .advantages__item {width: 9rem;height: 9rem;padding: 1rem;text-align: center;position: relative;}
 .advantages__item:nth-child(2n) .advantages__inner {background-color: var(--color-primary);color: var(--color-white);}
@@ -1788,9 +1817,6 @@ footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
 .advantages__icon i {font-size: 4rem;display: block;}
 .advantages__item:hover .advantages__icon {opacity: 0;transform: perspective(600px) rotateY(-180deg);}
 .advantages__item:hover .advantages__title {opacity: 1;transform: perspective(600px) rotateY(0deg);}
-
-.body__left {width: calc(100% - 27rem);padding-right: 2rem;}
-.body__right {width: 27rem;}
 .advantages__number {width: 50%;margin-top: 2rem;}
 .advantages__number_title {font-size: 1.25rem;font-weight: bold;color: var(--color-primary);}
 .advantages__number_title span {font-size: 2rem;line-height: 1.5;}
@@ -1816,19 +1842,15 @@ footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
 }
 
 
-
-
-
 /**************************************/
-/*** Наверх ***/
+/*** Фиксированная навигация ***/
 /**************************************/
 .navbar {position: fixed;bottom: 1rem;right: 0;max-width: 28rem;padding: .5rem;background-color: var(--color-white);box-shadow: -1px 4px 20px 2px var(--color-shadow);z-index: 9;display: block;}
-
 .navbar__block {margin: 0 1rem;}
 .navbar__block i {font-size: 1.25rem;color: var(--color-darkgray);position: relative;}
 .navbar__block:hover i {color: var(--color-primary);cursor: pointer;}
 .navbar__block.has-items i:after {content: '';width: .25rem;height: .25rem;background-color: var(--color-primary);border-radius: 100%;position: absolute;right: -.5rem;top: -.25rem;}
-
+/* Корзина */
 .navbar-cart {flex-grow: 1;padding: 0 1rem;border: 1px solid var(--color-gray);border-top: 0;border-bottom: 0;}
 .navbar-cart__title {justify-content: center;}
 .navbar-cart__icon {position: relative;}
@@ -1840,12 +1862,11 @@ footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
 .navbar-cart__content {padding-left: 1rem;}
 .navbar-cart.has-items .navbar-cart__count {background-color: var(--color-tertiary);color: var(--color-black);}
 .navbar-cart.has-items .navbar-cart__price {display: inline-block;}
-
+/* Наверх */
 .toTop {display: none;}
 .navbar__toTop {color: var(--color-darkgray);font-weight: bold;}
 .navbar__toTop:hover {color: var(--color-primary);cursor: pointer;}
 .navbar__toTop span {margin-left: .5rem;}
-
 @media all and (min-width: 1024px) {
 	.navbar .container {width: auto;}
 	.navbar-search {display: none;}
