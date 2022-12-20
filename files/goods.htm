@@ -483,19 +483,20 @@
 				<div class="opinion__score flex">
 					<div class="opinion__score_content flex">
 						<div class="opinion__score_label">Оценка:</div>
-						
-						<div class="opinion__score_ratings ratings" title="Рейтинг товара">
-							{% IF GOODS_OPINION_RATING_VALUE_ROUND %}
-							<span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
-								<meta itemprop="worstRating" content="1">
-								<meta itemprop="bestRating" content="10">
-								<meta itemprop="ratingValue" content="{GOODS_OPINION_RATING_VALUE_ROUND}">
-								<meta itemprop="reviewCount" content="{GOODS_OPINION_RATING_CNT_ALL}">
-								<div class="rating" style="width:{GOODS_OPINION_RATING_VALUE_ROUND}0%" alt="{GOODS_OPINION_RATING_VALUE_ROUND}" title="Рейтинг товара"></div>
-							</span>
-							{% ELSE %}
-							<div class="rating" style="width:0%" alt="Рейтинг не определён" title="Рейтинг не определён"></div>
-							{% ENDIF %}
+						<div class="opinion__score_ratings">
+							<div class="ratings" title="Рейтинг товара">
+								{% IF GOODS_OPINION_RATING_VALUE_ROUND %}
+								<span itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+									<meta itemprop="worstRating" content="1">
+									<meta itemprop="bestRating" content="10">
+									<meta itemprop="ratingValue" content="{GOODS_OPINION_RATING_VALUE_ROUND}">
+									<meta itemprop="reviewCount" content="{GOODS_OPINION_RATING_CNT_ALL}">
+									<div class="rating" style="width:{GOODS_OPINION_RATING_VALUE_ROUND}0%" alt="{GOODS_OPINION_RATING_VALUE_ROUND}" title="Рейтинг товара"></div>
+								</span>
+								{% ELSE %}
+								<div class="rating" style="width:0%" alt="Рейтинг не определён" title="Рейтинг не определён"></div>
+								{% ENDIF %}
+							</div>
 						</div>
 
 						{% IFNOT opinion_list_empty %}						
