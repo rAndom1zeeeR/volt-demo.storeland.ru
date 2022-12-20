@@ -3,7 +3,8 @@
     <div class="notice attention">Корзина покупок пуста. Вы можете выбрать нужный товар из <a href="{CATALOG_URL}">каталога</a>.</div>
   {% ELSE %}		
 		<!-- Корзина: Итоговый блок -->
-		<div class="cartTotal flex">
+		<div class="cartTotal flex-start">
+			<!-- {% IF ORDER_DISCOUNT_COUPON_IS_ENABLED %} -->
 			<!-- Корзина: Купон -->
 			<div class="cartTotal__coupon">
 				<input type="hidden" name="oldPromoDiscount" value="0">
@@ -17,6 +18,7 @@
 					<i class="icon-close"></i>
 				</a>
 			</div>
+			<!-- {% ENDIF %} -->
 
 			<!-- Корзина: Элементы -->
 			<div class="cartTotal__items">

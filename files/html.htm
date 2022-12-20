@@ -139,7 +139,7 @@
 							<div class="addto__block login">
 								<a class="addto__link flex" href="{USER_LOGIN_URL}" title="Личный кабинет">
 									<i class="icon-login"></i>
-									<span class="addto__label">Войти</span>
+									<span class="addto__label">{% IF CLIENT_IS_LOGIN %}ЛК{% ELSE %}Войти{% ENDIF %}</span>
 								</a>
 							</div>
 
@@ -1637,6 +1637,7 @@
 						<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
 							<input type="hidden" name="hash" value="{HASH}" />
 							<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}" />
+							<input type="hidden" name="form[Возникли_вопросы]" value="Возникли вопросы" />
 							<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
 							{ANTISPAM_CODE}	
 							<div class="form__fields flex">
@@ -2105,13 +2106,12 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">
-										<img class="swiper-lazy" 
+										<img class="lozad" 
 												data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
 												alt="{news_list_all.TITLE}" 
 												width="128"
 												height="128"
 										/>
-										<div class="swiper-lazy-preloader"></div>
 									</a>
 									<div class="news__content">
 										{% IF news_list_all.SHOW_TIME %}
@@ -2149,13 +2149,12 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
-										<img class="swiper-lazy" 
+										<img class="lozad" 
 												data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
 												alt="{news_list_shop.TITLE}" 
 												width="128"
 												height="128"
 										/>
-										<div class="swiper-lazy-preloader"></div>
 									</a>
 									<div class="news__content">
 										{% IF news_list_shop.SHOW_TIME %}
@@ -2193,13 +2192,12 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">
-										<img class="swiper-lazy" 
+										<img class="lozad" 
 												data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
 												alt="{news_list_articles.TITLE}" 
 												width="128"
 												height="128"
 										/>
-										<div class="swiper-lazy-preloader"></div>
 									</a>
 									<div class="news__content">
 										{% IF news_list_articles.SHOW_TIME %}
@@ -2237,13 +2235,12 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">
-										<img class="swiper-lazy" 
+										<img class="lozad" 
 												data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
 												alt="{news_list_mass_media.TITLE}"
 												width="128"
 												height="128" 
 										/>
-										<div class="swiper-lazy-preloader"></div>
 									</a>
 									<div class="news__content">
 										{% IF news_list_mass_media.SHOW_TIME %}
@@ -2512,7 +2509,7 @@
 						<h1 class="title">
 							<span>
 								<div>Результат поиска по запросу: {% IFNOT search_query_empty %}&laquo;{SEARCH_QUERY}&raquo;{% ENDIF %}</div>
-								<div class="subtitle">({GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")} найд{GOODS_PAGES_RESULTS | gen_word_end("ен","ено","ено")} по запросу)</div>
+								{% IF GOODS_PAGES_RESULTS > 0 %}<div class="subtitle">({GOODS_PAGES_RESULTS} товар{GOODS_PAGES_RESULTS | gen_word_end("","а","ов")} найд{GOODS_PAGES_RESULTS | gen_word_end("ен","ено","ено")} по запросу)</div>{% ENDIF %}
 							</span>
 						</h1>
 						{% ELSEIF MOD_LNAME=discount && ACT=index && ID %}
@@ -2568,7 +2565,7 @@
 									<i class="icon-sale"></i>
 								</div>
 								<div class="advance__content">
-									<span>Постоянным покупателям - <br> скидка!</span>
+									<span>Постоянным покупателям - <span>скидка!</span></span>
 								</div>
 							</div>
 
@@ -2577,7 +2574,7 @@
 									<i class="icon-delivery"></i>
 								</div>
 								<div class="advance__content">
-									<span>Бесплатная доставка <br> от 3 000 руб.</span>
+									<span>Бесплатная доставка <span>от 3 000 руб.</span></span>
 								</div>
 							</div>
 
@@ -2586,7 +2583,7 @@
 									<i class="icon-arrow-circle"></i>
 								</div>
 								<div class="advance__content">
-									<span>Обмен и возврат в течении <br> 14 дней</span>
+									<span>Обмен и возврат в течении <span>14 дней</span></span>
 								</div>
 							</div>
 
@@ -3395,15 +3392,15 @@
 					<form method="post" action="{CALLBACK_URL}" class="form__callback" enctype="multipart/form-data">
 						<input type="hidden" name="hash" value="{HASH}" />
 						<input class="callbackredirect" type="hidden" name="return_to" value="{CALLBACK_URL}" />
-						<input class="form__input form__person" type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="{FORM_CALLBACK_PERSON}" placeholder="Ваше имя" autocomplete="off" required />
+						<input class="form__input form__person" type="hidden" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PERSON}]" value="Обратный звонок - {FORM_CALLBACK_PERSON}" placeholder="Ваше имя" autocomplete="off" required />
 						<!-- Набор полей которые не видит пользователь, но видят боты. Когда они их заполняют мы точно знаем, что их прислал нам бот и мы не сохраняем подобный отзыв о товаре, а боту отправившему отзыв сообщаем, что отзыв добавлен успешно, но будет отображён здесь после прохождения модерации -->
 						{ANTISPAM_CODE}
 
-						<div class="callback__subtitle">Оставьте свой номер телефона и мы бесплатно вас проконсультируем</div>
+						<p class="callback__subtitle">Оставьте свой номер телефона и мы бесплатно вас проконсультируем</p>
 
 						<div class="form__fields flex">
 							<div class="form__field">
-								<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="Номер телефона" autocomplete="off" required />
+								<input class="form__input form__phone" type="tel" name="form[{ANTISPAM_FORM_FIELD_NAME_CALLBACK_PHONE}]" value="{FORM_CALLBACK_PHONE}" placeholder="+7 (___) - ___ - __ - __" autocomplete="off" required />
 							</div>
 							<button class="button-secondary form__button" type="submit" title="Заказать звонок"><span>Заказать звонок</span></button>
 						</div>

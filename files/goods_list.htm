@@ -1073,41 +1073,48 @@
 	</div>
 	<!-- END Вывод товаров -->
 	
-	{% IF show_pages %}
-	<div class="toolbar-bottom flex">
-		<!-- Страницы -->
-		<ol class="pages flex-center unstyled">
-			{% IF GOODS_PAGES_SHOW_FIRST %}
-			<li class="first">
-				<a href="{GOODS_PAGINATE_URL | url_amp}&page=1" title="Первая страница"><span><i class="icon-chevron_left"></i></span></a>
-			</li>
-			<li class="prev">
-				<a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_PREVIOUS}" title="Предыдущая страница"><span>{GOODS_PAGES_PREVIOUS}</span></a>
-			</li>
-			{% ENDIF %}
-			<li class="current"><span>{GOODS_PAGES_CURRENT}</span></li>
-			{% IF GOODS_PAGES_SHOW_LAST %}
-			<li class="next">
-				<a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_NEXT}" title="Следующая страница"><span>{GOODS_PAGES_NEXT}</span></a>
-			</li>
-			<li class="last">
-				<a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_LAST}" title="Последняя страница"><span><i class="icon-chevron_right"></i></span></a>
-			</li>
-			{% ENDIF %}
-		</ol>
+	<div class="toolbar-bottom">
+		<form class="toolbar-bottom__form flex" action="">
+			<!-- Список фильтров, которые сейчас действуют на результаты поиска -->
+			{% FOR goods_filters %}
+			<input type="hidden" name="{goods_filters.NAME}" value="{goods_filters.VALUE}"/>
+			{% ENDFOR %}
 
-		<!-- Показывать по: (Шаг для выбора пользователем лимита выдачи товаров на страницу от 1 до 100) -->
-		<div class="show-by selectBox flex">
-			<span>Показать по:</span>
-			<select class="select" name="per_page" title="Лимит товаров на странице" onchange="this.form.submit();">
-				{% FOR goods_per_page_list %}
-					<option value="{goods_per_page_list.LIMIT}" {% IF goods_per_page_list.SELECTED %}selected="selected"{% ENDIF %}>{goods_per_page_list.LIMIT}</option>
-				{% ENDFOR %}
-			</select>
-		</div>
-		
+			<!-- Страницы -->
+			{% IF show_pages %}
+			<ol class="pages flex-center unstyled">
+				{% IF GOODS_PAGES_SHOW_FIRST %}
+				<li class="first">
+					<a href="{GOODS_PAGINATE_URL | url_amp}&page=1" title="Первая страница"><span><i class="icon-chevron_left"></i></span></a>
+				</li>
+				<li class="prev">
+					<a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_PREVIOUS}" title="Предыдущая страница"><span>{GOODS_PAGES_PREVIOUS}</span></a>
+				</li>
+				{% ENDIF %}
+				<li class="current"><span>{GOODS_PAGES_CURRENT}</span></li>
+				{% IF GOODS_PAGES_SHOW_LAST %}
+				<li class="next">
+					<a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_NEXT}" title="Следующая страница"><span>{GOODS_PAGES_NEXT}</span></a>
+				</li>
+				<li class="last">
+					<a href="{GOODS_PAGINATE_URL | url_amp}&page={GOODS_PAGES_LAST}" title="Последняя страница"><span><i class="icon-chevron_right"></i></span></a>
+				</li>
+				{% ENDIF %}
+			</ol>
+			{% ENDIF %}
+
+			<!-- Показывать по: (Шаг для выбора пользователем лимита выдачи товаров на страницу от 1 до 100) -->
+			<div class="show-by selectBox flex">
+				<span>Показать по:</span>
+				<select class="select" name="per_page" title="Лимит товаров на странице" onchange="this.form.submit();">
+					{% FOR goods_per_page_list %}
+						<option value="{goods_per_page_list.LIMIT}" {% IF goods_per_page_list.SELECTED %}selected="selected"{% ENDIF %}>{goods_per_page_list.LIMIT}</option>
+					{% ENDFOR %}
+				</select>
+			</div>
+
+		</form>
 	</div>
-	{% ENDIF %}
 	<!-- //END Страницы -->
 	
 	{% ENDIF %}

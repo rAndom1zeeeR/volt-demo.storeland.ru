@@ -88,13 +88,13 @@ function toTop() {
     return false;
   });
 	// Скролл
-	$(window).on('scroll', function () {
-    if ($(this).scrollTop() > 100) {
-      $('.toTop').fadeIn();
-    } else {
-      $('.toTop').fadeOut();
-    }
-  });
+	// $(window).on('scroll', function () {
+  //   if ($(this).scrollTop() > 100) {
+  //     $('.toTop').fadeIn();
+  //   } else {
+  //     $('.toTop').fadeOut();
+  //   }
+  // });
 }
 
 // Предзагрузчик
@@ -841,6 +841,10 @@ function addCart() {
 		var added = $(this).find('[data-added]').attr('data-added')
 		$(this).find('[data-added]').text(added)
 	})
+	// Обновляем текст у добавленных в корзину товаров
+	$('.product__item').each(function(){
+		$(this).find('.qty__minus').addClass('qty__disable')		
+	})
 }
 
 // Быстрый заказ
@@ -1273,6 +1277,7 @@ function prodQty($container){
 		// Обновление кол-ва для функций "Добавить"
 		$goodsModView.find('.goodsDataMainModificationId').val($(this).val());
 		// Цена товара без изменений
+		var val = parseInt($(this).val());
 		var price = parseInt($goodsModView.find('.price__now').attr('content'));
 		var priceOld = parseInt($goodsModView.find('.price__old').attr('content'));
 		var newPrice = 0;
@@ -2241,7 +2246,7 @@ function coupons() {
 		var oldVal = couponInput.attr('data-value');
 		couponInput.attr('data-value', val);
 
-		console.log('---', )
+		// console.log('---', )
 		console.log('val', val)
 		console.log('oldVal', oldVal)
 
@@ -2514,10 +2519,10 @@ function catalog() {
 		var item = $(this).closest('.filter__collapsible');
 		var content = $(this).parent().find('.filter__content');
 		if (item.hasClass('active')) {
-			content.slideUp(600);
+			content.slideDown(600);
 			item.removeClass('active');
 		} else {
-			content.slideDown(600);
+			content.slideUp(600);
 			item.addClass('active');
 		}
 	});
@@ -2830,37 +2835,28 @@ function ajaxForms(id,flag,successMessage,errorMessage){
           if(serverCall == "ok"){
 						setTimeout(function () {
 							$.fancybox.close();
-						},1000);
-            t.hide();
-            t.find('.form__input').val(' ');
-            t.parent().append('<div class="form__text">'+ errorMessage +'</div>');
-						$(id).addClass('error')
+						},2000);
 						// Функция, которая отображает сообщения пользователю
 						var content = '<div class="noty__addto"><div class="noty__message">' + successMessage + '</div></div>';
 						notyStart(content, 'success');
             flag = true;
           }
-        }
+        },
+				error: function(d){
+					callbackError()
+				}
       });
     }else{
-      function callBackError(type) {
-        t.find('.form__input').val(' ');
-        t.parent().find('.form__text').hide();
-				$(id).addClass('error')
-				// Функция, которая отображает сообщения пользователю
-				var content = '<div class="noty__addto"><div class="noty__message">' + errorMessage + '</div></div>';
-				notyStart(content, 'warning');
-      }
-      callBackError();
+			callbackError()
     }
   });
-
-  // Валидация при клике
-  form.on('submit',function(event){
-    validName(form);
-    validPhone(form);
-    validEmail(form);
-  });
+	
+	function callbackError() {
+		$(id).addClass('error')
+		// Функция, которая отображает сообщения пользователю
+		var content = '<div class="noty__addto"><div class="noty__message">' + errorMessage + '</div></div>';
+		notyStart(content, 'warning');
+	}
 }
 
 // "Обратный звонок" в модальном окне.
@@ -2987,7 +2983,7 @@ function indexNews() {
 			preloadImages: false,
 			autoHeight: true,
 			lazy: {
-				enabled: true,
+				enabled: false,
 				loadPrevNext: true,
 				loadOnTransitionStart: true,
 			},
