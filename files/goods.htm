@@ -30,8 +30,7 @@
 						{% IF goods_images.ID = GOODS_IMAGE_ID %}{continue}{% ENDIF %}
 						<div class="swiper-slide thumblist__item" data-index="{goods_images.index}" data-count="">
 							<a class="thumblist__image flex-center" href="{goods_images.LARGE}" data-fancybox="images">
-								<div class="swiper-lazy-preloader"></div>
-								<img class="swiper-lazy" src="{ASSETS_IMAGES_PATH}placeholder.png?design=VOLT" data-src="{goods_images.MEDIUM}" alt="{goods_images.NAME}" itemprop="image" />
+								<img class="lozad" src="{ASSETS_IMAGES_PATH}placeholder.png?design=VOLT" data-src="{goods_images.MEDIUM}" alt="{goods_images.NAME}" itemprop="image" />
 							</a>
 						</div>
 						{% ENDFOR %}

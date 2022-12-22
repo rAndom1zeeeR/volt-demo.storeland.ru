@@ -1056,7 +1056,7 @@ function pageGoods() {
 			nested: true,
 			preloadImages: false,
 			lazy: {
-				enabled: true,
+				enabled: false,
 				loadPrevNext: true,
 				loadOnTransitionStart: true,
 			},
@@ -2766,6 +2766,21 @@ function openMenu() {
 
   });
 
+	// Открытие элементов
+  $('[data-toggle]').on('click', function(event){
+    event.preventDefault();
+    if ($(this).hasClass('is-actived')){
+      $(this).removeClass('is-actived').parent().removeClass('is-opened');
+			$(this).next().slideUp().removeClass('is-opened');
+    }else{
+			$('[data-toggle]').removeClass('is-actived').parent().removeClass('is-opened');
+			$('[data-toggled]').slideUp().removeClass('is-opened');
+      $(this).addClass('is-actived').parent().addClass('is-opened');
+			$(this).next().slideDown().addClass('is-opened');
+    }
+
+  });
+
 	// Открытие подвала
 	$('.footer__title').on('click', function(event){
     event.preventDefault();
@@ -2776,6 +2791,21 @@ function openMenu() {
 			$(this).next().attr('style', '')
 		}
 	});
+
+	// Каталог на мобильных устройствах
+	$('.header-mobile__icon').on('click',function(event){
+		event.preventDefault();
+		$('.header-mobile__dropleft').addClass('is-show');
+	})
+
+	$('.header-mobile__close').on('click',function(event){
+		event.preventDefault();
+		$('.header-mobile__dropleft').removeClass('is-show');
+	})
+
+	var slinky = $('#slinky-catalog').slinky({
+		title: true,
+	})
 }
 
 // Функция удаления классов всех активных элементов

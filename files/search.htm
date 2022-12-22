@@ -1050,13 +1050,15 @@
 		</ol>
 
 		<!-- Показывать по: (Шаг для выбора пользователем лимита выдачи товаров на страницу от 1 до 100) -->
-		<div class="show-by selectBox flex">
+		<div class="show-by flex">
 			<span>Показать по:</span>
-			<select class="select" name="per_page" title="Лимит товаров на странице" onchange="this.form.submit();">
-				{% FOR goods_per_page_list %}
-					<option value="{goods_per_page_list.LIMIT}" {% IF goods_per_page_list.SELECTED %}selected="selected"{% ENDIF %}>{goods_per_page_list.LIMIT}</option>
-				{% ENDFOR %}
-			</select>
+			<div class="selectBox">
+				<select class="select" name="per_page" title="Лимит товаров на странице" onchange="this.form.submit();">
+					{% FOR goods_per_page_list %}
+						<option value="{goods_per_page_list.LIMIT}" {% IF goods_per_page_list.SELECTED %}selected="selected"{% ENDIF %}>{goods_per_page_list.LIMIT}</option>
+					{% ENDFOR %}
+				</select>
+			</div>
 		</div>
 		
 	</div>
