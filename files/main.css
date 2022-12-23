@@ -2003,9 +2003,9 @@ footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
 .header-mobile__title span {flex-grow: 1;}
 .header-mobile__title span + i {margin: 0;font-size: 1.25rem;}
 .header-mobile__title.is-actived span + i::before {content: '\e916'}
-.header-mobile__content {padding: 0 1rem;max-height: calc(100vh - 13rem);overflow-y: auto;}
+.header-mobile__content {padding: 0 1rem;max-height: calc(100vh - 15.75rem);overflow-y: auto;}
 .header-mobile__contacts .contacts__block {line-height: 1.5;border-bottom: 1px solid var(--color-gray);padding: .75rem 0;margin: 0;}
-#slinky-catalog {width: 100%;height: calc(100vh - 13rem) !important;overflow-y: auto;}
+#slinky-catalog {width: 100%;height: calc(100vh - 15.75rem);}
 .slinky-menu li {border-bottom: 1px solid var(--color-gray);padding: .75rem 0;width: 100%;}
 .slinky-menu a:hover {padding-left: 1rem;}
 .slinky-menu a.is-actived {padding-left: 1rem;color: var(--color-primary);font-weight: bold;}
