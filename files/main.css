@@ -709,7 +709,7 @@ section {margin: 2rem 0;position: relative;}
 .products__list_trio .product__addCart a span {display: none;}
 .products__list_trio .product__addCart a i {display: inline-block;line-height: 2.75rem;}
 .products__list_trio .product__links a {margin: 0 .75rem 0 0;font-size: 1rem;}
-.products__list_trio .product__price {flex-direction: column;width: calc(100% - 6.5rem);}
+.products__list_trio .product__price {flex-direction: column;width: calc(100% - 6.5rem);align-items: flex-start;}
 .products__list_trio .price__now {font-size: 1.25rem;}
 .products__list_trio .product__inner {justify-content: space-between;width: 100%;}
 .products__list_trio .product__art {display: none;}
@@ -1350,11 +1350,11 @@ section {margin: 2rem 0;position: relative;}
 .coupon__button {position: absolute;right: 0;line-height: 3rem;padding: 0 .75rem;font-size: 1.5rem;}
 .coupon__reset {position: absolute;right: 3.75rem;line-height: 3rem;opacity: 0;pointer-events: none;transition: all 0.3s ease;}
 .coupon__reset.focus {opacity: 1;pointer-events: auto;}
-.fastOrder__form .cartTotal__buttons {width: 18rem;text-align: right;}
+.cartTotal__buttons {width: 18rem;text-align: right;}
 .fastOrder .cartTotal__buttons {margin-top: 1rem;width: 100%;text-align: center;}
 .fastOrder .cartTotal__total {margin: 0 0 0 3rem;}
 @media all and (max-width: 1023px) {
-	.fastOrder__form .cartTotal__buttons {margin-top: 1rem;width: 100%;text-align: center;}
+	.cartTotal__buttons {margin-top: 1rem;width: 100%;text-align: center;}
 	.cartTotal__coupon {width: 100%;margin: 0 0 1rem 0;}
 }
 @media all and (max-width: 639px) {
@@ -1942,7 +1942,7 @@ footer .contacts__block_phone:first-child {font-size: 1.25rem;font-weight: 700;}
 /*** IE fix ***/
 /**************************************/
 .IE picture {width: 100%;}
-.IE .slideshow__content {top: 3rem;left: 0;}
+.IE .slideshow__content {top: 0;left: 0;}
 .IE .products__grid .product__name {align-items: flex-start;}
 .IE .fancybox-container .fastOrder__content {display: block;}
 .IE .fastOrder__form {max-width: 48rem;}

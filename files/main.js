@@ -1799,23 +1799,24 @@ function removeFromFavoritesAll(obj){
 ///////////////////////////////////////
 function cartQuantity(){
 	$('.qty__cart').change($.debounce(300, function(){
-		var quantity = $(this);
-		var qVal = $(this).val();
+		var t = $(this);
+		var qVal = t.val();
 		if(qVal >= '1'){
-			var id = $(this).closest('.cart__item').data('id');
-			var qty = $(this).val();
+			var id = t.closest('.cart__item').data('id');
+			var qty = t.val();
 			var data = $('.cartTable__form').serializeArray();
 			data.push({name: 'only_body', value: 1});
 			$.ajax({
 				data: data,
 				cache:false,
-				success:function(d){
-					quantity.val($(d).find('.cart__item[data-id="' + id + '"] .qty__cart').val());
-					item = $('.cart__item[data-id="' + id + '"]');
-					item.find('.price__now').html($(d).find('.cart__item[data-id="' + id + '"] .price__now').html());
-					item.find('.price__old').html($(d).find('.cart__item[data-id="' + id + '"] .price__old').html());
-					$('.cartTotal').html($(d).find('.cartTotal').html());
-					qtyVal = $(d).find('.cart__item[data-id="' + id + '"] .qty__cart').val();
+				success:function(data){
+					var $item = $(data).find('.cart__item').filter('[data-id="' + id + '"]');
+					var $qtyVal = $item.find('.qty__cart').val();
+					var item = $('.cart__item').filter('[data-id="' + id + '"]');
+					// Обновление данных
+					item.find('.price__now').html($item.find('.price__now').html());
+					item.find('.price__old').html($item.find('.price__old').html());
+					$('.cartTotal').html($(data).find('.cartTotal').html());
 					// Вызов функции быстрого заказа в корзине
 					$('.startOrder').on('click', function() {
 						orderStart();
@@ -1823,10 +1824,10 @@ function cartQuantity(){
 					});
 					// Вызов функции быстрого заказа в корзине
 					cartMinSum();
-					if(qty > qtyVal){
+					if(qty > $qtyVal){
 						$('.cart__error').remove();
-						$('.cartTable').before('<div class="cart__error warning">Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div>');
-						$('.cart__error').fadeIn(500).delay(2500).fadeOut(500, function(){$('.cartErr').remove();});
+						$('.cartTable').before('<div class="cart__error notice warning">Вы пытаетесь положить в корзину товара больше, чем есть в наличии</div>');
+						$('.cart__error').fadeIn(500).delay(2500).fadeOut(500, function(){$('.cart__error').remove();});
 					}
 				}
 			});
