@@ -1066,16 +1066,19 @@ function pageGoods() {
 			},
 			breakpoints: {
 				0: {
-					slidesPerView: '1',
+					slidesPerView: '2',
 				},
 				320: {
 					slidesPerView: '2',
 				},
-				480: {
+				375: {
 					slidesPerView: '3',
 				},
-				640: {
+				480: {
 					slidesPerView: '4',
+				},
+				640: {
+					slidesPerView: '5',
 				},
 				768: {
 					slidesPerView: '5',
@@ -2779,7 +2782,6 @@ function openMenu() {
       $(this).addClass('is-actived').parent().addClass('is-opened');
 			$(this).next().slideDown().addClass('is-opened');
     }
-
   });
 
 	// Открытие подвала
@@ -2806,6 +2808,7 @@ function openMenu() {
 
 	var slinky = $('#slinky-catalog').slinky({
 		title: true,
+		resize: true,
 	})
 }
 

@@ -926,7 +926,7 @@
 									</div>
 
 									<!-- Название товара -->
-									<a class="product__name flex product__margin" href="{index_page_favorites_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_favorites_goods.NAME}">
+									<a class="product__name product__margin" href="{index_page_favorites_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_favorites_goods.NAME}">
 										<span itemprop="name">{index_page_favorites_goods.NAME}</span>
 									</a>
 						
@@ -1263,7 +1263,7 @@
 											</div>
 
 											<!-- Название товара -->
-											<a class="product__name flex product__margin" href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}">
+											<a class="product__name product__margin" href="{index_page_sale_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_sale_goods.NAME}">
 												<span itemprop="name">{index_page_sale_goods.NAME}</span>
 											</a>
 								
@@ -1387,19 +1387,11 @@
 								{% IF catalog_full.FIRST %}{% IFNOT catalog_full.LEVEL = 0 %}<div data-level="{catalog_full.LEVEL}" class="categories__sub">{% ENDIF %}{% ENDIF %}
 								<div data-level="{catalog_full.LEVEL}" class="categories__item {% IF catalog_full.LEVEL = 0 %}swiper-slide{% ENDIF %} {% IF catalog_full.ISSET_VISIBLE_SUB %}parent{% ENDIF %} {% IF catalog_full.CURRENT_PARENT %}opened{% ENDIF %}">
 									{% IF catalog_full.LEVEL = 0 %}
-									<a class="categories__image flex-center" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
-										<picture>
-											<source srcset="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ENDIF %}" />
-											<img class="lozad" 
-													width="194"
-													height="194"
-													src="{ASSETS_IMAGES_PATH}placeholder.png?design=VOLT" 
-													data-src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ENDIF %}"
-													srcset="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ENDIF %}"
-													alt="{catalog_full.NAME}"
-											/>
-										</picture>	
-									</a>
+									<a class="categories__image flex-center lozad" 
+										href="{catalog_full.URL}" 
+										data-background-image="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ENDIF %}"
+										title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;" 
+									></a>
 									<div class="categories__content flex-start">
 										<a class="categories__name" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
 											<span>{catalog_full.NAME}</span>
@@ -1527,7 +1519,7 @@
 									{% ENDIF %}
 
 									<!-- Название товара -->
-									<a class="product__name flex product__margin" href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_new_goods.NAME}">
+									<a class="product__name product__margin" href="{index_page_new_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_new_goods.NAME}">
 										<span itemprop="name">{index_page_new_goods.NAME}</span>
 									</a>
 						
@@ -2080,7 +2072,7 @@
 									</div>
 
 									<!-- Название товара -->
-									<a class="product__name flex product__margin" href="{index_page_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_goods.NAME}">
+									<a class="product__name product__margin" href="{index_page_goods.URL_MIN_PRICE_NOW | url_amp}" title="{index_page_goods.NAME}">
 										<span itemprop="name">{index_page_goods.NAME}</span>
 									</a>
 						
@@ -3073,7 +3065,7 @@
 											{% ENDIF %}
 									
 											<!-- Название товара -->
-											<a class="product__name flex product__margin" href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}">
+											<a class="product__name product__margin" href="{recently_viewed_goods.URL_MIN_PRICE_NOW | url_amp}" title="{recently_viewed_goods.NAME}">
 												<span itemprop="name">{recently_viewed_goods.NAME}</span>
 											</a>
 									

@@ -693,7 +693,7 @@
 							<label for="opinion_captcha_string" title="Введите код с картинки">Введите код:</label>
 							<div class="opinion__captcha">
 								<input class="captcha__input form__input" type="text" id="opinion_captcha_string" name="form[{ANTISPAM_FORM_FIELD_NAME_CAPTCHA_STRING}]" autocomplete="off" value="{FORM_}" placeholder="Введите капчу"/>
-								<img class="captcha__image" src="{CAPTCHA_URL}" alt="Код" title="Проверочный код, который нужно ввести в соседнее поле" />
+								<img class="captcha__image" src="{CAPTCHA_URL}" width="120" height="48" alt="Код" title="Проверочный код, который нужно ввести в соседнее поле" />
 								<a class="captcha__refresh" href="javascript:;"><i class="icon-refresh"></i></a>
 							</div>
 						</div>
@@ -945,7 +945,7 @@
 								</div>
 						
 								<!-- Название товара -->
-								<a class="product__name flex product__margin" href="{related_goods.URL_MIN_PRICE_NOW | url_amp}" title="{related_goods.NAME}">
+								<a class="product__name product__margin" href="{related_goods.URL_MIN_PRICE_NOW | url_amp}" title="{related_goods.NAME}">
 									<span itemprop="name">{related_goods.NAME}</span>
 								</a>
 						
@@ -1262,7 +1262,7 @@
 								</div>
 						
 								<!-- Название товара -->
-								<a class="product__name flex product__margin" href="{related_views_goods.URL_MIN_PRICE_NOW | url_amp}" title="{related_views_goods.NAME}">
+								<a class="product__name product__margin" href="{related_views_goods.URL_MIN_PRICE_NOW | url_amp}" title="{related_views_goods.NAME}">
 									<span itemprop="name">{related_views_goods.NAME}</span>
 								</a>
 						
