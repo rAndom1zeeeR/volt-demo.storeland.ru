@@ -658,7 +658,7 @@ section {margin: 2rem 0;position: relative;}
 #pdt__sales .product__links a {font-size: 1.125rem;}
 #pdt__sales .qty a {width: 1.5rem;}
 #pdt__sales .qty input {width: 1.75rem;}
-#pdt__sales .product__name {height: 3rem;}
+#pdt__sales .product__name {height: 3rem;display: block;}
 #pdt__sales .product__margin {margin-bottom: .75rem;}
 #pdt__sales .product__available {max-width: 4.625rem;margin-left: .625rem;}
 #pdt__sales .product__available span {white-space: nowrap;}
@@ -826,7 +826,7 @@ section {margin: 2rem 0;position: relative;}
 .show-by {flex-grow: 1;justify-content: flex-end;color: var(--color-darkgray);}
 .show-by:after {right: 0;bottom: 0;}
 .show-by select {width: auto;background-color: transparent;border: 0;color: var(--color-darkgray);padding: 0 1rem 0 .75rem;height: 1rem;line-height: 1;}
-
+.show-by .selectBox:after {bottom: 0;right: 0;}
 @media all and (max-width: 639px) {
 	.sort-by {order: 3;margin-top: 1rem;width: 100%;}
 }
@@ -1654,7 +1654,7 @@ header .catalog__item.opened > .catalog__link {background-color: var(--color-lig
 #slideshow .swiper-navigation:before {background-color: var(--color-shadow-white6);}
 #slideshow .swiper-paginations {bottom: .75rem;position: absolute;width: 100%;z-index: 1;}
 #slideshow .swiper-pagination {width: auto;background: var(--color-shadow2);padding: 0 .5rem;margin: 0 auto;position: relative;bottom: auto;}
-#slideshow .swiper-pagination-bullet {border-radius: 0;background: var(--color-shadow-white2);margin: .5rem;}
+#slideshow .swiper-pagination-bullet {border-radius: 0;background: var(--color-shadow-white2);margin: .5rem;opacity: 0.8;}
 #slideshow .swiper-pagination-bullet-active {background-color: var(--color-white);}
 @media all and (max-width: 1023px) {
 	.slideshow__swiper {width: 100%;margin: 0;}
@@ -1747,6 +1747,7 @@ header .catalog__item.opened > .catalog__link {background-color: var(--color-lig
 .subscribe .form__pp {text-align: right;}
 .subscribe .form__input {background-color: var(--color-white);}
 .subscribe .form__field {flex-grow: 1;}
+.subscribe label {display: none;}
 @media all and (max-width: 1023px) {
 	.subscribe__block {width: 100%;margin-bottom: 1rem;}
 	.subscribe__form {width: 100%;}
