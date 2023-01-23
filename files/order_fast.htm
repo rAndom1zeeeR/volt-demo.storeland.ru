@@ -345,7 +345,19 @@
 
 				<!-- Корзина: Итоговый блок -->
 				<div class="cartTotal">
-					<div class="cartTotal__inner flex">						
+					<div class="cartTotal__inner flex">
+
+						<!-- Корзина: Минимальная сумма заказа -->
+						{% IF SETTINGS_STORE_ORDER_MIN_ORDER_PRICE %}
+						<div class="cartTotal__min flex">
+							<i class="icon-warning"></i>
+							<div class="cartTotal__min_title">
+								<span>До минимальной суммы заказа:</span>
+								<span class="cartTotal__price cartTotal__min_price {CURRENCY_CHAR_CODE}" data-price="{SETTINGS_STORE_ORDER_MIN_ORDER_PRICE}">{SETTINGS_STORE_ORDER_MIN_ORDER_PRICE | money_format}</span>
+							</div>
+						</div>
+						{% ENDIF %}
+
 						<!-- Корзина: Купон -->
 						{% IF ORDER_DISCOUNT_COUPON_IS_ENABLED %}
 						<div class="cartTotal__coupon">
@@ -421,7 +433,7 @@
 						</div>
 
 						<!-- Корзина: Оформление -->
-						<div class="cartTotal__buttons">
+						<div class="cartTotal__buttons {SETTINGS_STORE_ORDER_MIN_ORDER_PRICE}">
 							<input type="hidden" name="hash" value="{HASH}" />
 							<button class="button-primary disabled" type="submit" title="Перейти к быстрому оформлению заказа">
 								<span>Оформить </span><span>заказ</span>
@@ -435,6 +447,7 @@
 							</div>
 						</div>
 
+						<!-- Корзина: Отменить Оформление -->
 						<div class="cartTotal__cancel">
 							<a class="button-icon button-link button-link-gray closeOrder" title="Отменить заказ">
 								<i class="icon-close"></i>
@@ -442,15 +455,6 @@
 							</a>
 						</div>
 
-						<!-- Корзина: Минимальная сумма заказа -->
-						{% IF SETTINGS_STORE_ORDER_MIN_ORDER_PRICE %}
-						<!-- <div class="cartTotal__min flex">
-							<div class="cartTotal__label cartTotal__min_label">
-								<div class="cartTotal__min_title">До мин. суммы заказа осталось</div>
-							</div>
-							<div class="cartTotal__price cartTotal__min_price {CURRENCY_CHAR_CODE}" data-price="{SETTINGS_STORE_ORDER_MIN_ORDER_PRICE}">{SETTINGS_STORE_ORDER_MIN_ORDER_PRICE | money_format}</div>
-						</div> -->
-						{% ENDIF %}
 					</div>
 				</div>
 

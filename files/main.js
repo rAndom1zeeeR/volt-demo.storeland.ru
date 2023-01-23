@@ -1983,6 +1983,7 @@ function quickOrder(formSelector) {
           coupons();
           preload();
 					orderValidate();
+					cartMinSum();
 					// Стили для новых селектов
 					$('.form__phone').mask('+7 (999) 999-9999');
 				}

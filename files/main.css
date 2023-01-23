@@ -1282,6 +1282,7 @@ section {margin: 2rem 0;position: relative;}
 .cartTotal__min_title {width: calc(100% - 3.5rem);}
 .cartTotal__cancel {width: 100%;border-top: 1px solid var(--color-gray);padding-top: 1rem;margin-top: 1rem;text-align: right;}
 .fastOrder .cartTotal__cancel {display: none;}
+.fastOrder .cartTotal__min {margin-bottom: 1rem;max-width: 100%;width: 100%;}
 .total__discount .cartTotal__price {color: var(--color-red);}
 .total__discount .cartTotal__price .num:after {color: var(--color-red);}
 /*** Корзина. Начало оформления заказа ***/
@@ -1366,7 +1367,7 @@ section {margin: 2rem 0;position: relative;}
 .coupon__reset {position: absolute;right: 3.75rem;line-height: 3rem;opacity: 0;pointer-events: none;transition: all 0.3s ease;}
 .coupon__reset.focus {opacity: 1;pointer-events: auto;}
 .cartTotal__buttons {width: 18rem;text-align: right;}
-.fastOrder .cartTotal__buttons {margin-top: 1rem;width: 100%;text-align: center;}
+.fastOrder .cartTotal__buttons {margin-top: 1.5rem;width: 100%;text-align: center;}
 .fastOrder .cartTotal__total {margin: 0 0 0 3rem;}
 @media all and (max-width: 1023px) {
 	.cartTotal__buttons {margin-top: 1rem;width: 100%;text-align: center;}
