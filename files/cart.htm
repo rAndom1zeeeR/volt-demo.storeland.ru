@@ -1,7 +1,83 @@
 <div class="page-cartTable flex-start">
   {% IF cart_items_empty %}
     <div class="notice attention">Корзина покупок пуста. Вы можете выбрать нужный товар из <a href="{CATALOG_URL}">каталога</a>.</div>
-  {% ELSE %}		
+  {% ELSE %}
+		<!-- Корзина: Элементы -->
+		<div class="cartTable">
+			<!-- Форма корзины -->
+			<form class="cartTable__form" action="{CART_URL}" method="post">
+				<input type="hidden" name="fast_order" value="1" />
+				<input type="hidden" name="hash" value="{HASH}" />
+				<div class="cart__items">
+					{% FOR cart_items %}
+					<div class="cart__item flex" data-id="{cart_items.GOODS_ID}" data-mod-id="{cart_items.GOODS_MOD_ID}">
+						<a class="cart__image flex-center" href="{cart_items.GOODS_URL}">
+							<img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}">
+						</a>
+						<div class="cart__content flex">
+							<!-- Информация -->
+							<div class="cart__info">
+								<!-- Если у товара есть отличительные свойства для модификации товара, допишем их к названию товара -->
+								{% IF cart_items.GOODS_MOD_ART_NUMBER %}
+								<div class="cart__art">
+									<label>Артикул:</label>
+									<span>{cart_items.GOODS_MOD_ART_NUMBER}</span>
+								</div>
+								{% ENDIF %}
+
+								<a class="cart__name" href="{cart_items.GOODS_URL}">{cart_items.GOODS_NAME}</a>
+
+								{% IFNOT cart_items.distinctive_properties_empty %}
+									{% FOR distinctive_properties %}
+									<div class="cart__prop flex">
+										<label>{cart_items.distinctive_properties.NAME}:</label>
+										<span>{cart_items.distinctive_properties.VALUE}</span>
+									</div>
+									{% ENDFOR %}
+								{% ENDIF %}
+
+							</div>
+
+							<!-- Кол-во -->
+							<div class="cart__qty">
+								<div class="qty flex">
+									<span class="qty__minus unselectable" title="Уменьшить"><i class="icon-minus"></i></span>
+									<input class="qty__cart" type="text" name="form[quantity][{cart_items.GOODS_MOD_ID}]" maxlength="4" value="{cart_items.ORDER_LINE_QUANTITY}" max="{cart_items.GOODS_MOD_REST_VALUE}" title="Количество, {cart_items.GOODS_MOD_MEASURE_NAME}" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
+									<span class="qty__plus unselectable" title="Увеличить"><i class="icon-plus"></i></span>
+								</div>
+							</div>
+
+							<!-- Цена -->
+							<div class="cart__price {CURRENCY_CHAR_CODE} {% IF cart_items.ORDER_LINE_PRICE_OLD > cart_items.ORDER_LINE_PRICE_NOW %}has-price-old{% ENDIF %}">
+								<div class="price__now cartPriceTotal" data-price="{cart_items.ORDER_LINE_PRICE_NOW}">{cart_items.ORDER_LINE_PRICE_NOW | money_format}</div>
+								{% IF cart_items.ORDER_LINE_PRICE_OLD > cart_items.ORDER_LINE_PRICE_NOW %}
+								<div class="price__old" data-price="{cart_items.ORDER_LINE_PRICE_OLD}">{cart_items.ORDER_LINE_PRICE_OLD | money_format}</div>
+								{% ENDIF %}
+							</div>
+
+							<!-- Удалить -->
+							<a class="cart__remove button-icon button-link button-link-gray" data-href="{cart_items.ORDER_LINE_DELETE_URL}" title="Удалить позицию" onclick="cartDelete($(this))">
+								<i class="icon-close"></i>
+								<span>Удалить</span>
+							</a>
+
+						</div>
+					</div>
+					{% ENDFOR %}
+				</div>
+				<div class="cart__buttons flex">
+					<a class="button-icon button-link button-link-gray" href="{CATALOG_URL}" title="Вернуться к покупкам">
+						<i class="icon-chevron_left"></i>
+						<span>Вернуться </span><span>к покупкам</span>
+					</a>
+					<a class="button-icon button-link button-link-gray" href="{CART_TRUNCATE_URL}" title="Очистить корзину" onclick="return confirm('Вы действительно хотите удалить все товары из корзины?')">
+						<i class="icon-close"></i>
+						<span>Очистить </span><span>корзину</span>
+					</a>
+				</div>
+			</form>
+		</div>
+		
 		<!-- Корзина: Итоговый блок -->
 		<div class="cartTotal flex-start">
 			<!-- {% IF ORDER_DISCOUNT_COUPON_IS_ENABLED %} -->
@@ -104,82 +180,6 @@
 			{% ENDIF %}
 
 		</div>
-
-		<!-- Корзина: Элементы -->
-		<div class="cartTable">
-			<!-- Форма корзины -->
-			<form class="cartTable__form" action="{CART_URL}" method="post">
-				<input type="hidden" name="fast_order" value="1" />
-				<input type="hidden" name="hash" value="{HASH}" />
-				<div class="cart__items">
-					{% FOR cart_items %}
-					<div class="cart__item flex" data-id="{cart_items.GOODS_ID}" data-mod-id="{cart_items.GOODS_MOD_ID}">
-						<a class="cart__image flex-center" href="{cart_items.GOODS_URL}">
-							<img src="{% IF cart_items.GOODS_IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{cart_items.GOODS_IMAGE_ICON}{% ENDIF %}">
-						</a>
-						<div class="cart__content flex">
-							<!-- Информация -->
-							<div class="cart__info">
-								<!-- Если у товара есть отличительные свойства для модификации товара, допишем их к названию товара -->
-								{% IF cart_items.GOODS_MOD_ART_NUMBER %}
-								<div class="cart__art">
-									<label>Артикул:</label>
-									<span>{cart_items.GOODS_MOD_ART_NUMBER}</span>
-								</div>
-								{% ENDIF %}
-
-								<a class="cart__name" href="{cart_items.GOODS_URL}">{cart_items.GOODS_NAME}</a>
-
-								{% IFNOT cart_items.distinctive_properties_empty %}
-									{% FOR distinctive_properties %}
-									<div class="cart__prop flex">
-										<label>{cart_items.distinctive_properties.NAME}:</label>
-										<span>{cart_items.distinctive_properties.VALUE}</span>
-									</div>
-									{% ENDFOR %}
-								{% ENDIF %}
-
-							</div>
-
-							<!-- Кол-во -->
-							<div class="cart__qty">
-								<div class="qty flex">
-									<span class="qty__minus unselectable" title="Уменьшить"><i class="icon-minus"></i></span>
-									<input class="qty__cart" type="text" name="form[quantity][{cart_items.GOODS_MOD_ID}]" maxlength="4" value="{cart_items.ORDER_LINE_QUANTITY}" max="{cart_items.GOODS_MOD_REST_VALUE}" title="Количество, {cart_items.GOODS_MOD_MEASURE_NAME}" onkeypress="return keyPress(this, event);" onpaste="return false;" autocomplete="off" />
-									<span class="qty__plus unselectable" title="Увеличить"><i class="icon-plus"></i></span>
-								</div>
-							</div>
-
-							<!-- Цена -->
-							<div class="cart__price {CURRENCY_CHAR_CODE} {% IF cart_items.ORDER_LINE_PRICE_OLD > cart_items.ORDER_LINE_PRICE_NOW %}has-price-old{% ENDIF %}">
-								<div class="price__now cartPriceTotal" data-price="{cart_items.ORDER_LINE_PRICE_NOW}">{cart_items.ORDER_LINE_PRICE_NOW | money_format}</div>
-								{% IF cart_items.ORDER_LINE_PRICE_OLD > cart_items.ORDER_LINE_PRICE_NOW %}
-								<div class="price__old" data-price="{cart_items.ORDER_LINE_PRICE_OLD}">{cart_items.ORDER_LINE_PRICE_OLD | money_format}</div>
-								{% ENDIF %}
-							</div>
-
-							<!-- Удалить -->
-							<a class="cart__remove button-icon button-link button-link-gray" data-href="{cart_items.ORDER_LINE_DELETE_URL}" title="Удалить позицию" onclick="cartDelete($(this))">
-								<i class="icon-close"></i>
-								<span>Удалить</span>
-							</a>
-
-						</div>
-					</div>
-					{% ENDFOR %}
-				</div>
-				<div class="cart__buttons flex">
-					<a class="button-icon button-link button-link-gray" href="{CATALOG_URL}" title="Вернуться к покупкам">
-						<i class="icon-chevron_left"></i>
-						<span>Вернуться </span><span>к покупкам</span>
-					</a>
-					<a class="button-icon button-link button-link-gray" href="{CART_TRUNCATE_URL}" title="Очистить корзину" onclick="return confirm('Вы действительно хотите удалить все товары из корзины?')">
-						<i class="icon-close"></i>
-						<span>Очистить </span><span>корзину</span>
-					</a>
-				</div>
-			</form>
-		</div>	
 
 		<!-- Сюда грузится форма оформления быстрого заказа -->
 		<div id="globalOrder" style="display: none">

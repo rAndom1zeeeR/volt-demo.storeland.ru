@@ -84,7 +84,7 @@
 			</div>
 			
 			<!--  -->
-			<div class="productView__inner productView__margin flex justify-between">
+			<div class="productView__inner productView__margin flex justify-between {% IFNOT GOODS_MOD_ART_NUMBER && GOODS_OPINION_RATING_VALUE_ROUND = 0 %}only-links{% ENDIF %} {GOODS_OPINION_RATING_VALUE_ROUND}">
 				<!-- Артикул -->				
 				<div class="productView__articles productView__margin" {% IFNOT GOODS_MOD_ART_NUMBER %}style="display: none;"{% ENDIF %}>
 					<label>Артикул:</label>
