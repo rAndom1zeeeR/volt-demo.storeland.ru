@@ -2327,12 +2327,12 @@ function coupons() {
 					totalCouponBlock.hide();
 				}
 
-				console.log('data', data)
-				console.log('$(data)', $(data))
-				console.log('discountBlock', discountBlock)
-				console.log('discountName', discountName)
-				console.log('discountPrice', discountPrice)
-				console.log('discountPercent', discountPercent)
+				// console.log('data', data)
+				// console.log('$(data)', $(data))
+				// console.log('discountBlock', discountBlock)
+				// console.log('discountName', discountName)
+				// console.log('discountPrice', discountPrice)
+				// console.log('discountPercent', discountPercent)
 
 				// Получаем новую итоговую стоимость заказа
 				var totalBlock = $(data).closest('#orderform').find('.total');
@@ -2359,6 +2359,8 @@ function coupons() {
 					totalCouponBlock.hide();
 					totalDiscountBlock.show();
 					$('.cartSumTotal .num').text(addSpaces(newTotalSum));
+					console.log('Купон не работает')
+					notyStart('Купон не работает', 'warning')
 				} else if (newTotalSum == cartSumTotal) {
 					if (discountName) {
 						couponInput.addClass('focus');
@@ -2370,7 +2372,7 @@ function coupons() {
 						totalCouponBlock.hide();
 					}
 				} else {
-					couponInput.addClass('focus');
+					couponInput.removeClass('error').addClass('focus');
 					couponParent.removeClass('error').addClass('success');
 					totalCouponBlock.show();
 					// Обновляем значение итоговой стоимости
@@ -2380,6 +2382,8 @@ function coupons() {
 					$('.cartSumTotalHide').attr('data-value', newTotalSum);
 					$('.cartSumTotalHide .num').text(addSpaces(newTotalSum));
 					$('.cartSumDiscount .num').text(addSpaces(totalSum));
+					console.log('Купон успешно применен')
+					notyStart('Купон успешно применен!', 'success')
 				}
 
 				// Тестирование. Проверка переменных
