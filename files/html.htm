@@ -391,9 +391,9 @@
 								<link itemprop="url" href="{INDEX_PAGE_URL}" />
 								<!-- Форма поиска -->
 								<form class="search__form" action="{QUICK_SEARCH_URL}" method="get" title="Поиск по магазину" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction">
-									<meta itemprop="target" content="{SEARCH_URL}?q={q}" />
+									<meta itemprop="target" content="{SEARCH_URL}?q={FORM_SEARCH_Q}" />
 									<input type="hidden" name="goods_search_field_id" value="0" />
-									<input class="search__input" type="text" name="q" value="{FORM_SEARCH_Q}" placeholder="Поиск..." autocomplete="off" itemprop="query-input" />
+									<input class="search__input" type="text" name="query" value="{FORM_SEARCH_Q}" placeholder="Поиск..." autocomplete="off" itemprop="query" />
 									<!-- Найти -->
 									<button class="search__submit button-secondary" type="submit" title="Искать">
 										<i class="icon-search"></i>
@@ -1387,7 +1387,7 @@
 										<a class="categories__name" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
 											<span>{catalog_full.NAME}</span>
 										</a>
-										<div class="categories__count flex">
+										<div class="categories__count flex {% IF catalog_full.GOODS_COUNT = 0 %}hide{% ENDIF %}">
 											<span>{catalog_full.GOODS_COUNT} товар{catalog_full.GOODS_COUNT | gen_word_end("","а","ов")}</span>
 										</div>
 										<a class="categories__count categories__count_hover flex" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">

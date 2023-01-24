@@ -2294,6 +2294,7 @@ function coupons() {
 		// Если купон не изменился
 		if(val == oldVal){
 			couponInput.removeClass('focus');
+			notyStart('Вы уже вводили данный купон', 'warning')
 			return false;
 		}
 
@@ -2340,10 +2341,10 @@ function coupons() {
 				var deliveryPrice = parseInt($('.cartSumDelivery:eq(0) .num').text());
 				var newTotalSum = totalSum + deliveryPrice;
 
-				console.log('totalBlock', totalBlock)
-				console.log('totalSum', totalSum)
-				console.log('deliveryPrice', deliveryPrice)
-				console.log('newTotalSum', newTotalSum)
+				// console.log('totalBlock', totalBlock)
+				// console.log('totalSum', totalSum)
+				// console.log('deliveryPrice', deliveryPrice)
+				// console.log('newTotalSum', newTotalSum)
 
 				// Записываем название и размер скидки по купону
 				totalCouponBlock.find('.cartTotal__label span').html(discountName);
@@ -2359,17 +2360,21 @@ function coupons() {
 					totalCouponBlock.hide();
 					totalDiscountBlock.show();
 					$('.cartSumTotal .num').text(addSpaces(newTotalSum));
-					console.log('Купон не работает')
-					notyStart('Купон не работает', 'warning')
+					// console.log('Купон не применен')
+					notyStart('Купон не применен', 'warning')
 				} else if (newTotalSum == cartSumTotal) {
 					if (discountName) {
 						couponInput.addClass('focus');
 						couponParent.addClass('success');
 						totalCouponBlock.show();
+						// console.log('Скидка уже используется')
+						notyStart('Скидка уже используется', 'warning')
 					}else{
 						couponInput.val("").addClass('error');
 						couponParent.addClass('error');
 						totalCouponBlock.hide();
+						// console.log('Купон error')
+						notyStart('Купон не применен', 'warning')
 					}
 				} else {
 					couponInput.removeClass('error').addClass('focus');
@@ -2382,7 +2387,7 @@ function coupons() {
 					$('.cartSumTotalHide').attr('data-value', newTotalSum);
 					$('.cartSumTotalHide .num').text(addSpaces(newTotalSum));
 					$('.cartSumDiscount .num').text(addSpaces(totalSum));
-					console.log('Купон успешно применен')
+					// console.log('Купон успешно применен')
 					notyStart('Купон успешно применен!', 'success')
 				}
 
