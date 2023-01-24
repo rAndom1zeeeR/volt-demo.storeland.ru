@@ -1383,19 +1383,27 @@
 										data-background-image="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ENDIF %}"
 										title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;" 
 									></a>
-									<div class="categories__content flex-start">
-										<a class="categories__name" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
+									<div class="categories__content">
+										<a class="categories__name flex" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
 											<span>{catalog_full.NAME}</span>
 										</a>
-										<div class="categories__count flex {% IF catalog_full.GOODS_COUNT = 0 %}hide{% ENDIF %}">
-											<span>{catalog_full.GOODS_COUNT} товар{catalog_full.GOODS_COUNT | gen_word_end("","а","ов")}</span>
+										<div class="categories__inner flex justify-between">
+											<div class="categories__count flex">
+												{% IF catalog_full.GOODS_COUNT > 0 %}
+												<span>{catalog_full.GOODS_COUNT} товар{catalog_full.GOODS_COUNT | gen_word_end("","а","ов")}</span>
+												{% ELSEIF catalog_full.BRANCH_GOODS_COUNT > 0 %}
+												<span>{catalog_full.BRANCH_GOODS_COUNT} товар{catalog_full.BRANCH_GOODS_COUNT | gen_word_end("","а","ов")}</span>
+												{% ELSE %}
+												<span>Нет товаров</span>
+												{% ENDIF %}
+											</div>
+											<a class="categories__count categories__count_hover flex" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
+												<span>Смотреть все подкатегории</span>
+											</a>
+											<a class="categories__icon" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
+												<i class="icon-chevron_right"></i>
+											</a>
 										</div>
-										<a class="categories__count categories__count_hover flex" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
-											<span>Смотреть все подкатегории</span>
-										</a>
-										<a class="categories__icon" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
-											<i class="icon-chevron_right"></i>
-										</a>
 									</div>
 									{% ELSE %}
 									<a class="categories__name" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">

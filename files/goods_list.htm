@@ -10,20 +10,28 @@
 					<a class="categories__image flex-center" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
 						<img src="{% IF nested_categories_list.IMAGE_EMPTY %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ELSE %}{nested_categories_list.IMAGE_MEDIUM}{% ENDIF %}">
 					</a>
-					<a class="categories__content flex-start" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
-						<div class="categories__name">
+					<div class="categories__content">
+						<a class="categories__name flex" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
 							<span>{nested_categories_list.NAME}</span>
+						</a>
+						<div class="categories__inner flex justify-between">
+							<div class="categories__count">
+								{% IF nested_categories_list.GOODS_COUNT > 0 %}
+								<span>{nested_categories_list.GOODS_COUNT} товар{nested_categories_list.GOODS_COUNT | gen_word_end("","а","ов")}</span>
+								{% ELSEIF nested_categories_list.BRANCH_GOODS_COUNT > 0 %}
+								<span>{nested_categories_list.BRANCH_GOODS_COUNT} товар{nested_categories_list.BRANCH_GOODS_COUNT | gen_word_end("","а","ов")}</span>
+								{% ELSE %}
+								<span>Нет товаров</span>
+								{% ENDIF %}
+							</div>
+							<a class="categories__count categories__count_hover" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
+								<span>Смотреть все подкатегории</span>
+							</a>
+							<a class="categories__icon" href="{nested_categories_list.URL}" title="Перейти к категории &laquo;{nested_categories_list.NAME}&raquo;">
+								<i class="icon-chevron_right"></i>
+							</a>
 						</div>
-						<div class="categories__count flex {% IF nested_categories_list.GOODS_COUNT = 0 %}hide{% ENDIF %}">
-							<span>{nested_categories_list.GOODS_COUNT} товар{nested_categories_list.GOODS_COUNT | gen_word_end("","а","ов")}</span>
-						</div>
-						<div class="categories__count categories__count_hover flex">
-							<span>Смотреть все подкатегории</span>
-						</div>
-						<div class="categories__icon">
-							<i class="icon-chevron_right"></i>
-						</div>
-					</a>
+					</div>
 				</div>
 				{% ENDFOR nested_categories_list %}
 			</div>
