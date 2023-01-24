@@ -2,25 +2,25 @@
 /*** Основные стили ***/
 /**************************************/
 html {font-size: 100%;-webkit-text-size-adjust: 100%;-ms-text-size-adjust: 100%;-webkit-font-smoothing: antialiased;}
-body {line-height: 1;font-size: 1rem;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
+body {line-height: 1;font-size: 16px;font-weight: 400;position: relative;overflow-x: hidden;margin: 0;padding: 0;}
 
 
 /**************************************/
 /*** Основной контейнер ***/
 /**************************************/
 *, *:before, *:after {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
-.container {margin-right: auto;margin-left: auto;padding-left: 1rem;padding-right: 1rem;}
+.container {margin-right: auto;margin-left: auto;padding-left: 16px;padding-right: 16px;}
 .container:before, .container:after {display: table;line-height: 0;content: '';}
 .container:after {display: block;content: '.';clear: both;font-size: 0;line-height: 0;height: 0;overflow: hidden;}
-.row {margin-left: -1rem;margin-right: -1rem;}
-.row-small {margin-left: -.5rem;margin-right: -.5rem;}
+.row {margin-left: -16px;margin-right: -16px;}
+.row-small {margin-left: -.8px;margin-right: -.8px;}
 .row:before, .row:after {content: ' ';display: table;}
 
 
 /**************************************/
 /*** Скролы сайта ***/
 /**************************************/
-::-webkit-scrollbar {width: 1rem;height: 0;}
+::-webkit-scrollbar {width: 16px;height: 0;}
 ::-webkit-scrollbar-thumb {border-radius: 0;}
 ::-webkit-scrollbar-track {border-radius: 0;}
 
@@ -31,7 +31,7 @@ body {line-height: 1;font-size: 1rem;font-weight: 400;position: relative;overflo
 a {text-decoration: none;cursor: pointer;transition: all 0.3s ease;}
 a:hover, a.active, a.added {text-decoration: none;}
 img {max-width: 100%;max-height: 100%;width: auto;object-fit: contain;}
-p {margin: 0 0 1rem 0;line-height: 1.5;}
+p {margin: 0 0 16px 0;line-height: 1.5;}
 .unstyled {margin: 0;padding: 0;list-style: none;}
 .unselectable {-webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;user-select: none;}
 .htmlDataBlock {overflow: hidden;line-height: 1.5;}
@@ -55,7 +55,7 @@ p {margin: 0 0 1rem 0;line-height: 1.5;}
 /**************************************/
 /*** Инпут поля ***/
 /**************************************/
-input, select, textarea {width: 100%;outline: 0;font-size: 1rem;font-weight: 400;font-family: inherit;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
+input, select, textarea {width: 100%;outline: 0;font-size: 16px;font-weight: 400;font-family: inherit;-webkit-appearance: none;-moz-appearance: none;appearance: none;}
 select {cursor: pointer;}
 input[type="file"] {height: auto;line-height: 1;border: 0;padding: 0;border-radius: 0;background: transparent;}
 
@@ -63,18 +63,18 @@ input[type="file"] {height: auto;line-height: 1;border: 0;padding: 0;border-radi
 /**************************************/
 /*** Кнопки ***/
 /**************************************/
-button, [class*="button-"], .paymentFormSubmitLink, .paymentFormTbodySubmitButton {text-align: center;font-size: 1rem;font-weight: 500;font-family: inherit;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
+button, [class*="button-"], .paymentFormSubmitLink, .paymentFormTbodySubmitButton {text-align: center;font-size: 16px;font-weight: 500;font-family: inherit;cursor: pointer;display: inline-block;position: relative;transition: all 0.3s ease;}
 
 
 /**************************************/
 /*** Заголовки ***/
 /**************************************/
 h1, h2, h3, h4, h5, h6 {text-rendering: optimizelegibility;text-transform: none;line-height: 1.5;margin: 0;padding: 0;font-weight: bold;font-family: inherit;}
-h1 {font-size: 1.75rem;}
-h2 {font-size: 1.5rem;}
-h3 {font-size: 1.25rem;}
-h4 {font-size: 1.125rem;}
-h5 {font-size: 1rem;}
+h1 {font-size: 28px;}
+h2 {font-size: 24px;}
+h3 {font-size: 20px;}
+h4 {font-size: 18px;}
+h5 {font-size: 16px;}
 
 
 /**************************************/
@@ -101,104 +101,104 @@ h5 {font-size: 1rem;}
 /**************************************/
 /*** Показать пароль ***/
 /**************************************/
-.form__showPass {position: absolute;bottom: .75rem;right: .5rem;cursor: pointer;z-index: 2;}
-.form__showPass:before {content: '\e933';font-size: 1.5rem;font-family: 'icomoon';vertical-align: middle;}
+.form__showPass {position: absolute;bottom: 12px;right: .8px;cursor: pointer;z-index: 2;}
+.form__showPass:before {content: '\e933';font-size: 24px;font-family: 'icomoon';vertical-align: middle;}
 .form__showPass.active:before {content: '\e934';}
 .form__showPass .showPass {vertical-align: middle;display: none;}
 
 /*** Капслок ***/
-#capslock {margin-top: 1rem;display: none;}
-.capslock__icon i {margin-right: .5rem;font-size: 1.5rem;}
-.capslock__text {margin-top: .5rem;}
+#capslock {margin-top: 16px;display: none;}
+.capslock__icon i {margin-right: .8px;font-size: 24px;}
+.capslock__text {margin-top: .8px;}
 
 
 /**************************************/
 /*** Страница: Сравнение ***/
 /**************************************/
-.compare__nav {margin-bottom: 2rem;}
+.compare__nav {margin-bottom: 32px;}
 .compare__switch:hover {cursor: pointer;}
-.compare__switch-icon {display: inline-block;position: relative;width: 4rem;height: 2rem;border-radius: 1.5rem;z-index: 0;margin: 0 0.625rem 0 0;padding: 0;border: none;cursor: pointer;transition-duration: 300ms;}
-.compare__switch-icon:after {content: '';position: absolute;top: .25rem;left: .25rem;height: 1.5rem;width: 1.5rem;border-radius: 1rem;transition-duration: 300ms;z-index: 1;}
+.compare__switch-icon {display: inline-block;position: relative;width: 64px;height: 32px;border-radius: 24px;z-index: 0;margin: 0 10px 0 0;padding: 0;border: none;cursor: pointer;transition-duration: 300ms;}
+.compare__switch-icon:after {content: '';position: absolute;top: 4px;left: 4px;height: 24px;width: 24px;border-radius: 16px;transition-duration: 300ms;z-index: 1;}
 .switch-on .compare__switch-icon {background: var(--color-primary);}
-.switch-on .compare__switch-icon:after {left: 2.25rem;}
-.compare__buttons a {margin: 1rem 2rem 0 0;}
+.switch-on .compare__switch-icon:after {left: 36px;}
+.compare__buttons a {margin: 16px 32px 0 0;}
 .compare__buttons a i {vertical-align: middle;}
-.compare__buttons a span {vertical-align: middle;margin-left: .25rem;}
-.compare__line {margin-bottom: 1rem;padding-bottom: 1rem;}
+.compare__buttons a span {vertical-align: middle;margin-left: 4px;}
+.compare__line {margin-bottom: 16px;padding-bottom: 16px;}
 .compare__line:nth-child(-n+2) {border-bottom: 0;padding-bottom: 0;}
-.compare__cell {margin-bottom: 1rem;width: 100%;font-weight: bold;}
-.compare__cell input {margin-right: .5rem;}
-.compare__image {height: 13.5rem;}
-.compare__remove {top: .5rem;right: .5rem;position: absolute;}
-.compare__remove i {font-size: 1.5rem;display: block;}
-.compare__mod {margin-top: .5rem;font-size: .75rem;}
-.compare__price .price__old {margin-top: .5rem;}
+.compare__cell {margin-bottom: 16px;width: 100%;font-weight: bold;}
+.compare__cell input {margin-right: .8px;}
+.compare__image {height: 216px;}
+.compare__remove {top: .8px;right: .8px;position: absolute;}
+.compare__remove i {font-size: 24px;display: block;}
+.compare__mod {margin-top: .8px;font-size: 12px;}
+.compare__price .price__old {margin-top: .8px;}
 .compare__addCart i {display: none;}
 .compare__showAll {display: none;}
 @media all and (max-width: 1199px) {
-	.compare__image {height: 14.25rem;}
+	.compare__image {height: 228px;}
 }
 @media all and (max-width: 1023px) {
-	.compare__image {height: 14rem;}
+	.compare__image {height: 224px;}
 }
 @media all and (max-width: 767px) {
-	.compare__image {height: 12rem;}
+	.compare__image {height: 192px;}
 }
 @media all and (max-width: 639px) {
-	.compare__image {height: 13.5rem;}
+	.compare__image {height: 136px;}
 }
 @media all and (max-width: 479px) {
-	.compare__image {height: 10.25rem;}
+	.compare__image {height: 164px;}
 	.compare__switch-label {display: none;}
 }
 @media all and (max-width: 374px) {
-	.compare__image {height: 8.5rem;}
+	.compare__image {height: 136px;}
 }
 
 
 /**************************************/
 /*** Страница: Ошибка ***/
 /**************************************/
-.error__msg {margin-top: 1rem;}
-.error__block + .error__block {margin-top: 1rem;}
+.error__msg {margin-top: 16px;}
+.error__block + .error__block {margin-top: 16px;}
 
 
 /**************************************/
 /*** Страница: Обратная связь ***/
 /**************************************/
-.page-feedback .maps {margin-top: 2rem;width: 100%;}
+.page-feedback .maps {margin-top: 32px;width: 100%;}
 
 
 /**************************************/
 /*** Страница: ЛК ***/
 /**************************************/
-.client__blocks + .client__blocks {margin-top: 2rem;}
-.client__block {width: calc(50% - 2rem);margin: 0 1rem;flex-grow: 1;}
-.client__block:nth-child(n+3) {margin-top: 2rem;}
-.client__title {margin-bottom: 1.5rem;}
-.client__buttons [class*="button-"] {margin: 1rem 1.5rem 0 0;}
+.client__blocks + .client__blocks {margin-top: 32px;}
+.client__block {width: calc(50% - 32px);margin: 0 16px;flex-grow: 1;}
+.client__block:nth-child(n+3) {margin-top: 32px;}
+.client__title {margin-bottom: 24px;}
+.client__buttons [class*="button-"] {margin: 16px 24px 0 0;}
 .client__buttons [class*="button-"]:last-child {margin-right: 0;}
 @media all and (max-width: 767px) {
 	.client__block {width: 100%;}
-	.client__block + .client__block {margin-top: 2rem;}
+	.client__block + .client__block {margin-top: 32px;}
 }
 @media all and (max-width: 374px) {
-	.client__buttons [class*="button-"] {margin: 1rem 0 0 0;width: 100%;}
+	.client__buttons [class*="button-"] {margin: 16px 0 0 0;width: 100%;}
 }
 
 
 /**************************************/
 /*** Хлебные крошки ***/
 /**************************************/
-.breadcrumbs {margin-bottom: .75rem;padding-bottom: .25rem;width: 100%;overflow-x: auto;display: block;position: relative;}
-.breadcrumbs ul {flex-wrap: nowrap;white-space: nowrap;font-size: .875rem;}
-.breadcrumbs ul li span {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;max-width: 20rem;}
+.breadcrumbs {margin-bottom: 12px;padding-bottom: 4px;width: 100%;overflow-x: auto;display: block;position: relative;}
+.breadcrumbs ul {flex-wrap: nowrap;white-space: nowrap;font-size: 14px;}
+.breadcrumbs ul li span {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;max-width: 320px;}
 .breadcrumbs ul li:last-child {font-weight: bold;}
 .breadcrumbs ul li a {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-align: baseline;-webkit-align-items: baseline;-webkit-box-align: baseline;align-items: baseline;}
-.breadcrumbs ul li a:after {content: "/";margin: 0 .5rem;}
+.breadcrumbs ul li a:after {content: "/";margin: 0 .8px;}
 .breadcrumbs ul li:last-child a:after {display: none;}
-.breadcrumbs ul li a i {margin-right: .25rem;}
-.breadcrumbs::-webkit-scrollbar {width: 0;height: 0.25rem;}
+.breadcrumbs ul li a i {margin-right: 4px;}
+.breadcrumbs::-webkit-scrollbar {width: 0;height: 4px;}
 
 
 
@@ -208,34 +208,34 @@ h5 {font-size: 1rem;}
 /**************************************/
 /* Иконки форматов файлов */
 /**************************************/
-.file_extension_icon {width: 1rem;height: 1rem;display: inline-block;margin-right: 0.625rem;background: #ffffff url('{ASSEST_IMAGES_PATH}icons-files-extensions.gif?design=VOLT') no-repeat left top;}
-.file_extension_icon.torrent {background-position: -1rem 0}
-.file_extension_icon.xls {background-position: -2rem 0}
+.file_extension_icon {width: 16px;height: 16px;display: inline-block;margin-right: 10px;background: #ffffff url('{ASSEST_IMAGES_PATH}icons-files-extensions.gif?design=VOLT') no-repeat left top;}
+.file_extension_icon.torrent {background-position: -16px 0}
+.file_extension_icon.xls {background-position: -32px 0}
 .file_extension_icon.ie7 {background-position: -48px 0}
 .file_extension_icon.ppt {background-position: -64px 0}
-.file_extension_icon.htm, .file_extension_icon.html {background-position: 0 -1rem}
-.file_extension_icon.avi {background-position: -1rem -1rem}
-.file_extension_icon.bmp, .file_extension_icon.gif {background-position: -2rem -1rem}
-.file_extension_icon.js, .file_extension_icon.css, .file_extension_icon.txt {background-position: -48px -1rem}
-.file_extension_icon.pptm {background-position: -64px -1rem}
-.file_extension_icon.rtf, .file_extension_icon.doc {background-position: 0 -2rem}
-.file_extension_icon.jpg {background-position: -1rem -2rem}
-.file_extension_icon.png {background-position: -2rem -2rem}
-.file_extension_icon.ini {background-position: -48px -2rem}
-.file_extension_icon.pptx {background-position: -64px -2rem}
+.file_extension_icon.htm, .file_extension_icon.html {background-position: 0 -16px}
+.file_extension_icon.avi {background-position: -16px -16px}
+.file_extension_icon.bmp, .file_extension_icon.gif {background-position: -32px -16px}
+.file_extension_icon.js, .file_extension_icon.css, .file_extension_icon.txt {background-position: -48px -16px}
+.file_extension_icon.pptm {background-position: -64px -16px}
+.file_extension_icon.rtf, .file_extension_icon.doc {background-position: 0 -32px}
+.file_extension_icon.jpg {background-position: -16px -32px}
+.file_extension_icon.png {background-position: -32px -32px}
+.file_extension_icon.ini {background-position: -48px -32px}
+.file_extension_icon.pptx {background-position: -64px -32px}
 .file_extension_icon.php {background-position: 0 -48px}
-.file_extension_icon.mht, .file_extension_icon.mhtml {background-position: -1rem -48px}
-.file_extension_icon.psd {background-position: -2rem -48px}
+.file_extension_icon.mht, .file_extension_icon.mhtml {background-position: -16px -48px}
+.file_extension_icon.psd {background-position: -32px -48px}
 .file_extension_icon.zip {background-position: -48px -48px}
 .file_extension_icon.xps {background-position: -64px -48px}
 .file_extension_icon.exe {background-position: 0 -64px}
-.file_extension_icon.xml {background-position: -1rem -64px}
-.file_extension_icon.wma, .file_extension_icon.mp3 {background-position: -2rem -64px}
+.file_extension_icon.xml {background-position: -16px -64px}
+.file_extension_icon.wma, .file_extension_icon.mp3 {background-position: -32px -64px}
 .file_extension_icon.xlsx {background-position: -48px -64px}
 .file_extension_icon.xlsb {background-position: -64px -64px}
 .file_extension_icon.pdf {background-position: 0 -80px}
-.file_extension_icon.csv {background-position: -1rem -80px}
-.file_extension_icon.docx {background-position: -2rem -80px}
+.file_extension_icon.csv {background-position: -16px -80px}
+.file_extension_icon.docx {background-position: -32px -80px}
 .file_extension_icon.accdb {background-position: -48px -80px}
 .file_extension_icon.xlsm {background-position: -64px -80px}
 .file_extension_icon.dll {background-position: 0 -96px}

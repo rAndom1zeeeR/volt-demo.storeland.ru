@@ -5,14 +5,14 @@
 .slinky-menu a span {flex: 1;line-height: 1.25;}
 .slinky-menu li ul {display: none;left: 100%;position: absolute;top: 0;}
 .slinky-menu .header {display: flex;}
-.slinky-menu .header .title {flex: 1;line-height: 1.25;margin: 0;order: 1;padding-left: .5rem;}
+.slinky-menu .header .title {flex: 1;line-height: 1.25;margin: 0;order: 1;padding-left: 8px;}
 /* .slinky-theme-default {background: #f6f7f8;}
 .slinky-theme-default .title {color: #333;padding: 1em;}
 .slinky-theme-default li {line-height: 1;}
 .slinky-theme-default a:not(.back) {color: #333;padding: 1em;}
 .slinky-theme-default a:not(.back):hover {background: rgba(90, 200, 250, 0.25);}
 .slinky-theme-default a:not(.back):active {background: rgba(90, 200, 250, 0.5);} */
-.slinky-theme-default .next::after, .slinky-theme-default .back::before {content: '\e918';font-family: 'icomoon';font-size: 1.25rem;}
+.slinky-theme-default .next::after, .slinky-theme-default .back::before {content: '\e918';font-family: 'icomoon';font-size: 20px;}
 .slinky-theme-default .back::before {content: '\e917';}
 .slinky-theme-default .next:hover::after, .slinky-theme-default .back:hover::before {opacity: 0.75;}
 .slinky-theme-default .next:active::after, .slinky-theme-default .back:active::before {opacity: 1;}
