@@ -1643,9 +1643,9 @@ header .catalog__item.opened > .catalog__link {background-color: var(--color-lig
 /**************************************/
 /*** Слайдшоу ***/
 /**************************************/
-#slideshow {overflow: hidden;margin-top: 32px;}
+#slideshow {overflow: hidden;margin: 32px 0;}
 .slideshow__swiper {width: calc(100% - 296px);margin-right: 16px;position: relative;overflow: hidden;}
-#slideshow .swiper-slide {height: 1104px;background-position: center;background-size: cover;position: relative;overflow: hidden;}
+#slideshow .swiper-slide {height: 264px;background-position: center;background-size: cover;position: relative;overflow: hidden;}
 .slideshow__content {margin-left: 40px;color: var(--color-white);text-align: center;position: relative;}
 .slideshow__title {margin-bottom: 8px;font-size: 30px;font-weight: bold;text-transform: uppercase;color: var(--color-black);padding: 12px;background-color: var(--color-tertiary);text-align: center;display: inline-block;}
 .slideshow__subtitle {margin-bottom: 8px;font-size: 18px;font-weight: bold;}

@@ -13,7 +13,7 @@ body {line-height: 1;font-size: 16px;font-weight: 400;position: relative;overflo
 .container:before, .container:after {display: table;line-height: 0;content: '';}
 .container:after {display: block;content: '.';clear: both;font-size: 0;line-height: 0;height: 0;overflow: hidden;}
 .row {margin-left: -16px;margin-right: -16px;}
-.row-small {margin-left: -.8px;margin-right: -.8px;}
+.row-small {margin-left: -8px;margin-right: -8px;}
 .row:before, .row:after {content: ' ';display: table;}
 
 
@@ -101,15 +101,15 @@ h5 {font-size: 16px;}
 /**************************************/
 /*** Показать пароль ***/
 /**************************************/
-.form__showPass {position: absolute;bottom: 12px;right: .8px;cursor: pointer;z-index: 2;}
+.form__showPass {position: absolute;bottom: 12px;right: 8px;cursor: pointer;z-index: 2;}
 .form__showPass:before {content: '\e933';font-size: 24px;font-family: 'icomoon';vertical-align: middle;}
 .form__showPass.active:before {content: '\e934';}
 .form__showPass .showPass {vertical-align: middle;display: none;}
 
 /*** Капслок ***/
 #capslock {margin-top: 16px;display: none;}
-.capslock__icon i {margin-right: .8px;font-size: 24px;}
-.capslock__text {margin-top: .8px;}
+.capslock__icon i {margin-right: 8px;font-size: 24px;}
+.capslock__text {margin-top: 8px;}
 
 
 /**************************************/
@@ -127,12 +127,12 @@ h5 {font-size: 16px;}
 .compare__line {margin-bottom: 16px;padding-bottom: 16px;}
 .compare__line:nth-child(-n+2) {border-bottom: 0;padding-bottom: 0;}
 .compare__cell {margin-bottom: 16px;width: 100%;font-weight: bold;}
-.compare__cell input {margin-right: .8px;}
+.compare__cell input {margin-right: 8px;}
 .compare__image {height: 216px;}
-.compare__remove {top: .8px;right: .8px;position: absolute;}
+.compare__remove {top: 8px;right: 8px;position: absolute;}
 .compare__remove i {font-size: 24px;display: block;}
-.compare__mod {margin-top: .8px;font-size: 12px;}
-.compare__price .price__old {margin-top: .8px;}
+.compare__mod {margin-top: 8px;font-size: 12px;}
+.compare__price .price__old {margin-top: 8px;}
 .compare__addCart i {display: none;}
 .compare__showAll {display: none;}
 @media all and (max-width: 1199px) {
@@ -195,7 +195,7 @@ h5 {font-size: 16px;}
 .breadcrumbs ul li span {text-overflow: ellipsis;white-space: nowrap;overflow: hidden;max-width: 320px;}
 .breadcrumbs ul li:last-child {font-weight: bold;}
 .breadcrumbs ul li a {display: -ms-flexbox;display: -webkit-flex;display: flex;-ms-flex-align: baseline;-webkit-align-items: baseline;-webkit-box-align: baseline;align-items: baseline;}
-.breadcrumbs ul li a:after {content: "/";margin: 0 .8px;}
+.breadcrumbs ul li a:after {content: "/";margin: 0 8px;}
 .breadcrumbs ul li:last-child a:after {display: none;}
 .breadcrumbs ul li a i {margin-right: 4px;}
 .breadcrumbs::-webkit-scrollbar {width: 0;height: 4px;}
