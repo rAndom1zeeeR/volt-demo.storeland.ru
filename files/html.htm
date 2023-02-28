@@ -686,6 +686,9 @@
 						<div class="banner__item">
 							<a class="banner__link flex-center" href="{CATALOG_URL}" title="Перейти в каталог">
 								<div class="banner__image">
+									<noscript>
+										<img class="noscript-lozad" src="{ASSETS_IMAGES_PATH}banner_1.jpg?design=VOLT" alt="лучшие скидки" />
+									</noscript>
 									<img class="lozad" data-src="{ASSETS_IMAGES_PATH}banner_1.jpg?design=VOLT" alt="лучшие скидки" />
 								</div>
 								<div class="banner__subtitle">лучшие</div>
@@ -695,6 +698,9 @@
 						<div class="banner__item">
 							<a class="banner__link flex-center" href="{CATALOG_URL}" title="Перейти в каталог">
 								<div class="banner__image">
+									<noscript>
+										<img class="noscript-lozad" src="{ASSETS_IMAGES_PATH}banner_2.jpg?design=VOLT" alt="бесплатная доставка" />
+									</noscript>
 									<img class="lozad" data-src="{ASSETS_IMAGES_PATH}banner_2.jpg?design=VOLT" alt="бесплатная доставка" />
 								</div>
 								<div class="banner__subtitle">бесплатная</div>
@@ -1382,7 +1388,11 @@
 										href="{catalog_full.URL}" 
 										data-background-image="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ENDIF %}"
 										title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;" 
-									></a>
+									>
+										<noscript>
+											<img class="noscript-lozad" src="{% IF catalog_full.IMAGE_MEDIUM %}{catalog_full.IMAGE_MEDIUM}{% ELSE %}{ASSETS_IMAGES_PATH}no-photo.png?design=VOLT{% ENDIF %}" alt="{catalog_full.NAME}">
+										</noscript>
+									</a>
 									<div class="categories__content">
 										<a class="categories__name flex" href="{catalog_full.URL}" title="Перейти к категории &laquo;{catalog_full.NAME}&raquo;">
 											<span>{catalog_full.NAME}</span>
@@ -1719,9 +1729,15 @@
 							<div class="offers__item">
 								<div class="offers__image">
 									<picture>
-										<div class="swiper-lazy-preloader"></div>
-										<source srcset="{ASSETS_IMAGES_PATH}ban_1.jpg?design=VOLT" />
-										<img class="swiper-lazy" 
+										<noscript>
+											<img class="noscript-lozad" 
+												src="{ASSETS_IMAGES_PATH}ban_1.jpg?design=VOLT" 
+												alt="Электросчетчики Kanerby-82Wq -30%"
+												width="272"
+												height="224"
+											/>
+										</noscript>
+										<img class="lozad" 
 												data-src="{ASSETS_IMAGES_PATH}ban_1.jpg?design=VOLT" 
 												srcset="{ASSETS_IMAGES_PATH}ban_1.jpg?design=VOLT" 
 												alt="Электросчетчики Kanerby-82Wq -30%"
@@ -1746,11 +1762,16 @@
 							<div class="offers__item">
 								<div class="offers__image">
 									<picture>
-										<div class="swiper-lazy-preloader"></div>
-										<source srcset="{ASSETS_IMAGES_PATH}ban_2.jpg?design=VOLT" />
+										<noscript>
+											<img class="noscript-lozad" 
+													src="{ASSETS_IMAGES_PATH}ban_2.jpg?design=VOLT" 
+													alt="Выключатели и розетки AvenuShort -80%"
+													width="272"
+													height="224"
+											/>
+										</noscript>
 										<img class="swiper-lazy" 
 												data-src="{ASSETS_IMAGES_PATH}ban_2.jpg?design=VOLT" 
-												srcset="{ASSETS_IMAGES_PATH}ban_2.jpg?design=VOLT" 
 												alt="Выключатели и розетки AvenuShort -80%"
 												width="272"
 												height="224"
@@ -1773,8 +1794,14 @@
 							<div class="offers__item">
 								<div class="offers__image">
 									<picture>
-										<div class="swiper-lazy-preloader"></div>
-										<source srcset="{ASSETS_IMAGES_PATH}ban_3.jpg?design=VOLT" />
+										<noscript>
+											<img class="noscript-lozad" 
+													src="{ASSETS_IMAGES_PATH}ban_3.jpg?design=VOLT" 
+													alt="При заказе 1000 руб. на светотехнику -55%"
+													width="272"
+													height="224"
+											/>
+										</noscript>
 										<img class="swiper-lazy" 
 												data-src="{ASSETS_IMAGES_PATH}ban_3.jpg?design=VOLT" 
 												srcset="{ASSETS_IMAGES_PATH}ban_3.jpg?design=VOLT" 
@@ -1800,8 +1827,14 @@
 							<div class="offers__item">
 								<div class="offers__image">
 									<picture>
-										<div class="swiper-lazy-preloader"></div>
-										<source srcset="{ASSETS_IMAGES_PATH}ban_4.jpg?design=VOLT" />
+										<noscript>
+											<img class="noscript-lozad" 
+													src="{ASSETS_IMAGES_PATH}ban_4.jpg?design=VOLT" 
+													alt="При покупке любого силового кабеля от 100 метров -20%"
+													width="272"
+													height="224"
+											/>
+										</noscript>
 										<img class="swiper-lazy" 
 												data-src="{ASSETS_IMAGES_PATH}ban_4.jpg?design=VOLT" 
 												srcset="{ASSETS_IMAGES_PATH}ban_4.jpg?design=VOLT" 
@@ -2309,6 +2342,14 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_all.URL}" title="Перейти к странице &laquo;{news_list_all.TITLE}&raquo;">
+										<noscript>
+											<img class="noscript-lozad" 
+													src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
+													alt="{news_list_all.TITLE}" 
+													width="128"
+													height="128"
+											/>
+										</noscript>
 										<img class="lozad" 
 												data-src="{% IF news_list_all.IMG %}{news_list_all.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
 												alt="{news_list_all.TITLE}" 
@@ -2352,6 +2393,14 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_shop.URL}" title="Перейти к странице &laquo;{news_list_shop.TITLE}&raquo;">
+										<noscript>
+											<img class="noscript-lozad" 
+													src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
+													alt="{news_list_shop.TITLE}" 
+													width="128"
+													height="128"
+											/>
+										</noscript>
 										<img class="lozad" 
 												data-src="{% IF news_list_shop.IMG %}{news_list_shop.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
 												alt="{news_list_shop.TITLE}" 
@@ -2395,6 +2444,14 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_articles.URL}" title="Перейти к странице &laquo;{news_list_articles.TITLE}&raquo;">
+										<noscript>
+											<img class="noscript-lozad" 
+													src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
+													alt="{news_list_articles.TITLE}" 
+													width="128"
+													height="128"
+											/>
+										</noscript>
 										<img class="lozad" 
 												data-src="{% IF news_list_articles.IMG %}{news_list_articles.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
 												alt="{news_list_articles.TITLE}" 
@@ -2438,6 +2495,14 @@
 							<div class="swiper-slide news__item">
 								<div class="news__inner flex">
 									<a class="news__image flex-center" href="{news_list_mass_media.URL}" title="Перейти к странице &laquo;{news_list_mass_media.TITLE}&raquo;">
+										<noscript>
+											<img class="noscript-lozad" 
+													src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
+													alt="{news_list_mass_media.TITLE}" 
+													width="128"
+													height="128"
+											/>
+										</noscript>
 										<img class="lozad" 
 												data-src="{% IF news_list_mass_media.IMG %}{news_list_mass_media.IMG}{% ELSE %}{ASSETS_IMAGES_PATH}news.png?design=VOLT{% ENDIF %}" 
 												alt="{news_list_mass_media.TITLE}"

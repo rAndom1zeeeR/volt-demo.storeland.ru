@@ -3341,7 +3341,7 @@ function swiperOffers(id){
 		nested: true,
 		preloadImages: false,
 		lazy: {
-			enabled: true,
+			enabled: false,
 			loadPrevNext: true,
 			loadOnTransitionStart: true,
 		},

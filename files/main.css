@@ -1719,6 +1719,7 @@ header .catalog__item.opened > .catalog__link {background-color: var(--color-lig
 /**************************************/
 /*** Новости ***/
 /**************************************/
+.nojs #news .swiper-slide {width: 25%;}
 #news .tabs__content.loading {height: 128px;}
 .news__navs {width: 100%;white-space: nowrap;flex-wrap: nowrap;overflow-x: auto;}
 .news__navs::-webkit-scrollbar {height: 4px;}
@@ -1818,6 +1819,7 @@ footer .contacts__block_phone:first-child {font-size: 20px;font-weight: 700;}
 /**************************************/
 /*** Лучшие предложения ***/
 /**************************************/
+.nojs #offers .swiper-slide {width: 25%;}
 .offers__item {height: 224px;overflow: hidden;}
 .offers__image {height: 100%;}
 .offers__image:before {content: '';background: linear-gradient(360deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.396) 38.03%, rgba(0, 0, 0, 0) 100%);position: absolute;top: 0;left: 0;width: 100%;height: 100%;}
@@ -2038,3 +2040,11 @@ footer .contacts__block_phone:first-child {font-size: 20px;font-weight: 700;}
 .slinky-menu .header .title {color: var(--color-primary);font-weight: bold;}
 .slinky-menu .header .back::before {color: var(--color-primary);}
 [data-toggled] {display: none;}
+
+
+/* Если отключен JS */
+.nojs .cartTable__recalc {display: inline-block;}
+.nojs .qty span {opacity: 0;}
+.nojs .startOrder {display: none;}
+.nojs .lozad {display: none;}
+.nojs .compare__item {width: 25%;}
