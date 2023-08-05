@@ -449,7 +449,7 @@ section {margin: 32px 0;position: relative;}
 .product__name span {display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;text-overflow: ellipsis;}
 .product__ratings {display: none;}
 .product__available {font-size: 14px;}
-.product__price {align-items: baseline;}
+.product__price {align-items: baseline;overflow: hidden;}
 .product__empty .product__qty {display: none;}
 .product__empty .price__now {color: var(--color-darkgray);}
 .product__empty .price__now .num:after {color: var(--color-darkgray);}
