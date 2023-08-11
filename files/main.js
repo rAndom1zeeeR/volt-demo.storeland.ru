@@ -1527,13 +1527,14 @@ function goodsModification($container) {
 // Кнопки для модификаций
 function newModification($container) {
 	var $parentBlock = $container || $('#main .productViewBlock')
+	console.log($parentBlock);
 	 
 	function props(){
 		$parentBlock.find('.modifications__properties').each(function(){
-			a = $(this).find('select option:selected').attr('value');
+			var a = $(this).find('select option:selected').attr('value');
 			$(this).find('.modifications__value[data-value="'+ a +'"]').addClass('active');
 			$(this).find('select option:disabled').each(function(){
-				dis = $(this).attr('value');
+				var dis = $(this).attr('value');
 				$('.modifications__value[data-value="'+ dis +'"]').addClass('disabled');
 			});
 			
@@ -1543,6 +1544,7 @@ function newModification($container) {
 
 	$parentBlock.find('.modifications__value').on('click', function(event){
 		event.preventDefault()
+		console.log('$(this)', $(this));
 
 		if($(this).hasClass('disabled')){
 			return false;
@@ -1553,7 +1555,7 @@ function newModification($container) {
 		$(this).addClass('active');
 		var val = $(this).data('value');
 		$(this).parents().find('select option[value="' + val + '"]').prop('selected',true);
-    $(this).parents().find('select').trigger('change');
+    $(this).parents().find('.modifications__properties_select').trigger('change');
 
 		$('.modifications__properties').each(function(){
       dis = $(this).find('select option:disabled').attr('value');
