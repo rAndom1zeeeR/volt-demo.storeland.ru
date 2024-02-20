@@ -950,7 +950,7 @@ function quickViewMod() {
 			var href = link.attr('href');
 			href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
 			// Если контент по данной ссылке ещё не загружен
-			if(typeof(document.quickviewPreload[href]) == 'undefined') {
+			if(typeof(document.quickviewPreload[href]) === 'undefined') {
 				// Ставим отметку о том, что мы начали загрузку страницы товара
 				document.quickviewPreload[href] = 1;
 				// Делаем запрос на загрузку страницы товара
@@ -982,11 +982,11 @@ function quickViewMod() {
 // Быстрый просмотр модификаций
 function quickViewShowMod(href, atempt) {
 	// Если данные по быстрому просмотру уже подгружены
-	if(typeof(document.quickviewPreload[href]) != 'undefined') {
+	if(typeof(document.quickviewPreload[href]) !== 'undefined') {
 		// Если мы в режиме загрузки страницы и ждём результата от другой функции, то тоже подождём, когда тот контент загрузится и будет доступен в этом массиве.
 		if(1 == document.quickviewPreload[href]) {
 			// Если попытки ещё не указывались, ставим 0 - первая попытка
-			if(typeof(atempt) == 'undefined') {
+			if(typeof(atempt) === 'undefined') {
 				atempt = 0;
 				// Иначе прибавляем счётчик попыток
 			} else {
@@ -2984,9 +2984,10 @@ $(document).ready(function(){
 	swiperCatalog();
 	// goodsModRest();
 
+	quickViewMod();
 	setTimeout(function () {
 		quickViewMod();
-	}, 2000);
+	}, 1000);
 
 	// Удаление классов загрузки для элементов страницы
 	$('.loading').addClass('loaded');
