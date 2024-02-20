@@ -968,6 +968,7 @@ function quickViewMod() {
 		$(document).on('click', '.add-mod', function() {
 			var href = $(this).attr('href');
 			href += (false !== href.indexOf('?') ? '&' : '?') + 'only_body=1';
+			console.log('add-mod href', href);
 			quickViewShowMod(href);
 			$(function(){
 				var observer = lozad();
@@ -981,6 +982,8 @@ function quickViewMod() {
 
 // Быстрый просмотр модификаций
 function quickViewShowMod(href, atempt) {
+	console.log('href1', href);
+	console.log('atempt1', document.quickviewPreload[href]);
 	// Если данные по быстрому просмотру уже подгружены
 	if(typeof(document.quickviewPreload[href]) !== 'undefined') {
 		// Если мы в режиме загрузки страницы и ждём результата от другой функции, то тоже подождём, когда тот контент загрузится и будет доступен в этом массиве.
